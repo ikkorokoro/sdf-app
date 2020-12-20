@@ -1,0 +1,49 @@
+@import '_variables';
+.form-container {
+  background-color: $base-bg-color;
+  padding: 32px;
+  display: flex;
+  justify-content: space-between;
+  height: 900px;
+}
+.form-left{
+  font-size: 35px;
+  width: 65%;
+  color: $title-base-color;
+  font-weight: bold;
+  margin: auto;
+    &-text {
+      text-align: center;
+      letter-spacing: 10px;
+    }
+}
+.form-right {
+  width: 30%;
+  text-align: center;
+  margin: auto;
+}
+.title {
+  font-size: $title-size;
+  color: $title-base-color;
+  font-weight: bold;
+}
+.field {
+  margin: 20px 0;
+}
+.form {
+  border-radius: 999px;
+  border: 0.1px solid gray;
+}
+.btn {
+  background-color: $btn-bg-color;
+  border: 0.1px solid gray;
+  font-weight: bold;
+  border-radius: 400px;
+  padding: 15px 30px;
+  display: block;
+  margin: auto;
+}
+.guest-button {
+margin: 20px 0;
+}
+

@@ -1,5 +1,40 @@
 @import '~bootstrap-material-design/scss/bootstrap-material-design';
-.army {
-  height: 500px;
-  background-image: image-url('img/b327a7be5146e75f038f7783187ebcb2.jpg');
+@import 'form';
+@import '_variables';
+
+
+
+html {
+  word-spacing: 1px;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  box-sizing: border-box;
+  height: 100%;
 }
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+body {
+  height: 100%;
+  font-size: 1em;
+  color: $text-base-color;
+}
+
+a {
+  text-decoration: none;
+  color: $text-base-color;
+}
+
+.container {
+  padding: 16px 16px;
+  width: 100%;
+}
+
+
