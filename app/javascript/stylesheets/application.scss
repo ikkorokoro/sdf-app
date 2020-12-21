@@ -1,8 +1,10 @@
 @import '~bootstrap-material-design/scss/bootstrap-material-design';
 @import 'form';
 @import '_variables';
-
-
+@import 'flash';
+@import 'header';
+@import 'commons';
+@import '_breakpoints';
 
 html {
   word-spacing: 1px;
@@ -23,7 +25,7 @@ html {
 
 body {
   height: 100%;
-  font-size: 1em;
+  font-size: 16px;
   color: $text-base-color;
 }
 

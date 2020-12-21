@@ -26,8 +26,8 @@
         %br/
         = f.password_field :password_confirmation, autocomplete: "new-password", class: 'form'
       .actions
-        = f.submit "新規登録", class: 'btn'
+        = f.submit "新規登録", class: 'btn btn_session'
       .guest-button
-        = f.submit "ゲストログイン", class: 'btn'
+        = f.submit "ゲストログイン", class: 'btn  btn_session'
       = render "devise/shared/links"
 
