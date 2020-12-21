@@ -9,7 +9,7 @@
 .form-left{
   font-size: 35px;
   width: 65%;
-  color: $title-base-color;
+  color: $main-color;
   font-weight: bold;
   margin: auto;
     &-text {
@@ -24,7 +24,7 @@
 }
 .title {
   font-size: $title-size;
-  color: $title-base-color;
+  color: $main-color;
   font-weight: bold;
 }
 .field {
@@ -37,11 +37,13 @@
 .btn {
   background-color: $btn-bg-color;
   border: $border-base;
-  font-weight: bold;
   border-radius: 400px;
-  padding: 15px 30px;
-  display: block;
-  margin: auto;
+  &_session {
+    display: block;
+    margin: auto;
+    padding: 15px 30px;
+    font-weight: bold;
+  }
 }
 .guest-button {
 margin: 20px 0;
