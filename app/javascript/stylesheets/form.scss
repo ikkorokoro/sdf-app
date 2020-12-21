@@ -1,0 +1,51 @@
+@import '_variables';
+.form-container {
+  background-color: $base-bg-color;
+  padding: 32px;
+  display: flex;
+  justify-content: space-between;
+  height: 900px;
+}
+.form-left{
+  font-size: 35px;
+  width: 65%;
+  color: $main-color;
+  font-weight: bold;
+  margin: auto;
+    &-text {
+      text-align: center;
+      letter-spacing: 10px;
+    }
+}
+.form-right {
+  width: 30%;
+  text-align: center;
+  margin: auto;
+}
+.title {
+  font-size: $title-size;
+  color: $main-color;
+  font-weight: bold;
+}
+.field {
+  margin: 20px 0;
+}
+.form {
+  border-radius: 999px;
+  border: $border-base;
+}
+.btn {
+  background-color: $btn-bg-color;
+  border: $border-base;
+  border-radius: 400px;
+  &_session {
+    display: block;
+    margin: auto;
+    padding: 15px 30px;
+    font-weight: bold;
+  }
+}
+.guest-button {
+margin: 20px 0;
+}
+

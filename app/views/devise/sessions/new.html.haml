@@ -1,0 +1,24 @@
+.form-container
+  .form-left
+    %p.form-left-text
+      購入したアイテムの口コミを投稿して自衛官で共有し、よりパフォーマンスに優れたアイテムを探そう
+  .form-right
+    .title Soldier Reviews
+    = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+      .field
+        = f.label :email, 'メールアドレス'
+        %br/
+        = f.email_field :email, autofocus: true, autocomplete: "email", class: 'form'
+      .field
+        = f.label :password, 'パスワード'
+        %br/
+        = f.password_field :password, autocomplete: "current-password", class: 'form'
+      - if devise_mapping.rememberable?
+        .field
+          = f.check_box :remember_me
+          = f.label :remember_me, 'ログインを記憶する'
+      .actions
+        = f.submit "ログイン", class: 'btn'
+      .guest-button
+        = f.submit "ゲストログイン", class: 'btn'
+      = render "devise/shared/links"
