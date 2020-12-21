@@ -8,6 +8,38 @@
     = stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
   %body
+    %header.header
+      .header_logos
+        - if !current_page?(root_path)
+          = link_to :back do
+            = image_tag 'back.svg', class: 'header_back'
+        %p.header_pageTitle
+          = link_to 'Soldier Reviews', root_path
+      - if user_signed_in?
+        .ransack
+          = search_field_tag 'account', nil, class: 'ransack_form', placeholder: 'キーワードを入力'
+          = submit_tag '検索', class: 'search'
+        .header_content
+          .category.dropdown 
+            カテゴリ
+            .dropdown-content
+              = link_to '鉄棒、中帽'
+              = link_to '装具'
+              = link_to 'バッグ'
+              = link_to '服'
+              = link_to '雨具'
+              = link_to '防寒具'
+              = link_to '靴'
+              = link_to '小物'
+          = link_to '通知', destroy_user_session_path, class: 'notification'  
+          .post
+            = link_to '投稿', destroy_user_session_path, class: 'post_text'
+          .dropdown
+            = image_tag '軍人のアイコン素材.png', class: 'header_avatar dropbtn'
+            .dropdown-content
+              = link_to 'プロフィール'
+              = link_to 'お気に入り'
+              = link_to 'ログアウト', destroy_user_session_path, data: { method: 'delete' }
     - if flash.present?
       .flash
         - flash.each do |key, value|
