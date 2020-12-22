@@ -42,14 +42,17 @@
     -#           = link_to 'ログアウト', destroy_user_session_path, data: { method: 'delete' }
     
     %nav.navbar.navbar-expand-lg.navbar-light.base-bg-color
-      .navbar-brand
+      - if !current_page?(root_path)
+        = link_to :back do
+          = image_tag 'back.svg', class: 'header_back'
+      .navbar-brand.font-weight-bold
         = link_to 'Soldier Reviews', root_path, class: 'header-title'
       - if user_signed_in?
-        %li.hoverdown
+        %li.hoverdown.ml-3
           = image_tag '軍人のアイコン素材.png', class: 'header_avatar hoverbtn'
           .hoverdown-content
-            = link_to 'プロフィール'
-            = link_to 'お気に入り'
+            = link_to 'プロフィール', '#'
+            = link_to 'お気に入り', '#'
             = link_to 'ログアウト', destroy_user_session_path, data: { method: 'delete' }
         %button.navbar-toggler{"aria-controls" => "navbarSupportedContent", "aria-expanded" => "false", "aria-label" => "Toggle navigation", "data-target" => "#navbarSupportedContent", "data-toggle" => "collapse", :type => "button"}
           %span.navbar-toggler-icon
@@ -57,7 +60,7 @@
           %ul.navbar-nav.mr-auto
             %li.nav-item.dropdown
               #navbarDropdown.nav-link.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
-                %a.color カテゴリ
+                %a.color.ml-3 カテゴリ
               .base-bg-color.dropdown-menu{"aria-labelledby" => "navbarDropdown"}
                 .dropdown-item
                   = link_to '鉄棒、中帽','#', class: 'color'
@@ -75,15 +78,15 @@
                   = link_to '靴','#', class: 'color'
                 .dropdown-item
                   = link_to '小物','#', class: 'color'
-            %li.nav-item
+            %li.nav-item.ml-3
               .nav-link
                 = link_to '通知','#', class: 'color'
-            %li.nav-item.post
+            %li.nav-item.post.ml-3
               .nav-link
                 = link_to '投稿','#', class: 'color'
           %form.form-inline.my-2.my-lg-0
             %input.form-control.mr-sm-2{"aria-label" => "Search", placeholder: "キーワード検索", type: "search"}/
-            %button.btn.my-2.my-sm-0{type: "submit"} 検索        
+            %button.search.my-2.my-sm-0{type: "submit"} 検索        
     - if flash.present?
       .flash
         - flash.each do |key, value|
