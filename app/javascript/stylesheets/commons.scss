@@ -1,19 +1,18 @@
 @import '_variables';
 
-.dropbtn {
+.hoverbtn {
     border: none;
   }
 
-.dropdown {
+.hoverdown {
     position: relative;
     display: inline-block;
-    // margin-right: 15px;
   }
   
-  .dropdown-content {
+  .hoverdown-content {
     font-weight: normal;
     display: none;
-    right: 0;
+    left: 0;
     position: absolute;
     min-width: 160px;
     box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
@@ -24,17 +23,17 @@
       min-width: 100px;
   }
 }
-  .dropdown-content a {
+  .hoverdown-content a {
     padding: 8px 16px;
     text-decoration: none;
     display: block;
     color: $main-color;
   }
   
-  .dropdown-content a:hover {
+  .hoverdown-content a:hover {
     background-color: #D7D7D7;
   }
   
-  .dropdown:hover .dropdown-content {
+  .hoverdown:hover .hoverdown-content {
     display: block;
   }
