@@ -9,11 +9,11 @@
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
   %body
     %nav.navbar.navbar-expand-lg.navbar-light.base-bg-color
-      - if !current_page?(root_path)
-        = link_to :back do
-          = image_tag 'back.svg', class: 'header_back'
-      .navbar-brand.font-weight-bold
-        = link_to 'Soldier Reviews', root_path, class: 'header-title'
+      .navbar-brand
+        - if !current_page?(root_path)
+          = link_to :back do
+            = image_tag 'カッチリした矢印アイコン素材 左向き.png', class: 'pb-1'
+        = link_to 'Soldier Reviews', root_path, class: 'header-title font-weight-bold'
       - if user_signed_in?
         %li.hoverdown.ml-3
           = image_tag '軍人のアイコン素材.png', class: 'header_avatar hoverbtn'
