@@ -7,6 +7,7 @@
     = link_to 'タイムライン','#', class: 'nav-link font-weight-bold tabs-font'
   %li.nav-item.radius-200.px-3.py-2.box-shadow
     = link_to 'お気に入り','#', class: 'nav-link font-weight-bold tabs-font'
+%p.text-center.font-weight-bold 投稿件数 1件
 .container
   .row
     .col-xs-12.col-md-6.col-lg-4
@@ -14,7 +15,6 @@
         = image_tag  "無料のいいねの手のアイコン素材.png", class: 'card-img-top'
         .card-body
           %h5.card-title.text-center Card title
-          
           .d-flex.justify-content-between.mb-4
             .article-left
               = image_tag '軍人のアイコン素材.png', class: 'user-avatar'
@@ -28,36 +28,19 @@
           = link_to '#鉄棒,中帽','#', class: 'p-2 mb-2 tug-bg radius-200 font-weight-bold'
           = link_to '#鉄棒,中帽','#', class: 'p-2 mb-2 tug-bg radius-200 font-weight-bold'
         .text-right.mr-3 1日前
-    .col-xs-12.col-md-6.col-lg-4
-      .card.radius.box-shadow{:style => "width: 18rem;"}
-        = image_tag  "無料のいいねの手のアイコン素材.png", class: 'card-img-top'
-        .card-body
-          %h5.card-title.text-center Card title
-          .d-flex.justify-content-between
-            .article-content-left.mb-4
-              = image_tag '軍人のアイコン素材.png', class: 'user-avatar'
-              name
-            .article-content-right
-              = image_tag 'コメントの無料アイコン.png', class: 'avatar'
-              10
-              = image_tag '無料のいいねの手のアイコン素材 .png', class: 'avatar ml-2 mr-1'
-              10
-          = link_to '#タグ','#', class: 'p-2 mb-2 mr-1 tug-bg radius-200 font-weight-bold'
-          = link_to '#鉄棒,中帽','#', class: 'p-2 mb-2 tug-bg radius-200 font-weight-bold'
-    .col-xs-12.col-md-6.col-lg-4
-      .card.radius.box-shadow{:style => "width: 18rem;"}
-        = image_tag  "無料のいいねの手のアイコン素材.png", class: 'card-img-top'
-        .card-body
-          %h5.card-title.text-center Card title
-          .d-flex.justify-content-between
-            .article-content-left.mb-4
-              = image_tag '軍人のアイコン素材.png', class: 'user-avatar'
-              name
-            .article-content-right
-              = image_tag 'コメントの無料アイコン.png', class: 'avatar'
-              10
-              = image_tag '無料のいいねの手のアイコン素材 .png', class: 'avatar ml-2 mr-1'
-              10
-          = link_to '#タグ','#', class: 'p-2 mb-2 mr-1 tug-bg radius-200 font-weight-bold'
-          = link_to '#鉄棒,中帽','#', class: 'p-2 mb-2 tug-bg radius-200 font-weight-bold'      
-
+%nav{"aria-label" => "Page navigation example"}
+  %ul.pagination.m-auto
+    %li.page-item
+      %a.page-link{"aria-label" => "Previous", :href => "#"}
+        %span{"aria-hidden" => "true"} «
+        %span.sr-only Previous
+    %li.page-item
+      %a.page-link{:href => "#"} 1
+    %li.page-item
+      %a.page-link{:href => "#"} 2
+    %li.page-item
+      %a.page-link{:href => "#"} 3
+    %li.page-item
+      %a.page-link{"aria-label" => "Next", :href => "#"}
+        %span{"aria-hidden" => "true"} »
+        %span.sr-only Next
