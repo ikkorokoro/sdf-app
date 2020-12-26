@@ -12,11 +12,11 @@
       .navbar-brand
         - if !current_page?(root_path)
           = link_to :back do
-            = image_tag 'カッチリした矢印アイコン素材 左向き.png', class: 'pb-1'
+            = image_tag 'カッチリした矢印アイコン素材 左向き.png', class: 'pb-2'
         = link_to 'Soldier Reviews', root_path, class: 'header-title font-weight-bold'
       - if user_signed_in?
         %li.hoverdown.ml-3
-          = image_tag '軍人のアイコン素材.png', class: 'header_avatar hoverbtn'
+          = image_tag '軍人のアイコン素材.png', class: 'user-avatar hoverbtn'
           .hoverdown-content
             = link_to 'プロフィール', '#'
             = link_to 'お気に入り', '#'
@@ -50,10 +50,16 @@
                 = link_to '通知','#', class: 'color'
             %li.nav-item.post.ml-3
               .nav-link
-                = link_to '投稿','#', class: 'color'
+                = link_to '投稿', new_article_path, class: 'color'
           %form.form-inline.my-2.my-lg-0
             %input.form-control.mr-sm-2{"aria-label" => "Search", placeholder: "キーワード検索", type: "search"}/
             %button.search.my-2.my-sm-0{type: "submit"} 検索        
+      - else
+        .d-flex
+          .btn.btn_session.p-2
+            = link_to 'ログイン', new_user_session_path, class: 'color'
+          .btn.btn_session.p-2.ml-2
+            = link_to '新規登録', new_user_registration_path, class: 'color'
     - if flash.present?
       .flash
         - flash.each do |key, value|

@@ -1,31 +1,40 @@
-.container
-  .row.justify-content-center
-    .col-xs-6.col-md-6.col-lg-5.col-xl-4.card-radius.border{:style => "width: 400px;"}
-      = image_tag  "無料のいいねの手のアイコン素材.png", class: 'card-img-top'
-    .col-xs-6.col-md-6.col-lg-5.col-xl-4.card-radius.border.p-3{:style => "width: 400px;"}
-      .d-flex.mb-2
-        .base-font 物品名
-        .base-font.mx-auto 
-          = @article.object
-      .d-flex.mb-2
-        .base-font 購入金額
-        .base-font.mx-auto  
-          = @article.price
-      .d-flex.mb-2
-        .base-font 購入場所
-        .base-font.mx-auto 
-          = @article.store
-      .d-flex.mb-2
-        .base-font カテゴリ
-        .base-font.mx-auto 
-          = @article.category
-      .d-flex.mb-2
-        .base-font 評価
-      .base-font.mb-2 感想
-      %p=@article.content
-      = link_to '#タグ','#', class: 'p-2 mb-2 mr-1 tug-bg radius-200 font-weight-bold'
-      = link_to '#鉄棒','#', class: 'p-2 mb-2 tug-bg radius-200 font-weight-bold'
-      = link_to '#鉄棒','#', class: 'p-2 mb-2 tug-bg radius-200 font-weight-bold'
-      = image_tag '無料のいいねの手のアイコン素材 .png', class: 'article-img ml-2'
-      10
-      %span.sm-font.ml-2 １日前
+.main-bg-color
+  .container
+    .row.justify-content-center
+      .card-radius{:style => "width: 400px;"}
+        = image_tag  "type88-01.jpg", class: 'card-img-top'
+      .card-radius.box-shadow.p-3{:style => "width: 400px;"}
+        .d-flex.mb-2.position-relative
+          .base-font.font-weight-bold 物品名
+          .base-font.mx-auto 
+            = @article.object
+          .position
+            = link_to '#' do
+              = image_tag '軍人のアイコン素材.png', class: 'user-avatar'
+          %li.hoverdown.show-icon-position
+            = image_tag 'more-button-of-three-dots_icon-icons.com_74259.png'
+            .hoverdown-content.base-font
+              = link_to '編集', edit_article_path(@article)                
+              = link_to '削除', article_path(@article), data: { method: 'delete', confirm: '本当に削除してもよろしいですか' }
+        .d-flex.mb-2
+          .base-font.font-weight-bold 購入金額
+          .base-font.mx-auto 
+            = @article.price
+        .d-flex.mb-2
+          .base-font.font-weight-bold 購入場所
+          .base-font.mx-auto 
+            = @article.store
+        .d-flex.mb-2
+          .base-font.font-weight-bold カテゴリ
+          .base-font.mx-auto 
+            = @article.category
+        .d-flex.mb-2
+          .base-font.font-weight-bold 評価
+        .base-font.mb-2.font-weight-bold 感想
+        %p=@article.content
+        = link_to '#タグ','#', class: 'p-2 mb-2 mr-1 tug-bg radius-200 font-weight-bold'
+        = link_to '#鉄棒','#', class: 'p-2 mb-2 tug-bg radius-200 font-weight-bold'
+        = link_to '#鉄棒','#', class: 'p-2 mb-2 tug-bg radius-200 font-weight-bold'
+        = image_tag '無料のいいねの手のアイコン素材 .png', class: 'article-img ml-2'
+        10
+        %span.sm-font.ml-2 １日前
