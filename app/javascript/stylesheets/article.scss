@@ -2,6 +2,9 @@
 .article-img {
   width: 30px;
 }
+.main-bg-color {
+  background-color:$base-bg-color;
+}
 .user-avatar{
   width: 35px;
 }
@@ -22,4 +25,7 @@
 }
 .sm-font {
   font-size: $sm-size;
+}
+.title-size {
+  font-size: $title-size;
 }
