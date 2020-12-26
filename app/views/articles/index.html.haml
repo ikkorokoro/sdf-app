@@ -10,24 +10,32 @@
 %p.text-center.font-weight-bold 投稿件数 1件
 .container
   .row
-    .col-xs-12.col-md-6.col-lg-4
-      .card.card-radius.box-shadow.mb-4{:style => "width: 18rem;"}
-        = image_tag  "無料のいいねの手のアイコン素材.png", class: 'card-img-top'
-        .card-body
-          %h5.card-title.text-center Card title
-          .d-flex.justify-content-between.mb-4
-            .article-left
-              = image_tag '軍人のアイコン素材.png', class: 'user-avatar'
-              name
-            .article-right
-              = image_tag 'コメントの無料アイコン.png', class: 'article-img'
-              10
-              = image_tag '無料のいいねの手のアイコン素材 .png', class: 'article-img ml-2 mr-1'
-              10
-          = link_to '#タグ','#', class: 'p-2 mb-2 mr-1 tug-bg radius-200 font-weight-bold'
-          = link_to '#鉄棒,中帽','#', class: 'p-2 mb-2 tug-bg radius-200 font-weight-bold'
-          = link_to '#鉄棒,中帽','#', class: 'p-2 mb-2 tug-bg radius-200 font-weight-bold'
-        .text-right.mr-3 1日前
+    - @articles.each do |article| 
+      .col-sm-12.col-md-6.col-lg-4.col-xl-4
+        .card.card-radius.box-shadow.mb-4{:style => "width: 18rem;"}
+          = link_to article_path(article) do   
+            = image_tag  "type88-01.jpg", class: 'card-img-top'
+          .card-body.position-relative
+            .font-weight-bold.title-size.text-center
+              = article.object 
+            %li.hoverdown.index-icon-position
+              = image_tag 'more-button-of-three-dots_icon-icons.com_74259.png'
+              .hoverdown-content.base-font
+                = link_to '編集', '#'                
+                = link_to '削除', '#'
+            .d-flex.justify-content-between.mb-4
+              .article-left
+                = image_tag '軍人のアイコン素材.png', class: 'user-avatar'
+                = article.user.account
+              .article-right
+                = image_tag 'コメントの無料アイコン.png', class: 'article-img'
+                10
+                = image_tag '無料のいいねの手のアイコン素材 .png', class: 'article-img ml-2 mr-1'
+                10
+            = link_to '#タグ','#', class: 'p-2 mb-2 mr-1 tug-bg radius-200 font-weight-bold'
+            = link_to '#鉄棒,中帽','#', class: 'p-2 mb-2 tug-bg radius-200 font-weight-bold'
+            = link_to '#鉄棒,中帽','#', class: 'p-2 mb-2 tug-bg radius-200 font-weight-bold'
+          .text-right.mr-3 1日前
 %nav{"aria-label" => "Page navigation example"}
   %ul.pagination.m-auto
     %li.page-item
