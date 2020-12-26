@@ -7,4 +7,7 @@ class User < ApplicationRecord
   validates :email, presence: true
   validates :password, presence: true
   has_many :articles, dependent: :destroy
+  def has_written?(article)
+    articles.exists?(id: article.id)
+  end
 end

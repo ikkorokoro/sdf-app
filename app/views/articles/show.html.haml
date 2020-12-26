@@ -2,7 +2,9 @@
   .container
     .row.justify-content-center
       .card-radius{:style => "width: 400px;"}
-        = image_tag  "type88-01.jpg", class: 'card-img-top'
+        = link_to article_path(@article) do
+          - if @article.image.attached?
+            = image_tag @article.image, class: 'card-img-top'
       .card-radius.box-shadow.p-3{:style => "width: 400px;"}
         .d-flex.mb-2.position-relative
           .base-font.font-weight-bold 物品名
@@ -11,11 +13,12 @@
           .position
             = link_to '#' do
               = image_tag '軍人のアイコン素材.png', class: 'user-avatar'
-          %li.hoverdown.show-icon-position
-            = image_tag 'more-button-of-three-dots_icon-icons.com_74259.png'
-            .hoverdown-content.base-font
-              = link_to '編集', edit_article_path(@article)                
-              = link_to '削除', article_path(@article), data: { method: 'delete', confirm: '本当に削除してもよろしいですか' }
+          - if user_signed_in? && current_user.has_written?(@article)
+            %li.hoverdown.show-icon-position
+              = image_tag 'more-button-of-three-dots_icon-icons.com_74259.png'
+              .hoverdown-content.base-font
+                = link_to '編集', edit_article_path(@article)                
+                = link_to '削除', article_path(@article), data: { method: 'delete', confirm: '本当に削除してもよろしいですか' }
         .d-flex.mb-2
           .base-font.font-weight-bold 購入金額
           .base-font.mx-auto 

@@ -19,14 +19,16 @@
           .card-body.position-relative
             .font-weight-bold.title-size.text-center.mb-2
               = article.object 
-            %li.hoverdown.index-icon-position
-              = image_tag 'more-button-of-three-dots_icon-icons.com_74259.png'
-              .hoverdown-content.base-font
-                = link_to '編集', '#'                
-                = link_to '削除', '#'
+            - if user_signed_in? && current_user.has_written?(article)
+              %li.hoverdown.index-icon-position
+                = image_tag 'more-button-of-three-dots_icon-icons.com_74259.png'
+                .hoverdown-content.base-font
+                  = link_to '編集', edit_article_path(article)                
+                  = link_to '削除', article_path(article), data: { method: 'delete', confirm: '本当に削除してもよろしいですか' }
             .d-flex.justify-content-between.mb-4
               .article-left
-                = image_tag '軍人のアイコン素材.png', class: 'user-avatar'
+                = link_to '#' do
+                  = image_tag '軍人のアイコン素材.png', class: 'user-avatar'
                 = article.user.account
               .article-right
                 = image_tag 'コメントの無料アイコン.png', class: 'article-img'
