@@ -13,10 +13,11 @@
     - @articles.each do |article| 
       .col-sm-12.col-md-6.col-lg-4.col-xl-4
         .card.card-radius.box-shadow.mb-4{:style => "width: 18rem;"}
-          = link_to article_path(article) do   
-            = image_tag  "type88-01.jpg", class: 'card-img-top'
+          = link_to article_path(article) do
+            - if article.image.attached?
+              = image_tag article.image, class: 'card-img-top'
           .card-body.position-relative
-            .font-weight-bold.title-size.text-center
+            .font-weight-bold.title-size.text-center.mb-2
               = article.object 
             %li.hoverdown.index-icon-position
               = image_tag 'more-button-of-three-dots_icon-icons.com_74259.png'
