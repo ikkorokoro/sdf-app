@@ -1,5 +1,5 @@
 class ArticlesController < ApplicationController
-  before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy] 
+  before_action :authenticate_user!, only: [:new, :show, :create, :edit, :update, :destroy] 
   
   def index
     @articles = Article.all
@@ -16,7 +16,7 @@ class ArticlesController < ApplicationController
   def create
     @article = current_user.articles.build(params_article)
     if @article.save
-      redirect_to article_path(@article), notice: '保存できました'
+      redirect_to root_path, notice: '保存できました'
     else
       flash.now[:errors] = '保存できませんでした'
       render :new
