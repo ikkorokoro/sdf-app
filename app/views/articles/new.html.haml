@@ -1,0 +1,33 @@
+.main-bg-color.text-center
+  %ul
+    - @article.errors.full_messages.each do |msg|
+      %li= msg
+    = form_with(model: @article, local: true) do |f|
+      .field
+        = f.label :account, '画像', class: 'base-font font-weight-bold'
+      .field
+        = f.label :object, '物品名', class: 'base-font font-weight-bold'
+        %br/
+        = f.text_field :object, autofocus: true, class: 'form'
+      .field
+        = f.label :price, '購入金額', class: 'base-font font-weight-bold'
+        %br/
+        = f.text_field :price, autofocus: true, class: 'form'
+      .field
+        = f.label :store, '購入場所', class: 'base-font font-weight-bold'
+        %br/
+        = f.text_field :store, autofocus: true,class: 'form'  
+      .field
+        = f.label :category, 'カテゴリ', class: 'base-font font-weight-bold'
+        %br/
+        = f.text_field :category, autofocus: true, class: 'form'  
+      .field
+        = f.label :rate, '評価', class: 'base-font font-weight-bold'
+      .field
+        = f.label :tug, 'タグ付け' , class: 'base-font font-weight-bold'
+      .field
+        = f.label :content, '感想' , class: 'base-font font-weight-bold'
+        %br/
+        = f.text_area :content, class:'p-1 w-50'
+      .actions
+        = f.submit "投稿する", class: 'btn btn_session py-3 px-4 base-font'
