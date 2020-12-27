@@ -8,6 +8,12 @@
 .tug-bg {
   background-color: #49D3FF;
 } 
+.tug-color {
+  color: black;
+  &:hover {
+    opacity: 0.7;
+  }
+}
 .radius-200 {
   border-radius: 200px;
 }
@@ -21,7 +27,7 @@
   font-size: $text-base-size;
 }
 .sm-font {
-  font-size: $sm-size;
+  font-size: 14px;
 }
 .title-size {
   font-size: $title-size;
