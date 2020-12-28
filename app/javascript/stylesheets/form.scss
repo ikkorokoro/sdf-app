@@ -1,4 +1,4 @@
-@import '_variables';
+@import './variables'; 
 .form-container {
   background-color: $base-bg-color;
   padding: 32px;
@@ -26,16 +26,17 @@
   font-size: $title-size;
   color: $main-color;
   font-weight: bold;
+  margin-bottom: 20px;
 }
 .field {
-  margin: 20px 0;
+  margin-bottom: 30px;
 }
 .form {
   border-radius: 999px;
   border: $border-base;
 }
 .btn {
-  background-color: $btn-bg-color;
+  background-color:  #95E0A6;
   border: $border-base;
   border-radius: 400px;
   &_session {

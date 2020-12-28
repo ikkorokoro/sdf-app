@@ -1,0 +1,56 @@
+@import './variables';
+.article-img {
+  width: 30px;
+}
+.main-bg-color {
+  background-color:$base-bg-color;
+}
+.tug-bg {
+  background-color: #49D3FF;
+} 
+.tug-color {
+  color: black;
+  &:hover {
+    opacity: 0.7;
+  }
+}
+.radius-200 {
+  border-radius: 200px;
+}
+.card-radius {
+  border-radius: 10px;
+}
+.box-shadow {
+  box-shadow: 5px 5px 4px rgba(0, 0, 0, 0.25);
+}
+.base-font {
+  font-size: $text-base-size;
+}
+.sm-font {
+  font-size: 14px;
+}
+.title-size {
+  font-size: $title-size;
+}
+.position {
+  position: absolute;
+  right: 0px;
+}
+.index-icon-position {
+  position: absolute;
+  top: 21px;
+  right: 20px;
+}
+.show-icon-position {
+  position: absolute;
+  top: 50px;
+  right: 0px;
+}
+.img-select {
+  width: 180px;
+  height: 180px;
+}
+.img {
+  width: 180px;
+  height: 180px;
+}

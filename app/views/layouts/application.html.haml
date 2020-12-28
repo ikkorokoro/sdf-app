@@ -8,40 +8,63 @@
     = stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
   %body
-    %header.header
-      .header_logos
+    %nav.navbar.navbar-expand-lg.navbar-light.base-bg-color
+      .navbar-brand
         - if !current_page?(root_path)
           = link_to :back do
-            = image_tag 'back.svg', class: 'header_back'
-        %p.header_pageTitle
-          = link_to 'Soldier Reviews', root_path
+            = image_tag 'カッチリした矢印アイコン素材 左向き.png', class: 'pb-2'
+        = link_to 'Soldier Reviews', root_path, class: 'header-title font-weight-bold'
       - if user_signed_in?
-        .ransack
-          = search_field_tag 'account', nil, class: 'ransack_form', placeholder: 'キーワードを入力'
-          = submit_tag '検索', class: 'search'
-        .header_content
-          .category.dropdown 
-            カテゴリ
-            .dropdown-content
-              = link_to '鉄棒、中帽'
-              = link_to '装具'
-              = link_to 'バッグ'
-              = link_to '服'
-              = link_to '雨具'
-              = link_to '防寒具'
-              = link_to '靴'
-              = link_to '小物'
-          = link_to '通知', destroy_user_session_path, class: 'notification'  
-          .post
-            = link_to '投稿', destroy_user_session_path, class: 'post_text'
-          .dropdown
-            = image_tag '軍人のアイコン素材.png', class: 'header_avatar dropbtn'
-            .dropdown-content
-              = link_to 'プロフィール'
-              = link_to 'お気に入り'
-              = link_to 'ログアウト', destroy_user_session_path, data: { method: 'delete' }
+        %li.hoverdown.ml-3
+          = image_tag '軍人のアイコン素材.png', class: 'user-avatar hoverbtn'
+          .hoverdown-content
+            = link_to 'プロフィール', '#'
+            = link_to 'お気に入り', '#'
+            = link_to 'ログアウト', destroy_user_session_path, data: { method: 'delete' }
+        %button.navbar-toggler{"aria-controls" => "navbarSupportedContent", "aria-expanded" => "false", "aria-label" => "Toggle navigation", "data-target" => "#navbarSupportedContent", "data-toggle" => "collapse", :type => "button"}
+          %span.navbar-toggler-icon
+        #navbarSupportedContent.collapse.navbar-collapse
+          %ul.navbar-nav.mr-auto
+            %li.nav-item.dropdown
+              #navbarDropdown.nav-link.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
+                %a.color.ml-3 カテゴリ
+              .base-bg-color.dropdown-menu{"aria-labelledby" => "navbarDropdown"}
+                .dropdown-item
+                  = link_to '鉄棒、中帽','#', class: 'color'
+                .dropdown-item
+                  = link_to '装具','#', class: 'color'
+                .dropdown-item
+                  = link_to 'バッグ','#', class: 'color'
+                .dropdown-item
+                  = link_to '服','#', class: 'color'
+                .dropdown-item
+                  = link_to '雨具','#', class: 'color'
+                .dropdown-item
+                  = link_to '防寒具','#', class: 'color'
+                .dropdown-item
+                  = link_to '靴','#', class: 'color'
+                .dropdown-item
+                  = link_to '小物','#', class: 'color'
+            %li.nav-item.ml-3
+              .nav-link
+                = link_to '通知','#', class: 'color'
+            %li.nav-item.post.ml-3
+              .nav-link
+                = link_to '投稿', new_article_path, class: 'color'
+          %form.form-inline.my-2.my-lg-0
+            %input.form-control.mr-sm-2{"aria-label" => "Search", placeholder: "キーワード検索", type: "search"}/
+            %button.search.my-2.my-sm-0{type: "submit"} 検索        
+      - else
+        .d-flex
+          .btn.btn_session.p-2
+            = link_to 'ログイン', new_user_session_path, class: 'color'
+          .btn.btn_session.p-2.ml-2
+            = link_to '新規登録', new_user_registration_path, class: 'color'
     - if flash.present?
       .flash
         - flash.each do |key, value|
           %div{:class => key}= value
     = yield
+-#  .ransack
+    -#       = search_field_tag 'account', nil, class: 'ransack_form', placeholder: 'キーワードを入力'
+    -#       = submit_tag '検索', class: 'search'
