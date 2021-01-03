@@ -1,16 +1,12 @@
-%ul.nav.my-4.justify-content-center
-  %li.nav-item.radius-200.px-3.py-2.mr-2.box-shadow
-    = link_to '投稿一覧','#', class: 'nav-link font-weight-bold tabs-font'
-  %li.nav-item.radius-200.px-3.py-2.mr-2.box-shadow
-    = link_to 'ランキング','#', class: 'nav-link font-weight-bold tabs-font'
-  %li.nav-item.radius-200.px-3.py-2.mr-2.box-shadow
-    = link_to 'タイムライン','#', class: 'nav-link font-weight-bold tabs-font'
-  %li.nav-item.radius-200.px-3.py-2.box-shadow
-    = link_to 'お気に入り','#', class: 'nav-link font-weight-bold tabs-font'
+.tabs.justify-content-center.my-4
+  .base-font.box-shadow.radius-200.tabs_item{class: "#{add_active_class(root_path)}"}
+    = link_to '投稿', '#'
+  .base-font.box-shadow.radius-200.tabs_item{class: "#{add_active_class('#')}"}
+    = link_to 'ランキング', '#'
 %p.text-center.font-weight-bold 投稿件数 1件
 .container
   .row
-    - @articles.each do |article| 
+    - @articles.each do |article|
       .col-sm-12.col-md-6.col-lg-4.col-xl-4
         .card.card-radius.box-shadow.mb-4{:style => "width: 18rem;"}
           = link_to article_path(article) do
@@ -27,8 +23,11 @@
                   = link_to '削除', article_path(article), data: { method: 'delete', confirm: '本当に削除してもよろしいですか' }
             .d-flex.justify-content-between.mb-4
               .article-left
-                = link_to '#' do
-                  = image_tag '軍人のアイコン素材.png', class: 'user-avatar'
+                = link_to profile_path do
+                  - if article.user&.profile&.avatar&.attached?
+                    = image_tag article.user.profile.avatar, class: 'user-avatar hoverbtn'
+                  - else 
+                    = image_tag '軍人のアイコン素材.png', class: 'user-avatar hoverbtn'
                 = article.user.account
               .article-right
                 = image_tag 'コメントの無料アイコン.png', class: 'article-img'

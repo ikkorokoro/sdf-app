@@ -5,6 +5,8 @@
 @import 'header';
 @import 'commons';
 @import 'article';
+@import 'tags';
+@import 'profile';
 @import 'tabs';
 html {
   word-spacing: 1px;
@@ -34,9 +36,9 @@ a {
   color: block;
 }
 
-.container {
-  padding: 16px 16px;
-  width: 100%;
-}
+// .container {
+//   padding: 16px 16px;
+//   width: 100%;
+// }
 
 
