@@ -24,19 +24,16 @@
             .d-flex.justify-content-between.mb-4
               .article-left
                 = link_to profile_path do
-                  - if article.user&.profile&.avatar&.attached?
-                    = image_tag article.user.profile.avatar, class: 'user-avatar hoverbtn'
-                  - else 
-                    = image_tag '軍人のアイコン素材.png', class: 'user-avatar hoverbtn'
-                = article.user.account
+                  = image_tag article.user.avatar_image, class: 'user-avatar'
+                = article.user.display_name
               .article-right
                 = image_tag 'コメントの無料アイコン.png', class: 'article-img'
                 10
                 = image_tag '無料のいいねの手のアイコン素材 .png', class: 'article-img ml-2 mr-1'
                 10
-            = link_to '#タグ','#', class: 'p-2 mb-2 mr-1 tug-bg radius-200 font-weight-bold text-decoration-none tug-color'
-            = link_to '#鉄棒,中帽','#', class: 'p-2 mb-2 tug-bg radius-200 font-weight-bold text-decoration-none tug-color'
-            = link_to '#鉄棒,中帽','#', class: 'p-2 mb-2 tug-bg radius-200 font-weight-bold text-decoration-none tug-color'
+            = link_to '#タグ','#', class: 'p-2 mb-2 mr-1 tug-bg radius-200 font-weight-bold text-decoration-none link-color'
+            = link_to '#鉄棒,中帽','#', class: 'p-2 mb-2 tug-bg radius-200 font-weight-bold text-decoration-none link-color'
+            = link_to '#鉄棒,中帽','#', class: 'p-2 mb-2 tug-bg radius-200 font-weight-bold text-decoration-none link-color'
           .text-right.mr-3 1日前
 %nav{"aria-label" => "Page navigation example"}
   %ul.pagination.m-auto

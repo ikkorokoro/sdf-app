@@ -1,4 +1,4 @@
-.main-bg-color
+.main-bg-color.h-100
   .container
     .row.justify-content-center.my-4
       .card-radius{:style => "width: 400px;"}
@@ -11,7 +11,7 @@
             = @article.object
           .position
             = link_to '#' do
-              = image_tag '軍人のアイコン素材.png', class: 'user-avatar'
+              = image_tag @article.user.avatar_image, class: 'user-avatar'
           - if user_signed_in? && current_user.has_written?(@article)
             %li.hoverdown.show-icon-position
               = image_tag 'more-button-of-three-dots_icon-icons.com_74259.png'
@@ -34,9 +34,9 @@
           .base-font.font-weight-bold 評価
         .base-font.mb-2.font-weight-bold 感想
         %p=@article.content
-        = link_to '#タグ','#', class: 'p-2 mb-2 mr-1 tug-bg radius-200 font-weight-bold text-decoration-none tug-color'
-        = link_to '#鉄棒','#', class: 'p-2 mb-2 tug-bg radius-200 font-weight-bold text-decoration-none tug-color'
-        = link_to '#鉄棒','#', class: 'p-2 mb-2 tug-bg radius-200 font-weight-bold text-decoration-none tug-color'
+        = link_to '#タグ','#', class: 'p-2 mb-2 mr-1 tug-bg radius-200 font-weight-bold text-decoration-none link-color'
+        = link_to '#鉄棒','#', class: 'p-2 mb-2 tug-bg radius-200 font-weight-bold text-decoration-none link-color'
+        = link_to '#鉄棒','#', class: 'p-2 mb-2 tug-bg radius-200 font-weight-bold text-decoration-none link-color'
         = image_tag '無料のいいねの手のアイコン素材 .png', class: 'article-img ml-2'
         10
         %span.sm-font.ml-2 １日前
