@@ -13,6 +13,10 @@ ja:
         store: '購入場所'
         category: 'カテゴリ'
         content: '感想'
+      profile:
+        name: '名前'
+        affiliation: '所属部隊'
+        introduction: '自己紹介'
   date:
     abbr_day_names:
     - 日

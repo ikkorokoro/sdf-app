@@ -1,57 +1,54 @@
-%ul.nav.my-4.justify-content-center
-  %li.nav-item.radius-200.px-3.py-2.mr-2.box-shadow
-    = link_to '投稿一覧','#', class: 'nav-link font-weight-bold tabs-font'
-  %li.nav-item.radius-200.px-3.py-2.mr-2.box-shadow
-    = link_to 'ランキング','#', class: 'nav-link font-weight-bold tabs-font'
-  %li.nav-item.radius-200.px-3.py-2.mr-2.box-shadow
-    = link_to 'タイムライン','#', class: 'nav-link font-weight-bold tabs-font'
-  %li.nav-item.radius-200.px-3.py-2.box-shadow
-    = link_to 'お気に入り','#', class: 'nav-link font-weight-bold tabs-font'
-%p.text-center.font-weight-bold 投稿件数 1件
-.container
-  .row
-    - @articles.each do |article| 
-      .col-sm-12.col-md-6.col-lg-4.col-xl-4
-        .card.card-radius.box-shadow.mb-4{:style => "width: 18rem;"}
-          = link_to article_path(article) do
-            - if article.image.attached?
-              = image_tag article.image, class: 'card-img-top'
-          .card-body.position-relative
-            .font-weight-bold.title-size.text-center.mb-2
-              = article.object 
-            - if user_signed_in? && current_user.has_written?(article)
-              %li.hoverdown.index-icon-position
-                = image_tag 'more-button-of-three-dots_icon-icons.com_74259.png'
-                .hoverdown-content.base-font
-                  = link_to '編集', edit_article_path(article)                
-                  = link_to '削除', article_path(article), data: { method: 'delete', confirm: '本当に削除してもよろしいですか' }
-            .d-flex.justify-content-between.mb-4
-              .article-left
-                = link_to '#' do
-                  = image_tag '軍人のアイコン素材.png', class: 'user-avatar'
-                = article.user.account
-              .article-right
-                = image_tag 'コメントの無料アイコン.png', class: 'article-img'
-                10
-                = image_tag '無料のいいねの手のアイコン素材 .png', class: 'article-img ml-2 mr-1'
-                10
-            = link_to '#タグ','#', class: 'p-2 mb-2 mr-1 tug-bg radius-200 font-weight-bold text-decoration-none tug-color'
-            = link_to '#鉄棒,中帽','#', class: 'p-2 mb-2 tug-bg radius-200 font-weight-bold text-decoration-none tug-color'
-            = link_to '#鉄棒,中帽','#', class: 'p-2 mb-2 tug-bg radius-200 font-weight-bold text-decoration-none tug-color'
-          .text-right.mr-3 1日前
-%nav{"aria-label" => "Page navigation example"}
-  %ul.pagination.m-auto
-    %li.page-item
-      %a.page-link{"aria-label" => "Previous", :href => "#"}
-        %span{"aria-hidden" => "true"} «
-        %span.sr-only Previous
-    %li.page-item
-      %a.page-link{:href => "#"} 1
-    %li.page-item
-      %a.page-link{:href => "#"} 2
-    %li.page-item
-      %a.page-link{:href => "#"} 3
-    %li.page-item
-      %a.page-link{"aria-label" => "Next", :href => "#"}
-        %span{"aria-hidden" => "true"} »
-        %span.sr-only Next
+.main-bg-color.h-100 
+  .tabs.justify-content-center.py-4
+    .base-font.box-shadow.radius-200.tabs_item{class: "#{add_active_class(root_path)}"}
+      = link_to '投稿', '#'
+    .base-font.box-shadow.radius-200.tabs_item{class: "#{add_active_class('#')}"}
+      = link_to 'ランキング', '#'
+  %p.text-center.font-weight-bold 投稿件数 1件
+  .container
+    .row
+      - @articles.each do |article|
+        .col-sm-12.col-md-6.col-lg-4.col-xl-4
+          .card.card-radius.box-shadow.mb-4{:style => "width: 18rem;"}
+            = link_to article_path(article) do
+              - if article.image.attached?
+                = image_tag article.image, class: 'card-img-top'
+            .card-body.position-relative
+              .font-weight-bold.title-size.text-center.mb-2
+                = article.object 
+              - if user_signed_in? && current_user.has_written?(article)
+                %li.hoverdown.index-icon-position
+                  = image_tag 'more-button-of-three-dots_icon-icons.com_74259.png'
+                  .hoverdown-content.base-font
+                    = link_to '編集', edit_article_path(article)                
+                    = link_to '削除', article_path(article), data: { method: 'delete', confirm: '本当に削除してもよろしいですか' }
+              .d-flex.justify-content-between.mb-4
+                .article-left
+                  = link_to profile_path do
+                    = image_tag article.user.avatar_image, class: 'user-avatar'
+                  = article.user.display_name
+                .article-right
+                  = image_tag 'コメントの無料アイコン.png', class: 'article-img'
+                  10
+                  = image_tag '無料のいいねの手のアイコン素材 .png', class: 'article-img ml-2 mr-1'
+                  10
+              = link_to '#タグ','#', class: 'p-2 mb-2 mr-1 tug-bg radius-200 font-weight-bold text-decoration-none link-color'
+              = link_to '#鉄棒,中帽','#', class: 'p-2 mb-2 tug-bg radius-200 font-weight-bold text-decoration-none link-color'
+              = link_to '#鉄棒,中帽','#', class: 'p-2 mb-2 tug-bg radius-200 font-weight-bold text-decoration-none link-color'
+            .text-right.mr-3 1日前
+  %nav{"aria-label" => "Page navigation example"}
+    %ul.pagination.m-auto
+      %li.page-item
+        %a.page-link{"aria-label" => "Previous", :href => "#"}
+          %span{"aria-hidden" => "true"} «
+          %span.sr-only Previous
+      %li.page-item
+        %a.page-link{:href => "#"} 1
+      %li.page-item
+        %a.page-link{:href => "#"} 2
+      %li.page-item
+        %a.page-link{:href => "#"} 3
+      %li.page-item
+        %a.page-link{"aria-label" => "Next", :href => "#"}
+          %span{"aria-hidden" => "true"} »
+          %span.sr-only Next

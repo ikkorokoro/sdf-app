@@ -8,7 +8,7 @@
 .tug-bg {
   background-color: #49D3FF;
 } 
-.tug-color {
+.link-color {
   color: black;
   &:hover {
     opacity: 0.7;
@@ -46,11 +46,6 @@
   top: 50px;
   right: 0px;
 }
-.img-select {
-  width: 180px;
-  height: 180px;
-}
 .img {
-  width: 180px;
-  height: 180px;
+  width: 150px;
 }

@@ -1,4 +1,32 @@
-.tabs-font {
-  font-size: $text-base-size;
-  color: $main-color;
+@import 'variables';
+.tabs {
+  display: flex;
+  justify-content: space-around;
+
+  &_item {
+    padding: 16px 0px;
+    background-color: white;
+    width: 100px;
+    text-align: center;
+    cursor: pointer;
+
+    a {
+      display: block;
+      text-decoration: none;
+    }
+
+    &.active {
+      background-color: #1B6739;
+      color: black;
+
+      a {
+        color: white;
+        text-decoration: none;
+      }
+    }
+
+    &:hover {
+      opacity: 0.8;
+    }
+  }
 }

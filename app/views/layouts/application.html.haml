@@ -11,14 +11,17 @@
     %nav.navbar.navbar-expand-lg.navbar-light.base-bg-color
       .navbar-brand
         - if !current_page?(root_path)
-          = link_to :back do
+          = link_to :back, class: 'text-decoration-none' do
             = image_tag 'カッチリした矢印アイコン素材 左向き.png', class: 'pb-2'
         = link_to 'Soldier Reviews', root_path, class: 'header-title font-weight-bold'
       - if user_signed_in?
         %li.hoverdown.ml-3
-          = image_tag '軍人のアイコン素材.png', class: 'user-avatar hoverbtn'
+          - if current_user.profile&.avatar&.attached?
+            = image_tag current_user.profile.avatar, class: 'user-avatar hoverbtn'
+          - else 
+            = image_tag '軍人のアイコン素材.png', class: 'user-avatar hoverbtn'
           .hoverdown-content
-            = link_to 'プロフィール', '#'
+            = link_to 'プロフィール', profile_path
             = link_to 'お気に入り', '#'
             = link_to 'ログアウト', destroy_user_session_path, data: { method: 'delete' }
         %button.navbar-toggler{"aria-controls" => "navbarSupportedContent", "aria-expanded" => "false", "aria-label" => "Toggle navigation", "data-target" => "#navbarSupportedContent", "data-toggle" => "collapse", :type => "button"}

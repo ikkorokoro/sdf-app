@@ -1,0 +1,38 @@
+.main-bg-color.h-100
+  .d-flex.flex-column
+    %li.hoverdown.mx-auto.mt-4
+      - if @profile&.avatar&.attached?
+        = image_tag @profile.avatar, class: 'profile-avatar'
+      - else 
+        = image_tag '軍人のアイコン素材.png', class: 'profile-avatar'
+      .hoverdown-content
+        = link_to 'プロフィール編集', edit_profile_path
+    .text-center.base-font.pt-3
+      - if @profile&.name
+        = @profile.name
+      - else
+        = current_user.account
+  .d-flex.justify-content-center.my-4
+    .d-flex.flex-column.mr-4
+      = link_to '投稿', '#', class: 'link-color text-decoration-none base-font'
+      %p.text-center 1
+    .d-flex.flex-column.mr-4
+      = link_to 'フォロー', '#', class: 'link-color text-decoration-none base-font'
+      %p.text-center 1
+    .d-flex.flex-column.mr-4
+      = link_to 'フォロワー', '#', class: 'link-color text-decoration-none base-font'
+      %p.text-center 1
+    .d-flex.flex-column
+      .base-font.text-center 所属部隊
+      %p= @profile.affiliation
+  .mb-4.text-center
+    .base-font.mb-2 自己紹介
+    .d-inline-block
+      = @profile.introduction
+  .tabs.justify-content-center.my-3
+    .box-shadow.radius-200.tabs_item{class: "#{add_active_class(profile_path)}"}
+      = link_to '投稿', '#'
+    .box-shadow.radius-200.tabs_item{class: "#{add_active_class('#')}"}
+      = link_to 'タイムライン', '#'
+    .box-shadow.radius-200.tabs_item{class: "#{add_active_class('#')}"}
+      = link_to 'お気に入り', '#'

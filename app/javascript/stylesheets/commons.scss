@@ -38,7 +38,9 @@
     display: block;
   }
   .user-avatar {
-    width: 35px;
-    height: 35px;
-    border-radius: 100%;
+    width: 45px;
+    height: 45px;
+    object-fit: cover;
+    border-radius: 50%;
+
 }
