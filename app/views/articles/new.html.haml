@@ -6,7 +6,7 @@
       .field.d-flex.flex-column
         = f.label '画像', class: 'base-font font-weight-bold pt-4'
         = f.label :image, class: 'mx-auto' do
-          = image_tag 'ee47cc9f0ea12db235d9ed76497d583f.jpg', class: 'img'
+          = image_tag 'ee47cc9f0ea12db235d9ed76497d583f.jpg', class: 'img cursor-pointer'
         = f.file_field :image, class: 'd-none'
       .field
         = f.label :object, '物品名', class: 'base-font font-weight-bold'
