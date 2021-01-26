@@ -24,7 +24,7 @@
   box-shadow: 5px 5px 4px rgba(0, 0, 0, 0.25);
 }
 .base-font {
-  font-size: $text-base-size;
+  font-size: 18px;
 }
 .sm-font {
   font-size: 14px;
@@ -45,6 +45,21 @@
   position: absolute;
   top: 50px;
   right: 0px;
+}
+.good-img {
+  position: absolute;
+  bottom: 12px;
+  right: 93px;
+}
+.count-position {
+  position: absolute;
+  bottom: 12px;
+  right: 77px;
+}
+.post-time {
+  position: absolute;
+  bottom: 12px;
+  right: 15px;
 }
 .img {
   width: 150px;
