@@ -12,7 +12,7 @@ const handleControllerForm = () => {
 
 const appendNewComment = (comment) => {
   $('.comment').append(//appendはタグの中にhtmlのタグを追加していく
-    `<div class= "d-flex bg-white border mx-5 card-radius">
+    `<div class= "d-flex bg-white border w-75 mx-auto card-radius">
       <img class= "user-avatar"src="${(comment.avatar_url)}"</img>
       <span class= "ml-2 pt-2 sm-font">${(comment.display_name)}</span>
       <span class= "pt-2 font-weight-bold mx-auto">${(comment.content)}</span>
