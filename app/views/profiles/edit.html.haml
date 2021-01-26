@@ -1,6 +1,6 @@
 .main-bg-color.h-100
   %ul
-    - @profile&.errors&.full_messages&.each do |msg|
+    - @profile.errors.full_messages.each do |msg|
       %li= msg
   = form_with(model: @profile, url: profile_path, method: 'put', local: true) do |f|
     .d-flex.flex-column.mb-3.text-center

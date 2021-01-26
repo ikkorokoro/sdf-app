@@ -24,11 +24,11 @@
       %p.text-center 1
     .d-flex.flex-column
       .base-font.text-center 所属部隊
-      %p= @profile.affiliation
+      %p= @profile&.affiliation
   .mb-4.text-center
     .base-font.mb-2 自己紹介
     .d-inline-block
-      = @profile.introduction
+      = @profile&.introduction
   .tabs.justify-content-center.my-3
     .box-shadow.radius-200.tabs_item{class: "#{add_active_class(profile_path)}"}
       = link_to '投稿', '#'

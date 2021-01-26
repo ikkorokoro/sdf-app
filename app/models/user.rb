@@ -29,8 +29,13 @@ class User < ApplicationRecord
                     uniqueness: true
   validates :password, presence: true, length: { minimum: 6 }
   has_many :articles, dependent: :destroy
+  has_many :comments, dependent: :destroy
   has_one :profile
   def has_written?(article)
     articles.exists?(id: article.id)
+  end
+
+  def prepre_profile
+    profile || build_profile
   end
 end

@@ -17,8 +17,9 @@
 #  index_articles_on_user_id  (user_id)
 #
 class Article < ApplicationRecord
-  belongs_to :user
   has_one_attached :image
+  belongs_to :user
+  has_many :comments, dependent: :destroy
   validates :object, presence: true, length: { maximum: 10 }
   validates :price, presence: true, length: { maximum: 6 }
   validates :store, presence: true, length: { maximum: 10 }
