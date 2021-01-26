@@ -1,10 +1,11 @@
-.main-bg-color.h-100 
+.main-bg-color
   .tabs.justify-content-center.py-4
     .base-font.box-shadow.radius-200.tabs_item{class: "#{add_active_class(root_path)}"}
       = link_to '投稿', '#'
     .base-font.box-shadow.radius-200.tabs_item{class: "#{add_active_class('#')}"}
       = link_to 'ランキング', '#'
-  %p.text-center.font-weight-bold 投稿件数 1件
+  %p.text-center.font-weight-bold 
+    投稿件数  #{@articles.count}
   .container
     .row
       - @articles.each do |article|
@@ -29,9 +30,9 @@
                   = article.user.display_name
                 .article-right.pt-2
                   = image_tag 'コメントの無料アイコン.png', class: 'article-img'
-                  10
-                  = image_tag '無料のいいねの手のアイコン素材 .png', class: 'article-img ml-2 mr-1'
-                  10
+                  = article.comments.count
+                  = image_tag '無料のいいねの手のアイコン素材 .png', class: 'article-img ml-2'
+                  = article.likes.count
               = link_to '#タグ','#', class: 'p-2 mb-2 mr-1 tug-bg radius-200 font-weight-bold text-decoration-none link-color'
               = link_to '#鉄棒,中帽','#', class: 'p-2 mb-2 tug-bg radius-200 font-weight-bold text-decoration-none link-color'
               = link_to '#鉄棒,中帽','#', class: 'p-2 mb-2 tug-bg radius-200 font-weight-bold text-decoration-none link-color'
