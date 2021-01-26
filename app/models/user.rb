@@ -34,4 +34,8 @@ class User < ApplicationRecord
   def has_written?(article)
     articles.exists?(id: article.id)
   end
+
+  def prepre_profile
+    profile || build_profile
+  end
 end
