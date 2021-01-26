@@ -19,7 +19,7 @@
 class Article < ApplicationRecord
   has_one_attached :image
   belongs_to :user
-  has_many :commnets, dependet: :destroy
+  has_many :comments, dependent: :destroy
   validates :object, presence: true, length: { maximum: 10 }
   validates :price, presence: true, length: { maximum: 6 }
   validates :store, presence: true, length: { maximum: 10 }

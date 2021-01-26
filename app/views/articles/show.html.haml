@@ -1,10 +1,10 @@
-.main-bg-color.h-100
+.main-bg-color.h-100#article-show{data: {article_id: @article.id}}
   .container
-    .row.justify-content-center.my-4
-      .card-radius{:style => "width: 400px;"}
+    .row.justify-content-center.pt-4
+      .card-radius{:style => "width: 320px;"}
         - if @article.image.attached?
           = image_tag @article.image, class: 'card-img-top'
-      .card-radius.box-shadow.p-3{:style => "width: 400px;"}
+      .card-radius.bg-white.box-shadow.p-3{:style => "width: 320px;"}
         .d-flex.mb-2.position-relative
           .base-font.font-weight-bold 物品名
           .base-font.mx-auto 
@@ -34,9 +34,19 @@
           .base-font.font-weight-bold 評価
         .base-font.mb-2.font-weight-bold 感想
         %p=@article.content
-        = link_to '#タグ','#', class: 'p-2 mb-2 mr-1 tug-bg radius-200 font-weight-bold text-decoration-none link-color'
-        = link_to '#鉄棒','#', class: 'p-2 mb-2 tug-bg radius-200 font-weight-bold text-decoration-none link-color'
-        = link_to '#鉄棒','#', class: 'p-2 mb-2 tug-bg radius-200 font-weight-bold text-decoration-none link-color'
-        = image_tag '無料のいいねの手のアイコン素材 .png', class: 'article-img ml-2'
+        = link_to '#タグ','#', class: 'p-2 mb-2 mr-1 tug-bg radius-200 font-weight-bold text-decoration-none link-color sm-font'
+        = link_to '#鉄棒','#', class: 'p-2 mb-2 tug-bg radius-200 font-weight-bold text-decoration-none link-color sm-font'
+        = link_to '#鉄棒','#', class: 'p-2 mb-2 tug-bg radius-200 font-weight-bold text-decoration-none link-color sm-font' 
+        = image_tag '無料のいいねの手のアイコン素材 .png', class: 'article-img ml-1'
         10
-        %span.sm-font.ml-2 １日前
+        %span.sm-font １日前
+  .text-center
+    .show-comment-form.py-1.px-3.m-4.btn.font-weight-bold 
+      コメントを投稿
+    .comment-text-area.d-none
+      .mt-4
+        = text_area_tag :comment_content, '', class: 'h-120px w-50'
+      .add-comment-button.py-1.px-3.m-4.btn.font-weight-bold.text-center
+        コメントを追加
+  .comment
+= javascript_pack_tag 'show_article'
