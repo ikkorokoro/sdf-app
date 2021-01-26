@@ -1,4 +1,4 @@
-.main-bg-color.h-100#article-show{data: {article_id: @article.id}}
+.main-bg-color#article-show{data: {article_id: @article.id}}
   .container
     .row.justify-content-center.pt-4
       .card-radius{:style => "width: 400px;"}
@@ -37,8 +37,8 @@
         = link_to '#タグ','#', class: 'py-2 px-3 mb-2 mr-1 tug-bg radius-200 font-weight-bold text-decoration-none link-color'
         = link_to '#鉄棒','#', class: 'py-2 px-3 mb-2 tug-bg radius-200 font-weight-bold text-decoration-none link-color'
         = link_to '#鉄棒','#', class: 'py-2 px-3 mb-2 tug-bg radius-200 font-weight-bold text-decoration-none link-color'           
-        = image_tag '無料のいいねの手のアイコン素材.png', class: 'article-img ml-1 good-img cursor-pointer good d-none'
-        = image_tag '無料のいいねの手のアイコン素材 .png', class: 'article-img ml-1 good-img cursor-pointer notgood d-none'
+        = image_tag '無料のいいねの手のアイコン素材.png', class: 'article-img ml-1 good-img cursor-pointer d-none', id: 'good'
+        = image_tag '無料のいいねの手のアイコン素材 .png', class: 'article-img ml-1 good-img cursor-pointer d-none', id: 'notgood'
         %span.count-position#likes-count  0
         %span.sm-font.post-time １日前
   .text-center
@@ -47,7 +47,7 @@
     .comment-text-area.d-none
       .mt-4
         = text_area_tag :comment_content, '', class: 'h-120px w-50'
-      .add-comment-button.py-1.px-3.m-4.btn.font-weight-bold.text-center
+      .py-1.px-4.m-4.btn.font-weight-bold.text-center.base-font#add-comment-button
         コメントを追加
   .comment
 = javascript_pack_tag 'show_article'

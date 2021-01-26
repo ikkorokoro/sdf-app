@@ -1,6 +1,9 @@
 import $ from 'jquery'
 import axios from 'modules/axios'
-
+import {
+listenNotGoodEvent,
+listenGoodEvent
+}from 'modules/handle_heart'
 const handleControllerForm = () => {
   /* .show-commentをクリックすると.show-commentに.hiddenが追加され
       .comment-text-areaの.hiddenが削除される*/
@@ -11,7 +14,7 @@ const handleControllerForm = () => {
 }
 
 const appendNewComment = (comment) => {
-  $('.comment').append(//appendはタグの中にhtmlのタグを追加していく
+  $('.comment').append(
     `<div class= "d-flex bg-white border w-50 mx-auto card-radius">
       <img class= "user-avatar"src="${(comment.avatar_url)}"</img>
       <span class= "ml-2 pt-2 sm-font">${(comment.display_name)}</span>
@@ -20,27 +23,27 @@ const appendNewComment = (comment) => {
   )
 }
 
-const handleHeartDisplay = (hasLiked, likesCount) => {
+const handleLikesDisplay = (hasLiked, likesCount) => {
   if (hasLiked) {
-    $('.good').removeClass('d-none')
+    $('#good').removeClass('d-none')
     $('#likes-count').text(likesCount)
   } else {
-    $('.notgood').removeClass('d-none')
+    $('#notgood').removeClass('d-none')
     $('#likes-count').text(likesCount)
   }
 }
 
 
 
-document.addEventListener('turbolinks:load', () => {
+document.addEventListener('DOMContentLoaded', () => {
   const dataset = $('#article-show').data()
-  const articleId = dataset.articleId//articleIdを取得
+  const articleId = dataset.articleId
   /* getリクエストを送り, commetsを取得し,
   それを一つずつ.comments-containerに追加する */
   axios.get(`/articles/${articleId}/comments`)
     .then((response) => {
       const comments = response.data
-      comments.forEach((comment) => { //foreachはeachと同じ
+      comments.forEach((comment) => { 
         appendNewComment(comment)
       })
     })
@@ -48,18 +51,18 @@ document.addEventListener('turbolinks:load', () => {
       window.alert('失敗')
     })
 
-  $('.add-comment-button').on('click', () => {
-    const content = $('#comment_content').val()//.valは属性の値を取得する
+  $('#add-comment-button').on('click', () => {
+    const content = $('#comment_content').val()
     if (!content) {
       window.alert('コメントを入力してください')
     } else {
       axios.post(`/articles/${articleId}/comments`, {
-        comment: { content: content }//parameterの指定をする.ハッシュのハッシュの構造にする
+        comment: { content: content }
       })
-        .then((res) => { //resが帰ってきたらcomment追加する
+        .then((res) => { 
           const comment = res.data
           appendNewComment(comment)
-          $('#comment_content').val('')//コメント追加後にformの中を空にする
+          $('#comment_content').val('')
       })
     }
   })
@@ -69,38 +72,8 @@ document.addEventListener('turbolinks:load', () => {
   .then((response) => {
     const hasLiked = response.data.hasLiked
     const likesCount = response.data.likesCount
-    handleHeartDisplay(hasLiked, likesCount)
+    handleLikesDisplay(hasLiked, likesCount)
   })
-
-    $('.notgood').on('click', () => {
-      axios.post(`/articles/${articleId}/like`)
-      .then((response) => {
-        const likesCount = response.data.likesCount
-        if (response.data.status === 'ok') {
-          $('.good').removeClass('d-none')
-          $('.notgood').addClass('d-none')
-          $('#likes-count').text(likesCount)
-        }
-      })
-      .catch((e) => {
-        window.alert('Error')
-        console.log(e)
-      })
-    })
-
-    $('.good').on('click', () => {
-      axios.delete(`/articles/${articleId}/like`)
-      .then((response) => {
-        const likesCount = response.data.likesCount
-        if (response.data.status === 'ok') {
-          $('.notgood').removeClass('d-none')
-          $('.good').addClass('d-none')
-          $('#likes-count').text(likesCount)
-        }
-      })
-      .catch((e) => {
-        window.alert('Error')
-        console.log(e)
-      })
-    })
-  })
+  listenNotGoodEvent(articleId)
+  listenGoodEvent(articleId)
+})
