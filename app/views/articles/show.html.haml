@@ -34,15 +34,15 @@
           .base-font.font-weight-bold 評価
         .base-font.mb-2.font-weight-bold 感想
         %p=@article.content
-        = link_to '#タグ','#', class: 'p-2 mb-2 mr-1 tug-bg radius-200 font-weight-bold text-decoration-none link-color sm-font'
-        = link_to '#鉄棒','#', class: 'p-2 mb-2 tug-bg radius-200 font-weight-bold text-decoration-none link-color sm-font'
-        = link_to '#鉄棒','#', class: 'p-2 mb-2 tug-bg radius-200 font-weight-bold text-decoration-none link-color sm-font'           
+        = link_to '#タグ','#', class: 'py-2 px-3 mb-2 mr-1 tug-bg radius-200 font-weight-bold text-decoration-none link-color'
+        = link_to '#鉄棒','#', class: 'py-2 px-3 mb-2 tug-bg radius-200 font-weight-bold text-decoration-none link-color'
+        = link_to '#鉄棒','#', class: 'py-2 px-3 mb-2 tug-bg radius-200 font-weight-bold text-decoration-none link-color'           
         = image_tag '無料のいいねの手のアイコン素材.png', class: 'article-img ml-1 good-img cursor-pointer good d-none'
         = image_tag '無料のいいねの手のアイコン素材 .png', class: 'article-img ml-1 good-img cursor-pointer notgood d-none'
         %span.count-position#likes-count  0
         %span.sm-font.post-time １日前
   .text-center
-    .show-comment-form.py-1.px-3.m-4.btn.font-weight-bold 
+    .show-comment-form.py-1.px-4.m-4.btn.font-weight-bold.base-font
       コメントを投稿
     .comment-text-area.d-none
       .mt-4

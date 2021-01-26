@@ -75,9 +75,11 @@ document.addEventListener('turbolinks:load', () => {
     $('.notgood').on('click', () => {
       axios.post(`/articles/${articleId}/like`)
       .then((response) => {
+        const likesCount = response.data.likesCount
         if (response.data.status === 'ok') {
           $('.good').removeClass('d-none')
           $('.notgood').addClass('d-none')
+          $('#likes-count').text(likesCount)
         }
       })
       .catch((e) => {
@@ -89,9 +91,11 @@ document.addEventListener('turbolinks:load', () => {
     $('.good').on('click', () => {
       axios.delete(`/articles/${articleId}/like`)
       .then((response) => {
+        const likesCount = response.data.likesCount
         if (response.data.status === 'ok') {
           $('.notgood').removeClass('d-none')
           $('.good').addClass('d-none')
+          $('#likes-count').text(likesCount)
         }
       })
       .catch((e) => {
