@@ -12,13 +12,24 @@ const handleControllerForm = () => {
 
 const appendNewComment = (comment) => {
   $('.comment').append(//appendはタグの中にhtmlのタグを追加していく
-    `<div class= "d-flex bg-white border w-75 mx-auto card-radius">
+    `<div class= "d-flex bg-white border w-50 mx-auto card-radius">
       <img class= "user-avatar"src="${(comment.avatar_url)}"</img>
       <span class= "ml-2 pt-2 sm-font">${(comment.display_name)}</span>
       <span class= "pt-2 font-weight-bold mx-auto">${(comment.content)}</span>
     </div>`
   )
 }
+
+const handleHeartDisplay = (hasLiked, likesCount) => {
+  if (hasLiked) {
+    $('.good').removeClass('d-none')
+    $('#likes-count').text(likesCount)
+  } else {
+    $('.notgood').removeClass('d-none')
+    $('#likes-count').text(likesCount)
+  }
+}
+
 
 
 document.addEventListener('turbolinks:load', () => {
@@ -53,4 +64,39 @@ document.addEventListener('turbolinks:load', () => {
     }
   })
   handleControllerForm()
+
+  axios.get(`/articles/${articleId}/like`)
+  .then((response) => {
+    const hasLiked = response.data.hasLiked
+    const likesCount = response.data.likesCount
+    handleHeartDisplay(hasLiked, likesCount)
+  })
+
+    $('.notgood').on('click', () => {
+      axios.post(`/articles/${articleId}/like`)
+      .then((response) => {
+        if (response.data.status === 'ok') {
+          $('.good').removeClass('d-none')
+          $('.notgood').addClass('d-none')
+        }
+      })
+      .catch((e) => {
+        window.alert('Error')
+        console.log(e)
+      })
+    })
+
+    $('.good').on('click', () => {
+      axios.delete(`/articles/${articleId}/like`)
+      .then((response) => {
+        if (response.data.status === 'ok') {
+          $('.notgood').removeClass('d-none')
+          $('.good').addClass('d-none')
+        }
+      })
+      .catch((e) => {
+        window.alert('Error')
+        console.log(e)
+      })
+    })
   })
