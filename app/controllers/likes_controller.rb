@@ -1,5 +1,5 @@
 class LikesController < ApplicationController
-  before_action :authenticate_user!, only: [:show, :edit, :update]
+  before_action :authenticate_user!, only: [:show, :create, :destroy]
   def show
     article = Article.find(params[:article_id])
     like_status = current_user.has_liked?(article)

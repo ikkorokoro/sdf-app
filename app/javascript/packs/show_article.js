@@ -4,13 +4,22 @@ import {
 listenNotGoodEvent,
 listenGoodEvent
 }from 'modules/handle_heart'
+
 const handleControllerForm = () => {
-  /* .show-commentをクリックすると.show-commentに.hiddenが追加され
-      .comment-text-areaの.hiddenが削除される*/
   $('.show-comment-form').on('click', () => {
     $('.show-comment-form').addClass('d-none')
     $('.comment-text-area').removeClass('d-none')
   })
+}
+
+const handleLikesDisplay = (hasLiked, likesCount) => {
+  if (hasLiked) {
+    $('#good').removeClass('d-none')
+    $('#likes-count').text(likesCount)
+  } else {
+    $('#notgood').removeClass('d-none')
+    $('#likes-count').text(likesCount)
+  }
 }
 
 const appendNewComment = (comment) => {
@@ -23,15 +32,7 @@ const appendNewComment = (comment) => {
   )
 }
 
-const handleLikesDisplay = (hasLiked, likesCount) => {
-  if (hasLiked) {
-    $('#good').removeClass('d-none')
-    $('#likes-count').text(likesCount)
-  } else {
-    $('#notgood').removeClass('d-none')
-    $('#likes-count').text(likesCount)
-  }
-}
+
 
 
 

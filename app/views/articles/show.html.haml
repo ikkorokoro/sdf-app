@@ -10,7 +10,7 @@
           .base-font.mx-auto 
             = @article.object
           .position
-            = link_to '#' do
+            = link_to account_path(@article.user) do
               = image_tag @article.user.avatar_image, class: 'user-avatar'
           - if user_signed_in? && current_user.has_written?(@article)
             %li.hoverdown.show-icon-position

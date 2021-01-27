@@ -25,7 +25,7 @@
                     = link_to '削除', article_path(article), data: { method: 'delete', confirm: '本当に削除してもよろしいですか' }
               .d-flex.justify-content-between.mb-4
                 .article-left
-                  = link_to profile_path do
+                  = link_to account_path(article.user) do
                     = image_tag article.user.avatar_image, class: 'user-avatar'
                   = article.user.display_name
                 .article-right.pt-2
