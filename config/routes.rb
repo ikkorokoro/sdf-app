@@ -8,5 +8,8 @@ resources :articles do
   resource :like, only: [:show, :create, :destroy]
 end
 resource  :profile, only: [:show, :edit, :update]
-resources  :accounts, only: [:show] 
+resources  :accounts, only: [:show] do
+  resources :follows, only: [:create]
+  resources :unfollows, only: [:create]
+end
 end
