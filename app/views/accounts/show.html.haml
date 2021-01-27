@@ -1,4 +1,4 @@
-.main-bg-color.h-100
+.main-bg-color.h-100#show-account{data: {account_id: @user.id}}
   .d-flex.flex-column
     %li.hoverdown.mx-auto.mt-4
       - if @user.profile&.avatar&.attached?
@@ -14,18 +14,20 @@
       - else
         = @user.account
   .text-center.mt-3
-    .py-1.px-4.btn.font-weight-bold.base-font 
-      フォローする
+    .py-1.px-4.btn.font-weight-bold.base-font.d-none#follow-btn
+      フォロー
+    .py-1.px-4.btn.font-weight-bold.base-font.bg-light.d-none#unfollow-btn
+      フォロー中
   .d-flex.justify-content-center.my-4
     .d-flex.flex-column.mr-4
       = link_to '投稿', '#', class: 'link-color text-decoration-none base-font'
       %p.text-center 1
     .d-flex.flex-column.mr-4
       = link_to 'フォロー', '#', class: 'link-color text-decoration-none base-font'
-      %p.text-center 1
+      %p.text-center#following-count 1
     .d-flex.flex-column.mr-4
       = link_to 'フォロワー', '#', class: 'link-color text-decoration-none base-font'
-      %p.text-center 1
+      %p.text-center#follower-count 1
     .d-flex.flex-column
       .base-font.text-center 所属部隊
       %p= @user.profile&.affiliation
@@ -40,3 +42,4 @@
       = link_to 'タイムライン', '#'
     .box-shadow.radius-200.tabs_item{class: "#{add_active_class('#')}"}
       = link_to 'お気に入り', '#'
+= javascript_pack_tag 'account'
