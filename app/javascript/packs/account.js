@@ -1,8 +1,5 @@
 import $ from 'jquery'
 import axios from 'modules/axios'
-import {
-  btnAndCountsDisplay
-}from 'modules/handle_counts'
 
 const FollowBtnAndCountDisplay = (status, follower) => {
   if (status === 'ok') {
@@ -16,7 +13,6 @@ const unFollowBtnAndCountDisplay = (status, follower) => {
     $('#follow-btn').removeClass('d-none')
     $('#unfollow-btn').addClass('d-none')
     $('#follower-count').text(follower)
-    // $('#follower-count').innerHTML = `<p>${follower}</p>`
   }
 }
 
@@ -36,10 +32,8 @@ document.addEventListener('turbolinks:load', () => {
     $('#following-count').text(followings)
     if (hasFollow) {
       $('#unfollow-btn').removeClass('d-none')
-      // $('#follower-count').textContent = `<p>${follower}</p>`
     } else {
       $('#follow-btn').removeClass('d-none')
-      // $('#follower-count').textContent = `<p>${follower}</p>`
     }
   })
   .catch((e) => {
