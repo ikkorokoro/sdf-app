@@ -14,15 +14,11 @@
         = current_user.account
   .d-flex.justify-content-center.my-4
     .d-flex.flex-column.mr-4
-      = link_to '投稿', '#', class: 'link-color text-decoration-none base-font'
-      %p.text-center 1
-    .d-flex.flex-column.mr-4
       = link_to 'フォロー', '#', class: 'link-color text-decoration-none base-font'
       %p.text-center 1
     .d-flex.flex-column.mr-4
       = link_to 'フォロワー', '#', class: 'link-color text-decoration-none base-font'
-      %p.text-center 
-        = @articles.count
+      %p.text-center 1
     .d-flex.flex-column
       .base-font.text-center 所属部隊
       %p= @profile&.affiliation
@@ -31,12 +27,14 @@
     .d-inline-block.base-font
       = @profile&.introduction
   .tabs.justify-content-center.my-3
-    .box-shadow.radius-200.tabs_item{class: "#{add_active_class(profile_path)}"}
-      = link_to '投稿', profile_path
-    .box-shadow.radius-200.tabs_item{class: "#{add_active_class(favorite_path)}"}
-      = link_to 'お気に入り', favorite_path
+    = link_to profile_path, class: 'text-decoration-none' do
+      .box-shadow.radius-200.tabs_item{class: "#{add_active_class(profile_path)}"}
+        全ての投稿
+    = link_to favorite_path, class: 'text-decoration-none' do
+      .box-shadow.radius-200.tabs_item{class: "#{add_active_class(favorite_path)}"}
+        いいねした投稿
   %p.text-center.font-weight-bold 
-    投稿件数  #{@articles.count}
+    投稿数  #{@articles.count}
   .container
     .row
       - @articles.each do |article|

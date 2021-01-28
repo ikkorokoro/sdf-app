@@ -4,25 +4,14 @@
   justify-content: space-around;
 
   &_item {
-    padding: 16px 0px;
+    padding: 10px 10px;
     background-color: white;
-    width: 100px;
     text-align: center;
     cursor: pointer;
 
-    a {
-      display: block;
-      text-decoration: none;
-    }
-
     &.active {
       background-color: #1B6739;
-      color: black;
-
-      a {
-        color: white;
-        text-decoration: none;
-      }
+      color:  white;
     }
 
     &:hover {
