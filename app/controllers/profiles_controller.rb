@@ -2,6 +2,7 @@ class ProfilesController < ApplicationController
   before_action :authenticate_user!, only: [:show, :edit, :update]
   def show
     @profile = current_user.profile
+    @articles = current_user.articles
   end
 
   def edit 
