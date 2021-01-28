@@ -36,7 +36,7 @@ const appendNewComment = (comment) => {
 
 
 
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('turbolinks:load', () => {
   const dataset = $('#article-show').data()
   const articleId = dataset.articleId
   /* getリクエストを送り, commetsを取得し,
