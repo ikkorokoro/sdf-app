@@ -26,6 +26,7 @@ gem 'hamlit'
 gem 'devise'
 gem 'active_decorator'
 gem 'active_model_serializers'
+gem 'faker'
 # Use Active Storage variant
 gem 'image_processing', '~> 1.2'
 
