@@ -1,4 +1,4 @@
-window.addEventListener('turbolinks:load', () => {
+window.addEventListener('load', () => {
   const uploader = document.querySelector('.d-none');
   uploader.addEventListener('change', (e) => {//.noneの値の変更が確定された時
     const file = uploader.files[0];// files[0] 選択したファイルオブジェクトを取得する

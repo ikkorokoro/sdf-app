@@ -1,4 +1,4 @@
-.main-bg-color.h-100
+.main-bg-color.h-100#show-account{data: {account_id: current_user.id}}
   .d-flex.flex-column
     %li.hoverdown.mx-auto.mt-4
       - if @profile&.avatar&.attached?
@@ -15,10 +15,10 @@
   .d-flex.justify-content-center.my-4
     .d-flex.flex-column.mr-4
       = link_to 'フォロー', '#', class: 'link-color text-decoration-none base-font'
-      %p.text-center 1
+      %p.text-center#following-count 0
     .d-flex.flex-column.mr-4
       = link_to 'フォロワー', '#', class: 'link-color text-decoration-none base-font'
-      %p.text-center 1
+      %p.text-center#follower-count 0
     .d-flex.flex-column
       .base-font.text-center 所属部隊
       %p= @profile&.affiliation
@@ -39,7 +39,7 @@
     .row
       - @articles.each do |article|
         .col-sm-12.col-md-6.col-lg-4.col-xl-4
-          .card.card-radius.box-shadow.mb-2{:style => "width: 250px;"}
+          .card.card-radius.box-shadow.mb-4{:style => "width: 250px;"}
             = link_to article_path(article) do
               - if article.image.attached?
                 = image_tag article.image, class: 'card-img-top'
@@ -49,7 +49,7 @@
               .d-flex.justify-content-between.mb-3.px-2
                 .article-left
                   = link_to account_path(article.user) do
-                    = image_tag article.user.avatar_image, class: 'user-avatar'
+                    = image_tag article.user.avatar_image, class: 'article-avatar'
                   = article.user.display_name
                 .article-right.pt-2
                   = image_tag 'コメントの無料アイコン.png', class: 'article-img'
@@ -60,3 +60,4 @@
               = link_to '#鉄棒,中帽','#', class: 'p-2 mb-2 tug-bg radius-200 font-weight-bold text-decoration-none link-color sm-font'
               = link_to '#鉄棒,中帽','#', class: 'p-2 mb-2 tug-bg radius-200 font-weight-bold text-decoration-none link-color sm-font'
             .text-right.my-1.mr-3 1日前
+= javascript_pack_tag 'account'

@@ -1,16 +1,11 @@
 .main-bg-color
-  .tabs.justify-content-center.py-4
-    .base-font.box-shadow.radius-200.tabs_item{class: "#{add_active_class(root_path)}"}
-      = link_to '投稿', '#'
-    .base-font.box-shadow.radius-200.tabs_item{class: "#{add_active_class('#')}"}
-      = link_to 'ランキング', '#'
   %p.text-center.font-weight-bold 
-    投稿件数  #{@articles.count}
+    新着記事  #{@articles.count}
   .container
     .row
       - @articles.each do |article|
         .col-sm-12.col-md-6.col-lg-4.col-xl-4
-          .card.card-radius.box-shadow.mb-2{:style => "width: 250px;"}
+          .card.card-radius.box-shadow.mb-4{:style => "width: 250px;"}
             = link_to article_path(article) do
               - if article.image.attached?
                 = image_tag article.image, class: 'card-img-top'
@@ -20,7 +15,7 @@
               .d-flex.justify-content-between.mb-3.px-2
                 .article-left
                   = link_to account_path(article.user) do
-                    = image_tag article.user.avatar_image, class: 'user-avatar'
+                    = image_tag article.user.avatar_image, class: 'article-avatar'
                   = article.user.display_name
                 .article-right.pt-2
                   = image_tag 'コメントの無料アイコン.png', class: 'article-img'
