@@ -15,6 +15,6 @@ resources  :accounts, only: [:show] do
   resources :unfollows, only: [:create]
   resources :informations, only: [:index]
   resources :actives, only: [:index]
-  
+  resources :passives, only: [:index]
 end
 end

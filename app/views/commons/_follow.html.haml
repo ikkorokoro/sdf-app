@@ -1,0 +1,29 @@
+.main-bg-color.h-100
+  .text-center.title-size.font-weight-bold.pt-4
+    %div= @user.display_name
+    %div= @user.account
+  .tabs.justify-content-center.my-4
+    = link_to account_actives_path(@user.id), class: 'text-decoration-none' do
+      .box-shadow.radius-200.tabs_item{class: "#{add_active_class(account_actives_path(@user.id))}"}
+        フォロー
+    = link_to account_passives_path(@user.id), class: 'text-decoration-none' do
+      .box-shadow.radius-200.tabs_item{class: "#{add_active_class(account_passives_path(@user.id))}"}
+        フォロワー
+  - @users.each do |user|
+    .d-flex.justify-content-between.bg-white.border.w-75.mx-auto.card-radius.mb-2
+      %div#show-account{data: {account_id: user.id}}
+        = link_to account_path(user.id) do
+          = image_tag user.avatar_image, class: 'account-avatar'
+        %span.pt-2.sm-font 
+          = user.display_name
+      .sm-font
+        = user&.profile&.introduction
+      .d-flex
+        .d-flex.flex-column.sm-font.mr-1
+          %span フォロー数
+          .text-center
+            = user.followings.count
+        .d-flex.flex-column.sm-font
+          %span フォロワー数
+          .text-center
+            = user.followers.count
