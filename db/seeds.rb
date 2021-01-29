@@ -15,7 +15,7 @@ User.create(
 8.times do
 email =  Faker::Internet.email
 password = 'password'
-account = Faker::JapaneseMedia::OnePiece.character
+account =  Gimei.name
 User.create!(
       email:                 email,
       password:              password,
@@ -28,19 +28,31 @@ users = User.all
 object = '戦闘服'
 price = 2000
 store = '留萌駐屯地'
-category = '防寒具'
+category = '戦闘服'
 content = Faker::Lorem.sentence(word_count: 10)
 users.each { |user| user.articles.create!( 
-  object: object, 
-  price: price, 
-  store: store, 
-  category: category, 
-  content: content 
+  object: object,
+  price: price,
+  store: store,
+  category: category,
+  content: content
   )}
 end
 #image追加
 articles = Article.all
 articles.each { |article| article.image.attach(io: File.open('app/assets/images/vc-01.jpg'), filename: 'vc-01.jpg')}
+
+#like
+users = User.all
+user = users.first
+user_second = users.second
+user_third = users.third
+articles = Article.all
+active_articles = articles[1..5]
+passive_articles = user.articles
+active_articles.each { |active_article| active_article.likes.create!(user_id: user.id) }
+passive_articles.each { |passive_article| passive_article.likes.create!(user_id: user_second.id) }
+passive_articles.each { |passive_article| passive_article.likes.create!(user_id: user_third.id) }
 
 
 #relastionship
