@@ -8,10 +8,13 @@ resources :articles do
   resource :like, only: [:show, :create, :destroy]
 end
 resource  :profile, only: [:show, :edit, :update]
-resource  :favorite, only: [:show]
+resource  :myfavorite, only: [:show]
 resources  :accounts, only: [:show] do
+  resource  :favorite, only: [:show]
   resources :follows, only: [:create]
   resources :unfollows, only: [:create]
   resources :informations, only: [:index]
+  resources :actives, only: [:index]
+  
 end
 end

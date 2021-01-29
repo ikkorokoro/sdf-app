@@ -5,6 +5,7 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+Faker::Config.locale = :en
 User.create(
   email:                'aaaaaa@au.com',
   password:             'aaaaaa',
@@ -12,26 +13,35 @@ User.create(
   )
 
 8.times do
-email = Faker::Lorem.sentence(word_count: 8) + '@au.com'
+email =  Faker::Internet.email
 password = 'password'
-account = Faker::Lorem.sentence(word_count: 6)
+account = Faker::JapaneseMedia::OnePiece.character
 User.create!(
       email:                 email,
       password:              password,
       account:               account
       )
 end
-
 # article
 users = User.all
-5.times do
-object = '防寒具'
+3.times do
+object = '戦闘服'
 price = 2000
-store = '遠軽駐屯地'
+store = '留萌駐屯地'
 category = '防寒具'
-content = Faker::Lorem.sentence(word_count: 30)
-users.each { |user| user.articles.create!( object: object, price: price, store: store, category: category, content: content )}
+content = Faker::Lorem.sentence(word_count: 10)
+users.each { |user| user.articles.create!( 
+  object: object, 
+  price: price, 
+  store: store, 
+  category: category, 
+  content: content 
+  )}
 end
+#image追加
+articles = Article.all
+articles.each { |article| article.image.attach(io: File.open('app/assets/images/vc-01.jpg'), filename: 'vc-01.jpg')}
+
 
 #relastionship
 users = User.all

@@ -1,7 +1,8 @@
 class FavoritesController < ApplicationController
   before_action :authenticate_user!, only: [:show]
   def show
-    @profile = current_user.profile
-    @articles = current_user.favorite_articles
+    @user = User.find(params[:account_id])
+    @profile = @user.profile
+    @articles = @user.favorite_articles
   end
   end
