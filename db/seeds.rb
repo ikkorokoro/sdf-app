@@ -12,7 +12,7 @@ User.create(
   account:              'arigatou'
   )
 
-5.times do
+8.times do
 email =  Faker::Internet.email
 password = 'password'
 account = Faker::JapaneseMedia::OnePiece.character
@@ -46,7 +46,7 @@ articles.each { |article| article.image.attach(io: File.open('app/assets/images/
 #relastionship
 users = User.all
 user = users.first
-following = users[1..5]
-followers = users[1..5]
+following = users[1..8]
+followers = users[1..8]
 following.each { |followed| user.follow!(followed) }
 followers.each { |follower| follower.follow!(user) }

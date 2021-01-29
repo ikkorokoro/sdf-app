@@ -10,21 +10,21 @@
       .box-shadow.radius-200.tabs_item{class: "#{add_active_class(myfavorite_path)}"}
         フォロワー
   - @users.each do |user|
-    .d-flex.justify-content-between.mb-2.bg-white.border.w-50.mx-auto.card-radius
+    .d-flex.justify-content-between.bg-white.border.w-75.mx-auto.card-radius
       %div#show-account{data: {account_id: user.id}}
         = link_to account_path(user.id) do
-          = image_tag user.avatar_image, class: 'user-avatar'
+          = image_tag user.avatar_image, class: 'account-avatar '
         %span.pt-2.sm-font 
           = user.display_name
-      .d-flex.flex-column.sm-font
-        %span フォロー数
-        .text-center#following-count 0
-      .d-flex.flex-column.sm-font
-        %span フォロワー数
-        .text-center#follower-count 0
-      .sm-font.btn.font-weight-bold.d-none#follow-btn
-        フォロー
-      .py-1.px-1.btn.font-weight-bold.bg-light.pt-2.d-none#unfollow-btn
-        フォロー中
-= javascript_pack_tag 'account'
+      .sm-font
+        = user&.profile&.introduction
+      .d-flex
+        .d-flex.flex-column.sm-font.mr-1
+          %span フォロー数
+          .text-center
+            = user.followings.count
+        .d-flex.flex-column.sm-font
+          %span フォロワー数
+          .text-center
+            = user.followers.count
 

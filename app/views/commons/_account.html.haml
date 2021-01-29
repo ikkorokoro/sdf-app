@@ -19,7 +19,7 @@
       フォロー中
   .d-flex.justify-content-center.my-4
     .d-flex.flex-column.mr-4
-      = link_to 'フォロー', '#', class: 'link-color text-decoration-none base-font font-weight-bold'
+      = link_to 'フォロー', account_actives_path(@user.id), class: 'link-color text-decoration-none base-font font-weight-bold'
       %p.text-center#following-count 0
     .d-flex.flex-column.mr-4
       = link_to 'フォロワー', '#', class: 'link-color text-decoration-none base-font font-weight-bold'
