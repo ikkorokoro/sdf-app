@@ -45,14 +45,14 @@ articles.each { |article| article.image.attach(io: File.open('app/assets/images/
 #like
 users = User.all
 user = users.first
-user_second = users.second
-user_third = users.third
+users = users[1..6]
 articles = Article.all
-active_articles = articles[1..5]
-passive_articles = user.articles
+first_article = Article.first
+second_article = Article.second
+active_articles = articles[1..6]
 active_articles.each { |active_article| active_article.likes.create!(user_id: user.id) }
-passive_articles.each { |passive_article| passive_article.likes.create!(user_id: user_second.id) }
-passive_articles.each { |passive_article| passive_article.likes.create!(user_id: user_third.id) }
+users.each { |user| first_article.likes.create!(user_id: user.id) }
+users.each { |user| second_article.likes.create!(user_id: user.id) }
 
 
 #relastionship
