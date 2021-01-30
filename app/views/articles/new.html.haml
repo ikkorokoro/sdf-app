@@ -4,7 +4,7 @@
       %li= msg
     = form_with(model: @article, local: true) do |f|
       .field.d-flex.flex-column
-        = f.label '画像', class: 'base-font font-weight-bold pt-4'
+        = f.label '画像(一枚添付してください)', class: 'base-font font-weight-bold pt-4'
         = f.label :image, class: 'mx-auto' do
           = image_tag 'ee47cc9f0ea12db235d9ed76497d583f.jpg', class: 'img cursor-pointer'
         = f.file_field :image, class: 'd-none'
@@ -24,8 +24,10 @@
         = f.label :category, 'カテゴリ', class: 'base-font font-weight-bold'
         %br/
         = f.text_field :category, autofocus: true, class: 'form'  
-      .field
-        = f.label :rate, '評価', class: 'base-font font-weight-bold'
+      .field  
+        #star
+          %div= f.label :rate,'星評価', class: 'base-font font-weight-bold'
+          = f.hidden_field :rate, id: :review_star
       .field
         = f.label :tug, 'タグ付け' , class: 'base-font font-weight-bold'
       .field
@@ -34,4 +36,12 @@
         = f.text_area :content, class:'p-1 w-50'
       .actions
         = f.submit "投稿する", class: 'btn btn_session py-3 px-4 base-font'
-  = javascript_pack_tag 'post_article'
+= javascript_pack_tag 'post_article'
+= javascript_pack_tag 'raty'
+:javascript
+        $('#star').raty({
+          starOff:  '#{asset_path('star-off.png')}',
+          starOn : '#{asset_path('star-on.png')}',
+          scoreName: 'article[rate]',
+          half: false,
+        });
