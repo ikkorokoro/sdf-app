@@ -7,6 +7,8 @@ require("@rails/ujs").start()
 require("turbolinks").start()
 require("@rails/activestorage").start()
 require("channels")
+require("packs/raty")
+window.$ = window.jQuery = require('jquery');
 import 'bootstrap-material-design'
 import '../stylesheets/application'
 // Uncomment to copy all static images under ../images to the output folder and reference
@@ -17,3 +19,13 @@ import '../stylesheets/application'
 // const imagePath = (name) => images(name, true)
 require("trix")
 require("@rails/actiontext")
+/*!
+ * Raty - A Star Rating Plugin
+ *
+ * The MIT License
+ *
+ * author:  Washington Botelho
+ * github:  wbotelhos/raty
+ * version: 3.0.0
+ *
+ */

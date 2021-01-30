@@ -12,6 +12,7 @@ ja:
         price: '購入金額'
         store: '購入場所'
         category: 'カテゴリ'
+        rate: '星評価'
         content: '感想'
       profile:
         name: '名前'

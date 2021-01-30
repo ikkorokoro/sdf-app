@@ -32,6 +32,16 @@
             = @article.category
         .d-flex.mb-2
           .base-font.font-weight-bold 評価
+          %div.mx-auto{:id => "star-rate#{@article.id}"}
+          :javascript
+            $('#star-rate#{@article.id}').raty({
+              size      : 36,
+              starOff   : '#{asset_path('star-off.png')}',
+              starOn    : '#{asset_path('star-on.png')}',
+              half      : false,
+              readOnly: true,
+              score: #{@article.rate},
+            });
         .base-font.mb-2.font-weight-bold 感想
         %p=@article.content
         = link_to '#タグ','#', class: 'py-2 px-3 mb-2 mr-1 tug-bg radius-200 font-weight-bold text-decoration-none link-color'

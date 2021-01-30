@@ -7,6 +7,7 @@
 #  content    :string(255)      not null
 #  object     :string(255)      not null
 #  price      :integer          not null
+#  rate       :integer
 #  store      :string(255)      not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
