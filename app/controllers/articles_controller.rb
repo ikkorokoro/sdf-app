@@ -5,8 +5,6 @@ class ArticlesController < ApplicationController
     @articles = Article.all
     within_articles = Article.includes(:likes).where(created_at: Time.current.ago(24.hours)..Time.current)
     @ranking_articles =  within_articles.find(Like.group(:article_id).order('count(article_id) desc').limit(3).pluck(:article_id))
-    followings = current_user.followings
-    @followings_articles = followings.map { |following| following.articles }
   end
 
   def show

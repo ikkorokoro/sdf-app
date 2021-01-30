@@ -28,33 +28,6 @@
                 = link_to '#鉄棒,中帽','#', class: 'p-2 mb-2 tug-bg radius-200 font-weight-bold text-decoration-none link-color sm-font'
                 = link_to '#鉄棒,中帽','#', class: 'p-2 mb-2 tug-bg radius-200 font-weight-bold text-decoration-none link-color sm-font'
               .text-right.my-1.mr-3 1日前
-  .title-size.font-weight-bold
-    タイムライン
-  .container
-    .row
-      - @followings_articles.each do |followings_article|
-        .col-sm-12.col-md-6.col-lg-4.col-xl-4
-          .card.card-radius.box-shadow.mb-4{:style => "width: 250px;"}
-            = link_to article_path(followings_article) do
-              - if followings_article.image.attached?
-                = image_tag followings_article.image, class: 'card-img-top'
-            .position-relative.p-1
-              .font-weight-bold.title-size.text-center.mb-1
-                = followings_article.object 
-              .d-flex.justify-content-between.mb-3.px-2
-                .article-left
-                  = link_to account_path(followings_article.user) do
-                    = image_tag followings_article.user.avatar_image, class: 'article-avatar'
-                  = followings_article.user.display_name
-                .article-right.pt-2
-                  = image_tag 'コメントの無料アイコン.png', class: 'article-img'
-                  = followings_article.comments.count
-                  = image_tag '無料のいいねの手のアイコン素材 .png', class: 'article-img ml-1'
-                  = followings_article.likes.count
-              = link_to '#タグ','#', class: 'p-2 mb-2 mr-1 tug-bg radius-200 font-weight-bold text-decoration-none link-color sm-font'
-              = link_to '#鉄棒,中帽','#', class: 'p-2 mb-2 tug-bg radius-200 font-weight-bold text-decoration-none link-color sm-font'
-              = link_to '#鉄棒,中帽','#', class: 'p-2 mb-2 tug-bg radius-200 font-weight-bold text-decoration-none link-color sm-font'
-            .text-right.my-1.mr-3 1日前
   .title-size.font-weight-bold 
     全記事  #{@articles.count}件
   .container
