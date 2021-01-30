@@ -1,4 +1,35 @@
 .main-bg-color
+  %h1 記事検索
+  = search_form_for @q, url: search_articles_path do |f|
+    = f.label :object_cont, 'オブジェクト'
+    = f.search_field :object_cont
+    %br/
+    = f.submit '検索'
+  - @results&.each do |article|
+    .container
+      .row
+        .col-sm-12.col-md-6.col-lg-4.col-xl-4
+          .card.card-radius.box-shadow.mb-4{:style => "width: 250px;"}
+            = link_to article_path(article) do
+              - if article.image.attached?
+                = image_tag article.image, class: 'card-img-top'
+            .position-relative.p-1
+              .font-weight-bold.title-size.text-center.mb-1
+                = article.object 
+              .d-flex.justify-content-between.mb-3.px-2
+                .article-left
+                  = link_to account_path(article.user) do
+                    = image_tag article.user.avatar_image, class: 'article-avatar'
+                  = article.user.display_name
+                .article-right.pt-2
+                  = image_tag 'コメントの無料アイコン.png', class: 'article-img'
+                  = article.comments.count
+                  = image_tag '無料のいいねの手のアイコン素材 .png', class: 'article-img ml-1'
+                  = article.likes.count
+              = link_to '#タグ','#', class: 'p-2 mb-2 mr-1 tug-bg radius-200 font-weight-bold link-color sm-font'
+              = link_to '#鉄棒,中帽','#', class: 'p-2 mb-2 tug-bg radius-200 font-weight-bold link-color sm-font'
+              = link_to '#鉄棒,中帽','#', class: 'p-2 mb-2 tug-bg radius-200 font-weight-bold link-color sm-font'
+            .text-right.my-1.mr-3 1日前
   .title-size.font-weight-bold.py-3
     .text-center いいねランキング
   .container
@@ -24,9 +55,9 @@
                     = ranking_article.comments.count
                     = image_tag '無料のいいねの手のアイコン素材 .png', class: 'article-img ml-1'
                     = ranking_article.likes.count
-                = link_to '#タグ','#', class: 'p-2 mb-2 mr-1 tug-bg radius-200 font-weight-bold text-decoration-none link-color sm-font'
-                = link_to '#鉄棒,中帽','#', class: 'p-2 mb-2 tug-bg radius-200 font-weight-bold text-decoration-none link-color sm-font'
-                = link_to '#鉄棒,中帽','#', class: 'p-2 mb-2 tug-bg radius-200 font-weight-bold text-decoration-none link-color sm-font'
+                = link_to '#タグ','#', class: 'p-2 mb-2 mr-1 tug-bg radius-200 font-weight-bold link-color sm-font'
+                = link_to '#鉄棒,中帽','#', class: 'p-2 mb-2 tug-bg radius-200 font-weight-bold link-color sm-font'
+                = link_to '#鉄棒,中帽','#', class: 'p-2 mb-2 tug-bg radius-200 font-weight-bold link-color sm-font'
               .text-right.my-1.mr-3 1日前
   .tabs.justify-content-center.title-size.my-4
     = link_to root_path, class: 'text-decoration-none' do

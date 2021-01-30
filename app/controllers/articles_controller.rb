@@ -1,6 +1,6 @@
 class ArticlesController < ApplicationController
   before_action :authenticate_user!, only: [:new, :show, :create, :edit, :update, :destroy] 
-  
+  before_action :set_q, only: [:index, :search]
   def index
     @articles = Article.all
     within_articles = Article.includes(:likes).where(created_at: Time.current.ago(24.hours)..Time.current)
@@ -46,8 +46,16 @@ class ArticlesController < ApplicationController
     end
   end
 
+  def search
+    @results = @q.result
+  end
+
   private
   def params_article
     params.require(:article).permit(:object, :price, :store, :category, :content, :rate, :image)
+  end
+
+  def set_q
+    @q = Article.ransack(params[:q])
   end
 end

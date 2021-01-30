@@ -4,6 +4,9 @@ devise_for :users do
   get '/users/sign_out' => 'devise/sessions#destroy'
 end
 resources :articles do
+  collection do
+    get 'search'
+  end
   resources :comments, only: [:index, :create]
   resource :like, only: [:show, :create, :destroy]
 end
