@@ -9,6 +9,7 @@ resources :articles do
 end
 resource  :profile, only: [:show, :edit, :update]
 resource  :myfavorite, only: [:show]
+resource  :timeline, only: [:show]
 resources  :accounts, only: [:show] do
   resource  :favorite, only: [:show]
   resources :follows, only: [:create]
