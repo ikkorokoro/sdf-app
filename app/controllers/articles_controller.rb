@@ -1,10 +1,12 @@
 class ArticlesController < ApplicationController
   before_action :authenticate_user!, only: [:new, :show, :create, :edit, :update, :destroy] 
   before_action :set_q, only: [:index, :search]
+  
   def index
     @articles = Article.all
     within_articles = Article.includes(:likes).where(created_at: Time.current.ago(24.hours)..Time.current)
     @ranking_articles =  within_articles.find(Like.group(:article_id).order('count(article_id) desc').limit(3).pluck(:article_id))
+    @articles = @q.result
   end
 
   def show
