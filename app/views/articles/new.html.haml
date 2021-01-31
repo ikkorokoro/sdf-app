@@ -21,40 +21,11 @@
       %br/
       = f.text_field :store, autofocus: true,class: 'form'  
     .field.mx-5
-      = f.label :category, 'カテゴリ', class: 'base-font font-weight-bold'
+      = f.label :category_id, 'カテゴリ', class: 'base-font font-weight-bold'
       %br/
-      = f.radio_button :category, :'帽子'
-      = f.label :category, "帽子", {value: :'帽子', style: "margin-right: 6px;"}
-      = f.radio_button :category, :'鉄棒'
-      = f.label :category, "鉄棒", {value: :'鉄棒', style: "margin-right: 6px;"}
-      = f.radio_button :category, :'あご紐'
-      = f.label :category, "あご紐", {value: :'あご紐', style: "margin-right: 6px;"}
-      = f.radio_button :category, :'カバー'
-      = f.label :category, "カバー", {value: :'カバー', style: "margin-right: 6px;"}
-      = f.radio_button :category, :'Tシャツ'
-      = f.label :category, "Tシャツ", {value: :'Tシャツ', style: "margin-right: 6px;"}
-      = f.radio_button :category, :'カッパ類'
-      = f.label :category, "カッパ類", {value: :'カッパ類', style: "margin-right: 6px;"}
-      = f.radio_button :category, :'手袋'
-      = f.label :category, "手袋", {value: :'手袋', style: "margin-right: 6px;"}
-      = f.radio_button :category, :'ライト'
-      = f.label :category, "ライト", {value: :'ライト', style: "margin-right: 6px;"}
-      = f.radio_button :category, :'スリング'
-      = f.label :category, "スリング", {value: :'スリング', style: "margin-right: 6px;"}
-      = f.radio_button :category, :'作業服'
-      = f.label :category, "作業服", {value: :'作業服', style: "margin-right: 6px;"}
-      = f.radio_button :category, :'レッグパッド'
-      = f.label :category, "レッグパッド", {value: :'レッグパッド', style: "margin-right: 6px;"}
-      = f.radio_button :category, :'ダンプバッグ'
-      = f.label :category, "ダンプバッグ", {value: :'ダンプバッグ', style: "margin-right: 6px;"}
-      = f.radio_button :category, :'靴'
-      = f.label :category, "靴", {value: :'靴', style: "margin-right: 6px;"}
-      = f.radio_button :category, :'靴下'
-      = f.label :category, "靴下", {value: :'靴下', style: "margin-right: 6px;"}
-      = f.radio_button :category, :'GPS'
-      = f.label :category, "GPS", {value: :'GPS', style: "margin-right: 6px;"}
-      = f.radio_button :category, :'小物'
-      = f.label :category, "小物", {value: :'小物'}
+      = f.collection_radio_buttons :category_id, Category.all, :id, :category_name do |t|
+        = t.radio_button
+        = t.label
     .field  
       #star
         %div= f.label :rate,'星評価', class: 'base-font font-weight-bold'
@@ -75,4 +46,4 @@
     starOn : '#{asset_path('star-on.png')}',
     scoreName: 'article[rate]',
     half: false,
-  }) mr-1
+  })
