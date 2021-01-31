@@ -29,7 +29,7 @@
         .d-flex.mb-2
           .base-font.font-weight-bold カテゴリ
           .base-font.mx-auto 
-            = @article.category
+            = @article.category.category_name
         .d-flex.mb-2
           .base-font.font-weight-bold 評価
           %div.mx-auto{:id => "star-rate#{@article.id}"}

@@ -1,7 +1,7 @@
 .main-bg-color
   .text-center
     = search_form_for @q, url: search_articles_path do |f|
-      = f.search_field :object_or_price_or_store_or_category_cont, class: 'form w-25', placeholder: "キーワードを入力"
+      = f.search_field :object_or_price_or_store_or_category_id_cont, class: 'search_container w-25', placeholder: "キーワードを入力"
       = f.submit '検索', class: 'btn p-1'
     = search_form_for @q, url: search_articles_path do |f|
       -# \〜以上の検索
@@ -11,6 +11,9 @@
       = f.label :price_lteq, " ~ "
       = f.number_field :price_lteq, class: 'form w-25'
       = f.submit '検索', class: 'btn p-1'
+      = f.collection_select :category_id_eq, Category.all, :id, :category_name, {prompt: "カテゴリから選択"}
+
+
 
   - @results&.each do |article|
     .container
