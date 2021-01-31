@@ -2,46 +2,77 @@
   %ul
     - @article.errors.full_messages.each do |msg|
       %li= msg
-    = form_with(model: @article, local: true) do |f|
-      .field.d-flex.flex-column
-        = f.label '画像(一枚添付してください)', class: 'base-font font-weight-bold pt-4'
-        = f.label :image, class: 'mx-auto' do
-          = image_tag 'ee47cc9f0ea12db235d9ed76497d583f.jpg', class: 'img cursor-pointer'
-        = f.file_field :image, class: 'd-none'
-      .field
-        = f.label :object, '物品名', class: 'base-font font-weight-bold'
-        %br/
-        = f.text_field :object, autofocus: true, class: 'form'
-      .field
-        = f.label :price, '購入金額', class: 'base-font font-weight-bold'
-        %br/
-        = f.text_field :price, autofocus: true, class: 'form'
-      .field
-        = f.label :store, '購入場所', class: 'base-font font-weight-bold'
-        %br/
-        = f.text_field :store, autofocus: true,class: 'form'  
-      .field
-        = f.label :category, 'カテゴリ', class: 'base-font font-weight-bold'
-        %br/
-        = f.text_field :category, autofocus: true, class: 'form'  
-      .field  
-        #star
-          %div= f.label :rate,'星評価', class: 'base-font font-weight-bold'
-          = f.hidden_field :rate, id: :review_star
-      .field
-        = f.label :tug, 'タグ付け' , class: 'base-font font-weight-bold'
-      .field
-        = f.label :content, '感想' , class: 'base-font font-weight-bold'
-        %br/
-        = f.text_area :content, class:'p-1 w-50'
-      .actions
-        = f.submit "投稿する", class: 'btn btn_session py-3 px-4 base-font'
+  = form_with(model: @article, local: true) do |f|
+    .field.d-flex.flex-column
+      = f.label '画像(一枚添付してください)', class: 'base-font font-weight-bold pt-4'
+      = f.label :image, class: 'mx-auto' do
+        = image_tag 'ee47cc9f0ea12db235d9ed76497d583f.jpg', class: 'img cursor-pointer'
+      = f.file_field :image, class: 'd-none'
+    .field
+      = f.label :object, '物品名', class: 'base-font font-weight-bold'
+      %br/
+      = f.text_field :object, autofocus: true, class: 'form'
+    .field
+      = f.label :price, '購入金額', class: 'base-font font-weight-bold'
+      %br/
+      = f.text_field :price, autofocus: true, class: 'form'
+    .field
+      = f.label :store, '購入場所', class: 'base-font font-weight-bold'
+      %br/
+      = f.text_field :store, autofocus: true,class: 'form'  
+    .field.mx-5
+      = f.label :category, 'カテゴリ', class: 'base-font font-weight-bold'
+      %br/
+      = f.radio_button :category, :'帽子'
+      = f.label :category, "帽子", {value: :'帽子', style: "margin-right: 6px;"}
+      = f.radio_button :category, :'鉄棒'
+      = f.label :category, "鉄棒", {value: :'鉄棒', style: "margin-right: 6px;"}
+      = f.radio_button :category, :'あご紐'
+      = f.label :category, "あご紐", {value: :'あご紐', style: "margin-right: 6px;"}
+      = f.radio_button :category, :'カバー'
+      = f.label :category, "カバー", {value: :'カバー', style: "margin-right: 6px;"}
+      = f.radio_button :category, :'Tシャツ'
+      = f.label :category, "Tシャツ", {value: :'Tシャツ', style: "margin-right: 6px;"}
+      = f.radio_button :category, :'カッパ類'
+      = f.label :category, "カッパ類", {value: :'カッパ類', style: "margin-right: 6px;"}
+      = f.radio_button :category, :'手袋'
+      = f.label :category, "手袋", {value: :'手袋', style: "margin-right: 6px;"}
+      = f.radio_button :category, :'ライト'
+      = f.label :category, "ライト", {value: :'ライト', style: "margin-right: 6px;"}
+      = f.radio_button :category, :'スリング'
+      = f.label :category, "スリング", {value: :'スリング', style: "margin-right: 6px;"}
+      = f.radio_button :category, :'作業服'
+      = f.label :category, "作業服", {value: :'作業服', style: "margin-right: 6px;"}
+      = f.radio_button :category, :'レッグパッド'
+      = f.label :category, "レッグパッド", {value: :'レッグパッド', style: "margin-right: 6px;"}
+      = f.radio_button :category, :'ダンプバッグ'
+      = f.label :category, "ダンプバッグ", {value: :'ダンプバッグ', style: "margin-right: 6px;"}
+      = f.radio_button :category, :'靴'
+      = f.label :category, "靴", {value: :'靴', style: "margin-right: 6px;"}
+      = f.radio_button :category, :'靴下'
+      = f.label :category, "靴下", {value: :'靴下', style: "margin-right: 6px;"}
+      = f.radio_button :category, :'GPS'
+      = f.label :category, "GPS", {value: :'GPS', style: "margin-right: 6px;"}
+      = f.radio_button :category, :'小物'
+      = f.label :category, "小物", {value: :'小物'}
+    .field  
+      #star
+        %div= f.label :rate,'星評価', class: 'base-font font-weight-bold'
+        = f.hidden_field :rate, id: :review_star
+    .field
+      = f.label :tug, 'タグ付け' , class: 'base-font font-weight-bold'
+    .field
+      = f.label :content, '感想' , class: 'base-font font-weight-bold'
+      %br/
+      = f.text_area :content, class:'p-1 w-50'
+    .actions
+      = f.submit "投稿する", class: 'btn btn_session py-3 px-4 base-font'
 = javascript_pack_tag 'post_article'
 = javascript_pack_tag 'raty'
 :javascript
-        $('#star').raty({
-          starOff:  '#{asset_path('star-off.png')}',
-          starOn : '#{asset_path('star-on.png')}',
-          scoreName: 'article[rate]',
-          half: false,
-        });
+  $('#star').raty({
+    starOff:  '#{asset_path('star-off.png')}',
+    starOn : '#{asset_path('star-on.png')}',
+    scoreName: 'article[rate]',
+    half: false,
+  }) mr-1
