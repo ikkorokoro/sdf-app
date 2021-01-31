@@ -3,7 +3,6 @@
 # Table name: articles
 #
 #  id          :bigint           not null, primary key
-#  category    :string(255)      not null
 #  content     :string(255)      not null
 #  object      :string(255)      not null
 #  price       :integer          not null
@@ -11,7 +10,7 @@
 #  store       :string(255)      not null
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
-#  category_id :bigint           not null
+#  category_id :integer          not null
 #  user_id     :bigint           not null
 #
 # Indexes
