@@ -23,11 +23,13 @@ class Article < ApplicationRecord
   belongs_to :user
   has_many :comments, dependent: :destroy
   has_many :likes, dependent: :destroy
+  has_many :article_tags, dependent: :destroy
+  has_many :tags, through: :article_tags
   belongs_to :category, dependent: :destroy
   validates :object, presence: true, length: { maximum: 10 }
   validates :price, presence: true, length: { maximum: 6 }
   validates :store, presence: true, length: { maximum: 10 }
-  validates :category, presence: true
+  validates :category_id, presence: true
   validates :rate, presence: true
   validates :content, presence: true, length: { maximum: 100 }
   validate :image_presence
