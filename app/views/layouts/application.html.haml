@@ -63,8 +63,10 @@
                   = link_to '小物','#', class: 'color'
             %li.nav-item.ml-3
               .nav-link
-                = link_to '通知','#', class: 'color'
-            %li.nav-item.post.ml-3
+                - if unchecked_notifications.any?
+                  %i.fa.fa-circle{:style => "color: gold;"}
+                = link_to "通知", notifications_path, class: 'color'
+            %li.nav-item.ml-3 
               .nav-link
                 = link_to '投稿', new_article_path, class: 'color'
       - else
