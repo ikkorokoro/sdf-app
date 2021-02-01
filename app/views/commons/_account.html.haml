@@ -8,5 +8,9 @@
       いいねした投稿
 %p.text-center.font-weight-bold 
   投稿数  #{@articles.count}
-= render 'commons/articles'
+.container
+  .row
+    - @articles.each do |article|
+      .col-sm-12.col-md-6.col-lg-4.col-xl-4
+        = render 'commons/articles', article: article
 = javascript_pack_tag 'account'
