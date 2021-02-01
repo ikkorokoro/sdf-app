@@ -8,10 +8,13 @@ class LikesController < ApplicationController
   end
 
   def create
-    article = Article.find(params[:article_id])
-    article.likes.create!(user_id: current_user.id)
-    likes_count = article.likes.count
+    @article = Article.find(params[:article_id])
+    @article.likes.create!(user_id: current_user.id)
+    #通知作成
+    @article.create_notification_like!(current_user)
+    likes_count = @article.likes.count
     render json: { status: 'ok', likesCount: likes_count }
+
   end
 
   def destroy
