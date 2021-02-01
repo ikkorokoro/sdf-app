@@ -23,21 +23,23 @@ class Article < ApplicationRecord
   belongs_to :user
   has_many :comments, dependent: :destroy
   has_many :likes, dependent: :destroy
+  has_many :article_tags, dependent: :destroy
+  has_many :tags, through: :article_tags
   belongs_to :category, dependent: :destroy
   validates :object, presence: true, length: { maximum: 10 }
   validates :price, presence: true, length: { maximum: 6 }
   validates :store, presence: true, length: { maximum: 10 }
-  validates :category, presence: true
+  validates :category_id, presence: true
   validates :rate, presence: true
   validates :content, presence: true, length: { maximum: 100 }
-  validate :image_presence
-  def image_presence
-    if image.attached?
-      if !image.content_type.in?(%('image/jpeg image/png'))
-        errors.add(:image, 'にはjpegまたはpngファイルを添付してください')
-      end
-    else
-      errors.add(:image, 'ファイルを添付してください')
-    end
-  end
+  # validate :image_presence
+  # def image_presence
+  #   if image.attached?
+  #     if !image.content_type.in?(%('image/jpeg image/png'))
+  #       errors.add(:image, 'にはjpegまたはpngファイルを添付してください')
+  #     end
+  #   else
+  #     errors.add(:image, 'ファイルを添付してください')
+  #   end
+  # end
 end

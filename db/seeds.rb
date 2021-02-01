@@ -28,14 +28,18 @@ users = User.all
 object = '戦闘服'
 price = 2000
 store = '留萌駐屯地'
-category = '戦闘服'
+category_id = 3
+tag_ids = [1, 2, 3]
+rate = 3
 content = Faker::Lorem.sentence(word_count: 10)
 users.each { |user| user.articles.create!( 
   object: object,
   price: price,
   store: store,
-  category: category,
-  content: content
+  category_id: category_id,
+  content: content,
+  rate: rate,
+  tag_ids: tag_ids
   )}
 end
 #image追加
@@ -62,4 +66,3 @@ following = users[1..8]
 followers = users[1..8]
 following.each { |followed| user.follow!(followed) }
 followers.each { |follower| follower.follow!(user) }
-
