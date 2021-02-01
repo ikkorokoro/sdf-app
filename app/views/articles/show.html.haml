@@ -43,10 +43,10 @@
               score: #{@article.rate},
             });
         .base-font.mb-2.font-weight-bold 感想
-        %p=@article.content
-        = link_to '#タグ','#', class: 'py-2 px-3 mb-2 mr-1 tug-bg radius-200 font-weight-bold text-decoration-none link-color'
-        = link_to '#鉄棒','#', class: 'py-2 px-3 mb-2 tug-bg radius-200 font-weight-bold text-decoration-none link-color'
-        = link_to '#鉄棒','#', class: 'py-2 px-3 mb-2 tug-bg radius-200 font-weight-bold text-decoration-none link-color'           
+        %p.mb-2=@article.content
+        - @article.tags.each do |tag|
+          %span.py-2.px-3.mb-2.mr-1.tug-bg.radius-200.font-weight-bold
+            = tag.name
         = image_tag '無料のいいねの手のアイコン素材.png', class: 'article-img ml-1 good-img cursor-pointer d-none', id: 'good'
         = image_tag '無料のいいねの手のアイコン素材 .png', class: 'article-img ml-1 good-img cursor-pointer d-none', id: 'notgood'
         %span.count-position#likes-count  0

@@ -26,12 +26,18 @@
       = f.collection_radio_buttons :category_id, Category.all, :id, :category_name do |t|
         = t.radio_button
         = t.label
+    .field 
+      %span.base-font.font-weight-bold 
+        タグ(3つまで)
+      %br/
+      = f.collection_check_boxes(:tag_ids, Tag.all, :id, :name) do |t|
+        = t.label do
+          = t.check_box
+          = t.text
     .field  
       #star
         %div= f.label :rate,'星評価', class: 'base-font font-weight-bold'
         = f.hidden_field :rate, id: :review_star
-    .field
-      = f.label :tug, 'タグ付け' , class: 'base-font font-weight-bold'
     .field
       = f.label :content, '感想' , class: 'base-font font-weight-bold'
       %br/

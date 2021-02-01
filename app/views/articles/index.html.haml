@@ -12,7 +12,10 @@
       = f.number_field :price_lteq, class: 'form w-25'
       = f.submit '検索', class: 'btn p-1'
       = f.collection_select :category_id_eq, Category.all, :id, :category_name, {prompt: "カテゴリから選択"}
-
+    = search_form_for @q, url: search_articles_path do |f|  
+      = f.label :tags_id_eq
+      = f.collection_select :tags_id_eq, Tag.all, :id, :name, {prompt: "タグから選択"}
+      = f.submit '検索', class: 'btn p-1'
 
 
   - @results&.each do |article|
@@ -36,9 +39,10 @@
                   = article.comments.count
                   = image_tag '無料のいいねの手のアイコン素材 .png', class: 'article-img ml-1'
                   = article.likes.count
-              = link_to '#タグ','#', class: 'p-2 mb-2 mr-1 tug-bg radius-200 font-weight-bold link-color sm-font'
-              = link_to '#鉄棒,中帽','#', class: 'p-2 mb-2 tug-bg radius-200 font-weight-bold link-color sm-font'
-              = link_to '#鉄棒,中帽','#', class: 'p-2 mb-2 tug-bg radius-200 font-weight-bold link-color sm-font'
+                .d-flex.justify-content-between 
+                  - article.tags.each do |tag|
+                    %span.py-1.px-3.mb-2.mr-1.tug-bg.radius-200.font-weight-bold
+                      = tag.name
   .title-size.font-weight-bold.py-3
     .text-center いいねランキング
   .container
@@ -64,10 +68,11 @@
                     = ranking_article.comments.count
                     = image_tag '無料のいいねの手のアイコン素材 .png', class: 'article-img ml-1'
                     = ranking_article.likes.count
-                = link_to '#タグ','#', class: 'p-2 mb-2 mr-1 tug-bg radius-200 font-weight-bold link-color sm-font'
-                = link_to '#鉄棒,中帽','#', class: 'p-2 mb-2 tug-bg radius-200 font-weight-bold link-color sm-font'
-                = link_to '#鉄棒,中帽','#', class: 'p-2 mb-2 tug-bg radius-200 font-weight-bold link-color sm-font'
-            
+                .d-flex.justify-content-between
+                  - ranking_article.tags.each do |tag|
+                    %span.py-2.px-3.mb-2.mr-1.tug-bg.radius-200.font-weight-bold
+                      = tag.name
+  = render 'commons/articles'
   .tabs.justify-content-center.title-size.my-4
     = link_to root_path, class: 'text-decoration-none' do
       .box-shadow.radius-200.py-3.px-4.mr-2.tabs_item{class: "#{add_active_class(root_path)}"}
@@ -75,31 +80,7 @@
     = link_to timeline_path, class: 'text-decoration-none' do
       .box-shadow.radius-200.py-3.px-4.ml-2.tabs_item{class: "#{add_active_class(timeline_path)}"}
         タイムライン
-  .container
-    .row
-      - @articles.each do |article|
-        .col-sm-12.col-md-6.col-lg-4.col-xl-4
-          .card.card-radius.box-shadow.mb-4{:style => "width: 250px;"}
-            = link_to article_path(article) do
-              - if article.image.attached?
-                = image_tag article.image, class: 'card-img-top'
-            .position-relative.p-1
-              .font-weight-bold.title-size.text-center.mb-1
-                = article.object 
-              .d-flex.justify-content-between.mb-2.px-2
-                .article-left
-                  = link_to account_path(article.user) do
-                    = image_tag article.user.avatar_image, class: 'article-avatar'
-                  = article.user.display_name
-                .article-right.pt-2
-                  = image_tag 'コメントの無料アイコン.png', class: 'article-img'
-                  = article.comments.count
-                  = image_tag '無料のいいねの手のアイコン素材 .png', class: 'article-img ml-1'
-                  = article.likes.count
-              .d-flex.justify-content-between
-                = link_to '#タグ','#', class: 'py-1 px-3 mr-1 tug-bg radius-200 font-weight-bold text-decoration-none link-color sm-font'
-                = link_to '#鉄棒','#', class: 'py-1 px-3 tug-bg radius-200 font-weight-bold text-decoration-none link-color sm-font'
-                = link_to '#鉄棒','#', class: 'py-1 px-3 tug-bg radius-200 font-weight-bold text-decoration-none link-color sm-font'
+  
   %nav{"aria-label" => "Page navigation example"}
     %ul.pagination.mx-auto
       %li.page-item

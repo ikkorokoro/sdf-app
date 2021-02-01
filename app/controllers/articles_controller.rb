@@ -54,7 +54,15 @@ class ArticlesController < ApplicationController
 
   private
   def params_article
-    params.require(:article).permit(:object, :price, :store, :category_id, :content, :rate, :image)
+    params.require(:article).permit(
+      :object, 
+      :price, 
+      :store, 
+      :category_id, 
+      :content, 
+      :rate,
+      :image,
+      tag_ids: [])
   end
 
   def set_q

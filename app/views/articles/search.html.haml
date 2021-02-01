@@ -26,10 +26,10 @@
                   = article.comments.count
                   = image_tag '無料のいいねの手のアイコン素材 .png', class: 'article-img ml-1'
                   = article.likes.count
-              = link_to '#タグ','#', class: 'p-2 mb-2 mr-1 tug-bg radius-200 font-weight-bold text-decoration-none link-color sm-font'
-              = link_to '#鉄棒,中帽','#', class: 'p-2 mb-2 tug-bg radius-200 font-weight-bold text-decoration-none link-color sm-font'
-              = link_to '#鉄棒,中帽','#', class: 'p-2 mb-2 tug-bg radius-200 font-weight-bold text-decoration-none link-color sm-font'
-            .text-right.my-1.mr-3 1日前
+              .d-flex.justify-content-between 
+                - article.tags.each do |tag|
+                  %span.py-1.px-3.mb-2.mr-1.tug-bg.radius-200.font-weight-bold
+                    = tag.name
   -# .title-size.font-weight-bold.py-3
   -#   .text-center いいねランキング
   -# .container
