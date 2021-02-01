@@ -9,7 +9,8 @@
   .container
     .row
       - @articles.each do |article|
-        = render 'commons/articles', article: article
+        .col-sm-12.col-md-6.col-lg-4.col-xl-4
+          = render 'commons/articles', article: article
   %nav{"aria-label" => "Page navigation example"}
     %ul.pagination.mx-auto
       %li.page-item
