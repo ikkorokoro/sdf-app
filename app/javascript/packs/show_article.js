@@ -60,10 +60,12 @@ document.addEventListener('turbolinks:load', () => {
       axios.post(`/articles/${articleId}/comments`, {
         comment: { content: content }
       })
-        .then((res) => { 
-          const comment = res.data
+        .then((response) => { 
+          const comment = response.data
           appendNewComment(comment)
           $('#comment_content').val('')
+          $('.show-comment-form').removeClass('d-none')
+          $('.comment-text-area').addClass('d-none')
       })
     }
   })

@@ -23,6 +23,7 @@
           .hoverdown-content
             = link_to 'プロフィール', profile_path
             = link_to 'ログアウト', destroy_user_session_path, data: { method: 'delete' }
+            = link_to 'タイムライン', timeline_path
         %button.navbar-toggler{"aria-controls" => "navbarSupportedContent", "aria-expanded" => "false", "aria-label" => "Toggle navigation", "data-target" => "#navbarSupportedContent", "data-toggle" => "collapse", :type => "button"}
           %span.navbar-toggler-icon
         #navbarSupportedContent.collapse.navbar-collapse
