@@ -10,6 +10,7 @@ resources :articles do
   resources :comments, only: [:index, :create]
   resource :like, only: [:show, :create, :destroy]
 end
+resources :notifications, only: [:index]
 resource  :profile, only: [:show, :edit, :update]
 resource  :myfavorite, only: [:show]
 resource  :timeline, only: [:show]

@@ -1,4 +1,7 @@
 .main-bg-color
+  = link_to new_article_path do
+    .post-position.circle.text-center.pt-4
+      = image_tag 'カメラのアイコン素材 7 (1).png', class: 'pt-1'
   .text-center
     = search_form_for @q, url: search_articles_path do |f|
       = f.search_field :object_or_price_or_store_or_category_id_cont, class: 'search_container w-25', placeholder: "キーワードを入力"
@@ -18,13 +21,13 @@
       = f.submit '検索', class: 'btn p-1'
   .title-size.font-weight-bold.py-3
     .text-center いいねランキング
-  .container
-    .row
-      - @ranking_articles.each.with_index(1) do |ranking_article, number|
-        .col-sm-12.col-md-6.col-lg-4.col-xl-4
-          .d-flex.flex-column.base-font.font-weight-bold
-            %span 第#{number}位
-            = render 'commons/articles', article: ranking_article
+  -# .container
+  -#   .row
+  -#     - @ranking_articles.each.with_index(1) do |ranking_article, number|
+  -#       .col-sm-12.col-md-6.col-lg-4.col-xl-4
+  -#         .d-flex.flex-column.base-font.font-weight-bold
+  -#           %span 第#{number}位
+  -#           = render 'commons/articles', article: ranking_article
   .tabs.justify-content-center.title-size.my-4
     = link_to root_path, class: 'text-decoration-none' do
       .box-shadow.radius-200.py-3.px-4.mr-2.tabs_item{class: "#{add_active_class(root_path)}"}

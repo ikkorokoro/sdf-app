@@ -23,6 +23,7 @@
           .hoverdown-content
             = link_to 'プロフィール', profile_path
             = link_to 'ログアウト', destroy_user_session_path, data: { method: 'delete' }
+            = link_to 'タイムライン', timeline_path
         %button.navbar-toggler{"aria-controls" => "navbarSupportedContent", "aria-expanded" => "false", "aria-label" => "Toggle navigation", "data-target" => "#navbarSupportedContent", "data-toggle" => "collapse", :type => "button"}
           %span.navbar-toggler-icon
         #navbarSupportedContent.collapse.navbar-collapse
@@ -63,8 +64,10 @@
                   = link_to '小物','#', class: 'color'
             %li.nav-item.ml-3
               .nav-link
-                = link_to '通知','#', class: 'color'
-            %li.nav-item.post.ml-3
+                - if unchecked_notifications.any?
+                  %i.fa.fa-circle{:style => "color: gold;"}
+                = link_to "通知", notifications_path, class: 'color'
+            %li.nav-item.ml-3 
               .nav-link
                 = link_to '投稿', new_article_path, class: 'color'
       - else

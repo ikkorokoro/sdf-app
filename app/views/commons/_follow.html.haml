@@ -10,11 +10,11 @@
       .box-shadow.radius-200.tabs_item{class: "#{add_active_class(account_passives_path(@user.id))}"}
         フォロワー
   - @users.each do |user|
-    .d-flex.justify-content-between.bg-white.border.w-75.mx-auto.card-radius.mb-2
+    .d-flex.justify-content-between.bg-white.border.w-75.mx-auto.card-radius
       %div#show-account{data: {account_id: user.id}}
         = link_to account_path(user.id) do
           = image_tag user.avatar_image, class: 'account-avatar'
-        %span.pt-2.sm-font 
+        %span.sm-font.d-inline-block.pb-3
           = user.display_name
       .sm-font
         = user&.profile&.introduction

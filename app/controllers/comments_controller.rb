@@ -9,6 +9,8 @@ def create
   article = Article.find(params[:article_id])
   comment = article.comments.build(comment_params)
   comment.save!
+  #通知作成
+  article.create_notification_comment!(current_user, comment.id)
   render json: comment
 end
 
