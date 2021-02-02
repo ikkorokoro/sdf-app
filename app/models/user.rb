@@ -77,6 +77,14 @@ class User < ApplicationRecord
       notification.save if notification.valid?
     end
   end
+  
+  def self.guest
+    find_or_create_by!(account: 'aiueokaki', email: 'guest@example.com') do |user|
+    user.password = SecureRandom.urlsafe_base64
+    # user.confirmed_at = Time.now  # Confirmable を使用している場合は必要
+  end
+end
+
   private
     def get_user_id(user)
       if user.is_a?(User)
