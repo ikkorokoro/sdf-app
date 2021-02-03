@@ -9,7 +9,7 @@
           .base-font.font-weight-bold 物品名
           .base-font.mx-auto 
             = @article.object
-          .position
+          .article-position
             = link_to account_path(@article.user) do
               = image_tag @article.user.avatar_image, class: 'user-avatar'
           - if user_signed_in? && current_user.has_written?(@article)
@@ -47,17 +47,19 @@
         - @article.tags.each do |tag|
           %span.py-2.px-3.mb-2.mr-1.tug-bg.radius-200.font-weight-bold
             = tag.name
-        = image_tag '無料のいいねの手のアイコン素材.png', class: 'article-img ml-1 good-img cursor-pointer d-none', id: 'good'
-        = image_tag '無料のいいねの手のアイコン素材 .png', class: 'article-img ml-1 good-img cursor-pointer d-none', id: 'notgood'
+        = image_tag '無料のいいねの手のアイコン素材.png', class: 'article-img ml-1 good-img-position cursor-pointer d-none', id: 'good'
+        = image_tag '無料のいいねの手のアイコン素材 .png', class: 'article-img ml-1 good-img-position cursor-pointer d-none', id: 'notgood'
         %span.count-position#likes-count  0
         %span.sm-font.post-time １日前
   .text-center
-    .show-comment-form.py-1.px-4.m-4.btn.font-weight-bold.base-font
-      コメントを投稿
+    .show-comment-form.my-4
+      %span.btn-bg.border.border-secondary.py-2.px-3.font-weight-bold.radius-200.hover.cursor-pointer
+        コメントを投稿
     .comment-text-area.d-none
       .mt-4
-        = text_area_tag :comment_content, '', class: 'h-120px w-50'
-      .py-1.px-4.m-4.btn.font-weight-bold.text-center.base-font#add-comment-button
-        コメントを追加
+        = text_area_tag :comment_content, '', class: 'comment-form w-50'
+      .my-4
+        %span.btn-bg.border.border-secondary.py-2.px-3.font-weight-bold.radius-200.hover.cursor-pointer
+          コメントを追加
   .comment
 = javascript_pack_tag 'show_article'

@@ -6,20 +6,20 @@
     .field.d-flex.flex-column
       = f.label '画像(一枚添付してください)', class: 'base-font font-weight-bold pt-4'
       = f.label :image, class: 'mx-auto' do
-        = image_tag 'ee47cc9f0ea12db235d9ed76497d583f.jpg', class: 'img cursor-pointer'
+        = image_tag 'ee47cc9f0ea12db235d9ed76497d583f.jpg', class: 'post-img cursor-pointer'
       = f.file_field :image, class: 'd-none'
     .field
       = f.label :object, '物品名', class: 'base-font font-weight-bold'
       %br/
-      = f.text_field :object, autofocus: true, class: 'form'
+      = f.text_field :object, autofocus: true, class: 'radius-200 border border-secondary'
     .field
       = f.label :price, '購入金額', class: 'base-font font-weight-bold'
       %br/
-      = f.text_field :price, autofocus: true, class: 'form'
+      = f.text_field :price, autofocus: true, class: 'radius-200 border border-secondary'
     .field
       = f.label :store, '購入場所', class: 'base-font font-weight-bold'
       %br/
-      = f.text_field :store, autofocus: true,class: 'form'  
+      = f.text_field :store, autofocus: true,class: 'radius-200 border border-secondary'  
     .field.mx-5
       = f.label :category_id, 'カテゴリ', class: 'base-font font-weight-bold'
       %br/
@@ -41,9 +41,9 @@
     .field
       = f.label :content, '感想' , class: 'base-font font-weight-bold'
       %br/
-      = f.text_area :content, class:'p-1 w-50'
+      = f.text_area :content, class:'p-1 w-50 content-form'
     .actions
-      = f.submit "投稿する", class: 'btn btn_session py-3 px-4 base-font'
+      = f.submit "投稿する", class: 'btn-bg border border-secondary py-2 px-4 font-weight-bold radius-200 mb-3 hover base-font'
 = javascript_pack_tag 'post_article'
 = javascript_pack_tag 'raty'
 :javascript

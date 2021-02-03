@@ -1,33 +1,32 @@
-.form-container
-  .form-left
-    %p.form-left-text
+.sign-container.sign-img
+  .sign-left
+    %p
       購入したアイテムの口コミを投稿して自衛官で共有し、よりパフォーマンスに優れたアイテムを探そう
-  .form-right
-    .title Soldier Reviews
+  .sign-right.py-4.px-2
+    .xg-font.title-color.font-weight-bold.mb-4 Soldier Reviews
     = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
       = render "devise/shared/error_messages", resource: resource
-      .field
+      .mb-4
         = f.label :account, 'アカウント名'
         %br/
-        = f.text_field :account, autofocus: true, autocomplete: "account", class: 'form'
-      .field
+        = f.text_field :account, autofocus: true, autocomplete: "account", class: 'radius-200 border border-secondary'
+      .mb-4
         = f.label :email, 'メールアドレス'
         %br/
-        = f.email_field :email, autofocus: true, autocomplete: "email", class: 'form'
-      .field
+        = f.email_field :email, autofocus: true, autocomplete: "email", class: 'radius-200 border border-secondary'
+      .mb-4
         = f.label :password, 'パスワード'
         - if @minimum_password_length
           %em
             (#{@minimum_password_length}文字以上)
         %br/
-        = f.password_field :password, autocomplete: "new-password", class: 'form'
-      .field
+        = f.password_field :password, autocomplete: "new-password", class: 'radius-200 border border-secondary'
+      .mb-4
         = f.label :password_confirmation, '確認用パスワード'
         %br/
-        = f.password_field :password_confirmation, autocomplete: "new-password", class: 'form'
+        = f.password_field :password_confirmation, autocomplete: "new-password", class: 'radius-200 border border-secondary'
       .actions
-        = f.submit "新規登録", class: 'btn btn_session'
-      .guest-button
-        = f.submit "ゲストログイン", class: 'btn  btn_session'
-      = render "devise/shared/links"
+        = f.submit "新規登録", class: 'btn-bg border border-secondary py-2 px-3 mb-4 font-weight-bold radius-200  hover'
+        %br/
+        = render "devise/shared/links"
 

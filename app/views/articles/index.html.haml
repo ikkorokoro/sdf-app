@@ -1,58 +1,102 @@
 .main-bg-color
   = link_to new_article_path do
-    .post-position.circle.text-center.pt-4
-      = image_tag 'カメラのアイコン素材 7 (1).png', class: 'pt-1'
-  .text-center
-    = search_form_for @q, url: search_articles_path do |f|
-      = f.search_field :object_or_price_or_store_or_category_id_cont, class: 'search_container w-25', placeholder: "キーワードを入力"
-      = f.submit '検索', class: 'btn p-1'
-    = search_form_for @q, url: search_articles_path do |f|
-      -# \〜以上の検索
-      = f.label :price_gteq, "価格"
-      = f.number_field :price_gteq, class: 'form w-25', placeholder: "金額を入力"
-      -#\〜以下の検索
-      = f.label :price_lteq, " ~ "
-      = f.number_field :price_lteq, class: 'form w-25'
-      = f.submit '検索', class: 'btn p-1'
-      = f.collection_select :category_id_eq, Category.all, :id, :category_name, {prompt: "カテゴリから選択"}
-    = search_form_for @q, url: search_articles_path do |f|  
-      = f.label :tags_id_eq
-      = f.collection_select :tags_id_eq, Tag.all, :id, :name, {prompt: "タグから選択"}
-      = f.submit '検索', class: 'btn p-1'
-  .title-size.font-weight-bold.py-3
-    .text-center いいねランキング
-  -# .container
-  -#   .row
-  -#     - @ranking_articles.each.with_index(1) do |ranking_article, number|
-  -#       .col-sm-12.col-md-6.col-lg-4.col-xl-4
-  -#         .d-flex.flex-column.base-font.font-weight-bold
-  -#           %span 第#{number}位
-  -#           = render 'commons/articles', article: ranking_article
-  .tabs.justify-content-center.title-size.my-4
-    = link_to root_path, class: 'text-decoration-none' do
-      .box-shadow.radius-200.py-3.px-4.mr-2.tabs_item{class: "#{add_active_class(root_path)}"}
-        全ての投稿
-    = link_to timeline_path, class: 'text-decoration-none' do
-      .box-shadow.radius-200.py-3.px-4.ml-2.tabs_item{class: "#{add_active_class(timeline_path)}"}
-        タイムライン
-  .container
-    .row
-      - @articles.each do |article|
-        .col-sm-12.col-md-6.col-lg-4.col-xl-4
-          = render 'commons/articles', article: article
-    %nav{"aria-label" => "Page navigation example"}
-      %ul.pagination.mx-auto
-        %li.page-item
-          %a.page-link{"aria-label" => "Previous", :href => "#"}
-            %span{"aria-hidden" => "true"} «
-            %span.sr-only Previous
-        %li.page-item
-          %a.page-link{:href => "#"} 1
-        %li.page-item
-          %a.page-link{:href => "#"} 2
-        %li.page-item
-          %a.page-link{:href => "#"} 3
-        %li.page-item
-          %a.page-link{"aria-label" => "Next", :href => "#"}
-            %span{"aria-hidden" => "true"} »
-            %span.sr-only Next
+    .new-link-img.circle.text-center.pt-4
+      = image_tag 'カメラのアイコン素材 6.png', class: 'pt-1'
+  .d-flex.justify-content-between
+    .w-20
+      .text-center
+        = search_form_for @q, url: search_articles_path do |f|
+          = f.label :price_gteq, "金額で検索"
+          %br
+          = f.number_field :price_gteq, class: 'w-100 radius-200 sm-font', placeholder: "例 1000円以上から"
+          = f.label :price_lteq, "⌇"
+          %br
+          = f.number_field :price_lteq, class: 'w-100 radius-200 sm-font', placeholder: "3000円以内まで"
+          
+          -# -# \〜以上の検索
+          -# = f.label :price_gteq, "価格"
+          -# = f.number_field :price_gteq, class: 'form w-25', placeholder: "金額を入力"
+          -# -#\〜以下の検索
+          -# = f.label :price_lteq, " ~ "
+          -# = f.number_field :price_lteq, class: 'radius-200 border w-25'
+          -# = f.submit '検索', class: 'btn p-1'
+          -# = f.collection_select :category_id_eq, Category.all, :id, :category_name, {prompt: "カテゴリから選択"}
+          -# = f.label :tags_id_eq
+          -# = f.collection_select :tags_id_eq, Tag.all, :id, :name, {prompt: "タグから選択"}
+          -# = f.submit '検索', class: 'btn p-1'
+    .w-80
+      .index-img
+
+      .lg-font.font-weight-bold.py-3
+        .text-center
+          = search_form_for @q, url: search_articles_path do |f|
+            = f.search_field :object_or_price_or_store_or_category_id_cont, placeholder: "キーワードを入力"
+            = f.submit '検索', class: 'btn p-1'
+          = search_form_for @q, url: search_articles_path do |f|
+            -# \〜以上の検索
+            = f.label :price_gteq, "価格"
+            = f.number_field :price_gteq, class: 'form w-25', placeholder: "金額を入力"
+            -#\〜以下の検索
+            = f.label :price_lteq, " ~ "
+            = f.number_field :price_lteq, class: 'radius-200 border w-25'
+            = f.submit '検索', class: 'btn p-1'
+            = f.collection_select :category_id_eq, Category.all, :id, :category_name, {prompt: "カテゴリから選択"}
+          = search_form_for @q, url: search_articles_path do |f|  
+            = f.label :tags_id_eq
+            = f.collection_select :tags_id_eq, Tag.all, :id, :name, {prompt: "タグから選択"}
+            = f.submit '検索', class: 'btn p-1'
+      .lg-font.font-weight-bold.py-3
+        .text-center
+          = search_form_for @q, url: search_articles_path do |f|
+            = f.search_field :object_or_price_or_store_or_category_id_cont, placeholder: "キーワードを入力"
+            = f.submit '検索', class: 'btn p-1'
+          = search_form_for @q, url: search_articles_path do |f|
+            -# \〜以上の検索
+            = f.label :price_gteq, "価格"
+            = f.number_field :price_gteq, class: 'form w-25', placeholder: "金額を入力"
+            -#\〜以下の検索
+            = f.label :price_lteq, " ~ "
+            = f.number_field :price_lteq, class: 'radius-200 border w-25'
+            = f.submit '検索', class: 'btn p-1'
+            = f.collection_select :category_id_eq, Category.all, :id, :category_name, {prompt: "カテゴリから選択"}
+          = search_form_for @q, url: search_articles_path do |f|  
+            = f.label :tags_id_eq
+            = f.collection_select :tags_id_eq, Tag.all, :id, :name, {prompt: "タグから選択"}
+            = f.submit '検索', class: 'btn p-1'
+      .lg-font.font-weight-bold.py-3
+        .text-center いいねランキング
+      -# .container
+      -#   .row
+      -#     - @ranking_articles.each.with_index(1) do |ranking_article, number|
+      -#       .col-sm-12.col-md-6.col-lg-4.col-xl-4
+      -#         .d-flex.flex-column.base-font.font-weight-bold
+      -#           %span 第#{number}位
+      -#           = render 'commons/articles', article: ranking_article
+      .tabs.justify-content-center.my-4
+        = link_to root_path, class: 'text-decoration-none' do
+          .box-shadow.radius-200.py-3.px-4.mr-2.tabs_item{class: "#{add_active_class(root_path)}"}
+            全ての投稿
+        = link_to timeline_path, class: 'text-decoration-none' do
+          .box-shadow.radius-200.py-3.px-4.ml-2.tabs_item{class: "#{add_active_class(timeline_path)}"}
+            タイムライン
+      .container
+        .row
+          - @articles.each do |article|
+            .col-sm-12.col-md-6.col-lg-4.col-xl-4
+              = render 'commons/articles', article: article
+        %nav{"aria-label" => "Page navigation example"}
+          %ul.pagination.mx-auto
+            %li.page-item
+              %a.page-link{"aria-label" => "Previous", :href => "#"}
+                %span{"aria-hidden" => "true"} «
+                %span.sr-only Previous
+            %li.page-item
+              %a.page-link{:href => "#"} 1
+            %li.page-item
+              %a.page-link{:href => "#"} 2
+            %li.page-item
+              %a.page-link{:href => "#"} 3
+            %li.page-item
+              %a.page-link{"aria-label" => "Next", :href => "#"}
+                %span{"aria-hidden" => "true"} »
+                %span.sr-only Next

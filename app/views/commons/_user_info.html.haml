@@ -13,9 +13,9 @@
       = user.account
   - unless user == current_user
     .text-center.mt-3
-      .py-1.px-4.btn.font-weight-bold.base-font.d-none#follow-btn
+      %span.bg.border.border-secondary.py-2.px-3.font-weight-bold.radius-200.hover.cursor-pointer.d-none#follow-btn
         フォロー
-      .py-1.px-4.btn.font-weight-bold.base-font.bg-light.d-none#unfollow-btn
+      %span.border.border-secondary.py-2.px-3.font-weight-bold.radius-200.hover.cursor-pointer.bg-light.d-none#unfollow-btn
         フォロー中
 .d-flex.justify-content-center.my-4
   .d-flex.flex-column.mr-4

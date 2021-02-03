@@ -1,28 +1,28 @@
-.main-bg-color.h-100
+.main-bg-color
   %ul
     - @profile.errors.full_messages.each do |msg|
       %li= msg
   = form_with(model: @profile, url: profile_path, method: 'put', local: true) do |f|
     .d-flex.flex-column.mb-3.text-center
-      = f.label 'プロフィール画像(画像をクリック)', class: 'base-font font-weight-bold pt-4'
-      = f.label :avatar, class: 'mx-auto' do
+      = f.label 'プロフィール画像(画像をクリック)', class: 'base-font font-weight-bold pt-4 mb-2'
+      = f.label :avatar do
         - if @profile&.avatar&.attached?
-          = image_tag @profile.avatar, class: 'img profile-avatar cursor-pointer'
+          = image_tag @profile.avatar, class: 'profile-avatar cursor-pointer', id: 'change-avatar'
         - else 
-          = image_tag '軍人のアイコン素材.png', class: 'img profile-avatar cursor-pointer'
+          = image_tag '軍人のアイコン素材.png', class: 'profile-avatar cursor-pointer', id: 'change-avatar'
       = f.file_field :avatar, class: 'd-none'
-    .field.text-center
+    .mb-4.text-center
       = f.label :name, '名前', class: 'base-font font-weight-bold'
       %br/
-      = f.text_field :name, autofocus: true, class: 'form'
-    .field.text-center
+      = f.text_field :name, autofocus: true, class: 'radius-200 border border-secondary'
+    .mb-4.text-center
       = f.label :affiliation, '所属部隊', class: 'base-font font-weight-bold'
       %br/
-      = f.text_field :affiliation, autofocus: true, class: 'form'
+      = f.text_field :affiliation, autofocus: true, class: 'radius-200 border border-secondary'
     .text-center
       = f.label :introduction, '自己紹介' , class: 'base-font font-weight-bold' 
     %div.mx-4
-      = f.rich_text_area :introduction, class: 'bg-white'
-    .main-bg-color.py-4
-      = f.submit "編集する", class: 'btn btn_session py-3 px-4 base-font'
+      = f.rich_text_area :introduction, class: 'bg-white border border-secondary'
+    .text-center
+      = f.submit "編集する", class: 'btn-bg border border-secondary py-2 px-3 font-weight-bold radius-200 hover cursor-pointer'
 = javascript_pack_tag 'post_article'
