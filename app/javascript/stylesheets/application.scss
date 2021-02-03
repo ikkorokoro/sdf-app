@@ -36,6 +36,18 @@ body {
 }
 
 /* ===== article css ======= */
+.w-20 {
+  width: 20%;
+}
+.w-80 {
+  width: 80%;
+}
+.index-img {
+  width: 100%;
+  height: 300px;
+  background-image: url("../../assets/images/軍団.png");
+  background-size: cover;
+}
 .article-img {
   width: 25px;
 }
