@@ -1,0 +1,31 @@
+.sign-container {
+  background-color: #F4FAF7;
+  padding: 32px;
+  display: flex;
+  justify-content: space-between;
+  height: 900px;
+}
+.sign-img {
+  background-image: url("../../assets/images/wallpaperbetter 3.png");
+  background-size: cover;
+}
+.sign-left{
+  font-size: 35px;
+  width: 65%;
+  color: #616462;
+  font-weight: bold;
+  color: black;
+  margin: auto;
+    &-text {
+      text-align: center;
+      letter-spacing: 10px;
+    }
+}
+.sign-right {
+  text-align: center;
+  margin: auto;
+  background-color: #F4FAF7;
+  border-radius: 10px;
+}
+
+
