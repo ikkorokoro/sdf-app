@@ -1,13 +1,18 @@
-.main-bg-color.h-100
-  .lg-font.text-center.font-weight-bold.pt-4
+.main-bg-color
+  .text-center.pt-3
+    - if @profile&.avatar&.attached?
+      = image_tag @profile.avatar, class: 'profile-avatar'
+    - else 
+      = image_tag '軍人のアイコン素材.png', class: 'profile-avatar'
+  .lg-font.text-center.font-weight-bold.pt-2
     %div= @user.display_name
     %div= @user.account
   .tabs.justify-content-center.my-4
     = link_to account_actives_path(@user.id), class: 'text-decoration-none' do
-      .box-shadow.radius-200.tabs_item{class: "#{add_active_class(account_actives_path(@user.id))}"}
+      .border.tabs_item{class: "#{add_active_class(account_actives_path(@user.id))}"}
         フォロー
     = link_to account_passives_path(@user.id), class: 'text-decoration-none' do
-      .box-shadow.radius-200.tabs_item{class: "#{add_active_class(account_passives_path(@user.id))}"}
+      .border.tabs_item{class: "#{add_active_class(account_passives_path(@user.id))}"}
         フォロワー
   - @users.each do |user|
     .d-flex.justify-content-between.bg-white.border.w-75.mx-auto.card-radius
