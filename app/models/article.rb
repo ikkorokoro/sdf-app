@@ -33,7 +33,8 @@ class Article < ApplicationRecord
   validates :category_id, presence: true
   validates :rate, presence: true
   validates :content, presence: true, length: { maximum: 100 }
-  
+
+
   def create_notification_like!(current_user)
     # すでに「いいね」されているか検索
     temp = Notification.where(["visiter_id = ? and visited_id = ? and article_id = ? and action = ? ", current_user.id, user_id, id, 'like'])
