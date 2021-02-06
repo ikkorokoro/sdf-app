@@ -24,10 +24,12 @@ const handleLikesDisplay = (hasLiked, likesCount) => {
 
 const appendNewComment = (comment) => {
   $('.comment').append(
-    `<div class= "d-flex bg-white border w-50 mx-auto card-radius">
-      <img class= "user-avatar"src="${(comment.avatar_url)}"</img>
-      <span class= "ml-2 pt-2 sm-font">${(comment.display_name)}</span>
-      <span class= "pt-2 font-weight-bold mx-auto">${(comment.content)}</span>
+    `<div class= "d-flex bg-light border w-75 commment-box mx-auto">
+       <a href= "https://item.rakuten.co.jp/shop-senjin/7090/">
+         <img class= "user-avatar mt-2"src="${(comment.avatar_url)}"</img>
+       </a>
+      <span class= "ml-2 mt-3 sm-font">${(comment.display_name)}</span>
+      <span class= "mt-3 font-weight-bold mx-auto">${(comment.content)}</span>
     </div>`
   )
 }
@@ -36,7 +38,7 @@ const appendNewComment = (comment) => {
 
 
 
-document.addEventListener('turbolinks:load', () => {
+document.addEventListener('DOMContentLoaded', () => {
   const dataset = $('#article-show').data()
   const articleId = dataset.articleId
   /* getリクエストを送り, commetsを取得し,

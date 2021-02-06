@@ -1,58 +1,80 @@
-.main-bg-color
+.main-bg-color.h-100
   = link_to new_article_path do
-    .post-position.circle.text-center.pt-4
-      = image_tag 'カメラのアイコン素材 7 (1).png', class: 'pt-1'
-  .text-center
+    .new-link-img.circle.text-center.pt-4
+      = image_tag 'カメラのアイコン素材 6.png', class: 'pt-3'
+  .index-img.text-center
+    %h3.font-weight-bold.py-4
+      優秀なアイテムを共有して
+      %br
+      パフォーマンスを最大限まで上げよう
     = search_form_for @q, url: search_articles_path do |f|
-      = f.search_field :object_or_price_or_store_or_category_id_cont, class: 'search_container w-25', placeholder: "キーワードを入力"
-      = f.submit '検索', class: 'btn p-1'
-    = search_form_for @q, url: search_articles_path do |f|
-      -# \〜以上の検索
-      = f.label :price_gteq, "価格"
-      = f.number_field :price_gteq, class: 'form w-25', placeholder: "金額を入力"
-      -#\〜以下の検索
-      = f.label :price_lteq, " ~ "
-      = f.number_field :price_lteq, class: 'form w-25'
-      = f.submit '検索', class: 'btn p-1'
-      = f.collection_select :category_id_eq, Category.all, :id, :category_name, {prompt: "カテゴリから選択"}
-    = search_form_for @q, url: search_articles_path do |f|  
-      = f.label :tags_id_eq
-      = f.collection_select :tags_id_eq, Tag.all, :id, :name, {prompt: "タグから選択"}
-      = f.submit '検索', class: 'btn p-1'
-  .title-size.font-weight-bold.py-3
-    .text-center いいねランキング
-  -# .container
-  -#   .row
-  -#     - @ranking_articles.each.with_index(1) do |ranking_article, number|
-  -#       .col-sm-12.col-md-6.col-lg-4.col-xl-4
-  -#         .d-flex.flex-column.base-font.font-weight-bold
-  -#           %span 第#{number}位
-  -#           = render 'commons/articles', article: ranking_article
-  .tabs.justify-content-center.title-size.my-4
-    = link_to root_path, class: 'text-decoration-none' do
-      .box-shadow.radius-200.py-3.px-4.mr-2.tabs_item{class: "#{add_active_class(root_path)}"}
-        全ての投稿
-    = link_to timeline_path, class: 'text-decoration-none' do
-      .box-shadow.radius-200.py-3.px-4.ml-2.tabs_item{class: "#{add_active_class(timeline_path)}"}
-        タイムライン
-  .container
-    .row
-      - @articles.each do |article|
-        .col-sm-12.col-md-6.col-lg-4.col-xl-4
-          = render 'commons/articles', article: article
-    %nav{"aria-label" => "Page navigation example"}
-      %ul.pagination.mx-auto
-        %li.page-item
-          %a.page-link{"aria-label" => "Previous", :href => "#"}
-            %span{"aria-hidden" => "true"} «
-            %span.sr-only Previous
-        %li.page-item
-          %a.page-link{:href => "#"} 1
-        %li.page-item
-          %a.page-link{:href => "#"} 2
-        %li.page-item
-          %a.page-link{:href => "#"} 3
-        %li.page-item
-          %a.page-link{"aria-label" => "Next", :href => "#"}
-            %span{"aria-hidden" => "true"} »
-            %span.sr-only Next
+      = f.search_field :object_or_price_or_store_cont, placeholder: "物品名, 金額, 購入場所から検索", class: 'w-50 border p-2 mb-3 mbbase-font'
+      = button_tag type: 'submit', class: 'icon p-1' do
+        %i.fas.fa-search.fa-2x
+    .tug-box.mx-auto
+      %span.d-inline-block.border-color.base-font.font-weight-bold.mb-2
+        人気のタグ
+      .d-flex.justify-content-center
+        - @top_tags.each do |tag|
+          = link_to "##{tag.name}", search_articles_path(q: { tags_id_eq: tag.id }), class: 'py-1 px-3 mb-2 mr-1 tug-bg radius-200 font-weight-bold text-decoration-none'
+  .d-flex.justify-content-between
+    .w-20.bg-light.mx-auto
+      .text-center
+        %span.lg-font.font-weight-bold.border-color.d-inline-block.my-4 詳細検索
+        = search_form_for @q, url: search_articles_path do |f|
+          = f.label :object_eq, '物品名'
+          %br
+          = f.search_field :object_eq, class: 'w-80 sm-font border mb-3'
+          %br
+          = f.label :price_gteq, "金額"
+          %br
+          = f.number_field :price_gteq, class: 'w-80 sm-font border', placeholder: "例 1000円以上から"
+          %br
+          = f.label :price_lteq, "⌇"
+          %br
+          = f.number_field :price_lteq, class: 'w-80 sm-font border mb-3', placeholder: "3000円以内まで"
+          %br
+          = f.label :store_eq, '購入場所'
+          %br
+          = f.search_field :store_eq, class: 'w-80 sm-font border mb-3'
+          = f.label :category_id_eq, "カテゴリ"
+          %br
+          = f.collection_select :category_id_eq, Category.all, :id, :category_name, {prompt: "指定なし"}, class: 'w-80 border mb-3'
+          %br
+          = f.label :tags_id_eq, 'タグ'
+          %br
+          = f.collection_select :tags_id_eq, Tag.all, :id, :name, {prompt: "指定なし"}, class: 'w-80 border'
+          %br
+          = button_tag type: 'submit', class: 'icon p-1 my-1 radius-200 mt-2' do
+            %i.fas.fa-search.fa-lg
+    .w-80.text-center
+      .xg-font
+        %span.border-color.d-inline-block.border-color.font-weight-bold.mt-4.mb-2
+          参考になる投稿
+      .container
+        .row
+          - @ranking_articles.each do |article|
+            = render 'commons/articles', article: article
+      .category-box
+        .category-wrap.text-center.mx-auto
+          %span.d-inline-block.xg-font.border-color.font-weight-bold.mt-5.mb-2
+            人気のカテゴリ
+          .d-flex.justify-content-center
+            - @top_categorys.each do |category|
+              = link_to "#{category.category_name}", search_articles_path(q: { category_id_eq: category.id }), class: 'py-1 px-4 mr-1 mt-2 tug-bg lg-font radius-200 font-weight-bold text-decoration-none'
+      .xg-font
+        %span.border-color.d-inline-block.xg-font.font-weight-bold.mt-4.mb-2
+          = link_to "##{@top_categorys.first.category_name}の投稿", search_articles_path(q: { category_id_eq: @top_categorys.first.id }), class: 'text-decoration-none'
+        .container
+          .row
+            - @top_category_articles.each do |article|
+              = render 'commons/articles', article: article
+      .xg-font
+        %span.border-color.d-inline-block.xg-font.font-weight-bold.mt-5.mb-2
+          最新の投稿
+      .container
+        .row
+          #after
+            - @new_articles.each do |article|
+              = render 'commons/articles', article: article
+            = link_to_next_page @new_articles, 'もっと見る', id: 'after-article', params: { type: :articles }, remote: true

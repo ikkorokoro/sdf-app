@@ -6,20 +6,20 @@
     = csrf_meta_tags
     = csp_meta_tag
     = stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
-    = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
+    = javascript_pack_tag 'application', 'data-turbolinks-track': 'load'
   %body
-    %nav.navbar.navbar-expand-lg.navbar-light.bg-img
+    %nav.navbar.navbar-expand-lg.navbar-light.header-img
       .navbar-brand
         - if !current_page?(root_path)
           = link_to :back, class: 'text-decoration-none' do
-            = image_tag 'カッチリした矢印アイコン素材 左向き.png', class: 'pb-2'
-        = link_to 'Soldier Reviews', root_path, class: 'header-title font-weight-bold'
+            = image_tag 'カッチリした矢印アイコン素材 左向き.png', class: 'bg-light mb-2'
+        = link_to 'Soldier Reviews', root_path, class: 'xg-font title-color text-decoration-none font-weight-bold'
       - if user_signed_in?
         %li.hoverdown.ml-3
           - if current_user.profile&.avatar&.attached?
             = image_tag current_user.profile.avatar, class: 'user-avatar hoverbtn'
           - else 
-            = image_tag '軍人のアイコン素材.png', class: 'user-avatar hoverbtn'
+            = image_tag '軍人のアイコン素材.png', class: 'user-avatar bg-light hoverbtn'
           .hoverdown-content
             = link_to 'プロフィール', profile_path
             = link_to 'ログアウト', destroy_user_session_path, data: { method: 'delete' }
@@ -28,61 +28,24 @@
           %span.navbar-toggler-icon
         #navbarSupportedContent.collapse.navbar-collapse
           %ul.navbar-nav.mr-auto
-            %li.nav-item.dropdown
-              #navbarDropdown.nav-link.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
-                %a.color.ml-3 カテゴリ
-              .base-bg-color.dropdown-menu{"aria-labelledby" => "navbarDropdown"}
-                .dropdown-item
-                  = link_to '帽子','#', class: 'color'
-                .dropdown-item
-                  = link_to '鉄棒','#', class: 'color'
-                .dropdown-item
-                  = link_to 'あご紐','#', class: 'color'
-                .dropdown-item
-                  = link_to 'カバー','#', class: 'color'
-                .dropdown-item
-                  = link_to 'Tシャツ','#', class: 'color'
-                .dropdown-item
-                  = link_to 'カッパ類','#', class: 'color'
-                .dropdown-item
-                  = link_to '手袋','#', class: 'color'
-                .dropdown-item
-                  = link_to 'ライト','#', class: 'color'
-                .dropdown-item
-                  = link_to '作業服','#', class: 'color'
-                .dropdown-item
-                  = link_to 'レッグパッド','#', class: 'color'
-                .dropdown-item
-                  = link_to 'ダンプバッグ','#', class: 'color'
-                .dropdown-item
-                  = link_to '靴','#', class: 'color'
-                .dropdown-item
-                  = link_to '靴下','#', class: 'color'
-                .dropdown-item
-                  = link_to 'GPS','#', class: 'color'
-                .dropdown-item
-                  = link_to '小物','#', class: 'color'
             %li.nav-item.ml-3
               .nav-link
                 - if unchecked_notifications.any?
                   %i.fa.fa-circle{:style => "color: gold;"}
-                = link_to "通知", notifications_path, class: 'color'
+                = link_to "通知", notifications_path, class: 'font-weight-bold text-decoration-none base-font'
             %li.nav-item.ml-3 
               .nav-link
-                = link_to '投稿', new_article_path, class: 'color'
+                = link_to '投稿', new_article_path, class: 'font-weight-bold text-decoration-none base-font'
       - else
         .d-flex
-          .btn.btn_session.p-2
-            = link_to 'ログイン', new_user_session_path, class: 'color'
-          .btn.btn_session.p-2.ml-2
-            = link_to '新規登録', new_user_registration_path, class: 'color'
-          .btn.btn_session.p-2.ml-2
-            = link_to 'ゲストログイン', users_guest_sign_in_path, method: :post, class: 'color'
+          = link_to new_user_registration_path, class: 'btn-bg py-1 px-3 mr-2 radius-200 font-weight-bold text-decoration-none hover ' do
+            %span 新規登録
+          = link_to new_user_session_path, class: 'btn-bg py-1 px-3 mr-2 radius-200 font-weight-bold text-decoration-none hover' do
+            %span ログイン
+          = link_to users_guest_sign_in_path, method: :post, class: 'btn-bg py-1 px-3 mr-2 radius-200 font-weight-bold text-decoration-none hover' do
+            %span ゲストログイン
     - if flash.present?
       .flash
         - flash.each do |key, value|
           %div{:class => key}= value
     = yield
--#  .ransack
-    -#       = search_field_tag 'account', nil, class: 'ransack_form', placeholder: 'キーワードを入力'
-    -#       = submit_tag '検索', class: 'search'

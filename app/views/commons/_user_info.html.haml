@@ -1,21 +1,22 @@
 .d-flex.flex-column
   %li.hoverdown.mx-auto.mt-4
-    - if @profile&.avatar&.attached?
-      = image_tag @profile.avatar, class: 'profile-avatar'
+    - if user&.profile&.avatar&.attached?
+      = image_tag user.profile.avatar, class: 'profile-avatar'
     - else 
       = image_tag '軍人のアイコン素材.png', class: 'profile-avatar'
-    .hoverdown-content
-      = link_to 'プロフィール編集', edit_profile_path
+    - if user == current_user
+      .hoverdown-content
+        = link_to 'プロフィール編集', edit_profile_path
   .text-center.base-font.pt-3
-    - if @profile&.name
-      = @profile.name
+    - if user&.profile&.name
+      = user&.profile.name
     - else
       = user.account
   - unless user == current_user
     .text-center.mt-3
-      .py-1.px-4.btn.font-weight-bold.base-font.d-none#follow-btn
+      %span.btn-bg.border.border-secondary.py-2.px-3.font-weight-bold.hover.cursor-pointer.d-none#follow-btn
         フォロー
-      .py-1.px-4.btn.font-weight-bold.base-font.bg-light.d-none#unfollow-btn
+      %spanbg.border.border-secondary.py-2.px-3.font-weight-bold.hover.cursor-pointer.bg-light.d-none#unfollow-btn
         フォロー中
 .d-flex.justify-content-center.my-4
   .d-flex.flex-column.mr-4
@@ -26,8 +27,8 @@
     %p.text-center#follower-count 0
   .d-flex.flex-column
     .base-font.text-center 所属部隊
-    %p= @profile&.affiliation
+    %p= user&.profile&.affiliation
 .mb-4.text-center
   .base-font.mb-2 自己紹介
-  .d-inline-block.base-font
-    = @profile&.introduction
+  .border-secondary.base-font.mx-auto.border.introduction-box
+    = user&.profile&.introduction

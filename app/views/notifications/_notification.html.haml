@@ -1,30 +1,29 @@
 - visiter = notification.visiter
 - visited = notification.visited
-.main-bg-color.h-100
-  .d-flex.justify-content-between.bg-white.border.w-75.mx-auto.card-radius
-    %div
-      = link_to account_path(visiter) do
-        = image_tag visiter.avatar_image, class: 'account-avatar'
-      %span.d-inline-block.pb-3
-        = visiter.display_name
-        = 'さんが'
-        - case notification.action
-        - when 'follow' then
-          = "あなたをフォローしました"
-        - when 'like' then
-          = link_to 'あなたの投稿', article_path(notification), class: 'font-weight-bold text-decoration-none'
-          = "にいいねしました"
-        - when 'comment' then
-          - if notification.article.user_id == visited.id
-            = link_to "あなたの投稿", notification.article, style: "font-weight: bold;"
-          - else
-            %span
-              = link_to article_path(notification.article) do
-                = image_tag avatar_url(notification.article.user).to_s, class: "icon_mini" 
-                %strong
-                  = notification.article.user.name + 'さんの投稿'
-            = "にコメントしました"
-            %p.text-muted.mb-0
-              = Comment.find_by(id: notification.comment_id)&.comment
-    .sm-font.pt-3
-      = time_ago_in_words(notification.created_at).upcase
+.d-flex.justify-content-between.bg-white.border.w-75.mx-auto.card-radius
+  %div
+    = link_to account_path(visiter) do
+      = image_tag visiter.avatar_image, class: 'account-avatar'
+    %span.d-inline-block.pb-3
+      = visiter.display_name
+      = 'さんが'
+      - case notification.action
+      - when 'follow' then
+        = "あなたをフォローしました"
+      - when 'like' then
+        = link_to 'あなたの投稿', article_path(notification), class: 'font-weight-bold text-decoration-none'
+        = "にいいねしました"
+      - when 'comment' then
+        - if notification.article.user_id == visited.id
+          = link_to "あなたの投稿", notification.article, style: "font-weight: bold;"
+        - else
+          %span
+            = link_to article_path(notification.article) do
+              = image_tag avatar_url(notification.article.user).to_s, class: "icon_mini" 
+              %strong
+                = notification.article.user.name + 'さんの投稿'
+          = "にコメントしました"
+          %p.text-muted.mb-0
+            = Comment.find_by(id: notification.comment_id)&.comment
+  .sm-font.pt-3
+    = time_ago_in_words(notification.created_at).upcase + "前"

@@ -1,5 +1,5 @@
 - if controller_name != 'sessions'
-  = link_to "ログイン", new_session_path(resource_name)
+  = link_to "ログイン", new_session_path(resource_name), class: 'btn-bg border border-secondary py-2 px-3 font-weight-bold bor radius-200 text-decoration-none hover'
   %br/
 - if devise_mapping.registerable? && controller_name != 'registrations'
   = link_to "新規登録", new_registration_path(resource_name)

@@ -1,21 +1,26 @@
-.card.card-radius.box-shadow.mb-4{:style => "width: 250px;"}
-  = link_to article_path(article) do
-    - if article.image.attached?
-      = image_tag article.image, class: 'card-img-top'
-  .position-relative.p-1
-    .font-weight-bold.title-size.text-center.mb-1
-      = article.object 
-    .d-flex.justify-content-between.mb-2.px-2
-      .article-left
-        = link_to account_path(article.user) do
-          = image_tag article.user.avatar_image, class: 'article-avatar'
-        = article.user.display_name
-      .article-right.pt-2
-        = image_tag 'コメントの無料アイコン.png', class: 'article-img'
-        = article.comments.count
-        = image_tag '無料のいいねの手のアイコン素材 .png', class: 'article-img ml-1'
-        = article.likes.count
-    .d-flex.justify-content-between
-      - article.tags.each do |tag|
-        %span.py-1.px-3.mb-2.mr-1.tug-bg.radius-200.font-weight-bold
-          = tag.name
+.mx-auto
+  .d-flex.flex-column.base-font.font-weight-bold
+    .card.card-radius.box-shadow.bg-light.mb-4{:style => "width: 220px;"}
+      = link_to article_path(article) do
+        - if article.image.attached?
+          = image_tag article.image, class: 'card-img-top'
+      .position-relative.p-1
+        .lg-font.font-weight-bold.text-center.mb-1
+          = article.object 
+        .d-flex.justify-content-between.mb-2.px-2
+          .article-left
+            = link_to account_path(article.user) do
+              = image_tag article.user.avatar_image, class: 'article-avatar'
+            %span.d-inline-block.mb-1= article.user.display_name
+          .article-right.pt-2
+            = image_tag 'コメントの無料アイコン.png', class: 'article-img'
+            = article.comments.count
+            = image_tag '無料のいいねの手のアイコン素材 .png', class: 'article-img ml-1'
+            = article.likes.count
+        .d-flex.justify-content-between
+          - article.tags.each do |tag|
+            %span.py-1.px-3.mr-1.tug-bg.radius-200.font-weight-bold
+              %span ##{tag.name}
+        .text-right.sm-font
+          %time(datetime="#{article.created_at}")
+            = time_ago_in_words(article.created_at) + "前"

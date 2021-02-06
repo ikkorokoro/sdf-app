@@ -1,14 +1,47 @@
-.main-bg-color
-  %h1 記事検索
-  = search_form_for @q, url: search_articles_path do |f|
-    = f.label :object_cont, 'オブジェクト'
-    = f.search_field :object_cont
-    %br/
-    = f.submit '検索'
-.container
-  .row
-    - @results.each do |article|
-      .col-sm-12.col-md-6.col-lg-4.col-xl-4
-        = render 'commons/articles', article: article
-
-  
+= link_to new_article_path do
+  .new-link-img.circle.text-center.pt-4
+    = image_tag 'カメラのアイコン素材 6.png', class: 'pt-3'
+.d-flex.justify-content-between
+  .w-25.bg-light.mx-auto
+    .text-center
+      %span.lg-font.font-weight-bold.border-color.d-inline-block.mt-4.mb-3
+        詳細検索
+      = search_form_for @q, url: search_articles_path do |f|
+        = f.label :object_eq, '物品名'
+        %br
+        = f.search_field :store_eq, class: 'w-100 sm-font border mb-3'
+        %br
+        = f.label :price_gteq, "金額"
+        %br
+        = f.number_field :price_gteq, class: 'w-100 sm-font border', placeholder: "例 1000円以上から"
+        = f.label :price_lteq, "⌇"
+        %br
+        = f.number_field :price_lteq, class: 'w-100 sm-font border mb-3', placeholder: "3000円以内まで"
+        %br
+        = f.label :store_eq, '購入場所'
+        %br
+        = f.search_field :store_eq, class: 'w-100 sm-font border mb-3'
+        = f.label :category_id_eq, "カテゴリ"
+        %br
+        = f.collection_select :category_id_eq, Category.all, :id, :category_name, {prompt: "指定なし"}, class: 'w-100 border mb-3'
+        %br
+        = f.label :tags_id_eq, 'タグ'
+        %br
+        = f.collection_select :tags_id_eq, Tag.all, :id, :name, {prompt: "指定なし"}, class: 'w-100 border'
+        %br
+        = button_tag type: 'submit', class: 'icon p-1 my-1 radius-200 mt-2' do
+          %i.fas.fa-search.fa-lg
+  .main-bg-color.w-75.text-center
+    - if @results.count == 0
+      .xg-font 一致する項目は見つかりません
+    - else
+      %span.d-inline-block.xg-font.font-weight-bold.border-color.mt-4.mb-2
+        検索結果
+      .container
+        .row  
+          - @results.each do |article|
+            = render 'commons/articles', article: article
+      .py-3
+        = paginate @results
+          
+            

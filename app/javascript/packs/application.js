@@ -4,13 +4,15 @@
 // that code so it'll be compiled.
 
 require("@rails/ujs").start()
-require("turbolinks").start()
+// require("turbolinks").start()
 require("@rails/activestorage").start()
 require("channels")
 require("packs/raty")
 window.$ = window.jQuery = require('jquery');
+import "../stylesheets/application.scss";
 import 'bootstrap-material-design'
-import '../stylesheets/application'
+import '@fortawesome/fontawesome-free/js/all';
+
 // Uncomment to copy all static images under ../images to the output folder and reference
 // them with the image_pack_tag helper in views (e.g <%= image_pack_tag 'rails.png' %>)
 // or the `imagePath` JavaScript helper below.
@@ -29,3 +31,6 @@ require("@rails/actiontext")
  * version: 3.0.0
  *
  */
+// $('#after-article').remove();
+// $('#after').append("<%= j render partial: 'commons/articles', collection: @new_articles %>")
+// $('#after').append("<%= j link_to_next_page(@new_articles, 'もっと見る', id: 'after-article', params: { type: :articles }, remote: true) %>")

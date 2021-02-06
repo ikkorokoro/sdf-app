@@ -1,136 +1,203 @@
 @import '~bootstrap-material-design/scss/bootstrap-material-design';
-@import 'form';
-@import 'variables';
+@import 'reset';
+@import 'sign';
 @import 'flash';
-@import 'header';
-@import 'commons';
-@import 'article';
-@import 'tags';
-@import 'profile';
 @import 'tabs';
+@import 'hoverdown';
 @import 'actiontext';
 @import 'trix/dist/trix.css';
-html, body, div, span, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-abbr, address, cite, code,
-del, dfn, em, img, ins, kbd, q, samp,
-small, strong, sub, sup, var,
-b, i,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, figcaption, figure,
-footer, header, hgroup, menu, nav, section, summary,
-time, mark, audio, video {
- margin:0;
- padding:0;
- border:0;
- outline:0;
- vertical-align:baseline;
- background:transparent;
-}
-
-body {
- /* プロジェクトによって変動 */
-
- color: #000;
- line-height: 1.6;
- width: 100%;
- font-smoothing: antialiased;
- font-variant-numeric: tabular-nums;
- /* safari hover対策 */
- -webkit-font-smoothing: antialiased;
-}
-
-article,aside,details,figcaption,figure,
-footer,header,hgroup,menu,nav,section {
- display:block;
-}
-
-ul, ol {
- list-style:none;
-}
-
-blockquote, q {
- quotes:none;
-}
-
-blockquote:before, blockquote:after,
-q:before, q:after {
- content:'';
- content:none;
-}
-
-a {
- margin:0;
- padding:0;
- vertical-align:baseline;
- text-decoration: none;
- color: inherit;
-}
-
-/* change colours to suit your needs */
-ins {
- background-color:#ff9;
- color:#000;
- text-decoration:none;
-}
-
-/* change colours to suit your needs */
-mark {
- background-color:#ff9;
- color:#000;
- font-style:italic;
- font-weight:bold;
-}
-
-del {
- text-decoration: line-through;
-}
-
-abbr[title], dfn[title] {
- border-bottom:1px dotted;
- cursor:help;
-}
-
-table {
- border-collapse:collapse;
- border-spacing:0;
-}
-
-/* change border colour to suit your needs */
-hr {
- display:block;
- height:1px;
- border:0;
- border-top:1px solid #cccccc;
- margin:1em 0;
- padding:0;
-}
-
-input, select {
- vertical-align:middle;
-}
-
-img {
- vertical-align: bottom;
- line-height: 1.0;
-}
-
-button {
- line-height: 1.0;
- background-color: transparent;
- border: none;
- cursor: pointer;
- outline: none;
- padding: 0;
- appearance: none;
-}
+@import '~@fortawesome/fontawesome-free/scss/fontawesome';
 
 body {
   height: 100%;
   font-size: 16px;
   color: black;
 }
+.header-img{
+  background-image: url("../../assets/images/wallpaperbetter 3.png");
+  background-size: cover;
+} 
+.btn-bg {
+  background: rgba(30, 187, 64, 0.71);
+}
+.hover {
+  &:hover {
+    opacity: 0.8;
+  }
+}
+.xg-font {
+  font-size: 24px;
+}
+.title-color {
+  color: #00461C;
+}
+.navbar-toggler{
+  background-color: #F4FAF7;
+}
+.cursor-pointer {
+  cursor: pointer;
+}
+.w-20 {
+  width: 20%;
+}
+.w-80 {
+  width: 80%;
+}
+.border-color {
+  border-bottom: solid 5px #3879D9;
+}
 
+.icon {
+  color: white;
+  background-color: #3879D9;
+}
 
+/* ===== article css ======= */
+
+.index-img {
+  width: 100%;
+  height: 35vh;
+  background-image: url("../../assets/images/軍団.png");
+  background-size: cover;
+}
+.article-img {
+  width: 25px;
+}
+.main-bg-color {
+  background: rgba(161, 190, 167, 0.27);
+  width: 100vw;
+  height: 100vh;
+}
+.tug-bg {
+  background: rgba(53, 157, 253, 0.8);
+} 
+.tug-box { 
+  background: rgba(255, 255, 255, 0.68);
+  height: 12vh;
+  width: 50%;
+}
+.category-box {
+  width: 100%;
+  height: 25vh;
+  background-image: url("../../assets/images/wallpaperbetter 3.png");
+  background-size: cover;
+}
+.category-wrap {
+  background: rgba(255, 255, 255, 0.30);
+  height: 100%;
+  width: 100%;
+}
+.radius-200 {
+  border-radius: 200px;
+}
+.card-radius {
+  border-radius: 10px;
+}
+.box-shadow {
+  box-shadow: 5px 5px 4px rgba(0, 0, 0, 0.25);
+}
+.sm-font {
+  font-size: 14px;
+}
+.base-font {
+  font-size: 18px;
+}
+.lg-font {
+  font-size: 20px;
+}
+.article-position {
+  position: absolute;
+  right: 0px;
+}
+.show-icon-position {
+  position: absolute;
+  top: 50px;
+  right: 0px;
+}
+.good-img-position {
+  position: absolute;
+  bottom: 12px;
+  right: 93px;
+}
+.count-position {
+  position: absolute;
+  bottom: 12px;
+  right: 77px;
+}
+.post-time {
+  position: absolute;
+  bottom: 12px;
+  right: 15px;
+}
+.post-img {
+  width: 150px;
+}
+.new-link-img {
+  position: fixed;
+  bottom: 50px;
+  right: 20px;
+  z-index: 10;
+}
+.circle{
+  width: 160px;
+	height: 160px;
+  border-radius: 50%;
+  background: rgba(7, 52, 0, 0.8);
+  // background-image: url("../../assets/images/3be6f8948210ac3264fdbed3c3f9815d 5.png");
+  // background-size: cover;
+  &:hover {
+    opacity: 0.8;
+  }
+}
+.card-img-top:hover {
+   opacity: 0.8;
+}
+.content-form {
+  height: 150px;
+}
+.comment-form {
+  height: 120px
+}
+.commment-box {
+  height: 8vh;
+}
+
+/* ===== profile css ===== */
+.profile-avatar {
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+.introduction-box {
+  width: 70%;
+  height: 10vh;
+  background-color: white;
+}
+
+/* ===== avatar css ===== */
+.user-avatar {
+  width: 45px;
+  height: 45px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+.account-avatar {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.article-avatar {
+  width: 35px;
+  height: 35px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+.profile-avatar {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 50%;
+}
