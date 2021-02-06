@@ -31,6 +31,6 @@ require("@rails/actiontext")
  * version: 3.0.0
  *
  */
-$('#after-article').remove();
-$('#after').append("<%= j render partial: 'commons/articles', collection: @new_articles %>")
-$('#after').append("<%= j link_to_next_page(@new_articles, 'もっと見る', id: 'after-article', params: { type: :articles }, remote: true) %>")
+// $('#after-article').remove();
+// $('#after').append("<%= j render partial: 'commons/articles', collection: @new_articles %>")
+// $('#after').append("<%= j link_to_next_page(@new_articles, 'もっと見る', id: 'after-article', params: { type: :articles }, remote: true) %>")

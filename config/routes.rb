@@ -19,6 +19,7 @@ resource  :myfavorite, only: [:show]
 resource  :timeline, only: [:show]
 resources  :accounts, only: [:show] do
   resource  :favorite, only: [:show]
+  resource  :othertimeline, only: [:show]
   resources :follows, only: [:create]
   resources :unfollows, only: [:create]
   resources :informations, only: [:index]
