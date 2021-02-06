@@ -1,10 +1,10 @@
-.main-bg-color#article-show{data: {article_id: @article.id}}
+.main-bg-color.h-100#article-show{data: {article_id: @article.id}}
   .container
     .row.justify-content-center.pt-4
-      .card-radius{:style => "width: 400px;"}
+      .card-radius{:style => "width: 430px;"}
         - if @article.image.attached?
           = image_tag @article.image, class: 'card-img-top'
-      .card-radius.position-relative.bg-white.box-shadow.p-3{:style => "width: 400px;"}
+      .card-radius.position-relative.bg-white.box-shadow.p-3{:style => "width: 430px;"}
         .d-flex.mb-2.position-relative
           .base-font.font-weight-bold 物品名
           .base-font.mx-auto 
@@ -26,7 +26,7 @@
           .base-font.font-weight-bold 購入場所
           .base-font.mx-auto 
             = @article.store
-        .d-flex.mb-2enum
+        .d-flex.mb-2
           .base-font.font-weight-bold カテゴリ
           .base-font.mx-auto 
             = @article.category.category_name
@@ -46,14 +46,14 @@
         %p.mb-2=@article.content
         - @article.tags.each do |tag|
           %span.py-2.px-3.mb-2.mr-1.tug-bg.radius-200.font-weight-bold
-            = tag.name
+            #{tag.name}
         = image_tag '無料のいいねの手のアイコン素材.png', class: 'article-img ml-1 good-img-position cursor-pointer d-none', id: 'good'
         = image_tag '無料のいいねの手のアイコン素材 .png', class: 'article-img ml-1 good-img-position cursor-pointer d-none', id: 'notgood'
         %span.count-position#likes-count  0
         %span.sm-font.post-time
           %time(datetime="#{@article.created_at}")
             = time_ago_in_words(@article.created_at) + "前"
-  .text-center.main-bg-color
+  .text-center
     .show-comment-form.my-5
       %span.btn-bg.lg-font.border.border-secondary.py-2.px-4.font-weight-bold.hover.cursor-pointer
         コメントを投稿
@@ -63,6 +63,7 @@
       .my-4
         %span.btn-bg.lg-font.border.border-secondary.py-2.px-4.font-weight-bold.hover.cursor-pointer#add-comment-button
           コメントを追加
-    %span.lg-font.border-color.font-weight-bold.d-inline-block.mb-3 コメント一覧
+    %span.lg-font.border-color.font-weight-bold.d-inline-block.mb-3 
+      コメント一覧
     .comment
 = javascript_pack_tag 'show_article'

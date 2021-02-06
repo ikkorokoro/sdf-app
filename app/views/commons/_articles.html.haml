@@ -1,6 +1,6 @@
 .mx-auto
   .d-flex.flex-column.base-font.font-weight-bold
-    .card.card-radius.box-shadow.mb-4{:style => "width: 220px;"}
+    .card.card-radius.box-shadow.bg-light.mb-4{:style => "width: 220px;"}
       = link_to article_path(article) do
         - if article.image.attached?
           = image_tag article.image, class: 'card-img-top'

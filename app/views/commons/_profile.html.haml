@@ -7,6 +7,9 @@
     = link_to myfavorite_path, class: 'text-decoration-none' do
       .border.tabs_item{class: "#{add_active_class(myfavorite_path)}"}
         いいねした投稿
+    = link_to timeline_path, class: 'text-decoration-none' do
+      .border.tabs_item{class: "#{add_active_class(timeline_path)}"}
+        フォローした人の投稿
   %p.text-center.font-weight-bold 
     投稿数  #{@articles.count}
   .container

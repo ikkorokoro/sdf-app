@@ -1,7 +1,7 @@
 .main-bg-color.h-100
   = link_to new_article_path do
     .new-link-img.circle.text-center.pt-4
-      = image_tag 'カメラのアイコン素材 6.png', class: 'pt-1'
+      = image_tag 'カメラのアイコン素材 6.png', class: 'pt-3'
   .index-img.text-center
     %h3.font-weight-bold.py-4
       優秀なアイテムを共有して
@@ -24,7 +24,7 @@
         = search_form_for @q, url: search_articles_path do |f|
           = f.label :object_eq, '物品名'
           %br
-          = f.search_field :store_eq, class: 'w-80 sm-font border mb-3'
+          = f.search_field :object_eq, class: 'w-80 sm-font border mb-3'
           %br
           = f.label :price_gteq, "金額"
           %br
@@ -48,8 +48,9 @@
           = button_tag type: 'submit', class: 'icon p-1 my-1 radius-200 mt-2' do
             %i.fas.fa-search.fa-lg
     .w-80.text-center
-      .xg-font.font-weight-bold.py-4
-        %span.border-color 参考になる投稿
+      .xg-font
+        %span.border-color.d-inline-block.border-color.font-weight-bold.mt-4.mb-2
+          参考になる投稿
       .container
         .row
           - @ranking_articles.each do |article|
@@ -61,9 +62,19 @@
           .d-flex.justify-content-center
             - @top_categorys.each do |category|
               = link_to "#{category.category_name}", search_articles_path(q: { category_id_eq: category.id }), class: 'py-1 px-4 mr-1 mt-2 tug-bg lg-font radius-200 font-weight-bold text-decoration-none'
-      .xg-font.font-weight-bold.py-4
-        %span.border-color 最新の投稿
-      #after
-        - @new_articles.each do |article|
-          = render 'commons/articles', article: article
-      = link_to_next_page @new_articles, 'もっと見る', id: 'after-article', params: { type: :articles }, remote: true
+      .xg-font
+        %span.border-color.d-inline-block.xg-font.font-weight-bold.mt-4.mb-2
+          = link_to "##{@top_categorys.first.category_name}の投稿", search_articles_path(q: { category_id_eq: @top_categorys.first.id }), class: 'text-decoration-none'
+        .container
+          .row
+            - @top_category_articles.each do |article|
+              = render 'commons/articles', article: article
+      .xg-font
+        %span.border-color.d-inline-block.xg-font.font-weight-bold.mt-5.mb-2
+          最新の投稿
+      .container
+        .row
+          #after
+            - @new_articles.each do |article|
+              = render 'commons/articles', article: article
+            = link_to_next_page @new_articles, 'もっと見る', id: 'after-article', params: { type: :articles }, remote: true

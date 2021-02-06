@@ -18,7 +18,7 @@ body {
   background-size: cover;
 } 
 .btn-bg {
-  background-color:  #30FF5D;
+  background: rgba(30, 187, 64, 0.71);
 }
 .hover {
   &:hover {
@@ -46,11 +46,7 @@ body {
 .border-color {
   border-bottom: solid 5px #3879D9;
 }
-.tug-box { 
-  background: rgba(255, 255, 255, 0.68);
-  height: 75px;
-  width: 50%;
-}
+
 .icon {
   color: white;
   background-color: #3879D9;
@@ -68,13 +64,29 @@ body {
   width: 25px;
 }
 .main-bg-color {
-  background-color: #F4FAF7;
+  background: rgba(161, 190, 167, 0.27);
   width: 100vw;
   height: 100vh;
 }
 .tug-bg {
-  background-color: #49D3FF;
+  background: rgba(53, 157, 253, 0.8);
 } 
+.tug-box { 
+  background: rgba(255, 255, 255, 0.68);
+  height: 12vh;
+  width: 50%;
+}
+.category-box {
+  width: 100%;
+  height: 25vh;
+  background-image: url("../../assets/images/wallpaperbetter 3.png");
+  background-size: cover;
+}
+.category-wrap {
+  background: rgba(255, 255, 255, 0.30);
+  height: 100%;
+  width: 100%;
+}
 .radius-200 {
   border-radius: 200px;
 }
@@ -122,16 +134,17 @@ body {
 }
 .new-link-img {
   position: fixed;
-  top: 700px;
+  bottom: 50px;
   right: 20px;
   z-index: 10;
 }
 .circle{
-  width: 125px;
-	height: 125px;
-	border-radius: 50%;
-  background-image: url("../../assets/images/3be6f8948210ac3264fdbed3c3f9815d 5.png");
-  background-size: cover;
+  width: 160px;
+	height: 160px;
+  border-radius: 50%;
+  background: rgba(7, 52, 0, 0.8);
+  // background-image: url("../../assets/images/3be6f8948210ac3264fdbed3c3f9815d 5.png");
+  // background-size: cover;
   &:hover {
     opacity: 0.8;
   }
@@ -146,7 +159,7 @@ body {
   height: 120px
 }
 .commment-box {
-  height: 7vh;
+  height: 8vh;
 }
 
 /* ===== profile css ===== */

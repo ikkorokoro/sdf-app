@@ -1,16 +1,18 @@
 = render 'commons/user_info', user: @user
 .tabs.justify-content-center.my-3
   = link_to account_path(@user.id), class: 'text-decoration-none' do
-    .box-shadow.radius-200.tabs_item{class: "#{add_active_class(account_path(@user.id))}"}
+    .border.tabs_item{class: "#{add_active_class(account_path(@user.id))}"}
       全ての投稿
   = link_to account_favorite_path(@user.id), class: 'text-decoration-none' do
-    .box-shadow.radius-200.tabs_item{class: "#{add_active_class(account_favorite_path(@user.id))}"}
+    .border.tabs_item{class: "#{add_active_class(account_favorite_path(@user.id))}"}
       いいねした投稿
+  = link_to account_othertimeline_path(@user.id), class: 'text-decoration-none' do
+    .border.tabs_item{class: "#{add_active_class(account_othertimeline_path(@user.id))}"}
+      フォローした人投稿
 %p.text-center.font-weight-bold 
   投稿数  #{@articles.count}
 .container
   .row
     - @articles.each do |article|
-      .col-sm-12.col-md-6.col-lg-4.col-xl-4
-        = render 'commons/articles', article: article
+      = render 'commons/articles', article: article
 = javascript_pack_tag 'account'
