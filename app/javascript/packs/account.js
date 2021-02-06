@@ -17,7 +17,7 @@ const unFollowBtnAndCountDisplay = (status, follower) => {
 }
 
 
-document.addEventListener('turbolinks:load', () => {
+document.addEventListener('DOMContentLoaded', () => {
   const id = $('#show-account').data()
     const accountId = id.accountId
 

@@ -4,7 +4,7 @@
 // that code so it'll be compiled.
 
 require("@rails/ujs").start()
-require("turbolinks").start()
+// require("turbolinks").start()
 require("@rails/activestorage").start()
 require("channels")
 require("packs/raty")
@@ -31,3 +31,6 @@ require("@rails/actiontext")
  * version: 3.0.0
  *
  */
+$('#after-article').remove();
+$('#after').append("<%= j render partial: 'commons/articles', collection: @new_articles %>")
+$('#after').append("<%= j link_to_next_page(@new_articles, 'もっと見る', id: 'after-article', params: { type: :articles }, remote: true) %>")
