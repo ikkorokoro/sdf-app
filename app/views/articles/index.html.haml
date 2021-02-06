@@ -12,71 +12,58 @@
       = button_tag type: 'submit', class: 'icon p-1' do
         %i.fas.fa-search.fa-2x
     .tug-box.mx-auto
-      %p.base-font.font-weight-bold.pb-2.mt-4 
+      %span.d-inline-block.border-color.base-font.font-weight-bold.mb-2
         人気のタグ
-      - @top_tags.each do |tag|
-        = link_to "##{tag.name}", search_articles_path(q: { tags_id_eq: tag.id }), class: 'py-1 px-3 mb-2 mr-1 tug-bg radius-200 font-weight-bold text-decoration-none'
+      .d-flex.justify-content-center
+        - @top_tags.each do |tag|
+          = link_to "##{tag.name}", search_articles_path(q: { tags_id_eq: tag.id }), class: 'py-1 px-3 mb-2 mr-1 tug-bg radius-200 font-weight-bold text-decoration-none'
   .d-flex.justify-content-between
-    .w-20.mx-auto
+    .w-20.bg-light.mx-auto
       .text-center
-        %span.lg-font.font-weight-bold.border-color.d-inline-block.my-3 詳細検索
+        %span.lg-font.font-weight-bold.border-color.d-inline-block.my-4 詳細検索
         = search_form_for @q, url: search_articles_path do |f|
           = f.label :object_eq, '物品名'
           %br
-          = f.search_field :store_eq, class: 'w-100 sm-font border mb-3'
+          = f.search_field :store_eq, class: 'w-80 sm-font border mb-3'
           %br
           = f.label :price_gteq, "金額"
           %br
-          = f.number_field :price_gteq, class: 'w-100 sm-font border', placeholder: "例 1000円以上から"
+          = f.number_field :price_gteq, class: 'w-80 sm-font border', placeholder: "例 1000円以上から"
+          %br
           = f.label :price_lteq, "⌇"
           %br
-          = f.number_field :price_lteq, class: 'w-100 sm-font border mb-3', placeholder: "3000円以内まで"
+          = f.number_field :price_lteq, class: 'w-80 sm-font border mb-3', placeholder: "3000円以内まで"
           %br
           = f.label :store_eq, '購入場所'
           %br
-          = f.search_field :store_eq, class: 'w-100 sm-font border mb-3'
+          = f.search_field :store_eq, class: 'w-80 sm-font border mb-3'
           = f.label :category_id_eq, "カテゴリ"
           %br
-          = f.collection_select :category_id_eq, Category.all, :id, :category_name, {prompt: "指定なし"}, class: 'w-100 border mb-3'
+          = f.collection_select :category_id_eq, Category.all, :id, :category_name, {prompt: "指定なし"}, class: 'w-80 border mb-3'
           %br
           = f.label :tags_id_eq, 'タグ'
           %br
-          = f.collection_select :tags_id_eq, Tag.all, :id, :name, {prompt: "指定なし"}, class: 'w-100 border'
+          = f.collection_select :tags_id_eq, Tag.all, :id, :name, {prompt: "指定なし"}, class: 'w-80 border'
           %br
           = button_tag type: 'submit', class: 'icon p-1 my-1 radius-200 mt-2' do
             %i.fas.fa-search.fa-lg
-    .w-75.text-center
-      .xg-font.font-weight-bold.py-3
+    .w-80.text-center
+      .xg-font.font-weight-bold.py-4
         %span.border-color 参考になる投稿
       .container
         .row
-          - @ranking_articles.each.with_index(1) do |ranking_article, number|
-            = render 'commons/articles', article: ranking_article
-      .xg-font.font-weight-bold.py-3
-        %span.border-color タイムライン
-      .container
-        .row
-          - @followings_articles.each.with_index(1) do |following_article|
-            = render 'commons/articles', article: following_article
-      .xg-font.font-weight-bold.py-3
+          - @ranking_articles.each do |article|
+            = render 'commons/articles', article: article
+      .category-box
+        .category-wrap.text-center.mx-auto
+          %span.d-inline-block.xg-font.border-color.font-weight-bold.mt-5.mb-2
+            人気のカテゴリ
+          .d-flex.justify-content-center
+            - @top_categorys.each do |category|
+              = link_to "#{category.category_name}", search_articles_path(q: { category_id_eq: category.id }), class: 'py-1 px-4 mr-1 mt-2 tug-bg lg-font radius-200 font-weight-bold text-decoration-none'
+      .xg-font.font-weight-bold.py-4
         %span.border-color 最新の投稿
-      .container
-        .row
-          - @new_articles.each do |new_article|
-            = render 'commons/articles', article: new_article
-        %nav{"aria-label" => "Page navigation example"}
-          %ul.pagination.mx-auto
-            %li.page-item
-              %a.page-link{"aria-label" => "Previous", :href => "#"}
-                %span{"aria-hidden" => "true"} «
-                %span.sr-only Previous
-            %li.page-item
-              %a.page-link{:href => "#"} 1
-            %li.page-item
-              %a.page-link{:href => "#"} 2
-            %li.page-item
-              %a.page-link{:href => "#"} 3
-            %li.page-item
-              %a.page-link{"aria-label" => "Next", :href => "#"}
-                %span{"aria-hidden" => "true"} »
-                %span.sr-only Next
+      #after
+        - @new_articles.each do |article|
+          = render 'commons/articles', article: article
+      = link_to_next_page @new_articles, 'もっと見る', id: 'after-article', params: { type: :articles }, remote: true

@@ -3,8 +3,7 @@ class ArticlesController < ApplicationController
   before_action :set_q, only: [:index, :search]
   before_action :various_articles, only: [:index, :search]
   def index
-    # @articles = Article.all
-    @articles = @q.result
+    
   end
 
   def show
@@ -47,18 +46,23 @@ class ArticlesController < ApplicationController
   end
 
   def search
-    @results = @q.result
+    @results = @q.result.page(params[:page]).per(10)
   end
 
   def various_articles
-    within_articles = Article.includes(:likes).where(created_at: Time.now.beginning_of_month..Time.now.end_of_month)#今月の投稿
-    @ranking_articles =  within_articles.find(Like.group(:article_id).order('count(article_id) desc').limit(4).pluck(:article_id))#投稿の中でいいねが多い記事を3つ
-    user_ids = current_user.followings.pluck(:id)#フォローしているユーザーのidのみを取得
-    @followings_articles = Article.where(user_id: user_ids).limit(4)#フォローしているユーザーの投稿を4つ取得
-    @new_articles = Article.all.order(updated_at: :desc).limit(4)#全ての投稿の最新の投稿を6つ
-    tag_ranks = ArticleTag.group(:tag_id).order('count(tag_id) desc').limit(4).pluck(:tag_id)
+    month_articles = Article.includes(:likes).where(created_at: Time.now.beginning_of_month..Time.now.end_of_month)#今月の投稿
+    @ranking_articles = month_articles.find(Like.group(:article_id).order('count(article_id) desc').limit(4).pluck(:article_id))#投稿の中でいいねが多い記事を3つ
+    category_ranks = Article.group(:category_id).order('count(category_id) desc').limit(5).pluck(:category_id)
+    @top_categorys = Category.find(category_ranks)
+    tag_ranks = ArticleTag.group(:tag_id).order('count(tag_id) desc').limit(5).pluck(:tag_id)
     @top_tags = Tag.find(tag_ranks)
-
+    @new_articles = Article.all.order(updated_at: :desc).page(params[:page]).per(4)#全ての投稿の最新の投稿
+    # これ以下はAjax通信の場合のみ通過
+    return unless request.xhr?
+    case params[:type]
+    when 'articles'
+      render "commons/#{params[:type]}, article: :#{@new_articles}"
+    end
   end
 
   private
