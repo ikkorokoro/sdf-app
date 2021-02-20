@@ -1,5 +1,4 @@
-class FollowsController < ApplicationController
-  before_action :authenticate_user!, only: [:create]
+class Apps::FollowsController < Apps::ApplicationController
 
   def create
     user = User.find(params[:account_id])

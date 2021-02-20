@@ -1,5 +1,4 @@
-class OthertimelinesController < ApplicationController
-  before_action :authenticate_user!, only: [:show]
+class Apps::OthertimelinesController < Apps::ApplicationController
 
   def show
     @user = User.find(params[:account_id])

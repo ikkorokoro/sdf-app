@@ -1,5 +1,4 @@
-class InformationsController < ApplicationController
-  before_action :authenticate_user!, only: [:index]
+class Api::InformationsController < Api::ApplicationController
 
   def index
     user = User.find(params[:account_id])

@@ -1,5 +1,5 @@
-class FavoritesController < ApplicationController
-  before_action :authenticate_user!, only: [:show]
+class Apps::FavoritesController < Apps::ApplicationController
+
   def show
     @user = User.find(params[:account_id])
     @profile = @user.profile

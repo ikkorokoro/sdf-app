@@ -1,4 +1,4 @@
-class LikesController < ApplicationController
+class Api::LikesController < Api::ApplicationController
   before_action :authenticate_user!, only: [:show, :create, :destroy]
   def show
     article = Article.find(params[:article_id])
