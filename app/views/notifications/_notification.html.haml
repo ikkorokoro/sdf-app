@@ -1,6 +1,6 @@
 - visiter = notification.visiter
 - visited = notification.visited
-.d-flex.justify-content-between.bg-white.border.w-75.mx-auto.card-radius
+.notification
   %div
     = link_to account_path(visiter) do
       = image_tag visiter.avatar_image, class: 'account-avatar'
@@ -11,18 +11,17 @@
       - when 'follow' then
         = "あなたをフォローしました"
       - when 'like' then
-        = link_to 'あなたの投稿', article_path(notification), class: 'font-weight-bold text-decoration-none'
+        = link_to 'あなたの投稿', article_path(notification), class: 'font-weight-bold'
         = "にいいねしました"
       - when 'comment' then
         - if notification.article.user_id == visited.id
-          = link_to "あなたの投稿", notification.article, style: "font-weight: bold;"
+          = link_to "あなたの投稿", notification.article, class: 'font-weight: bold;'
         - else
           %span
             = link_to article_path(notification.article) do
-              = image_tag avatar_url(notification.article.user).to_s, class: "icon_mini" 
+              = image_tag  notification.visited.avatar_image, class: 'profile-avatar'
               %strong
-                = notification.article.user.name + 'さんの投稿'
-          = "にコメントしました"
+                = notification.article.user.name + 'さんの投稿にコメントしました'
           %p.text-muted.mb-0
             = Comment.find_by(id: notification.comment_id)&.comment
   .sm-font.pt-3

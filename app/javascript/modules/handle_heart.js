@@ -3,7 +3,7 @@ import axios from 'modules/axios'
 
 const listenGoodEvent = (articleId) => {
 $('#notgood').on('click', () => {
-  axios.post(`/articles/${articleId}/like`)
+  axios.post(`/api/articles/${articleId}/like`)
   .then((response) => {
     const likesCount = response.data.likesCount
     if (response.data.status === 'ok') {
@@ -20,7 +20,7 @@ $('#notgood').on('click', () => {
 }
 const listenNotGoodEvent = (articleId) => {
 $('#good').on('click', () => {
-  axios.delete(`/articles/${articleId}/like`)
+  axios.delete(`/api/articles/${articleId}/like`)
   .then((response) => {
     const likesCount = response.data.likesCount
     if (response.data.status === 'ok') {

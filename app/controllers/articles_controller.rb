@@ -1,7 +1,7 @@
 class ArticlesController < ApplicationController
-  before_action :authenticate_user!, only: [:new, :show, :create, :edit, :update, :destroy] 
+  before_action :authenticate_user!, only: [:new, :show, :create, :edit, :update, :destroy, :search] 
   before_action :set_q, only: [:index, :search]
-  # before_action :various_articles, only: [:index, :search]
+
   def index
     month_articles = Article.includes(:likes).where(created_at: Time.now.beginning_of_month..Time.now.end_of_month)#今月の投稿
     @ranking_articles = month_articles.find(Like.group(:article_id).order('count(article_id) desc').limit(4).pluck(:article_id))#投稿の中でいいねが多い記事を3つ
@@ -11,14 +11,7 @@ class ArticlesController < ApplicationController
     @top_category_articles = Article.where(category_id: top_one_category).limit(4)#一番人気のカテゴリの投稿を全て取得
     tag_ranks = ArticleTag.group(:tag_id).order('count(tag_id) desc').limit(5).pluck(:tag_id)
     @top_tags = Tag.find(tag_ranks)
-    @new_articles = Article.all.order(updated_at: :desc).page(params[:page]).per(4)#全ての投稿の最新の投稿
-    # これ以下はAjax通信の場合のみ通過
-    return unless request.xhr?
-    case params[:type]
-    when 'articles'
-      
-      render "commons/_#{params[:type]}"
-    end
+    @new_articles = Article.all.order(updated_at: :desc).page(params[:page]).per(12)#全ての投稿の最新の投稿
   end
 
   def show

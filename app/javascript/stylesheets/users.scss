@@ -1,0 +1,40 @@
+.users {
+  &-avatar {
+    text-align: center;
+    padding-top: 1.5rem;
+  }
+  &-name {
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+    padding-top: 0.5rem;
+  }
+  &-group {
+    display: flex;
+    justify-content: space-between;
+    width: 75%;
+    background: #f8f9fa;
+    border: 1px solid #dee2e6;
+    border-radius: 10px;
+    margin: auto;
+  }
+}
+.follow-name {
+  display: inline-block;
+  font-size: 14px;
+  padding-bottom: 1rem;
+}
+.counts {
+  display: flex;
+  font-size: 14px;
+  &-followings{
+    display: flex;
+    flex-direction: column;
+    margin-right: 0.25rem;
+  }
+  &-followers {
+    display: flex;
+    flex-direction: column;
+  }
+}
+

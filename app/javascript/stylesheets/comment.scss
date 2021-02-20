@@ -1,0 +1,39 @@
+.comment {
+  text-align: center;
+  &-form {
+    margin: 3rem 0;
+  }
+  
+  &-all {
+    display: inline-block;
+    font-size: 20px;
+    font-weight: bold;
+    border-bottom: $border-color;
+    margin-bottom: 1rem;
+  }
+}
+.comment-post {
+  font-size: 20px;
+  font-weight: bold;
+  border: 1px solid gray;
+  padding: 0.5rem 1.5rem;
+  cursor: pointer;
+  
+  &:hover {
+    opacity: 0.8;
+  }
+}
+.add-comment {
+  font-size: 20px;
+  font-weight: bold;
+  border: 1px solid gray;
+  padding: 0.5rem 1.5rem;
+  cursor: pointer;
+  &:hover {
+    opacity: 0.8;
+  }
+} 
+.comment-text {
+  height: 100px;
+  width: 70%;
+}

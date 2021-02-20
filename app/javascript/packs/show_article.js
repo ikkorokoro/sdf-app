@@ -6,9 +6,9 @@ listenGoodEvent
 }from 'modules/handle_heart'
 
 const handleControllerForm = () => {
-  $('.show-comment-form').on('click', () => {
-    $('.show-comment-form').addClass('d-none')
-    $('.comment-text-area').removeClass('d-none')
+  $('.comment-form').on('click', () => {
+    $('.comment-form').addClass('d-none')
+    $('.comment-area').removeClass('d-none')
   })
 }
 
@@ -23,10 +23,10 @@ const handleLikesDisplay = (hasLiked, likesCount) => {
 }
 
 const appendNewComment = (comment) => {
-  $('.comment').append(
+  $('.comments').append(
     `<div class= "d-flex bg-light border w-75 commment-box mx-auto">
-       <a href= "https://item.rakuten.co.jp/shop-senjin/7090/">
-         <img class= "user-avatar mt-2"src="${(comment.avatar_url)}"</img>
+       <a href= "/accounts/${(comment.user.id)}">
+         <img class= "user-avatar mt-1"src="${(comment.avatar_url)}"</img>
        </a>
       <span class= "ml-2 mt-3 sm-font">${(comment.display_name)}</span>
       <span class= "mt-3 font-weight-bold mx-auto">${(comment.content)}</span>
@@ -43,7 +43,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const articleId = dataset.articleId
   /* getリクエストを送り, commetsを取得し,
   それを一つずつ.comments-containerに追加する */
-  axios.get(`/articles/${articleId}/comments`)
+  axios.get(`/api/articles/${articleId}/comments`)
     .then((response) => {
       const comments = response.data
       comments.forEach((comment) => { 
@@ -59,21 +59,21 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!content) {
       window.alert('コメントを入力してください')
     } else {
-      axios.post(`/articles/${articleId}/comments`, {
+      axios.post(`/api/articles/${articleId}/comments`, {
         comment: { content: content }
       })
         .then((response) => { 
           const comment = response.data
           appendNewComment(comment)
           $('#comment_content').val('')
-          $('.show-comment-form').removeClass('d-none')
-          $('.comment-text-area').addClass('d-none')
+          $('.comment-form').removeClass('d-none')
+          $('.comment-area').addClass('d-none')
       })
     }
   })
   handleControllerForm()
 
-  axios.get(`/articles/${articleId}/like`)
+  axios.get(`/api/articles/${articleId}/like`)
   .then((response) => {
     const hasLiked = response.data.hasLiked
     const likesCount = response.data.likesCount

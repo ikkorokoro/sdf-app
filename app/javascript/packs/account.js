@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     /* ページ読み込み時にgetリクエストを送りフォロー、フォロワーの人数を表示、
     フォローしている時としていない時で表示を切り替える */
-  axios.get(`/accounts/${accountId}/informations`)
+  axios.get(`/api/accounts/${accountId}/informations`)
   .then((response) => {
     const hasFollow = response.data.hasFollow
     const followers = response.data.followers

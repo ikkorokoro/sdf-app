@@ -1,26 +1,31 @@
-.mx-auto
-  .d-flex.flex-column.base-font.font-weight-bold
-    .card.card-radius.box-shadow.bg-light.mb-4{:style => "width: 220px;"}
+- articles.each do |article|
+  .articles
+    .card.articles-card
       = link_to article_path(article) do
         - if article.image.attached?
-          = image_tag article.image, class: 'card-img-top'
-      .position-relative.p-1
-        .lg-font.font-weight-bold.text-center.mb-1
+          = image_tag article.image, class: 'card-img-top hover'
+      .articles-price
+        #{article.price}円
+      .articles-star
+        星評価 #{article.rate}
+      .articles-info
+        .objects
           = article.object 
-        .d-flex.justify-content-between.mb-2.px-2
-          .article-left
+        .author
+          .author-left
             = link_to account_path(article.user) do
-              = image_tag article.user.avatar_image, class: 'article-avatar'
-            %span.d-inline-block.mb-1= article.user.display_name
-          .article-right.pt-2
-            = image_tag 'コメントの無料アイコン.png', class: 'article-img'
-            = article.comments.count
-            = image_tag '無料のいいねの手のアイコン素材 .png', class: 'article-img ml-1'
-            = article.likes.count
-        .d-flex.justify-content-between
+              = image_tag article.author_image, class: 'user-avatar'
+            %span.author-name
+              = article.author_name
+          .author-right
+            = image_tag 'コメントの無料アイコン.png', class: 'articles-img'
+            = article.comment_count
+            = image_tag '無料のいいねの手のアイコン素材 .png', class: 'articles-img ml-1'
+            = article.like_count
+        .articles-tags
           - article.tags.each do |tag|
-            %span.py-1.px-3.mr-1.tug-bg.radius-200.font-weight-bold
-              %span ##{tag.name}
-        .text-right.sm-font
+            %span.articles-tag
+              %span #{tag.name}
+        .articles-time
           %time(datetime="#{article.created_at}")
             = time_ago_in_words(article.created_at) + "前"
