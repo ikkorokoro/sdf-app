@@ -1,34 +1,28 @@
-.d-flex.flex-column
-  %li.hoverdown.mx-auto.mt-4
-    - if user&.profile&.avatar&.attached?
-      = image_tag user.profile.avatar, class: 'profile-avatar'
-    - else 
-      = image_tag '軍人のアイコン素材.png', class: 'profile-avatar'
+.user-info
+  %li.hoverdown.user-info-avatar
+    = image_tag user.avatar_image, class: 'profile-avatar'
     - if user == current_user
       .hoverdown-content
         = link_to 'プロフィール編集', edit_profile_path
-  .text-center.base-font.pt-3
-    - if user&.profile&.name
-      = user&.profile.name
-    - else
-      = user.account
+  .user-info-name
+    = user.display_name
   - unless user == current_user
-    .text-center.mt-3
-      %span.btn-bg.border.border-secondary.py-2.px-3.font-weight-bold.hover.cursor-pointer.d-none#follow-btn
+    .follow-count
+      %span.follow.d-none#follow-btn
         フォロー
-      %spanbg.border.border-secondary.py-2.px-3.font-weight-bold.hover.cursor-pointer.bg-light.d-none#unfollow-btn
+      %span.following.d-none#unfollow-btn
         フォロー中
-.d-flex.justify-content-center.my-4
-  .d-flex.flex-column.mr-4
-    = link_to 'フォロー', account_actives_path(user.id), class: 'link-color text-decoration-none base-font font-weight-bold'
+.info-box
+  .followings
+    = link_to 'フォロー', account_actives_path(user.id)
     %p.text-center#following-count 0
-  .d-flex.flex-column.mr-4
-    = link_to 'フォロワー', '#', class: 'link-color text-decoration-none base-font font-weight-bold'
+  .followers
+    = link_to 'フォロワー', account_passives_path(user.id)
     %p.text-center#follower-count 0
-  .d-flex.flex-column
-    .base-font.text-center 所属部隊
-    %p= user&.profile&.affiliation
-.mb-4.text-center
-  .base-font.mb-2 自己紹介
-  .border-secondary.base-font.mx-auto.border.introduction-box
-    = user&.profile&.introduction
+  .affili
+    .affili-title 所属部隊
+    %p= user.if_affiliation
+.intro
+  .intro-title 自己紹介
+  .intro-area
+    = user.if_intro

@@ -1,0 +1,29 @@
+.main-bg-color
+  %ul
+    - @profile.errors.full_messages.each do |msg|
+      %li= msg
+  .post
+    = form_with(model: @profile, url: profile_path, method: 'put', local: true) do |f|
+      .post-image
+        = f.label 'プロフィール画像(画像をクリック)', class: 'base-label pt-4'
+        = f.label :avatar do
+          - if @profile&.avatar&.attached?
+            = image_tag @profile.avatar, class: 'profile-avatar pointer', id: 'post-img'
+          - else 
+            = image_tag '軍人のアイコン素材.png', class: 'profile-avatar pointer', id: 'post-img'
+        = f.file_field :avatar, class: 'd-none'
+      .mb-4
+        = f.label :name, '名前', class: 'base-label'
+        %br/
+        = f.text_field :name, autofocus: true
+      .mb-4
+        = f.label :affiliation, '所属部隊', class: 'base-label'
+        %br/
+        = f.text_field :affiliation, autofocus: true
+      %div
+        = f.label :introduction, '自己紹介' , class: 'base-label' 
+      .mx-4.mb-4
+        = f.rich_text_area :introduction
+      .pb-4
+        = f.submit "編集する", class: 'btn-bg post-btn'
+= javascript_pack_tag 'change_image'

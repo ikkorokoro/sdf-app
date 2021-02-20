@@ -1,31 +1,44 @@
-.sign-container {
+.sign {
   background-color: #F4FAF7;
   padding: 32px;
   display: flex;
   justify-content: space-between;
   height: 900px;
-}
-.sign-img {
   background-image: url("../../assets/images/wallpaperbetter 3.png");
   background-size: cover;
-}
-.sign-left{
-  width: 50%;
-  font-size: 35px;
-  color: #616462;
-  font-weight: bold;
-  color: black;
-  margin: auto;
+  &-left {
+    width: 50%;
+    font-size: 35px;
+    color: #616462;
+    font-weight: bold;
+    color: black;
+    margin: auto;
     &-text {
       text-align: center;
       letter-spacing: 10px;
     }
+  }
+  &-right {
+    text-align: center;
+    background-color: #F4FAF7;
+    border-radius: 10px;
+    margin: auto;
+    padding: 1.5rem 0.25rem;
+  }
+  &-title {
+    font-size: 24px;
+    font-weight: bold;
+    color: #00461C;
+    margin-bottom: 1.5rem;
+  }
+  &-btn {
+    background: $btn-bg;
+    font-weight: bold;
+    border: 1px solid gray; 
+    border-radius: $radius200;
+    padding: 0.5rem 1rem;
+    &:hover {
+      opacity: 0.8;
+    }
+  } 
 }
-.sign-right {
-  text-align: center;
-  margin: auto;
-  background-color: #F4FAF7;
-  border-radius: 10px;
-}
-
-

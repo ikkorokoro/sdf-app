@@ -1,38 +1,43 @@
-.main-bg-color.h-100#article-show{data: {article_id: @article.id}}
+.main-bg-color#article-show{data: {article_id: @article.id}}
   .container
-    .row.justify-content-center.pt-4
-      .card-radius{:style => "width: 430px;"}
+    .row.show
+      .show-img
         - if @article.image.attached?
           = image_tag @article.image, class: 'card-img-top'
-      .card-radius.position-relative.bg-white.box-shadow.p-3{:style => "width: 430px;"}
-        .d-flex.mb-2.position-relative
-          .base-font.font-weight-bold 物品名
-          .base-font.mx-auto 
+      .show-reviews
+        .object
+          .object-title
+            物品名
+          .object-value
             = @article.object
-          .article-position
+          .show-avatar-box
             = link_to account_path(@article.user) do
               = image_tag @article.user.avatar_image, class: 'user-avatar'
           - if user_signed_in? && current_user.has_written?(@article)
-            %li.hoverdown.show-icon-position
+            %li.hoverdown.show-icon
               = image_tag 'more-button-of-three-dots_icon-icons.com_74259.png'
               .hoverdown-content.base-font
                 = link_to '編集', edit_article_path(@article)                
                 = link_to '削除', article_path(@article), data: { method: 'delete', confirm: '本当に削除してもよろしいですか' }
-        .d-flex.mb-2
-          .base-font.font-weight-bold 購入金額
-          .base-font.mx-auto 
+        .price
+          .price-title 
+            購入金額
+          .price-value
             #{@article.price}円
-        .d-flex.mb-2
-          .base-font.font-weight-bold 購入場所
-          .base-font.mx-auto 
+        .store
+          .store-title 
+            購入場所
+          .store-value
             = @article.store
-        .d-flex.mb-2
-          .base-font.font-weight-bold カテゴリ
-          .base-font.mx-auto 
-            = @article.category.category_name
-        .d-flex.mb-2
-          .base-font.font-weight-bold 評価
-          %div.mx-auto{:id => "star-rate#{@article.id}"}
+        .category
+          .category-title 
+            カテゴリ
+          .category-value
+            = @article.cat_name
+        .rate
+          .rate-title 
+            評価
+          .rate-position{id: "star-rate#{@article.id}"}
           :javascript
             $('#star-rate#{@article.id}').raty({
               size      : 36,
@@ -42,28 +47,30 @@
               readOnly: true,
               score: #{@article.rate},
             });
-        .base-font.mb-2.font-weight-bold 感想
-        %p.mb-2=@article.content
+        .content
+          感想
+        .content-value
+          =@article.content
         - @article.tags.each do |tag|
-          %span.py-2.px-3.mb-2.mr-1.tug-bg.radius-200.font-weight-bold
+          %span.show-tugs
             #{tag.name}
-        = image_tag '無料のいいねの手のアイコン素材.png', class: 'article-img ml-1 good-img-position cursor-pointer d-none', id: 'good'
-        = image_tag '無料のいいねの手のアイコン素材 .png', class: 'article-img ml-1 good-img-position cursor-pointer d-none', id: 'notgood'
-        %span.count-position#likes-count  0
-        %span.sm-font.post-time
+        = image_tag '無料のいいねの手のアイコン素材.png', class: 'show-like d-none', id: 'good'
+        = image_tag '無料のいいねの手のアイコン素材 .png', class: 'show-like d-none', id: 'notgood'
+        %span.show-count#likes-count 0
+        %span.post-time
           %time(datetime="#{@article.created_at}")
             = time_ago_in_words(@article.created_at) + "前"
-  .text-center
-    .show-comment-form.my-5
-      %span.btn-bg.lg-font.border.border-secondary.py-2.px-4.font-weight-bold.hover.cursor-pointer
+  .comment
+    .comment-form
+      %span.comment-post.btn-bg
         コメントを投稿
-    .comment-text-area.d-none
+    .comment-area.d-none
       .mt-4
-        = text_area_tag :comment_content, '', class: 'comment-form w-50'
+        = text_area_tag :comment_content, '', class: 'comment-text'
       .my-4
-        %span.btn-bg.lg-font.border.border-secondary.py-2.px-4.font-weight-bold.hover.cursor-pointer#add-comment-button
+        %span.add-comment.btn-bg#add-comment-button
           コメントを追加
-    %span.lg-font.border-color.font-weight-bold.d-inline-block.mb-3 
+    %span.comment-all
       コメント一覧
-    .comment
+    .comments
 = javascript_pack_tag 'show_article'

@@ -11,19 +11,15 @@
     %nav.navbar.navbar-expand-lg.navbar-light.header-img
       .navbar-brand
         - if !current_page?(root_path)
-          = link_to :back, class: 'text-decoration-none' do
-            = image_tag 'カッチリした矢印アイコン素材 左向き.png', class: 'bg-light mb-2'
-        = link_to 'Soldier Reviews', root_path, class: 'xg-font title-color text-decoration-none font-weight-bold'
+          = link_to :back do
+            = image_tag 'カッチリした矢印アイコン素材 左向き.png', class: 'yazirusi'
+        = link_to 'Soldier Reviews', root_path, class: 'header-title'
       - if user_signed_in?
         %li.hoverdown.ml-3
-          - if current_user.profile&.avatar&.attached?
-            = image_tag current_user.profile.avatar, class: 'user-avatar hoverbtn'
-          - else 
-            = image_tag '軍人のアイコン素材.png', class: 'user-avatar bg-light hoverbtn'
+          = image_tag current_user.avatar_image, class: 'user-avatar hoverbtn'
           .hoverdown-content
             = link_to 'プロフィール', profile_path
             = link_to 'ログアウト', destroy_user_session_path, data: { method: 'delete' }
-            = link_to 'タイムライン', timeline_path
         %button.navbar-toggler{"aria-controls" => "navbarSupportedContent", "aria-expanded" => "false", "aria-label" => "Toggle navigation", "data-target" => "#navbarSupportedContent", "data-toggle" => "collapse", :type => "button"}
           %span.navbar-toggler-icon
         #navbarSupportedContent.collapse.navbar-collapse
@@ -31,18 +27,18 @@
             %li.nav-item.ml-3
               .nav-link
                 - if unchecked_notifications.any?
-                  %i.fa.fa-circle{:style => "color: gold;"}
-                = link_to "通知", notifications_path, class: 'font-weight-bold text-decoration-none base-font'
-            %li.nav-item.ml-3 
+                  %i.fa.fa-circle
+                = link_to '通知', notifications_path, class: 'toggler-list'
+            %li.nav-item.ml-3
               .nav-link
-                = link_to '投稿', new_article_path, class: 'font-weight-bold text-decoration-none base-font'
+                = link_to '投稿', new_article_path, class: 'toggler-list'
       - else
         .d-flex
-          = link_to new_user_registration_path, class: 'btn-bg py-1 px-3 mr-2 radius-200 font-weight-bold text-decoration-none hover ' do
+          = link_to new_user_registration_path, class: 'sign-btn btn-posi' do
             %span 新規登録
-          = link_to new_user_session_path, class: 'btn-bg py-1 px-3 mr-2 radius-200 font-weight-bold text-decoration-none hover' do
+          = link_to new_user_session_path, class: 'sign-btn btn-posi' do
             %span ログイン
-          = link_to users_guest_sign_in_path, method: :post, class: 'btn-bg py-1 px-3 mr-2 radius-200 font-weight-bold text-decoration-none hover' do
+          = link_to users_guest_sign_in_path, method: 'post', class: 'sign-btn btn-posi' do
             %span ゲストログイン
     - if flash.present?
       .flash

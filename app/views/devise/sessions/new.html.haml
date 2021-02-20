@@ -1,24 +1,24 @@
-.sign-container.sign-img
+.sign
   .sign-left
     %p
       購入したアイテムの口コミを投稿して自衛官で共有し、よりパフォーマンスに優れたアイテムを探そう
-  .sign-right.py-4.px-2
-    .xg-font.title-color.font-weight-bold.mb-4 Soldier Reviews
+  .sign-right
+    .sign-title Soldier Reviews
     = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
       .mb-4
         = f.label :email, 'メールアドレス'
         %br/
-        = f.email_field :email, autofocus: true, autocomplete: "email", class: 'radius-200 border border-secondary'
+        = f.email_field :email, autofocus: true, autocomplete: "email"
       .mb-4
         = f.label :password, 'パスワード'
         %br/
-        = f.password_field :password, autocomplete: "current-password", class: 'radius-200 border border-secondary'
+        = f.password_field :password, autocomplete: "current-password"
       - if devise_mapping.rememberable?
         .mb-4
           = f.check_box :remember_me
           = f.label :remember_me, 'ログインを記憶する'
       .actions
-        = f.submit "ログイン", class: 'btn-bg border border-secondary py-2 px-3 mb-4 font-weight-bold radius-200 hover'
+        = f.submit "ログイン", class: 'sign-btn mb-4'
       %div 
-        = link_to 'ゲストログイン', users_guest_sign_in_path, class: 'btn-bg border border-secondary py-2 px-3 font-weight-bold radius-200 text-decoration-none hover'
+        = link_to 'ゲストログイン', users_guest_sign_in_path, method: 'post', class: 'sign-btn'
         

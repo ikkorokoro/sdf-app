@@ -1,0 +1,355 @@
+.main-bg-color {
+  background: rgba(161, 190, 167, 0.27);
+  width: 100vw;
+  height: 100%;
+}
+.new-path-img {
+  position: fixed;
+  bottom: 50px;
+  right: 20px;
+  z-index: 10;
+  width: 10rem;
+	height: 10rem;
+  border-radius: 50%;
+  background: rgba(7, 52, 0, 0.8);
+  padding-top: 2.6rem;
+  text-align: center;
+}
+.main {
+  width: 100%;
+  height: 340px;
+  background-image: url("../../assets/images/軍団.png");
+  background-size: cover;
+  text-align: center;
+  padding: 1.5rem 0;
+  &-logo {
+    font-size: 1.75rem;
+    font-weight: bold;
+    padding-bottom: 1.25rem;
+  }
+  &-search {
+    width: 50%;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+    border: 1px solid #dee2e6;
+  }
+  &-tug {
+    background: rgba(255, 255, 255, 0.68);
+    height: 100px;
+    width: 70%;
+    margin: auto;
+    margin-top: 0.5rem;
+    &-title {
+      display: inline-block;
+      border-bottom: $border-color;
+      font-size: 18px;
+      font-weight: bold;
+      margin-bottom: 0.5rem;
+    }
+    &-wrap {
+      display: flex;
+      justify-content: center;
+    }
+    &-top {
+      margin: 0 0.25rem 0.5rem 0;
+      border-radius: $radius200;
+      background: $tug-bg;
+      font-weight: bold;
+      padding: 0.25rem 1rem;
+    }
+  }
+}
+.icon {
+  color: white;
+  background-color: #3879D9;
+  padding: 0.25rem;
+}
+.article {
+  display: flex;
+  justify-content: space-between;
+  text-align: center;
+  &-right {
+    width: 80%;
+    text-align: center;
+    &-top {
+      display: inline-block;
+      border-bottom: $border-color;
+      font-size: 24px;
+      font-weight: bold;
+      margin: 1.5rem 0;
+    }
+  }
+  &-left {
+    width: 20%;
+    background-color: #f8f9fa;
+    text-align: center;
+    &-title {
+      display: inline-block;
+      border-bottom: $border-color;
+      font-size: 20px;
+      font-weight: bold;
+      margin: 1.5rem 0;
+    }
+  }
+}
+
+.cate {
+  width: 100%;
+  height: 250px;
+  background-image: url("../../assets/images/wallpaperbetter 3.png");
+  background-size: cover;
+  &-box {
+    background: rgba(255, 255, 255, 0.30);
+    height: 100%;
+    width: 100%;
+    text-align: center;
+    margin: auto;
+  }
+  &-title {
+    display: inline-block;
+    border-bottom: $border-color;
+    font-size: 24px;
+    font-weight: bold;
+    margin: 3rem 0 1rem 0;
+  }
+  &-top5 {
+    display: flex;
+    justify-content: center;
+  }
+}
+.categorys {
+  background: rgba(53, 157, 253, 0.8);
+  padding: 0.25rem 1.5rem;
+  margin: 0.5rem 0.25rem 0 0;
+  font-size: 20px;
+  border-radius: $radius200;
+  font-weight: bold;
+}
+.top-cate-article {
+  display: inline-block;
+  border-bottom: $border-color;
+  font-size: 24px;
+  font-weight: bold;
+  margin: 1.5rem 0;
+}
+.new-article-title {
+  display: inline-block;
+  border-bottom: $border-color;
+  font-size: 24px;
+  font-weight: bold;
+  margin: 0.5rem 0 1.5rem 0;
+}
+
+.show {
+  justify-content: center;
+  // padding-top: 3rem;
+  &-img {
+    border-radius: 10px;
+    width: 430px;
+  }
+  &-reviews {
+    position: relative;
+    width: 430px;
+    background: white;
+    box-shadow: 5px 5px 4px rgba(0, 0, 0, 0.25);
+    padding: 1rem;
+  }
+}
+.object {
+  display: flex;
+  position: relative;
+  margin-bottom: 0.5rem;
+  &-title {
+    font-weight: bold;
+    font-size: 18px;
+  }
+  &-value {
+    font-weight: 18px;
+    margin: auto;
+  }
+}
+.show-avatar-box {
+  position: absolute;
+  right: 0;
+}
+.show-icon {
+  position: absolute;
+  top: 50px;
+  right: 8px;
+}
+.price {
+  display: flex;
+  margin-bottom: 0.5rem;
+  &-title {
+    font-size: 18px;
+    font-weight: bold;
+  }
+  &-value {
+    font-size: 18px;
+    margin: auto;
+  }
+}
+.store {
+  display: flex;
+  margin-bottom: 0.5rem;
+&-title {
+  font-size: 18px;
+  font-weight: bold;
+}
+&-value {
+  font-size: 18px;
+  margin: auto;
+  }
+}
+.category {
+  display: flex;
+  margin-bottom: 0.5rem;
+&-title {
+  font-size: 18px;
+  font-weight: bold;
+}
+&-value {
+  font-size: 18px;
+  margin: auto;
+}
+}
+.rate {
+  display: flex;
+  margin-bottom: 0.5rem;
+&-title {
+  font-size: 18px;
+  font-weight: bold;
+}
+&-position {
+  margin: auto;
+  }
+}
+.content {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  &-value {
+    margin-bottom: 1rem;
+  }
+}
+.show-tugs {
+  background: rgba(53, 157, 253, 0.8);
+  font-weight: bold;
+  border-radius: $radius200;
+  padding: 0.5rem 1rem;
+  margin: 0 0.25rem 0.5rem 0; 
+}
+
+.show-like {
+  position: absolute;
+  bottom: 12px;
+  right: 100px;
+  width: 25px;
+  cursor: pointer;
+  margin: 0 1rem 0 0.5rem;
+}
+
+.show-count {
+  position: absolute;
+  bottom: 12px;
+  right: 77px;
+  padding-right: 1.5rem;
+  margin-left: 1rem;
+}
+.post-time {
+  position: absolute;
+  bottom: 12px;
+  right: 15px;
+  font-size: 14px;
+}
+.post {
+  background:  #f8f9fa;
+  width: 70%;
+  margin: auto;
+  text-align: center;
+  &-image{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1.5rem;
+  }
+  &-label {
+    font-size: 18px;
+    font-weight: bold;
+    padding-top: 1.5rem;
+  }
+}
+.btn-bg {
+  background: #00a441;
+}
+.click-image {
+  width: 120px;
+  height: 120px;
+  cursor: pointer;
+  border: 1px solid #dee2e6;
+}
+.base-label {
+  font-size: 18px;
+  font-weight: bold;
+}
+.post-btn {
+  font-size: 18px;
+  font-weight: bold;
+  border: 1px solid gray;
+  padding: 0.5rem 1.5rem;
+  &:hover {
+    opacity: 0.8;
+  }
+}
+.content-form {
+  width: 70%;
+  height: 150px;
+  padding: 0.25rem;
+}
+.detail-field {
+  width: 80%;
+  font-size: 14px;
+  border: 1px solid #dee2e6;
+}
+.detail-icon{
+  color: white;
+  background-color: #3879D9;
+  border-radius: $radius200;
+  padding: 0.25rem;
+  margin-top: 0.25rem;
+} 
+
+.result{
+  display: inline-block;
+  font-size: 24px;
+  font-weight: bold;
+  border-bottom: $border-color;
+  margin: 1rem 0 0.5rem 0;
+}
+.sort {
+  font-weight: bold;
+  &-title {
+    font-size: 20px;
+    padding-top: 0.5rem;
+  }
+  &-box {
+    width: 80%;
+    border: 1px solid #dee2e6;
+    background:  #f8f9fa;
+    margin: auto;
+    margin-bottom: 1rem;
+    padding: 0.25rem;
+  }
+  &-value {
+    font-size: 18px;
+    padding-right: 1rem;
+  }
+}
+.user-avatar {
+  width: 35px;
+  height: 35px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+.pointer {
+  cursor: pointer;
+}

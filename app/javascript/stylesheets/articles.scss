@@ -1,0 +1,82 @@
+.articles {
+  display: flex;
+  flex-direction: column;
+  font-size: 18px;
+  font-weight: bold;
+  margin: auto;
+  &-card {
+    position: relative;
+    width: 220px;
+    box-shadow: 5px 5px 4px rgba(0, 0, 0, 0.25);
+    background: #f8f9fa;
+    margin-bottom: 1.5rem;
+  }
+  &-price {
+    position: absolute;
+    top: 130px;
+    left: 0px;
+    background:rgba(39, 92, 195, 0.32);
+    padding: 5px 10px 5px 2px;
+    font-weight: bold;
+    font-size: 14px;
+  }
+  &-star {
+    position: absolute;
+    top: 100px;
+    left: 0px;
+    background:rgba(32, 76, 164, 0.32);
+    padding: 5px 10px 5px 2px;
+    font-weight: bold;
+    font-size: 14px;
+  }
+  &-info {
+    position: relative;
+    padding: 0.25rem;
+  }
+  &-tags {
+    display: flex;
+    justify-content: space-between;
+  }
+}
+.objects {
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 0.25rem;
+}
+.author {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+  padding: 0 0.5rem;
+  &-left {
+    display: flex;
+  }
+  &-name { 
+    display: inline-block;
+    margin: auto;
+    // .d-inline-block.mt-1
+  }
+  &-light {
+    padding-top: 0.5rem;
+  }
+}
+.articles-img {
+  width: 25px;
+}
+.articles-tag {
+  background: $tug-bg;
+  border-radius: $radius200;
+  font-weight: bold;
+  padding: 0.25rem 1rem;
+  margin-right: 0.25rem; 
+}
+.articles-time {
+  text-align: right;
+  font-size: 14px;
+}
+.hover {
+  &:hover {
+    opacity: 0.8;
+  }
+}

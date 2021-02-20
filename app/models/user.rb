@@ -40,9 +40,15 @@ class User < ApplicationRecord
   has_many :passive_notifications, class_name: 'Notification', foreign_key: 'visited_id', dependent: :destroy
   has_one :profile, dependent: :destroy
 
+  before_create :default_avatar
+  def default_avatar
+    profile = self.build_profile
+    profile.avatar.attach(io: File.open(Rails.root.join('app', 'assets', 'images', '1954451.jpg')), filename: '1954451.jpg', content_type: 'image/png')
+  end
+
   def has_written?(article)
     articles.exists?(id: article.id)
-  end
+  end 
 
   def has_liked?(article)
     likes.exists?(article_id: article.id)
@@ -77,11 +83,10 @@ class User < ApplicationRecord
       notification.save if notification.valid?
     end
   end
-  
+
   def self.guest
     find_or_create_by!(account: 'aiueokaki', email: 'guest@example.com') do |user|
     user.password = SecureRandom.urlsafe_base64
-    # user.confirmed_at = Time.now  # Confirmable を使用している場合は必要
   end
 end
 
@@ -93,4 +98,4 @@ end
         user
       end
     end
-end
+  end

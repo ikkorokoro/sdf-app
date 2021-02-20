@@ -1,13 +1,15 @@
 
 .tabs {
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
+  margin: 1.5rem 0;
 
   &_item {
     padding: 10px 10px;
     background-color: white;
     text-align: center;
     cursor: pointer;
+    border: 1px solid#dee2e6;
 
     &.active {
       background-color: #1B6739;
