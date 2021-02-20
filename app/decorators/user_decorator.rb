@@ -1,10 +1,8 @@
 # frozen_string_literal: true
 
 module UserDecorator
-  def avatar_image
-    if profile&.avatar&.attached?#画像がアップロードされているかのメソッド
+  def avatar_image#画像がアップロードされているかのメソッド
       profile.avatar
-    end
   end
 
   def display_name
