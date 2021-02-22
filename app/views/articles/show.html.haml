@@ -1,6 +1,6 @@
-.main-bg-color#article-show{data: {article_id: @article.id}}
-  .container
-    .row.show
+.main-bg-color.h-100#article-show{data: {article_id: @article.id}}
+  .show
+    .show-left
       .show-img
         - if @article.image.attached?
           = image_tag @article.image, class: 'card-img-top'
@@ -50,7 +50,7 @@
         .content
           感想
         .content-value
-          =@article.content
+          = @article.content
         - @article.tags.each do |tag|
           %span.show-tugs
             #{tag.name}
@@ -60,17 +60,29 @@
         %span.post-time
           %time(datetime="#{@article.created_at}")
             = time_ago_in_words(@article.created_at) + "前"
-  .comment
-    .comment-form
-      %span.comment-post.btn-bg
-        コメントを投稿
-    .comment-area.d-none
-      .mt-4
-        = text_area_tag :comment_content, '', class: 'comment-text'
-      .my-4
-        %span.add-comment.btn-bg#add-comment-button
-          コメントを追加
-    %span.comment-all
-      コメント一覧
-    .comments
+      .comment
+        .comment-form
+          %span.comment-post.btn-bg
+            コメントを投稿
+        .comment-area.d-none
+          .mt-4
+            = text_area_tag :comment_content, '', class: 'comment-text'
+          .my-4
+            %span.add-comment.btn-bg#add-comment-button
+              コメントを追加
+        %span.comment-all
+          コメント一覧
+        .comments
+    .show-right
+      %span.show-right-title 同じカテゴリの投稿
+      .show-right-box
+        - @cate_articles.each do |article|
+          .cate-article
+            .cate-hoverdown
+              = link_to article_path(article) do
+                = image_tag article.image, class: 'cate-img'
+                .cate-hoverdown-content.text-left
+                  %p 金額 #{article.price}円
+                  %p 星評価 #{article.rate}
+                  %p いいね数 #{article.likes.count}
 = javascript_pack_tag 'show_article'
