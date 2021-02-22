@@ -24,12 +24,12 @@ const handleLikesDisplay = (hasLiked, likesCount) => {
 
 const appendNewComment = (comment) => {
   $('.comments').append(
-    `<div class= "d-flex bg-light border w-75 commment-box mx-auto">
+    `<div class= "comment-content">
        <a href= "/accounts/${(comment.user.id)}">
-         <img class= "user-avatar mt-1"src="${(comment.avatar_url)}"</img>
+         <img class= "comment-avatar"src="${(comment.avatar_url)}"</img>
        </a>
-      <span class= "ml-2 mt-3 sm-font">${(comment.display_name)}</span>
-      <span class= "mt-3 font-weight-bold mx-auto">${(comment.content)}</span>
+      <span class= "comment-name">${(comment.user_name)}</span>
+      <span class= "comment-value">${(comment.content)}</span>
     </div>`
   )
 }

@@ -11,13 +11,13 @@ class ArticlesController < ApplicationController
     @top_category_articles = Article.where(category_id: top_one_category).limit(4)#一番人気のカテゴリの投稿を全て取得
     tag_ranks = ArticleTag.group(:tag_id).order('count(tag_id) desc').limit(5).pluck(:tag_id)
     @top_tags = Tag.find(tag_ranks)
-    @new_articles = Article.all.order(updated_at: :desc).page(params[:page]).per(12)#全ての投稿の最新の投稿
+    @new_articles = Article.all.order(updated_at: :desc).limit(8)#全ての投稿の最新の投稿
   end
 
   def show
     @article = Article.find(params[:id])
+    @cate_articles = Article.where(category_id: @article.category.id).order(updated_at: :desc).limit(5) 
   end
-
   def new
     @article = current_user.articles.build
   end
