@@ -1,5 +1,6 @@
 .comment {
   text-align: center;
+  padding-bottom: 2rem;
   &-form {
     margin: 3rem 0;
   }
@@ -36,4 +37,27 @@
 .comment-text {
   height: 100px;
   width: 70%;
+}
+.comment-content {
+  display: flex;
+  background-color: #f8f9fa;
+  border: 1px solid #dee2e6;
+  height: 70px;
+  width: 70%;
+  margin: auto;
+}
+.comment-avatar {
+  width: 45px;
+  height: 45px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+.comment-name {
+  font-size: 14px;
+  margin: 1.5rem 0 0 0.5rem;
+}
+.comment-value {
+  font-weight: bold;
+  margin-top: 1.5rem;
+  margin: auto;
 }
