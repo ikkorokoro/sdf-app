@@ -22,7 +22,7 @@ User.create!(
       account:               account
       )
 end
-#article
+# #article
 users = User.all
 gruop1 = users[0..1]
 gruop2 = users[2..3]
@@ -30,11 +30,18 @@ gruop3 = users[4..5]
 gruop4 = users[6..7]
 gruop5 = users[8..9]
 
+#category
+names = ['鉄帽', '中帽', '帽子類', '手袋', '戦闘服','バッグ',' 雨衣','装具','防寒類','靴','小物']
+names.each { |name| Category.create!(category_name: name)}
+# #tsgs
+tags = ['訓練','演習','室内','野外','射撃','夏用','冬用','夜間 ','安価','高価','コスパ','軽量','重量','機能性','収納力','耐久性','防寒性','防水性','防音性','偽装','迷彩','OD色','白色','黒色','大きい','小さい']
+tags.each {|tag| Tag.create!(name: tag)}
+
 object = '戦闘服'
 price = 8000
 store = '留萌駐屯地'
-category_id = 5
-tag_ids = [1, 6, 21]
+category_id = 41
+tag_ids = [1, 51, 91]
 rate = 2
 content = Faker::Lorem.sentence(word_count: 10)
 gruop1.each { |user| user.articles.create!( 
@@ -50,8 +57,8 @@ gruop1.each { |user| user.articles.create!(
 object = '手袋'
 price = 2000
 store = '旭川駐屯地'
-category_id = 4
-tag_ids = [1, 4, 6]
+category_id = 31
+tag_ids = [1, 31, 51]
 rate = 3
 content = Faker::Lorem.sentence(word_count: 10)
 gruop2.each { |user| user.articles.create!( 
@@ -67,8 +74,8 @@ gruop2.each { |user| user.articles.create!(
 object = 'バッグ'
 price = 10000
 store = '札幌駐屯地'
-category_id = 6
-tag_ids = [2, 10, 21]
+category_id = 51
+tag_ids = [11, 91, 201]
 rate = 5
 content = Faker::Lorem.sentence(word_count: 10)
 gruop3.each { |user| user.articles.create!( 
@@ -85,7 +92,7 @@ object = '鉄帽'
 price = 12000
 store = '釧路駐屯地'
 category_id = 1
-tag_ids = [2, 12, 21]
+tag_ids = [11, 111, 201]
 rate = 5
 content = Faker::Lorem.sentence(word_count: 10)
 gruop4.each { |user| user.articles.create!( 
@@ -102,7 +109,7 @@ object = '鉄帽'
 price = 10000
 store = '留萌駐屯地'
 category_id = 1
-tag_ids = [1, 9, 21]
+tag_ids = [1, 81, 201]
 rate = 4
 content = Faker::Lorem.sentence(word_count: 10)
 gruop5.each { |user| user.articles.create!( 

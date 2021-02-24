@@ -3,12 +3,12 @@
 # Table name: users
 #
 #  id                     :bigint           not null, primary key
-#  account                :string(255)      default(""), not null
-#  email                  :string(255)      default(""), not null
-#  encrypted_password     :string(255)      default(""), not null
+#  account                :string(191)      default(""), not null
+#  email                  :string(191)      default(""), not null
+#  encrypted_password     :string(191)      default(""), not null
 #  remember_created_at    :datetime
 #  reset_password_sent_at :datetime
-#  reset_password_token   :string(255)
+#  reset_password_token   :string(191)
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
 #
