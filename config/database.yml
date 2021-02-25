@@ -49,6 +49,6 @@ test:
 #
 production:
   <<: *default
-  database: sdf_app_production
-  username: sdf_app
+  database: <%= ENV['DB_NAME'] %>
+  username: <%= ENV['DB_USER'] %>
   url: <%= ENV['DATABASE_URL'] %>
