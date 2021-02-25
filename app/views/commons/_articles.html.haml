@@ -2,7 +2,8 @@
   .articles
     .card.articles-card
       = link_to article_path(article) do
-        = image_tag article.image, class: 'card-img-top hover'
+        - if article.image.attached?
+          = image_tag article.image, class: 'card-img-top hover'
       .articles-price
         #{article.price}円
       .articles-star
