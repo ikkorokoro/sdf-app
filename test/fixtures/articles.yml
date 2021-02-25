@@ -3,11 +3,11 @@
 # Table name: articles
 #
 #  id          :bigint           not null, primary key
-#  content     :string(255)      not null
-#  object      :string(255)      not null
+#  content     :string(191)      not null
+#  object      :string(191)      not null
 #  price       :integer          not null
 #  rate        :integer
-#  store       :string(255)      not null
+#  store       :string(191)      not null
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
 #  category_id :integer          not null

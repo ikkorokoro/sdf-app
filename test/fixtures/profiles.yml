@@ -3,8 +3,8 @@
 # Table name: profiles
 #
 #  id          :bigint           not null, primary key
-#  affiliation :string(255)
-#  name        :string(255)
+#  affiliation :string(191)
+#  name        :string(191)
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
 #  user_id     :bigint           not null
