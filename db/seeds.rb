@@ -40,8 +40,8 @@ tags.each {|tag| Tag.create!(name: tag)}
 object = '戦闘服'
 price = 8000
 store = '留萌駐屯地'
-category_id = 41
-tag_ids = [1, 51, 91]
+category_id = 5
+tag_ids = [1, 6, 10]
 rate = 2
 content = Faker::Lorem.sentence(word_count: 10)
 gruop1.each { |user| user.articles.create!( 
@@ -57,8 +57,8 @@ gruop1.each { |user| user.articles.create!(
 object = '手袋'
 price = 2000
 store = '旭川駐屯地'
-category_id = 31
-tag_ids = [1, 31, 51]
+category_id = 4
+tag_ids = [1, 4, 6]
 rate = 3
 content = Faker::Lorem.sentence(word_count: 10)
 gruop2.each { |user| user.articles.create!( 
@@ -74,8 +74,8 @@ gruop2.each { |user| user.articles.create!(
 object = 'バッグ'
 price = 10000
 store = '札幌駐屯地'
-category_id = 51
-tag_ids = [11, 91, 201]
+category_id = 6
+tag_ids = [2, 8, 21]
 rate = 5
 content = Faker::Lorem.sentence(word_count: 10)
 gruop3.each { |user| user.articles.create!( 
@@ -92,7 +92,7 @@ object = '鉄帽'
 price = 12000
 store = '釧路駐屯地'
 category_id = 1
-tag_ids = [11, 111, 201]
+tag_ids = [2, 12, 21]
 rate = 5
 content = Faker::Lorem.sentence(word_count: 10)
 gruop4.each { |user| user.articles.create!( 

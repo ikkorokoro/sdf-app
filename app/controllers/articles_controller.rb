@@ -18,6 +18,7 @@ class ArticlesController < ApplicationController
     @article = Article.find(params[:id])
     @cate_articles = Article.where(category_id: @article.category.id).order(updated_at: :desc).limit(5) 
   end
+  
   def new
     @article = current_user.articles.build
   end
