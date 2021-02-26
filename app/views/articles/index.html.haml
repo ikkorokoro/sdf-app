@@ -36,7 +36,8 @@
       .top-cate
         .top-cate-article
           %span
-            = link_to "##{@top_categorys.first.category_name}の投稿", search_articles_path(q: { category_id_eq: @top_categorys.first.id })
+            -if @top_categorys.present?
+              = link_to "##{@top_categorys.first.category_name}の投稿", search_articles_path(q: { category_id_eq: @top_categorys.first.id })
         .container
           .row
             = render 'commons/articles', articles: @top_category_articles
