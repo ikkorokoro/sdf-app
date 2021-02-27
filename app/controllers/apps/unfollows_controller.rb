@@ -1,5 +1,4 @@
 class Apps::UnfollowsController < Apps::ApplicationController
-  
 
   def create
     user = User.find(params[:account_id])

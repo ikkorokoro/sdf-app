@@ -1,5 +1,5 @@
 class ArticlesController < ApplicationController
-  before_action :authenticate_user!, only: [:new, :show, :create, :edit, :update, :destroy, :search] 
+  before_action :authenticate_user!, only: [:new, :show, :create, :edit, :update, :destroy, :search]
   before_action :set_q, only: [:index, :search]
 
   def index
@@ -16,9 +16,9 @@ class ArticlesController < ApplicationController
 
   def show
     @article = Article.find(params[:id])
-    @cate_articles = Article.where(category_id: @article.category.id).order(updated_at: :desc).limit(5) 
+    @cate_articles = Article.where(category_id: @article.category.id).order(updated_at: :desc).limit(5)
   end
-  
+
   def new
     @article = current_user.articles.build
   end
@@ -36,7 +36,7 @@ class ArticlesController < ApplicationController
   def edit
     @article = current_user.articles.find(params[:id])
   end
-  
+
   def update
     @article = current_user.articles.find(params[:id])
     if @article.update(params_article)
@@ -61,11 +61,11 @@ class ArticlesController < ApplicationController
   private
   def params_article
     params.require(:article).permit(
-      :object, 
-      :price, 
-      :store, 
-      :category_id, 
-      :content, 
+      :object,
+      :price,
+      :store,
+      :category_id,
+      :content,
       :rate,
       :image,
       tag_ids: [])

@@ -5,10 +5,10 @@ class Apps::Myprofs::ProfilesController < Apps::Myprofs::ApplicationController
     @articles = current_user.articles
   end
 
-  def edit 
+  def edit
     @profile = current_user.prepre_profile
   end
-  
+
   def update
     @profile = current_user.prepre_profile
     @profile.assign_attributes(params_profile)

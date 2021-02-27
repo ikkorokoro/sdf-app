@@ -28,7 +28,7 @@ scope module: :apps do
     resources :passives, only: [:index]
   end
 end
-namespace :api, defaluts: [format: :json] do 
+namespace :api, defaluts: [format: :json] do
   scope '/articles/:article_id' do
     resources :comments, only: [:index, :create]
     resource :like, only: [:show, :create, :destroy]

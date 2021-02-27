@@ -16,7 +16,7 @@ module ArticleDecorator
   def author_image
     user.avatar_image
   end
-  
+
   def author_name
     user.display_name
   end

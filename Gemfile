@@ -21,20 +21,18 @@ gem 'jbuilder', '~> 2.7'
 # gem 'redis', '~> 4.0'
 # Use Active Model has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
-gem 'annotate'
-gem 'hamlit'
-gem 'devise'
 gem 'active_decorator'
 gem 'active_model_serializers'
+gem 'annotate'
+gem 'devise'
 gem 'faker'
 gem 'gimei'
+gem 'hamlit'
 gem 'kaminari'
 # Use Active Storage variant
+gem 'aws-sdk-s3', require: false
 gem 'image_processing', '~> 1.2'
 gem 'rakuten_web_service'
-gem 'aws-sdk-s3', require: false
-
-
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
@@ -45,10 +43,10 @@ group :development, :test do
   gem 'binding_of_caller'
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'dotenv-rails'
+  gem 'dotenv-rails'
   gem 'erb2haml'
   gem 'pry-byebug'
   gem 'rubocop-rails'
-  gem 'dotenv-rails'
 end
 
 group :development do
