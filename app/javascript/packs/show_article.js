@@ -43,7 +43,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const articleId = dataset.articleId
   /* getリクエストを送り, commetsを取得し,
   それを一つずつ.comments-containerに追加する */
-  axios.get(`/api/articles/${articleId}/comments`)
+  axios.get(`/articles/${articleId}/comments`)
     .then((response) => {
       const comments = response.data
       comments.forEach((comment) => { 
@@ -59,7 +59,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!content) {
       window.alert('コメントを入力してください')
     } else {
-      axios.post(`/api/articles/${articleId}/comments`, {
+      axios.post(`/articles/${articleId}/comments`, {
         comment: { content: content }
       })
         .then((response) => { 
@@ -73,7 +73,7 @@ document.addEventListener('DOMContentLoaded', () => {
   })
   handleControllerForm()
 
-  axios.get(`/api/articles/${articleId}/like`)
+  axios.get(`/articles/${articleId}/like`)
   .then((response) => {
     const hasLiked = response.data.hasLiked
     const likesCount = response.data.likesCount
