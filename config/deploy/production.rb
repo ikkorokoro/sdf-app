@@ -1,4 +1,4 @@
-server "ElatsticIP", user: "kosuke", roles: %w{app db web}
+server "35.72.128.67", user: "kosuke", roles: %w{app db web}
 
 set :ssh_options, {
   keys: %w(~/.ssh/sdf_app.pem),
