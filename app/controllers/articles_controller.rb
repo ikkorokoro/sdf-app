@@ -3,8 +3,7 @@ class ArticlesController < ApplicationController
   before_action :set_q, only: [:index, :search]
 
   def index
-    month_articles = Article.includes(:likes).where(created_at: Time.now.beginning_of_month..Time.now.end_of_month)#今月の投稿
-    @ranking_articles = month_articles.find(Like.group(:article_id).order('count(article_id) desc').limit(4).pluck(:article_id))#投稿の中でいいねが多い記事を3つ
+    @ranking_articles = Article.find(Like.group(:article_id).order('count(article_id) desc').limit(4).pluck(:article_id))#投稿の中でいいねが多い記事を3つ
     category_ranks = Article.group(:category_id).order('count(category_id) desc').limit(5).pluck(:category_id)#投稿の多いカテゴリ上位のidを５つ取得
     @top_categorys = Category.find(category_ranks)
     top_one_category = category_ranks.first#一番初めのカテゴリ(一番人気のカテゴリ)のidを取得
