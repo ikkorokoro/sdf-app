@@ -49,6 +49,8 @@ test:
 #
 production:
   <<: *default
-  database: <%= ENV['DB_NAME'] %>
-  username: <%= ENV['DB_USER'] %>
+  database: sdf_app_production
+  username: root
+  password: <%= ENV['RDS_PASSWORD'] %>
+  host: <%= ENV['RDS_ENDPOINT'] %>
   url: <%= ENV['DATABASE_URL'] %>
