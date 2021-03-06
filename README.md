@@ -52,5 +52,6 @@
 * バージョン管理  
   * Git/GitHub 
 # データベース設計
-<img width="576" alt="スクリーンショット 2021-03-06 18 57 13" src="https://user-images.githubusercontent.com/62924821/110202709-d7ce5e00-7ead-11eb-90e9-b4065ef339a3.png">
+<img width="576" alt="スクリーンショット 2021-03-06 18 57 13" src="https://user-images.githubusercontent.com/62924821/110202748-119f6480-7eae-11eb-8d1d-27b190447513.png">
+
 
