@@ -51,3 +51,5 @@
   * AWS(VPC/EC2/RDS/ALB/S3/ACM/Route53)
 * バージョン管理  
   * Git/GitHub 
+# データベース設計
+![データベース設計](https://gyazo.com/6e4318ff9c1c445939d54fa54d380f94)
