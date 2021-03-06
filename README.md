@@ -52,4 +52,4 @@
 * バージョン管理  
   * Git/GitHub 
 # データベース設計
-!(https://gyazo.com/6e4318ff9c1c445939d54fa54d380f94)
+<img width="808" alt="スクリーンショット 2021-03-06 18 55 02" src="https://user-images.githubusercontent.com/62924821/110202666-95a51c80-7ead-11eb-8216-28249cf4a555.png">
