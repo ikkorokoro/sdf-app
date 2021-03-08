@@ -181,6 +181,7 @@ GEM
     jbuilder (2.11.2)
       activesupport (>= 5.0.0)
     jmespath (1.4.0)
+    json (2.5.1)
     jsonapi-renderer (0.2.2)
     kaminari (1.2.1)
       activesupport (>= 4.1.0)
@@ -266,6 +267,8 @@ GEM
       thor (>= 0.20.3, < 2.0)
     rainbow (3.0.0)
     rake (13.0.3)
+    rakuten_web_service (1.13.0)
+      json (~> 2.3)
     ransack (2.4.2)
       activerecord (>= 5.2.4)
       activesupport (>= 5.2.4)
@@ -412,6 +415,7 @@ DEPENDENCIES
   pry-byebug
   puma (~> 4.1)
   rails (~> 6.0.3, >= 6.0.3.4)
+  rakuten_web_service
   ransack
   rspec-rails
   rubocop-rails
