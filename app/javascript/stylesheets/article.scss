@@ -141,10 +141,6 @@
 }
 
 .show {
-  display: flex;
-  &-left {
-    width: 80%;
-  }
   &-img {
     border-radius: 10px;
     width: 430px;
@@ -160,26 +156,8 @@
     padding: 1rem;
     margin: auto;
   }
-  &-right {
-    width: 20%;
-    background-color: #f8f9fa;
-    text-align: center;
-    padding-top: 1.5rem;
-  }
 }
-.object {
-  display: flex;
-  position: relative;
-  margin-bottom: 0.5rem;
-  &-title {
-    font-weight: bold;
-    font-size: 18px;
-  }
-  &-value {
-    font-size: 18px;
-    margin: auto;
-  }
-}
+
 .show-avatar-box {
   position: absolute;
   right: 0;
@@ -189,8 +167,9 @@
   top: 50px;
   right: 8px;
 }
-.price {
+.column {
   display: flex;
+  border-bottom: 1px solid#dee2e6;
   margin-bottom: 0.5rem;
   &-title {
     font-size: 18px;
@@ -201,46 +180,15 @@
     margin: auto;
   }
 }
-.store {
-  display: flex;
-  margin-bottom: 0.5rem;
-&-title {
-  font-size: 18px;
-  font-weight: bold;
-}
-&-value {
-  font-size: 18px;
-  margin: auto;
-  }
-}
-.category {
-  display: flex;
-  margin-bottom: 0.5rem;
-&-title {
-  font-size: 18px;
-  font-weight: bold;
-}
-&-value {
-  font-size: 18px;
-  margin: auto;
-}
-}
-.rate {
-  display: flex;
-  margin-bottom: 0.5rem;
-&-title {
-  font-size: 18px;
-  font-weight: bold;
-}
-&-position {
-  margin: auto;
-  }
-}
+
 .content {
   font-size: 18px;
   font-weight: bold;
+  border-bottom: 1px solid#dee2e6;
   margin-bottom: 0.5rem;
   &-value {
+    background-color: rgb(238, 238, 238);
+    border:  1px solid#dee2e6;
     margin-bottom: 1rem;
   }
 }
@@ -317,28 +265,65 @@
   height: 150px;
   padding: 0.25rem;
 }
-.show-right-title {
-  display: inline-block;
-  font-size: 16px;
-  font-weight: bold;
-  border-bottom: $border-color;
-  margin-bottom: 1.5rem;
-}
-.show-right-box {
-  display: flex;
-  flex-direction: column;
-}
-.cate-article {
-  border: 1px solid rgb(89, 89, 89);
-  width: 90%;
+
+
+/*========== rakuten api ========== */
+.rakuten-api {
   text-align: center;
-  margin: auto;
-  margin-bottom: 1.5rem;
 }
-.cate-img {
-  width: 100%;
+
+.rakuten {
+  margin: 1.5rem 0;
+  &-link {
+    font-size: 20px;
+    font-weight: bold;
+    border: 1px solid gray;
+    padding: 0.5rem 1.5rem;
+    cursor: pointer;
+    background-color: rgb(247, 112, 112);
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+}
+
+.rakuten-title {
+  display: inline-block;
+  border-bottom: $border-color;
+  font-size: 20px;
+  font-weight: bold;
+  margin: 1.5rem 0;
+}
+
+.rakuten-items {
+  display: flex;
+}
+
+.rakuten-item {
+  border: 1px solid#dee2e6;
+  margin: auto;
+  background-color: white;
+}
+
+.api-content{
+  margin: auto;
+}
+.api-img {
   &:hover {
-    opacity: 0.8;
+    opacity: 0.8
+  }
+}
+
+.api {
+  display: flex;
+  margin: auto;
+&-title {
+  font-size: 18px;
+  font-weight: bold;
+}
+&-value {
+  font-size: 18px;
+  margin: auto;
   }
 }
 

@@ -4,10 +4,10 @@
       - if @article.image.attached?
         = image_tag @article.image, class: 'card-img-top'
     .show-reviews
-      .object
-        .object-title
+      .column
+        .column-title
           物品名
-        .object-value
+        .column-value
           = @article.object
         .show-avatar-box
           = link_to account_path(@article.user) do
@@ -18,25 +18,25 @@
             .hoverdown-content.base-font
               = link_to '編集', edit_article_path(@article)                
               = link_to '削除', article_path(@article), data: { method: 'delete', confirm: '本当に削除してもよろしいですか' }
-      .price
-        .price-title 
+      .column
+        .column-title 
           購入金額
-        .price-value
+        .column-value
           #{@article.price}円
-      .store
-        .store-title 
+      .column
+        .column-title 
           購入場所
-        .store-value
+        .column-value
           = @article.store
-      .category
-        .category-title 
+      .column
+        .column-title 
           カテゴリ
-        .category-value
+        .column-value
           = @article.cat_name
-      .rate
-        .rate-title 
+      .column
+        .column-title 
           評価
-        .rate-position{id: "star-rate#{@article.id}"}
+        .column-value{id: "star-rate#{@article.id}"}
         :javascript
           $('#star-rate#{@article.id}').raty({
             size      : 36,
@@ -53,25 +53,14 @@
       - @article.tags.each do |tag|
         %span.show-tugs
           #{tag.name}
-      = image_tag '無料のいいねの手のアイコン素材.png', class: 'show-like d-none', id: 'good'
-      = image_tag '無料のいいねの手のアイコン素材 .png', class: 'show-like d-none', id: 'notgood'
+      #good.d-none
+        %i.fas.fa-thumbs-up.fa-2x.show-like
+      #notgood.d-none
+        %i.far.fa-thumbs-up.fa-2x.show-like
       %span.show-count#likes-count 0
       %span.post-time
         %time(datetime="#{@article.created_at}")
           = time_ago_in_words(@article.created_at) + "前"
-    - if @top_items.present?
-      .rakuten-api
-        %span.top-review 楽天市場の同アイテム(評価4.5以上)
-        .rakuten-items
-          - @top_items.each do |item|
-            .rakuten-item
-              .api-img
-                = link_to item['item_url'] do
-                  = image_tag item['mediumImageUrls'][0], class: 'item-img'
-              .api-content
-                = item['itemName']
-                = item['itemPrice']
-                平均評価#{item['reviewAverage']}
     .comment
       .comment-form
         %span.comment-post.btn-bg
@@ -85,4 +74,28 @@
       %span.comment-all
         コメント一覧
       .comments
+        
+    - if @senjins.present?
+      .rakuten-api
+        .rakuten
+          = link_to '楽天市場で探す', "https://search.rakuten.co.jp/search/mall/戦人-senjin-+#{@article.object}", class: 'rakuten-link'
+        %span.rakuten-title 楽天市場の同アイテム(評価4.5以上)
+        .rakuten-items
+          - @senjins.each do |item|
+            .rakuten-item
+              .api-img
+                = link_to item['item_url'] do
+                  = image_tag item['mediumImageUrls'][0]
+              .api-content
+                = item['itemName']
+                .api
+                  .api-title
+                    購入金額
+                  .api-value
+                    #{item['itemPrice']}円
+                .api
+                  .api-title 
+                    平均評価
+                  .api-value
+                    #{item['reviewAverage']}
   = javascript_pack_tag 'show_article'
