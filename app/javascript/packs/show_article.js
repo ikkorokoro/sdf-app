@@ -81,4 +81,8 @@ document.addEventListener('DOMContentLoaded', () => {
   })
   listenNotGoodEvent(articleId)
   listenGoodEvent(articleId)
+
+  $('#delete-btn').on('click', () => {
+    axios.delete(`/api/articles/${articleId}/comments`)
+  })
 })
