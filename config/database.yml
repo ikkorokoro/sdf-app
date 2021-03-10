@@ -16,6 +16,7 @@ default: &default
   username: <%= ENV['DB_USER'] %>
   password: <%= ENV['DB_PASSWORD'] %>
   socket: /tmp/mysql.sock
+  host: localhost
 
 development:
   <<: *default
@@ -46,7 +47,6 @@ test:
 #
 #   production:
 #     url: <%= ENV['DATABASE_URL'] %>
-#
 production:
   <<: *default
   database: sdf_app_production

@@ -7,8 +7,8 @@ listenGoodEvent
 
 const handleControllerForm = () => {
   $('.comment-form').on('click', () => {
-    $('.comment-form').addClass('d-none')
-    $('.comment-area').removeClass('d-none')
+    $('.comment-form').addClass('hidden')
+    $('.comment-area').removeClass('hidden')
   })
 }
 
@@ -66,8 +66,8 @@ document.addEventListener('DOMContentLoaded', () => {
           const comment = response.data
           appendNewComment(comment)
           $('#comment_content').val('')
-          $('.comment-form').removeClass('d-none')
-          $('.comment-area').addClass('d-none')
+          $('.comment-form').removeClass('hidden')
+          $('.comment-area').addClass('hidden')
       })
     }
   })
@@ -81,4 +81,8 @@ document.addEventListener('DOMContentLoaded', () => {
   })
   listenNotGoodEvent(articleId)
   listenGoodEvent(articleId)
+
+  $('#delete-btn').on('click', () => {
+    axios.delete(`/api/articles/${articleId}/comments`)
+  })
 })

@@ -40,8 +40,8 @@ tags.each {|tag| Tag.create!(name: tag)}
 object = '戦闘服'
 price = 8000
 store = '留萌駐屯地'
-category_id = 44
-tag_ids = [14, 34, 94]
+category_id = 38
+tag_ids = [79, 80, 88]
 rate = 2
 content = '官品とそんなに変わらない生地の厚さですが、演習等で使うようにしてます。8000円出して買うものではなかったなと思いました。'
 gruop1.each { |user| user.articles.create!(
@@ -57,8 +57,8 @@ gruop1.each { |user| user.articles.create!(
 object = '手袋'
 price = 2000
 store = '旭川駐屯地'
-category_id = 34
-tag_ids = [14, 104, 194]
+category_id = 37
+tag_ids = [80, 84, 90]
 rate = 4
 content = '値段の割には耐久性があります。購入してから6ヶ月ほど経ちますがまだ全然使えます！コスパはいいと思います！'
 gruop2.each { |user| user.articles.create!(
@@ -74,8 +74,8 @@ gruop2.each { |user| user.articles.create!(
 object = 'バッグ'
 price = 10000
 store = '札幌駐屯地'
-category_id = 54
-tag_ids = [14, 104, 144]
+category_id = 39
+tag_ids = [80, 90, 91]
 rate = 5
 content = '1万円ですが収納ポケットがたくさんあり、無線機もすっぽり入るぐらい大きい収納スペースがあり演習では必ず使っています！'
 gruop3.each { |user| user.articles.create!(
@@ -91,8 +91,8 @@ gruop3.each { |user| user.articles.create!(
 object = '鉄帽'
 price = 12000
 store = '釧路駐屯地'
-category_id = 4
-tag_ids = [14, 34, 114]
+category_id = 34
+tag_ids = [81, 83, 91]
 rate = 5
 content = '私物の鉄帽買うならこれがいいと思います！軽量で領事館被っていても頭も首も痛くなりません。'
 gruop4.each { |user| user.articles.create!(

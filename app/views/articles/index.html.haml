@@ -1,7 +1,7 @@
 .main-bg-color
   = link_to new_article_path do
     .new-path-img
-      = image_tag 'カメラのアイコン素材 6.png'
+      %i.fas.fa-camera.fa-4x
   .main
     .main-logo
       優秀なアイテムを共有して
@@ -22,7 +22,7 @@
       = render 'detail_search' 
     .article-right
       .article-right-top
-        %span 参考になる投稿
+        %span いいねの多い投稿
       .container
         .row
           = render 'commons/articles', articles: @ranking_articles

@@ -18,9 +18,9 @@
             %span.author-name
               = article.author_name
           .author-right
-            = image_tag 'コメントの無料アイコン.png', class: 'articles-img'
+            %i.far.fa-comment.fa-2x.pt-1
             = article.comment_count
-            = image_tag '無料のいいねの手のアイコン素材 .png', class: 'articles-img ml-1'
+            %i.far.fa-thumbs-up.fa-2x.pt-1.pl-1
             = article.like_count
         .articles-tags
           - article.tags.each do |tag|

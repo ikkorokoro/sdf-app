@@ -1,88 +1,101 @@
 .main-bg-color.h-100#article-show{data: {article_id: @article.id}}
   .show
-    .show-left
-      .show-img
-        - if @article.image.attached?
-          = image_tag @article.image, class: 'card-img-top'
-      .show-reviews
-        .object
-          .object-title
-            物品名
-          .object-value
-            = @article.object
-          .show-avatar-box
-            = link_to account_path(@article.user) do
-              = image_tag @article.user.avatar_image, class: 'user-avatar'
-          - if user_signed_in? && current_user.has_written?(@article)
-            %li.hoverdown.show-icon
-              = image_tag 'more-button-of-three-dots_icon-icons.com_74259.png'
-              .hoverdown-content.base-font
-                = link_to '編集', edit_article_path(@article)                
-                = link_to '削除', article_path(@article), data: { method: 'delete', confirm: '本当に削除してもよろしいですか' }
-        .price
-          .price-title 
-            購入金額
-          .price-value
-            #{@article.price}円
-        .store
-          .store-title 
-            購入場所
-          .store-value
-            = @article.store
-        .category
-          .category-title 
-            カテゴリ
-          .category-value
-            = @article.cat_name
-        .rate
-          .rate-title 
-            評価
-          .rate-position{id: "star-rate#{@article.id}"}
-          :javascript
-            $('#star-rate#{@article.id}').raty({
-              size      : 36,
-              starOff   : '#{asset_path('star-off.png')}',
-              starOn    : '#{asset_path('star-on.png')}',
-              half      : false,
-              readOnly: true,
-              score: #{@article.rate},
-            });
-        .content
-          感想
-        .content-value
-          = @article.content
-        - @article.tags.each do |tag|
-          %span.show-tugs
-            #{tag.name}
-        = image_tag '無料のいいねの手のアイコン素材.png', class: 'show-like d-none', id: 'good'
-        = image_tag '無料のいいねの手のアイコン素材 .png', class: 'show-like d-none', id: 'notgood'
-        %span.show-count#likes-count 0
-        %span.post-time
-          %time(datetime="#{@article.created_at}")
-            = time_ago_in_words(@article.created_at) + "前"
-      .comment
-        .comment-form
-          %span.comment-post.btn-bg
-            コメントを投稿
-        .comment-area.d-none
-          .mt-4
-            = text_area_tag :comment_content, '', class: 'comment-text'
-          .my-4
-            %span.add-comment.btn-bg#add-comment-button
-              コメントを追加
-        %span.comment-all
-          コメント一覧
-        .comments
-    .show-right
-      %span.show-right-title 同じカテゴリの投稿
-      .show-right-box
-        - @cate_articles.each do |article|
-          .cate-article
-            .cate-hoverdown
-              = link_to article_path(article) do
-                = image_tag article.image, class: 'cate-img'
-                .cate-hoverdown-content.text-left
-                  %p 金額 #{article.price}円
-                  %p 星評価 #{article.rate}
-                  %p いいね数 #{article.likes.count}
-= javascript_pack_tag 'show_article'
+    .show-img
+      - if @article.image.attached?
+        = image_tag @article.image, class: 'card-img-top'
+    .show-reviews
+      .column
+        .column-title
+          物品名
+        .column-value
+          = @article.object
+        .show-avatar-box
+          = link_to account_path(@article.user) do
+            = image_tag @article.user.avatar_image, class: 'user-avatar'
+        - if user_signed_in? && current_user.has_written?(@article)
+          %li.hoverdown.show-icon
+            = image_tag 'more-button-of-three-dots_icon-icons.com_74259.png'
+            .hoverdown-content.base-font
+              = link_to '編集', edit_article_path(@article)                
+              = link_to '削除', article_path(@article), data: { method: 'delete', confirm: '本当に削除してもよろしいですか' }
+      .column
+        .column-title 
+          購入金額
+        .column-value
+          #{@article.price}円
+      .column
+        .column-title 
+          購入場所
+        .column-value
+          = @article.store
+      .column
+        .column-title 
+          カテゴリ
+        .column-value
+          = @article.cat_name
+      .column
+        .column-title 
+          評価
+        .column-value{id: "star-rate#{@article.id}"}
+        :javascript
+          $('#star-rate#{@article.id}').raty({
+            size      : 36,
+            starOff   : '#{asset_path('star-off.png')}',
+            starOn    : '#{asset_path('star-on.png')}',
+            half      : false,
+            readOnly: true,
+            score: #{@article.rate},
+          });
+      .content
+        感想
+      .content-value
+        = @article.content
+      - @article.tags.each do |tag|
+        %span.show-tugs
+          #{tag.name}
+      #good.d-none
+        %i.fas.fa-thumbs-up.fa-2x.show-like
+      #notgood.d-none
+        %i.far.fa-thumbs-up.fa-2x.show-like
+      %span.show-count#likes-count 0
+      %span.post-time
+        %time(datetime="#{@article.created_at}")
+          = time_ago_in_words(@article.created_at) + "前"
+    .comment
+      .comment-form.hidden
+        %span.comment-post.btn-bg
+          コメントを投稿
+      .comment-area
+        .mt-5
+          = text_area_tag :comment_content, '', class: 'comment-text'
+        .mt-2.mb-5
+          %span.add-comment.btn-bg#add-comment-button
+            コメントを追加
+      %span.comment-all
+        コメント一覧
+      .comments
+        
+    - if @senjins.present?
+      .rakuten-api
+        .rakuten
+          = link_to '楽天市場で探す', "https://search.rakuten.co.jp/search/mall/戦人-senjin-+#{@article.object}", class: 'rakuten-link'
+        %span.rakuten-title 楽天市場の同アイテム(評価4.5以上)
+        .rakuten-items
+          - @senjins.each do |item|
+            .rakuten-item.mb-3
+              .api-img
+                = link_to item['item_url'] do
+                  = image_tag item['mediumImageUrls'][0]
+              .api-content
+                = item['itemName']
+                .api
+                  .api-title
+                    購入金額
+                  .api-value
+                    #{item['itemPrice']}円
+                .api
+                  .api-title 
+                    平均評価
+                  .api-value
+                    #{item['reviewAverage']}
+  = javascript_pack_tag 'show_article'
