@@ -51,6 +51,10 @@ production:
   <<: *default
   database: sdf_app_production
   username: root
-  password: <%= ENV['RDS_PASSWORD'] %>
-  host: <%= ENV['RDS_ENDPOINT'] %>
-  socket: /var/lib/mysql/mysql.sock
+  # password: <%= ENV['RDS_PASSWORD'] %>
+  # host: <%= ENV['RDS_ENDPOINT'] %>
+  # socket: /var/lib/mysql/mysql.sock
+  password: <%= ENV['DB_PASSWORD'] %>
+  url: <%= ENV['DATABASE_URL'] %>
+  # host: <%= ENV['RDS_ENDPOINT'] %>
+  # socket: /var/lib/mysql/mysql.sock

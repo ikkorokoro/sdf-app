@@ -15,7 +15,11 @@ class ArticlesController < ApplicationController
 
   def show
     @article = Article.find(params[:id])
-    @cate_articles = Article.where(category_id: @article.category.id).order(updated_at: :desc).limit(5)
+    @senjins = RakutenWebService::Ichiba::Item.search(
+      keyword: @article.object,
+      shopCode: 'shop-senjin',
+      sort: '-reviewAverage',
+      hits: 5)
   end
 
   def new
@@ -71,6 +75,6 @@ class ArticlesController < ApplicationController
   end
 
   def set_q
-    @q = Article.ransack(params[:q])
+    @q = Article.ransack(params[:q])#新着順に並べ替える
   end
 end
