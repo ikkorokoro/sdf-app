@@ -32,15 +32,13 @@ gem 'kaminari'
 # Use Active Storage variant
 gem 'aws-sdk-s3', require: false
 gem 'image_processing', '~> 1.2'
-gem 'aws-sdk-s3', require: false
 gem 'mini_magick'
 gem 'rakuten_web_service'
 gem 'dotenv-rails'
-
-
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
 gem 'ransack'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'better_errors'
