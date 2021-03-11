@@ -79,7 +79,7 @@
       .rakuten-api
         .rakuten
           = link_to '楽天市場で探す', "https://search.rakuten.co.jp/search/mall/戦人-senjin-+#{@article.object}", class: 'rakuten-link'
-        %span.rakuten-title 楽天市場の同アイテム(評価4.5以上)
+        %span.rakuten-title 楽天市場の関連アイテム(評価4.5以上)
         .rakuten-items
           - @senjins.each do |item|
             .rakuten-item.mb-3
