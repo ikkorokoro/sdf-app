@@ -1,4 +1,4 @@
-.main-bg-color.h-100#show-account{data: {account_id: @user.id}}  
+.main-bg-color#show-account{data: {account_id: @user.id}}  
   = render 'commons/user_info', user: @user
   .tabs
     = link_to account_path(@user.id) do
