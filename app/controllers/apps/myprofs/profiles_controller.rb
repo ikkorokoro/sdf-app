@@ -2,7 +2,7 @@ class Apps::Myprofs::ProfilesController < Apps::Myprofs::ApplicationController
 
   def show
     @profile = current_user.profile
-    @articles = current_user.articles
+    @articles = current_user.articles.with_attached_image.includes(:tags)
   end
 
   def edit

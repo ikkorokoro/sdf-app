@@ -3,14 +3,14 @@ class ArticlesController < ApplicationController
   before_action :set_q, only: [:index, :search]
 
   def index
-    @ranking_articles = Article.with_attached_image.includes(:tags, image_attachment: :blob, user: [profile: :avatar_attachment]).find(Like.group(:article_id).order('count(article_id) desc').limit(3).pluck(:article_id))#投稿の中でいいねが多い記事を3つ
+    @ranking_articles = Article.with_attached_image.includes(:tags, user: [profile: [avatar_attachment: :blob]]).find(Like.group(:article_id).order('count(article_id) desc').limit(3).pluck(:article_id))#投稿の中でいいねが多い記事を3つ
     category_ranks = Article.group(:category_id).order('count(category_id) desc').limit(5).pluck(:category_id)#投稿の多いカテゴリ上位のidを５つ取得
     @top_categorys = Category.find(category_ranks)
     top_one_category = category_ranks.first#一番初めのカテゴリ(一番人気のカテゴリ)のidを取得
-    @top_category_articles = Article.with_attached_image.includes(:tags, user: [profile: :avatar_attachment]).where(category_id: top_one_category).limit(3)#一番人気のカテゴリの投稿を全て取得
+    @top_category_articles = Article.with_attached_image.includes(:tags, user: [profile: [avatar_attachment: :blob]]).where(category_id: top_one_category).limit(3)#一番人気のカテゴリの投稿を全て取得
     tag_ranks = ArticleTag.group(:tag_id).order('count(tag_id) desc').limit(5).pluck(:tag_id)
     @top_tags = Tag.find(tag_ranks)
-    @new_articles = Article.with_attached_image.includes(:tags, user: [profile: :avatar_attachment]).order(updated_at: :desc).limit(10)#全ての投稿の最新の投稿
+    @new_articles = Article.with_attached_image.includes(:tags, user: [profile: [avatar_attachment: :blob]]).order(updated_at: :desc).limit(10)#全ての投稿の最新の投稿
   end
 
   def show
@@ -75,6 +75,8 @@ class ArticlesController < ApplicationController
   end
 
   def set_q
-    @q = Article.includes(:tags, user: [profile: :avatar_attachment]).with_attached_image.ransack(params[:q])#新着順に並べ替える
+    @q = Article.with_attached_image.includes(:tags, user: [profile: [avatar_attachment: :blob]]).ransack(params[:q])
   end
+
+  
 end

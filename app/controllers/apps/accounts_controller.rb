@@ -5,6 +5,6 @@ class Apps::AccountsController < Apps::ApplicationController
       if current_user == @user
         redirect_to profile_path
     end
-    @articles = @user.articles
+    @articles = @user.articles.with_attached_image.includes(:tags)
   end
 end
