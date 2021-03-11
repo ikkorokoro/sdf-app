@@ -35,7 +35,7 @@ gem 'image_processing', '~> 1.2'
 gem 'aws-sdk-s3', require: false
 gem 'mini_magick'
 gem 'rakuten_web_service'
-
+gem 'dotenv-rails'
 
 
 # Reduces boot times through caching; required in config/boot.rb
@@ -46,12 +46,9 @@ group :development, :test do
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
-  gem 'dotenv-rails'
-  gem 'dotenv-rails'
   gem 'erb2haml'
   gem 'pry-byebug'
   gem 'rubocop-rails'
-  gem 'dotenv-rails'
   gem 'rspec-rails'
   gem 'factory_bot_rails'
 end
@@ -68,6 +65,7 @@ group :development do
   gem 'capistrano-rbenv', '~> 2.2'
   gem 'capistrano-rbenv-vars', '~> 0.1'
   gem 'capistrano3-puma', '< 5'
+  gem 'bullet'
 end
 
 group :test do
