@@ -8,6 +8,7 @@
     .detail-content
       .detail-content-price
         = f.label :price_gteq, "金額", class: 'detail-label'
+        %br
         = f.number_field :price_gteq, class: 'detail-field', placeholder: "数字のみ入力"
         %br
         = f.label :price_lteq, "⌇", class: 'detail-label'
