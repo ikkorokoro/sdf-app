@@ -5,7 +5,7 @@
   .post
     = form_with(model: @profile, url: profile_path, method: 'put', local: true) do |f|
       .post-image
-        = f.label 'プロフィール画像(画像をクリック)', class: 'base-label pt-4'
+        = f.label "プロフィール画像", class: 'base-label pt-4'
         = f.label :avatar do
           - if @profile&.avatar&.attached?
             = image_tag @profile.avatar, class: 'profile-avatar pointer', id: 'post-img'

@@ -1,28 +1,28 @@
 - visiter = notification.visiter
 - visited = notification.visited
 .notification
-  %div
+  .notification-avatar
     = link_to account_path(visiter) do
       = image_tag visiter.avatar_image, class: 'account-avatar'
-    %span.d-inline-block.pb-3
-      = visiter.display_name
+    .notification-content
+      = link_to account_path(visiter), class: 'text-success'do
+        = visiter.display_name
       = 'さんが'
       - case notification.action
       - when 'follow' then
         = "あなたをフォローしました"
       - when 'like' then
-        = link_to 'あなたの投稿', article_path(notification), class: 'font-weight-bold'
+        = link_to 'あなたの投稿', article_path(notification), class: 'font-weight-bold text-success'
         = "にいいねしました"
       - when 'comment' then
         - if notification.article.user_id == visited.id
-          = link_to "あなたの投稿", notification.article, class: 'font-weight: bold;'
+          = link_to "あなたの投稿", notification.article, class: 'font-weight-bold text-success'
         - else
           %span
             = link_to article_path(notification.article) do
-              = image_tag  notification.visited.avatar_image, class: 'profile-avatar'
+              = image_tag  notification.article.user.avatar_image, class: 'profile-avatar'
               %strong
                 = notification.article.user.name + 'さんの投稿にコメントしました'
-          %p.text-muted.mb-0
-            = Comment.find_by(id: notification.comment_id)&.comment
-  .sm-font.pt-3
+        にコメントしました
+  .notification-time
     = time_ago_in_words(notification.created_at).upcase + "前"

@@ -14,24 +14,42 @@
   background: rgba(7, 52, 0, 0.8);
   padding-top: 2.6rem;
   text-align: center;
+  @media screen and (max-width:425px) {
+    width: 8rem;
+	  height: 8rem;
+    padding-top: 1.6rem;
+  }
 }
 .main {
-  width: 100%;
-  height: 340px;
-  background-image: url("../../assets/images/軍団.png");
-  background-size: cover;
-  text-align: center;
-  padding: 1.5rem 0;
+    width: 100%;
+    height: 340px;
+    background-image: url("../../assets/images/軍団.png");
+    background-size: cover;
+    text-align: center;
+    padding: 1.5rem 0;
+    @media screen and (max-width:425px) {
+      padding: 1rem;
+      height: 350px;;
+    }
   &-logo {
     font-size: 1.75rem;
     font-weight: bold;
     padding-bottom: 1.25rem;
+    @media screen and (max-width:425px) {
+      font-size: 20px;
+      padding-bottom: 0.5rem;
+    }
   }
   &-search {
     width: 50%;
     padding: 0.5rem;
     margin-bottom: 1rem;
     border: 1px solid #dee2e6;
+    @media screen and (max-width:425px) {
+      width: 70%;
+      height: 30px;
+      margin-bottom: 0.5rem;
+    }
   }
   &-tug {
     background: rgba(255, 255, 255, 0.68);
@@ -39,23 +57,43 @@
     width: 70%;
     margin: auto;
     margin-top: 0.5rem;
+    @media screen and (max-width:425px) {
+      height: 200px;
+    }
     &-title {
       display: inline-block;
       border-bottom: $border-color;
-      font-size: 18px;
+      font-size: 20px;
       font-weight: bold;
       margin-bottom: 0.5rem;
+      @media screen and (max-width:425px) {
+        font-size: 16px;
+      }
     }
     &-wrap {
       display: flex;
       justify-content: center;
+      @media screen and (max-width:425px) {
+        flex-flow: column;
+        justify-content: space-between;
+      }
+    }
+    &-group {
+      @media screen and (max-width:425px) {
+        margin-bottom: 0.5rem;
+      }
     }
     &-top {
-      margin: 0 0.25rem 0.5rem 0;
+      font-size: 18px;
+      margin: 0 0.75rem 0.5rem 0;
       border-radius: $radius200;
       background: $tug-bg;
       font-weight: bold;
       padding: 0.25rem 1rem;
+      @media screen and (max-width:425px) {
+        font-size: 14px;
+       
+      }
     }
   }
 }
@@ -63,11 +101,18 @@
   color: white;
   background-color: #3879D9;
   padding: 0.25rem;
+  @media screen and (max-width:425px) {
+    font-size: 14px;
+    padding: 0;
+  }
 }
 .article {
   display: flex;
   justify-content: space-between;
   text-align: center;
+  @media screen and (max-width:425px) {
+    display: block;
+  }
   &-right {
     width: 80%;
     text-align: center;
@@ -77,6 +122,9 @@
       font-size: 24px;
       font-weight: bold;
       margin: 1.5rem 0;
+    }
+    @media screen and (max-width:425px) {
+      width: 100%;
     }
   }
   &-left {
@@ -89,10 +137,17 @@
       font-size: 20px;
       font-weight: bold;
       margin: 1.5rem 0;
+      @media screen and (max-width:425px) {
+        margin: 0 0 0.5rem 0;
+    }
+  }
+    @media screen and (max-width:425px) {
+      background: rgba(161, 190, 167, 0.27);
+      width: 100%;
+      padding: 1rem;
     }
   }
 }
-
 .cate {
   width: 100%;
   height: 250px;
@@ -111,19 +166,36 @@
     font-size: 24px;
     font-weight: bold;
     margin: 3rem 0 1rem 0;
+    @media screen and (max-width:425px) {
+      font-size: 20px;
+      margin: 0.25rem 0 0.5rem 0;
+    }
+  }
+  &-item {
+    @media screen and (max-width:425px) {
+      margin-bottom: 0.5rem;
+    }
+    
   }
   &-top5 {
+    font-size: 20px;
     display: flex;
     justify-content: center;
+    @media screen and (max-width:425px) {
+      flex-direction: column;
+    }
   }
 }
 .categorys {
   background: rgba(53, 157, 253, 0.8);
-  padding: 0.25rem 1.5rem;
+  padding: 0.5rem 1.75rem;
   margin: 0.5rem 0.25rem 0 0;
   font-size: 20px;
   border-radius: $radius200;
   font-weight: bold;
+  @media screen and (max-width:425px) {
+    font-size: 16px;
+  }
 }
 .top-cate-article {
   display: inline-block;
@@ -146,6 +218,9 @@
     width: 430px;
     margin: auto; 
     padding-top: 2rem;
+    @media screen and (max-width:425px) {
+      width: 300px;
+    }
 
   }
   &-reviews {
@@ -155,18 +230,23 @@
     box-shadow: 5px 5px 4px rgba(0, 0, 0, 0.25);
     padding: 1rem;
     margin: auto;
+    @media screen and (max-width:425px) {
+      width: 300px;
+    }
   }
 }
 
 .show-avatar-box {
   position: absolute;
-  right: 0;
+  right: 10px;
 }
+
 .show-icon {
   position: absolute;
-  top: 50px;
-  right: 8px;
+  top: 55px;
+  right: 0;
 }
+
 .column {
   display: flex;
   border-bottom: 1px solid#dee2e6;
@@ -198,6 +278,9 @@
   border-radius: $radius200;
   padding: 0.5rem 1rem;
   margin: 0 0.25rem 0.5rem 0; 
+  @media screen and (max-width:425px) {
+    padding: 0.5rem 0.5rem;
+  }
 }
 
 .show-like {
@@ -207,6 +290,9 @@
   width: 25px;
   cursor: pointer;
   margin: 0 1rem 0 0.5rem;
+  @media screen and (max-width:425px) {
+    right: 65px;
+  }
 }
 
 .show-count {
@@ -215,16 +301,23 @@
   right: 77px;
   padding-right: 1.5rem;
   margin-left: 1rem;
+  @media screen and (max-width:425px) {
+    right: 40px;
+  }
 }
 .post-time {
   position: absolute;
   bottom: 12px;
   right: 15px;
   font-size: 14px;
+  @media screen and (max-width:425px) {
+    display: block;
+  }
 }
 .post {
   background:  #f8f9fa;
   width: 70%;
+  min-height: 100vh;
   margin: auto;
   text-align: center;
   &-image{
@@ -298,12 +391,18 @@
 
 .rakuten-items {
   display: flex;
+  @media screen and (max-width:425px) {
+    display: block;
+  }
 }
 
 .rakuten-item {
   border: 1px solid#dee2e6;
   margin: auto;
   background-color: white;
+  @media screen and (max-width:425px) {
+    display: flex;
+  }
 }
 
 .api-content{
@@ -329,10 +428,30 @@
 }
 
 /*========== detail ===========*/
+.detail-content {
+  font-size: 14px;
+  margin-bottom: 1rem;
+  @media screen and (max-width:425px) {
+    margin-bottom: 0.5rem;
+  }
+  &-price {
+    @media screen and (max-width:425px) {
+    display: flex;
+    }
+  }
+}
 .detail-field {
   width: 80%;
-  font-size: 14px;
   border: 1px solid #dee2e6;
+  @media screen and (max-width:425px) {
+    width: 40%;
+    margin-bottom: 0.5rem;
+  }
+}
+.detail-label {
+  @media screen and (max-width:425px) {
+    padding-top: 0.45rem;
+  }
 }
 .detail-icon{
   color: white;
@@ -340,8 +459,12 @@
   border-radius: $radius200;
   padding: 0.25rem;
   margin-top: 0.25rem;
+  @media screen and (max-width:425px) {
+    padding: 0.5rem;
+  }
 } 
 
+/* ============== search ============ */
 .result{
   display: inline-block;
   font-size: 24px;
@@ -366,6 +489,9 @@
   &-value {
     font-size: 18px;
     padding-right: 1rem;
+    @media screen and (max-width:425px) {
+      font-size: 16px;
+    }
   }
 }
 .user-avatar {

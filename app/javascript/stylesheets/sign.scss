@@ -6,6 +6,10 @@
   height: 900px;
   background-image: url("../../assets/images/wallpaperbetter 3.png");
   background-size: cover;
+  @media screen and (max-width:425px) {
+    display: block;
+    padding: 16px;
+  }
   &-left {
     width: 50%;
     font-size: 35px;
@@ -13,6 +17,12 @@
     font-weight: bold;
     color: black;
     margin: auto;
+    @media screen and (max-width:425px) {
+      text-align: center;
+      margin: 1rem 0;
+      width: 90%;
+      font-size: 24px;
+    }
     &-text {
       text-align: center;
       letter-spacing: 10px;
@@ -23,7 +33,10 @@
     background-color: #F4FAF7;
     border-radius: 10px;
     margin: auto;
-    padding: 1.5rem 0.25rem;
+    padding: 1.5rem 1rem;
+    @media screen and (max-width:425px) {
+      background-color: #f4faf7b6;
+    }
   }
   &-title {
     font-size: 24px;
@@ -37,8 +50,16 @@
     border: 1px solid gray; 
     border-radius: $radius200;
     padding: 0.5rem 1rem;
+    @media screen and (max-width:425px) {
+      font-size: 14px;
+    }
     &:hover {
       opacity: 0.8;
     }
   } 
+}
+.reg-btn {
+  @media screen and (max-width:425px) {
+    font-size: 16px;
+  }
 }

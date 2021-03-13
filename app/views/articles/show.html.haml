@@ -14,7 +14,7 @@
             = image_tag @article.user.avatar_image, class: 'user-avatar'
         - if user_signed_in? && current_user.has_written?(@article)
           %li.hoverdown.show-icon
-            = image_tag 'more-button-of-three-dots_icon-icons.com_74259.png'
+            %i.fas.fa-bars.fa-2x
             .hoverdown-content.base-font
               = link_to '編集', edit_article_path(@article)                
               = link_to '削除', article_path(@article), data: { method: 'delete', confirm: '本当に削除してもよろしいですか' }

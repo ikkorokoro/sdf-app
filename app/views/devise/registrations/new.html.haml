@@ -1,7 +1,7 @@
 .sign
   .sign-left
     %p
-      購入したアイテムの口コミを投稿して自衛官で共有し、よりパフォーマンスに優れたアイテムを探そう
+      購入したアイテムの口コミを投稿して、よりパフォーマンスに優れたアイテムを探そう！
   .sign-right
     .sign-title Soldier Reviews
     = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
@@ -26,7 +26,7 @@
         %br/
         = f.password_field :password_confirmation, autocomplete: "new-password"
       .actions
-        = f.submit "新規登録", class: 'sign-btn mb-4'
+        = f.submit "新規登録", class: 'sign-btn reg-btn mb-4'
         %br/
         = render "devise/shared/links"
 

@@ -1,33 +1,29 @@
 %span.article-left-title
   詳細検索
 = search_form_for @q, url: search_articles_path do |f|
-  = f.label :object_eq, '物品名'
-  %br
-  = f.search_field :object_eq, class: 'detail-field mb-3'
-  %br
-  = f.label :price_gteq, "金額"
-  %br
-  = f.number_field :price_gteq, class: 'detail-field', placeholder: "数字のみ入力"
-  %br
-  = f.label :price_lteq, "⌇"
-  %br
-  = f.number_field :price_lteq, class: 'detail-field mb-3', placeholder: ""
-  %br
-  = f.label :store_eq, '購入場所'
-  %br
-  = f.search_field :store_eq, class: 'detail-field mb-3', placeholder: ""
-  %br
-  = f.label :category_id_eq, "カテゴリ"
-  %br
-  = f.collection_select :category_id_eq, Category.all, :id, :category_name, { include_blank: '指定なし'}, class: 'detail-field mb-3'
-  %br
-  = f.label :tags_id_eq, 'タグ'
-  %br
-  = f.collection_select :tags_id_eq, Tag.all, :id, :name, { include_blank: '指定なし'}, class: 'detail-field mb-3'
-  %br
-  = f.label :rate_eq, '星評価'
-  %br
-  = f.select :rate_eq, {'星評価1': 1, '星評価2': 2, '星評価3': 3, '星評価4': 4,'星評価5': 5}, { include_blank: '指定なし'}, class: 'detail-field'
-  %br
-  = button_tag type: 'submit', class: 'detail-icon' do
-    %i.fas.fa-search.fa-lg
+  .deteil-box
+    .detail-content
+      = f.label :object_eq, '物品名'
+      = f.search_field :object_eq, class: 'detail-field'
+    .detail-content
+      .detail-content-price
+        = f.label :price_gteq, "金額", class: 'detail-label'
+        = f.number_field :price_gteq, class: 'detail-field', placeholder: "数字のみ入力"
+        %br
+        = f.label :price_lteq, "⌇", class: 'detail-label'
+        %br
+        = f.number_field :price_lteq, class: 'detail-field', placeholder: ""
+    .detail-content
+      = f.label :store_eq, '購入場所'
+      = f.search_field :store_eq, class: 'detail-field', placeholder: ""
+    .detail-content
+      = f.label :category_id_eq, "カテゴリ"
+      = f.collection_select :category_id_eq, Category.all, :id, :category_name, { include_blank: '指定なし'}, class: 'detail-field'
+    .detail-content
+      = f.label :tags_id_eq, 'タグ'
+      = f.collection_select :tags_id_eq, Tag.all, :id, :name, { include_blank: '指定なし'}, class: 'detail-field'
+    .detail-content
+      = f.label :rate_eq, '星評価'
+      = f.select :rate_eq, {'星評価1': 1, '星評価2': 2, '星評価3': 3, '星評価4': 4,'星評価5': 5}, { include_blank: '指定なし'}, class: 'detail-field'
+    = button_tag type: 'submit', class: 'detail-icon' do
+      %i.fas.fa-search.fa-lg

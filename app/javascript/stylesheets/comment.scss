@@ -41,6 +41,9 @@
 .comment-text {
   height: 130px;
   width: 40%;
+  @media screen and (max-width:425px) {
+    width: 70%;
+  }
 }
 .comment-content {
   display: flex;
@@ -49,6 +52,10 @@
   height: 70px;
   width: 70%;
   margin: auto;
+  @media screen and (max-width:425px) {
+    width: 90%;
+    height: 50px;
+  }
 }
 .comment-avatar {
   width: 45px;
@@ -59,6 +66,9 @@
 .comment-name {
   font-size: 14px;
   margin: 1.5rem 0 0 0.5rem;
+  @media screen and (max-width:425px) {
+    margin-top: 0.6rem;
+  }
 }
 .comment-value {
   font-weight: bold;
