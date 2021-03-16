@@ -46,17 +46,14 @@ test:
 # You can use this database configuration with:
 #
 #   production:
-#     url: <%= ENV['DATABASE_URL'] %>
+    # url: <%= ENV['DATABASE_URL'] %>
 
 production:
-  adapter: mysql2
-  encoding: utf8mb4
-  pool: 5
+  <<: *default
   database: sdf_app_production
   username: root
   password: <%= ENV['RDS_PASSWORD'] %>
   host: <%= ENV['RDS_ENDPOINT'] %>
-  
 # production:
 #   <<: *default
 #   database: sdf_app_production
