@@ -1,7 +1,7 @@
 server "35.72.128.67", 
   user: "kosuke", 
-  roles: %w{app db web},
-  ssh_options: {
+  roles: %w{app db web}
+set :ssh_options, {
     keys: %w(~/.ssh/sdf_app.pem),
     forward_agent: true,
     auth_methods: %w(publickey),
