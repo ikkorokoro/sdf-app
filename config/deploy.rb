@@ -15,6 +15,29 @@ set :rails_env, :production
 
 append :linked_files, "config/master.key"
 append :linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets", "node_modules"
+
+# 保持するバージョンの個数 だいぶ増えてきてたので制限した
+set :keep_releases, 10
+
+namespace :deploy do
+  desc 'Restart application'
+  after :publishing, :restart
+  task :restart do
+    invoke 'unicorn:restart'
+  end
+
+  after :restart, :clear_cache do
+    on roles(:web), in: :groups, limit: 3, wait: 10 do
+    end
+  end
+end
+
+before 'deploy:compile_assets', 'yarn:install'
+
+# Gemfileを設定
+set :bundle_gemfile, -> { release_path.join('Gemfile') }
+append :linked_dirs, '.bundle'
+
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
 
