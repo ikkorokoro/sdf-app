@@ -1,30 +1,22 @@
 class RakutensController < ApplicationController
+  PER = 30
   def index
-    if params[:page].present? && params[:page] < '13'
-      @items = RakutenWebService::Ichiba::Item.search(shopCode: 'shop-senjin', page: params[:page])
-      @senjins = []
-        @items.each do |item|
-          @senjins.push(item)
-      @senjins = Kaminari.paginate_array(@senjins).page(params[:page])
-        end
-    else
-      @items = RakutenWebService::Ichiba::Item.search(shopCode: 'shop-senjin', page: params[:page])
-      @senjins = []
-        @items.each do |item|
-          @senjins.push(item)
-      @senjins = Kaminari.paginate_array(@senjins).page(params[:page]).per(30)
-        end
-    end
-end
+    @items = RakutenWebService::Ichiba::Item.search(shopCode: 'shop-senjin', page: params[:page], hits: PER)
+    # ページ数
+    @total_pages = @items.response.page_count
+    # 商品数
+    @total_count = @items.response.count
+    # 空の配列で構わない
+    @dummy = Kaminari.paginate_array([]).page(params[:page])
+  end
 
   def search
-    if params[:keyword].present?
-      items = RakutenWebService::Ichiba::Item.search(keyword: params[:keyword])
-      @senjins = []
-      items.each do |item|
-        @senjins.push(item)
-      end
-      @senjins = Kaminari.paginate_array(@senjins).page(params[:page])
-    end
-  end
+    @items = RakutenWebService::Ichiba::Item.search(keyword: params[:keyword], shopCode: 'shop-senjin', page: params[:page], hits: PER)
+    # ページ数
+    @total_pages = @items.response.page_count
+    # 商品数
+    @total_count = @items.response.count
+    # 空の配列で構わない
+    @dummy = Kaminari.paginate_array([]).page(params[:page])
+end
 end

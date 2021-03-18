@@ -12,7 +12,11 @@ resources :articles do
   end
 end
 resources :notifications, only: [:index]
-
+resources :rakutens, only: [:index, :create, :destroy] do
+  collection do
+    get 'search'
+  end
+end
 scope module: :apps do
   scope module: :myprofs do
     resource  :profile, only: [:show, :edit, :update]
