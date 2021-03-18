@@ -1,14 +1,41 @@
-.search-box
-  = form_with url: search_rakutens_path, method: :get, local: true do |f|
-    .form-group
-      = f.text_field :keyword, class: "form-control"
-      = f.submit '自衛隊', class: "form-control btn btn-success"
-- if @senjins.present?
-  %h2 戦人アイテム
-  %h4 アイテム数 #{@senjins.count}
-  - @senjins.each do |item|
-    = item['itemName']
-    = item['itemPrice']
-    平均評価#{item['reviewAverage']}
-    = link_to (image_tag(item['mediumImageUrls'][0])), item['item_url']
-  = paginate @senjins
+.senjin
+  .senjin-title 楽天市場アイテム
+  .senjin-logo
+    表示しているアイテムは実用的なアイテムが揃っている
+    %br
+    "戦人"のアイテムを表示しています
+  .senjin-search
+    = form_with url: search_rakutens_path, method: :get, local: true do |f|
+      .text-center.my-3
+        = f.text_field :keyword, class: 'senjin-field'
+        = button_tag type: 'submit', class: 'icon senjin-icon' do
+          %i.fas.fa-search
+  .senjin-counts
+    全アイテム数: #{@total_count} 件
+  .container 
+    .row
+      - @items.each do |item|
+        .col-sm-4.col-md-4.col-lg-3.col-xl-2.mb-3
+          .senjin-item.mx-auto
+            .api-img
+              = link_to item['item_url'] do
+                = image_tag item['mediumImageUrls'][0]
+            .api-content
+              = item['itemName']
+              .api
+                .api-title
+                  購入金額
+                .api-value
+                  #{item['itemPrice']}円
+              .api
+                .api-title 
+                  平均評価
+                .api-value
+                  #{item['reviewAverage']}
+            .buy-list.mt-2
+              .buy#follow-btn
+                購入リストに登録
+              .not-buy.d-none#unfollow-btn
+                購入リストから解除
+      .pagination
+        #{paginate @dummy, total_pages: @total_pages}
