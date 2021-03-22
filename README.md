@@ -31,10 +31,8 @@
   * ソート機能
   * 通知機能
   * 楽天API
-    * 投稿アイテムの評価が高いアイテム5つ表示 
-  * AmasonAPI
-    * 投稿アイテムの評価が高いアイテム5つ表示  
   * N+1問題解消
+  * レスポンシブ対応
 # 使用技術一覧
 * フロントエンド 
   * HAML
@@ -48,9 +46,10 @@
   * MySQL
   * Webサーバー　Nginx
   * アプリケーションサーバー puma
-  * Capistrano
 * テスト
   * RSpec
+* 自動デプロイ
+  * Capistrano
 * インフラ 
   * AWS(VPC/EC2/RDS/ALB/S3/ACM/Route53)
 * バージョン管理  
