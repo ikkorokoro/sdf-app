@@ -1,4 +1,4 @@
-class Apps::OthertimelinesController < Apps::ApplicationController
+class Apps::Otherusers::OthertimelinesController < Apps::Otherusers::ApplicationController
 
   def show
     @user = User.find(params[:account_id])

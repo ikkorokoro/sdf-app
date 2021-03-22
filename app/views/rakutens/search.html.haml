@@ -1,8 +1,0 @@
-- if @senjins.present?
-  %h2 戦人アイテム
-  - @senjins.each do |item|
-    = item['itemName']
-    = item['itemPrice']
-    平均評価#{item['reviewAverage']}
-    = link_to (image_tag(item['mediumImageUrls'][0])), item['item_url']
-  = paginate @senjins

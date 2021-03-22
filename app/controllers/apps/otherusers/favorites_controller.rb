@@ -1,4 +1,4 @@
-class Apps::FavoritesController < Apps::ApplicationController
+class Apps::Otherusers::FavoritesController < Apps::Otherusers::ApplicationController
 
   def show
     @user = User.find(params[:account_id])

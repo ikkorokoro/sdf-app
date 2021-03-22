@@ -1,0 +1,24 @@
+.senjin
+  .senjin-title 楽天市場アイテム
+  .senjin-logo
+    表示しているアイテムは実用的なアイテムが揃っている
+    %br
+    "戦人"のアイテムを表示しています
+  .senjin-search
+    = search_form_for @q, url: search_rakutens_path do |f|
+      .text-center.my-3
+        %h4.my-2.font-weight-bold キーワード検索
+        = f.search_field :item_name_or_item_price_cont, class: 'senjin-field'
+        = button_tag type: 'submit', class: 'icon senjin-icon' do
+          %i.fas.fa-search
+      .text-center.my-3
+        %h4.my-2.font-weight-bold ジャンル検索
+        = f.select :genle_id_eq, {'バッグ、ポーチ、入れ物': 213693, 'バックパック,リュック': 111926, '手袋': 509058, '靴下': 408907, '小物,装具': 213694, 'Tシャツ': 551180, 'コンパス': 208078, 'GPS': 402305, 'サングラス、ゴーグル、フェイスフード': 213692, 'クッション、ベッド部品': 111925, 'ビニールテープ': 301594, 'ジャケット': 558873, '身分証入れ': 403809, 'トレーニングウェア': 302491, 'マット類': 501931}, { include_blank: '指定なし'}, class: 'senjin-field'
+        = button_tag type: 'submit', class: 'icon senjin-icon' do
+          %i.fas.fa-search
+  .senjin-counts
+    全アイテム数: #{@total_count} 件
+  .container 
+    .row
+      = render 'commons/rakuten_item', items: @items
+    = paginate @items

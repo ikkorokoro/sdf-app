@@ -1,14 +1,14 @@
 # config valid for current version and patch releases of Capistrano
-lock "~> 3.16.0"
+lock '~> 3.16.0'
 
-set :application, "sdf_app"
-set :repo_url, "git@github.com:ikkorokoro/sdf-app.git"
+set :application, 'sdf_app'
+set :repo_url, 'git@github.com:ikkorokoro/sdf-app.git'
 set :rbenv_ruby, File.read('.ruby-version').strip
 set :stages, %(production, staging)
-set :default_stage, "production"
+set :default_stage, 'production'
 # Nginxの設定ファイル名と置き場所を修正
 set :nginx_config_name, "#{fetch(:application)}.conf"
-set :nginx_sites_enabled_path, "/etc/nginx/conf.d"
+set :nginx_sites_enabled_path, '/etc/nginx/conf.d'
 
 # env production
 set :rails_env, :production
@@ -37,7 +37,6 @@ before 'deploy:compile_assets', 'yarn:install'
 # Gemfileを設定
 set :bundle_gemfile, -> { release_path.join('Gemfile') }
 append :linked_dirs, '.bundle'
-
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
 

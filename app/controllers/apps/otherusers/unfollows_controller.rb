@@ -1,4 +1,4 @@
-class Apps::UnfollowsController < Apps::ApplicationController
+class Apps::Otherusers::UnfollowsController < Apps::Otherusers::ApplicationController
 
   def create
     user = User.find(params[:account_id])

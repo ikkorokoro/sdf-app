@@ -1,0 +1,83 @@
+.senjin {
+  text-align: center;
+  padding: 1rem;
+  background-color: #f8f9fa;
+  &-title {
+    display: inline-block;
+    margin: auto;
+    margin-bottom: 1rem;
+    border-bottom: 5px solid rgb(227, 230, 127);
+    font-size: 30px;
+    text-align: center;
+    font-weight: bold;
+    color: rgb(208, 57, 57);
+    @media screen and (max-width:425px) {
+      font-size: 26px;
+    }
+  }
+  &-logo {
+    font-size: 28px;
+    font-weight: bold;
+    color: rgb(208, 57, 57);
+    background: rgb(245, 247, 174);
+    padding: 1rem 0;
+    text-align: center;
+    @media screen and (max-width:425px) {
+      font-size: 24px;
+    }
+  }
+  &-field {
+    padding: 0.25rem;
+    width: 35%;
+    border: 1px solid #dee2e6;
+    @media screen and (max-width:425px) {
+      width: 60%;
+    }
+  }
+  &-item {
+    width: 180px;
+    border: 1px solid #dee2e6;
+    background-color: white;
+  }
+  &-counts {
+    margin-bottom: 1rem;
+    font-size: 24px;
+    font-weight: bold;
+  }
+  &-icon {
+    font-size: 22px;
+    @media screen and (max-width:425px) {
+      padding: 0.25rem;
+      font-size: 26px;
+    }
+  } 
+}
+.buy {
+  background:  #f5f7ae;
+  padding: 0.5rem 1rem;
+  border: 1px solid #cccdce;
+  cursor: pointer;
+  &:hover {
+    opacity: 0.8;
+  }
+}
+.not-buy {
+  font-weight: bold;
+  background: #d3d5e6;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  &:hover {
+    opacity: 0.8;
+  }
+}
+.rakuten-top {
+  font-size: 18px;
+}
+.rakuten-post {
+  font-weight: bold;
+  color: rgb(208, 57, 57);
+}
+.rakuten-delete {
+  font-weight: bold;
+  color: rgb(70, 69, 69);
+}

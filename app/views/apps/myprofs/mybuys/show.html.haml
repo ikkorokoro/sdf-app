@@ -14,8 +14,8 @@
       .tabs_item{class: "#{add_active_class(mybuy_path)}"}
         購入リスト
   .post-count
-    %p 投稿数  #{@articles.count}
+    %p 登録数  #{@items.count}
   .container
     .row
-      = render 'commons/articles', articles: @articles
+      = render 'commons/rakuten_item', items: @items
 = javascript_pack_tag 'account'

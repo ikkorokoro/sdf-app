@@ -22,9 +22,11 @@
       = f.collection_select :category_id_eq, Category.all, :id, :category_name, { include_blank: '指定なし'}, class: 'detail-field'
     .detail-content
       = f.label :tags_id_eq, 'タグ'
+      %br
       = f.collection_select :tags_id_eq, Tag.all, :id, :name, { include_blank: '指定なし'}, class: 'detail-field'
     .detail-content
       = f.label :rate_eq, '星評価'
       = f.select :rate_eq, {'星評価1': 1, '星評価2': 2, '星評価3': 3, '星評価4': 4,'星評価5': 5}, { include_blank: '指定なし'}, class: 'detail-field'
     = button_tag type: 'submit', class: 'detail-icon' do
       %i.fas.fa-search.fa-lg
+= link_to '楽天で探す',rakutens_path, class: 'rakuten-btn'

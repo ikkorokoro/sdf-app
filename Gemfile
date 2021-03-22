@@ -31,10 +31,10 @@ gem 'hamlit'
 gem 'kaminari'
 # Use Active Storage variant
 gem 'aws-sdk-s3', require: false
+gem 'dotenv-rails'
 gem 'image_processing', '~> 1.2'
 gem 'mini_magick'
 gem 'rakuten_web_service'
-gem 'dotenv-rails'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
 gem 'ransack'
@@ -45,10 +45,10 @@ group :development, :test do
   gem 'binding_of_caller'
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'erb2haml'
-  gem 'pry-byebug'
-  gem 'rubocop-rails'
-  gem 'rspec-rails'
   gem 'factory_bot_rails'
+  gem 'pry-byebug'
+  gem 'rspec-rails'
+  gem 'rubocop-rails'
 end
 
 group :development do
@@ -56,14 +56,14 @@ group :development do
   gem 'listen', '~> 3.2'
   gem 'web-console', '>= 3.3.0'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
-  gem 'spring'
-  gem 'spring-watcher-listen', '~> 2.0.0'
-  gem "capistrano", "~> 3.10", require: false
-  gem "capistrano-rails", "~> 1.6", require: false
+  gem 'bullet'
+  gem 'capistrano', '~> 3.10', require: false
+  gem 'capistrano3-puma', '< 5'
+  gem 'capistrano-rails', '~> 1.6', require: false
   gem 'capistrano-rbenv', '~> 2.2'
   gem 'capistrano-rbenv-vars', '~> 0.1'
-  gem 'capistrano3-puma', '< 5'
-  gem 'bullet'
+  gem 'spring'
+  gem 'spring-watcher-listen', '~> 2.0.0'
 end
 
 group :test do

@@ -11,6 +11,7 @@ resources :articles do
     get 'search'
   end
 end
+
 resources :notifications, only: [:index]
 
 scope module: :apps do
@@ -18,14 +19,26 @@ scope module: :apps do
     resource  :profile, only: [:show, :edit, :update]
     resource  :myfavorite, only: [:show]
     resource  :timeline, only: [:show]
+    resource  :mybuy, only: [:show]
   end
-  resources  :accounts, only: [:show] do
-    resource  :favorite, only: [:show]
-    resource  :othertimeline, only: [:show]
-    resources :follows, only: [:create]
-    resources :unfollows, only: [:create]
-    resources :actives, only: [:index]
-    resources :passives, only: [:index]
+  scope module: :senjins do
+    resources :rakutens, only: [:index] do
+    collection do
+      get 'search'
+    end
+    resource :buylist, only: [:create, :destroy]
+    end
+  end
+  scope module: :otherusers do
+    resources  :accounts, only: [:show] do
+      resource  :favorite, only: [:show]
+      resource  :othertimeline, only: [:show]
+      resource  :otherbuy, only: [:show]
+      resources :follows, only: [:create]
+      resources :unfollows, only: [:create]
+      resources :actives, only: [:index]
+      resources :passives, only: [:index]
+    end
   end
 end
 namespace :api, defaluts: [format: :json] do
