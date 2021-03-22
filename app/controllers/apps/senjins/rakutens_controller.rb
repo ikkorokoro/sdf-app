@@ -3,10 +3,11 @@ class Apps::Senjins::RakutensController < Apps::Senjins::ApplicationController
 
   PER = 30
   def index
+    # binding.pry
     items = []
     results = RakutenWebService::Ichiba::Item.search(
-      shopCode: 'shop-senjin', 
-      page: params[:page], 
+      shopCode: 'shop-senjin',
+      page: params[:page],
       hits: PER)
     #resultsに楽天APIから取得したデータ（jsonデータ）を格納します。
     # read(result)に、privateメソッド
@@ -20,7 +21,7 @@ class Apps::Senjins::RakutensController < Apps::Senjins::ApplicationController
       unless Rakuten.all.include?(item)
         item.save
       end
-    end 
+    end
     @items = Rakuten.all.page(params[:page])
     # 商品数
     @total_count = results.response.count
@@ -34,15 +35,13 @@ class Apps::Senjins::RakutensController < Apps::Senjins::ApplicationController
   private
     #「楽天APIのデータから必要なデータを絞り込む」、且つ「対応するカラムにデータを格納する」メソッド
     def read(result)
-      image_url = result["mediumImageUrls"][0]
-      item_name = result["itemName"]
-      item_price = result["itemPrice"]
-      item_url = result["itemUrl"]
+      image_url = result['mediumImageUrls'][0]
+      item_name = result['itemName']
+      item_price = result['itemPrice']
+      item_url = result['itemUrl']
       shop_name = result['shopCode']
-      genre_id = result["genreId"]
+      genre_id = result['genreId']
       review_average = result['reviewAverage']
-      created_at = Time.current
-      updated_at = Time.current
       {
         image_urls: image_url,
         item_name: item_name,
@@ -50,11 +49,9 @@ class Apps::Senjins::RakutensController < Apps::Senjins::ApplicationController
         item_url: item_url,
         shop_name: shop_name,
         genle_id: genre_id,
-        review_average: review_average,
-        created_at:  created_at,
-        updated_at: updated_at
+        review_average: review_average
       }
-    end 
+    end
 
     def set_q
       @q = Rakuten.ransack(params[:q])

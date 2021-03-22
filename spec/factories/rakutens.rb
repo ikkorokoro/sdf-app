@@ -15,6 +15,6 @@
 #
 FactoryBot.define do
   factory :rakuten do
-    
+
   end
 end

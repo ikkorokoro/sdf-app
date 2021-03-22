@@ -1,7 +1,7 @@
 class CreateRakutens < ActiveRecord::Migration[6.0]
   def change
     create_table :rakutens do |t|
-      t.string :item_name 
+      t.string :item_name
       t.integer :item_price
       t.string :item_url
       t.string :image_urls

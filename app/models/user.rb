@@ -60,7 +60,7 @@ class User < ApplicationRecord
     user_id = get_user_id(user)
     following_relationships.create!(following_id: user_id)
   end
-  
+
   def has_buylist?(item)
     buylists.exists?(rakuten_id: item.id)
   end

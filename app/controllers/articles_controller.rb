@@ -78,5 +78,4 @@ class ArticlesController < ApplicationController
     @q = Article.with_attached_image.includes(:tags, user: [profile: [avatar_attachment: :blob]]).ransack(params[:q])
   end
 
-  
 end

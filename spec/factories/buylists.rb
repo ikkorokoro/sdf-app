@@ -15,6 +15,6 @@
 #
 FactoryBot.define do
   factory :buylist do
-    
+
   end
 end
