@@ -38,6 +38,8 @@ class User < ApplicationRecord
   has_many :followers, through: :follower_relationships, source: :follower
   has_many :active_notifications, class_name: 'Notification', foreign_key: 'visiter_id', dependent: :destroy
   has_many :passive_notifications, class_name: 'Notification', foreign_key: 'visited_id', dependent: :destroy
+  has_many :buylists, dependent: :destroy
+  has_many :buy_rakutens, through: :buylists, source: :rakuten
   has_one :profile, dependent: :destroy
 
   before_create :default_avatar
@@ -57,6 +59,10 @@ class User < ApplicationRecord
   def follow!(user)
     user_id = get_user_id(user)
     following_relationships.create!(following_id: user_id)
+  end
+  
+  def has_buylist?(item)
+    buylists.exists?(rakuten_id: item.id)
   end
 
   def unfollow!(user)

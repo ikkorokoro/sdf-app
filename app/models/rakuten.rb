@@ -14,4 +14,5 @@
 #  genle_id       :string(191)
 #
 class Rakuten < ApplicationRecord
+  has_many :buylists, dependent: :destroy
 end
