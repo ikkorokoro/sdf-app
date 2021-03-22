@@ -10,6 +10,10 @@
     = link_to account_othertimeline_path(@user.id) do
       .tabs_item{class: "#{add_active_class(account_othertimeline_path(@user.id))}"}
         フォローした人の投稿
+    = link_to account_otherbuy_path(@user.id) do
+      .tabs_item{class: "#{add_active_class(account_otherbuy_path(@user.id))}"}
+        購入リスト
+  
   .post-count
     %p 投稿数  #{@articles.count}
   .container
