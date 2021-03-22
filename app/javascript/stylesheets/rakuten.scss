@@ -29,8 +29,9 @@
   &-field {
     padding: 0.25rem;
     width: 35%;
+    border: 1px solid #dee2e6;
     @media screen and (max-width:425px) {
-     width: 60%;
+      width: 60%;
     }
   }
   &-item {
@@ -52,8 +53,6 @@
   } 
 }
 .buy {
-  font-weight: bold;
-  color: rgb(208, 57, 57);
   background:  #f5f7ae;
   padding: 0.5rem 1rem;
   border: 1px solid #cccdce;
@@ -64,10 +63,21 @@
 }
 .not-buy {
   font-weight: bold;
-  background: #f8f9fa;
+  background: #d3d5e6;
   padding: 0.5rem 1rem;
   cursor: pointer;
   &:hover {
     opacity: 0.8;
   }
+}
+.rakuten-top {
+  font-size: 18px;
+}
+.rakuten-post {
+  font-weight: bold;
+  color: rgb(208, 57, 57);
+}
+.rakuten-delete {
+  font-weight: bold;
+  color: rgb(70, 69, 69);
 }

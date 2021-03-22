@@ -1,4 +1,4 @@
-class Apps::ActivesController < Apps::ApplicationController
+class Apps::Otherusers::ActivesController < Apps::Otherusers::ApplicationController
 
   def index
     @user = User.find(params[:account_id])

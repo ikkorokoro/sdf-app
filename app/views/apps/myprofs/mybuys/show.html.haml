@@ -1,0 +1,21 @@
+.main-bg-color#show-account{data: {account_id: current_user.id}}
+  = render 'commons/user_info', user: current_user
+  .tabs
+    = link_to profile_path do
+      .tabs_item{class: "#{add_active_class(profile_path)}"}
+        自分の投稿
+    = link_to myfavorite_path do
+      .tabs_item{class: "#{add_active_class(myfavorite_path)}"}
+        いいねした投稿
+    = link_to timeline_path do
+      .tabs_item{class: "#{add_active_class(timeline_path)}"}
+        フォローした人の投稿
+    = link_to mybuy_path do
+      .tabs_item{class: "#{add_active_class(mybuy_path)}"}
+        購入リスト
+  .post-count
+    %p 登録数  #{@items.count}
+  .container
+    .row
+      = render 'commons/rakuten_item', items: @items
+= javascript_pack_tag 'account'
