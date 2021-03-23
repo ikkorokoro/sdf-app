@@ -7,6 +7,11 @@ set :ssh_options, {
     auth_methods: %w(publickey),
   }
 set :stage, :production
+set :rbenv_prefix, "source /etc/profile.d/env.sh && RAILS_ENV=#{fetch(:stage)} ~/.rbenv/bin/rbenv exec"
+set :default_env, {
+  'DB_USER' => ENV["RDS_PASSWORD"],
+  'RDS_ENDPOINT' => ENV["RDS_ENDPOINT"]
+}
 # server-based syntax
 # ======================
 # Defines a single server with a list of roles and multiple properties.

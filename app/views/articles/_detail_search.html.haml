@@ -4,6 +4,7 @@
   .deteil-box
     .detail-content
       = f.label :object_eq, '物品名'
+      %br
       = f.search_field :object_eq, class: 'detail-field'
     .detail-content
       .detail-content-price
@@ -26,6 +27,7 @@
       = f.collection_select :tags_id_eq, Tag.all, :id, :name, { include_blank: '指定なし'}, class: 'detail-field'
     .detail-content
       = f.label :rate_eq, '星評価'
+      %br
       = f.select :rate_eq, {'星評価1': 1, '星評価2': 2, '星評価3': 3, '星評価4': 4,'星評価5': 5}, { include_blank: '指定なし'}, class: 'detail-field'
     = button_tag type: 'submit', class: 'detail-icon' do
       %i.fas.fa-search.fa-lg

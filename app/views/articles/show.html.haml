@@ -75,27 +75,27 @@
         コメント一覧
       .comments
         
-    - if @senjins.present?
       .rakuten-api
         .rakuten
-          = link_to '楽天市場で探す', "https://search.rakuten.co.jp/search/mall/戦人-senjin-+#{@article.object}", class: 'rakuten-link'
-        %span.rakuten-title 楽天市場の関連アイテム(評価4.5以上)
-        .rakuten-items
-          - @senjins.each do |item|
-            .rakuten-item.mb-3
-              .api-img
-                = link_to item['item_url'] do
-                  = image_tag item['mediumImageUrls'][0]
-              .api-content
-                = item['itemName']
-                .api
-                  .api-title
-                    購入金額
-                  .api-value
-                    #{item['itemPrice']}円
-                .api
-                  .api-title 
-                    平均評価
-                  .api-value
-                    #{item['reviewAverage']}
+          = link_to '楽天アイテムで探す', rakutens_path, class: 'rakuten-btn'
+        - if @senjins.present?
+          %span.rakuten-title 楽天市場の関連アイテム(評価4.5以上)
+          .rakuten-items
+            - @senjins.each do |item|
+              .rakuten-item.mb-3
+                .api-img
+                  = link_to item['item_url'] do
+                    = image_tag item['mediumImageUrls'][0]
+                .api-content
+                  = item['itemName']
+                  .api
+                    .api-title
+                      購入金額
+                    .api-value
+                      #{item['itemPrice']}円
+                  .api
+                    .api-title 
+                      平均評価
+                    .api-value
+                      #{item['reviewAverage']}
   = javascript_pack_tag 'show_article'
