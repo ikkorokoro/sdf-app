@@ -16,10 +16,10 @@
             平均評価
           .api-value
             #{item.review_average}
-      .buy-list.mt-2
-        - if current_user.has_buylist?(item)
-          .not-buy#unfollow-btn
-            = link_to '購入リストから解除', rakuten_buylist_path(item), method: 'delete',class: 'rakuten-delete'
-        - else
-          .buy#follow-btn
-            = link_to '購入リストに登録', rakuten_buylist_path(item), method: 'post',class: 'rakuten-post'
+        .buy-list.mt-2
+      - if current_user.has_buylist?(item)
+        .not-buy#unfollow-btn
+          = link_to '購入リストから解除', rakuten_buylist_path(item), method: 'delete',class: 'rakuten-delete'
+      - else
+        .buy#follow-btn
+          = link_to '購入リストに登録', rakuten_buylist_path(item), method: 'post',class: 'rakuten-post'
