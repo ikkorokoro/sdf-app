@@ -369,18 +369,11 @@
 
 .rakuten {
   margin: 1.5rem 0;
-  &-link {
-    font-size: 20px;
-    font-weight: bold;
-    border: 1px solid gray;
-    padding: 0.5rem 1.5rem;
-    cursor: pointer;
-    background-color: rgb(247, 112, 112);
     &:hover {
       opacity: 0.8;
     }
   }
-}
+
 
 .rakuten-title {
   display: inline-block;

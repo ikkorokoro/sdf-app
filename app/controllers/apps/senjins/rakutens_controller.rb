@@ -18,12 +18,12 @@ class Apps::Senjins::RakutensController < Apps::Senjins::ApplicationController
     #「items」内の各データを保存。
     #すでに保存済は除外するためにunless使用。
     items.each do |item|
-      unless Rakuten.all.include?(item)
+      unless Rakuten.all.exists?(item_name: item.item_name)
         item.save
       end
     end
     @items = Rakuten.all.page(params[:page])
-    # 商品数
+    # 全アイテム数
     @total_count = results.response.count
   end
 

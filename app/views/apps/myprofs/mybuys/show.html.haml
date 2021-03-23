@@ -17,5 +17,22 @@
     %p 登録数  #{@items.count}
   .container
     .row
-      = render 'commons/rakuten_item', items: @items
+      - @items.each do |item|
+        .senjin-item.mx-auto
+          .api-img
+            = link_to item.item_url do
+              = image_tag item.image_urls
+          .api-content
+            = item.item_name
+            .api
+              .api-title
+                購入金額
+              .api-value
+                #{item.item_price}円
+            .api
+              .api-title 
+                平均評価
+              .api-value
+                #{item.review_average}
+      
 = javascript_pack_tag 'account'

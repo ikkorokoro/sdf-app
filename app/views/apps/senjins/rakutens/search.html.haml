@@ -21,28 +21,6 @@
         全アイテム数: #{@count} 件
       .container 
         .row
-          - @items.each do |item|
-            .col-sm-4.col-md-4.col-lg-3.col-xl-2.mb-3
-              .senjin-item.mx-auto
-                .api-img
-                  = link_to item.item_url do
-                    = image_tag item.image_urls
-                .api-content
-                  = item.item_name
-                  .api
-                    .api-title
-                      購入金額
-                    .api-value
-                      #{item.item_price}円
-                  .api
-                    .api-title 
-                      平均評価
-                    .api-value
-                      #{item.review_average}
-                .buy-list.mt-2
-                  .buy#follow-btn
-                    購入リストに登録
-                  .not-buy.d-none#unfollow-btn
-                    購入リストから解除
+          = render 'commons/rakuten_item', items: @items
       = paginate @items
   %span= link_to '楽天トップへ戻る', rakutens_path, class: 'rakuten-top'
