@@ -40,8 +40,8 @@ tags.each {|tag| Tag.create!(name: tag)}
 object = '戦闘服'
 price = 8000
 store = '留萌駐屯地'
-category_id = 38
-tag_ids = [79, 80, 88]
+category_id = 5
+tag_ids = [1, 2, 22]
 rate = 2
 content = '官品とそんなに変わらない生地の厚さですが、演習等で使うようにしてます。8000円出して買うものではなかったなと思いました。'
 gruop1.each { |user| user.articles.create!(
@@ -57,8 +57,8 @@ gruop1.each { |user| user.articles.create!(
 object = '手袋'
 price = 2000
 store = '旭川駐屯地'
-category_id = 37
-tag_ids = [80, 84, 90]
+category_id = 4
+tag_ids = [4, 5, 9]
 rate = 4
 content = '値段の割には耐久性があります。購入してから6ヶ月ほど経ちますがまだ全然使えます！コスパはいいと思います！'
 gruop2.each { |user| user.articles.create!(
@@ -74,8 +74,8 @@ gruop2.each { |user| user.articles.create!(
 object = 'バッグ'
 price = 10000
 store = '札幌駐屯地'
-category_id = 39
-tag_ids = [80, 90, 91]
+category_id = 6
+tag_ids = [2, 4, 11]
 rate = 5
 content = '1万円ですが収納ポケットがたくさんあり、無線機もすっぽり入るぐらい大きい収納スペースがあり演習では必ず使っています！'
 gruop3.each { |user| user.articles.create!(
@@ -88,11 +88,11 @@ gruop3.each { |user| user.articles.create!(
   tag_ids: tag_ids
   )}
 
-object = '鉄帽'
-price = 12000
+object = '弾帯'
+price = 5000
 store = '釧路駐屯地'
-category_id = 34
-tag_ids = [81, 83, 91]
+category_id = 11
+tag_ids = [3, 9, 12]
 rate = 5
 content = '私物の鉄帽買うならこれがいいと思います！軽量で領事館被っていても頭も首も痛くなりません。'
 gruop4.each { |user| user.articles.create!(
@@ -114,7 +114,7 @@ forcearticles = articles[6..9]
 onearticles.each { |onearticle| onearticle.image.attach(io: File.open('app/assets/images/vc-01.jpg'), filename: 'vc-01.jpg')}
 twoarticles.each { |twoarticle| twoarticle.image.attach(io: File.open('app/assets/images/C704-01.jpg'), filename: 'C704-01.jpg')}
 threearticles.each { |threearticle| threearticle.image.attach(io: File.open('app/assets/images/ryukkudai-01.jpg'), filename: 'ryukkudai-01.jpg')}
-forcearticles.each  { |forcearticle| forcearticle.image.attach(io: File.open('app/assets/images/type88-01.jpg'), filename: 'type88-01.jpg')}
+forcearticles.each  { |forcearticle| forcearticle.image.attach(io: File.open('app/assets/images/danntaio-01.jpg'), filename: 'danntaio-01.jpg')}
 
 #like
 users = User.all
