@@ -40,8 +40,8 @@ tags.each {|tag| Tag.create!(name: tag)}
 object = '戦闘服'
 price = 8000
 store = '留萌駐屯地'
-category_id = Category.all[0]
-tag_ids = [Tag.all[0], Tag.all[1], Tag.all[21]]
+category_id = Category.all[0].id
+tag_ids = [Tag.all[0].id, Tag.all[1].id, Tag.all[21].id]
 rate = 2
 content = '官品とそんなに変わらない生地の厚さですが、演習等で使うようにしてます。8000円出して買うものではなかったなと思いました。'
 gruop1.each { |user| user.articles.create!(
@@ -57,8 +57,8 @@ gruop1.each { |user| user.articles.create!(
 object = '手袋'
 price = 2000
 store = '旭川駐屯地'
-category_id = Category.all[3]
-tag_ids = [Tag.all[3], Tag.all[4], Tag.all[8]]
+category_id = Category.all[3].id
+tag_ids = [Tag.all[3].id, Tag.all[4].id, Tag.all[8].id]
 rate = 4
 content = '値段の割には耐久性があります。購入してから6ヶ月ほど経ちますがまだ全然使えます！コスパはいいと思います！'
 gruop2.each { |user| user.articles.create!(
@@ -74,8 +74,8 @@ gruop2.each { |user| user.articles.create!(
 object = 'バッグ'
 price = 10000
 store = '札幌駐屯地'
-category_id = Category.all[5]
-tag_ids = [Tag.all[1], Tag.all[3], Tag.all[10]]
+category_id = Category.all[5].id
+tag_ids = [Tag.all[1].id, Tag.all[3].id, Tag.all[10].id]
 rate = 5
 content = '1万円ですが収納ポケットがたくさんあり、無線機もすっぽり入るぐらい大きい収納スペースがあり演習では必ず使っています！'
 gruop3.each { |user| user.articles.create!(
@@ -91,8 +91,8 @@ gruop3.each { |user| user.articles.create!(
 object = '弾帯'
 price = 5000
 store = '釧路駐屯地'
-category_id = Category.all[10]
-tag_ids = [Tag.all[2], Tag.all[8], Tag.all[11]]
+category_id = Category.all[10].id
+tag_ids = [Tag.all[2].id, Tag.all[8].id, Tag.all[11].id]
 rate = 5
 content = '私物の鉄帽買うならこれがいいと思います！軽量で領事館被っていても頭も首も痛くなりません。'
 gruop4.each { |user| user.articles.create!(
