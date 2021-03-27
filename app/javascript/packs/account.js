@@ -26,10 +26,10 @@ document.addEventListener('DOMContentLoaded', () => {
   axios.get(`/api/accounts/${accountId}/informations`)
   .then((response) => {
     const hasFollow = response.data.hasFollow
-    const followers = response.data.followers
-    const followings = response.data.followings
-    $('#follower-count').text(followers)
-    $('#following-count').text(followings)
+    const followersCount = response.data.followersCount
+    const followingsCount = response.data.followingsCount
+    $('#follower-count').text(followersCount)
+    $('#following-count').text(followingsCount)
     if (hasFollow) {
       $('#unfollow-btn').removeClass('d-none')
     } else {
