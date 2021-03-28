@@ -1,27 +1,24 @@
 class Apps::Senjins::RakutensController < Apps::Senjins::ApplicationController
   before_action :set_q, only: [:index, :search]
 
-  PER = 30
   def index
-    # binding.pry
     items = []
+
     results = RakutenWebService::Ichiba::Item.search(
       shopCode: 'shop-senjin',
       page: params[:page],
-      hits: PER)
-    #resultsに楽天APIから取得したデータ（jsonデータ）を格納します。
-    # read(result)に、privateメソッド
+      hits: 30)
     results.each do |result|
       item = Rakuten.new(read(result))
       items << item
     end
-    #「items」内の各データを保存。
-    #すでに保存済は除外するためにunless使用。
+
     items.each do |item|
       unless Rakuten.all.exists?(item_name: item.item_name)
         item.save
       end
     end
+
     @items = Rakuten.all.page(params[:page])
     # 全アイテム数
     @total_count = results.response.count
@@ -33,7 +30,6 @@ class Apps::Senjins::RakutensController < Apps::Senjins::ApplicationController
   end
 
   private
-    #「楽天APIのデータから必要なデータを絞り込む」、且つ「対応するカラムにデータを格納する」メソッド
     def read(result)
       image_url = result['mediumImageUrls'][0]
       item_name = result['itemName']
