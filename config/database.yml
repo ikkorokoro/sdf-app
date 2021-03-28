@@ -52,10 +52,3 @@ production:
   username: root
   password: <%= ENV['RDS_PASSWORD'] %>
   host: <%= ENV['RDS_ENDPOINT'] %>
-# production:
-#   <<: *default
-#   database: sdf_app_production
-#   username: root
-#   password: <%= ENV['RDS_PASSWORD'] %>
-#   host: <%= ENV['RDS_ENDPOINT'] %>
-#   socket: /var/lib/mysql/mysql.sock

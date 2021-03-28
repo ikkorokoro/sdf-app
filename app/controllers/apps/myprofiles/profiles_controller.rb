@@ -1,4 +1,5 @@
-class Apps::Myprofs::ProfilesController < Apps::Myprofs::ApplicationController
+class Apps::Myprofiles::ProfilesController < Apps::Myprofiles::ApplicationController
+  before_action :set_article, only: [:edit, :update]
 
   def show
     @profile = current_user.profile
@@ -6,11 +7,9 @@ class Apps::Myprofs::ProfilesController < Apps::Myprofs::ApplicationController
   end
 
   def edit
-    @profile = current_user.prepre_profile
   end
 
   def update
-    @profile = current_user.prepre_profile
     @profile.assign_attributes(params_profile)
     if @profile.save
       redirect_to profile_path, notice: 'プロフィールを更新できました'
@@ -23,5 +22,9 @@ class Apps::Myprofs::ProfilesController < Apps::Myprofs::ApplicationController
   private
   def params_profile
     params.require(:profile).permit(:avatar, :name, :affiliation, :introduction)
+  end
+
+  def set_article
+    @profile = current_user.prepre_profile
   end
 end
