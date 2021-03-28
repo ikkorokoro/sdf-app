@@ -17,9 +17,9 @@ resources :notifications, only: [:index]
 scope module: :apps do
   scope module: :myprofiles do
     resource  :profile, only: [:show, :edit, :update]
-    resource  :myfavorite, only: [:show]
+    resource  :favorite, only: [:show]
     resource  :timeline, only: [:show]
-    resource  :mybuy, only: [:show]
+    resource  :buy, only: [:show]
   end
   scope module: :senjins do
     resources :rakutens, only: [:index] do
