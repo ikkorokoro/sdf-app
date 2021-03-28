@@ -6,11 +6,11 @@
 # #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 # #   Character.create(name: 'Luke', movie: movies.first)
 # Faker::Config.locale = :en
-# User.create(
-#   email:                'aaaaaa@au.com',
-#   password:             'aaaaaa',
-#   account:              'arigatou'
-#   )
+User.create(
+  email:                'aaaaaa@au.com',
+  password:             'aaaaaa',
+  account:              'arigatou'
+  )
 
 9.times do
 email =  Faker::Internet.email

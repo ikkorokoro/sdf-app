@@ -27,9 +27,9 @@ class Article < ApplicationRecord
   has_many :tags, through: :article_tags
   has_many :notifications, dependent: :destroy
   belongs_to :category
-  validates :object, presence: true, length: { maximum: 10 }
-  validates :price, presence: true, length: { maximum: 6 }
-  validates :store, presence: true, length: { maximum: 10 }
+  validates :object, presence: true
+  validates :price, presence: true
+  validates :store, presence: true
   validates :category_id, presence: true
   validates :rate, presence: true
   validates :content, presence: true, length: { maximum: 100 }

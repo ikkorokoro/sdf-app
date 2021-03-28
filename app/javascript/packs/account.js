@@ -1,18 +1,18 @@
 import $ from 'jquery'
 import axios from 'modules/axios'
 
-const FollowBtnAndCountDisplay = (status, follower) => {
+const FollowBtnAndCountDisplay = (status, followerCount) => {
   if (status === 'ok') {
     $('#follow-btn').addClass('d-none')
     $('#unfollow-btn').removeClass('d-none')
-    $('#follower-count').text(follower)
+    $('#follower-count').text(followerCount)
   }
 }
-const unFollowBtnAndCountDisplay = (status, follower) => {
+const unFollowBtnAndCountDisplay = (status, followerCount) => {
   if (status === 'ok') {
     $('#follow-btn').removeClass('d-none')
     $('#unfollow-btn').addClass('d-none')
-    $('#follower-count').text(follower)
+    $('#follower-count').text(followerCount)
   }
 }
 
@@ -45,8 +45,8 @@ document.addEventListener('DOMContentLoaded', () => {
       axios.post(`/accounts/${accountId}/follows`)
       .then((response) => {
         const status = response.data.status
-        const follower = response.data.follower
-        FollowBtnAndCountDisplay(status, follower)
+        const followerCount = response.data.followerCount
+        FollowBtnAndCountDisplay(status, followerCount)
       })
       .catch((e) => {
         window.alert('Error')
@@ -58,8 +58,8 @@ document.addEventListener('DOMContentLoaded', () => {
       axios.post(`/accounts/${accountId}/unfollows`)
       .then((response) => {
         const status = response.data.status
-        const follower = response.data.follower
-        unFollowBtnAndCountDisplay(status, follower)
+        const followerCount = response.data.followerCount
+        unFollowBtnAndCountDisplay(status, followerCount)
       })
       .catch((e) => {
         window.alert('Error')
