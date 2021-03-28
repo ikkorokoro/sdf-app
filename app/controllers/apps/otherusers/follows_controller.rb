@@ -5,7 +5,7 @@ class Apps::Otherusers::FollowsController < Apps::Otherusers::ApplicationControl
     current_user.follow!(user)
     #通知の作成
     user.create_notification_follow!(current_user)
-    follower = user.followers.count
-    render json: {status: 'ok', follower: follower}
+    follower_count = user.followers.count
+    render json: {status: 'ok', followerCount: follower_count}
   end
 end

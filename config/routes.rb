@@ -15,7 +15,7 @@ end
 resources :notifications, only: [:index]
 
 scope module: :apps do
-  scope module: :myprofs do
+  scope module: :myprofiles do
     resource  :profile, only: [:show, :edit, :update]
     resource  :myfavorite, only: [:show]
     resource  :timeline, only: [:show]

@@ -1,6 +1,7 @@
 class ArticlesController < ApplicationController
   before_action :authenticate_user!, only: [:new, :show, :create, :edit, :update, :destroy, :search]
   before_action :set_q, only: [:index, :search]
+  before_action :set_article, only: [:edit, :update]
 
   def index
     @ranking_articles = Article.with_attached_image.includes(:tags, user: [profile: [avatar_attachment: :blob]]).find(Like.group(:article_id).order('count(article_id) desc').limit(3).pluck(:article_id))#投稿の中でいいねが多い記事を3つ
@@ -37,11 +38,9 @@ class ArticlesController < ApplicationController
   end
 
   def edit
-    @article = current_user.articles.find(params[:id])
   end
 
   def update
-    @article = current_user.articles.find(params[:id])
     if @article.update(params_article)
       redirect_to article_path(@article), notice: '更新に成功しました'
     else
@@ -62,6 +61,10 @@ class ArticlesController < ApplicationController
   end
 
   private
+  def set_article
+    @article = current_user.articles.find(params[:id])
+  end
+  
   def params_article
     params.require(:article).permit(
       :object,
@@ -77,5 +80,4 @@ class ArticlesController < ApplicationController
   def set_q
     @q = Article.with_attached_image.includes(:tags, user: [profile: [avatar_attachment: :blob]]).ransack(params[:q])
   end
-
 end
