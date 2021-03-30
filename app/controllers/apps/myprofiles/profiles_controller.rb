@@ -10,8 +10,7 @@ class Apps::Myprofiles::ProfilesController < Apps::Myprofiles::ApplicationContro
   end
 
   def update
-    @profile.assign_attributes(params_profile)
-    if @profile.save
+    if @profile.update(profile_params)
       redirect_to profile_path, notice: 'プロフィールを更新できました'
     else
       flash.now[:error] = '更新できませんでした'
@@ -20,7 +19,7 @@ class Apps::Myprofiles::ProfilesController < Apps::Myprofiles::ApplicationContro
   end
 
   private
-  def params_profile
+  def profile_params
     params.require(:profile).permit(:avatar, :name, :affiliation, :introduction)
   end
 
