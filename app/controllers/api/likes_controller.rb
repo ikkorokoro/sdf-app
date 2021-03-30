@@ -1,7 +1,7 @@
 class Api::LikesController < Api::ApplicationController
   before_action :authenticate_user!, only: [:show, :create, :destroy]
   before_action :set_article, only: [:show, :create, :destroy]
-  
+
   def show
     has_liked = current_user.has_liked?(@article)
     likes_count = @article.likes.count

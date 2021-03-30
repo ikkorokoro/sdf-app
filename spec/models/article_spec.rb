@@ -22,7 +22,7 @@ require 'rails_helper'
 RSpec.describe 'Article', type: :model do
   let!(:user) { create(:user) }
   let!(:category) { create(:category) }
-  
+
   context '全てのカラムが入力されている場合' do
     let!(:article) { build(:article, user: user, category: category ) }
 
@@ -33,23 +33,23 @@ RSpec.describe 'Article', type: :model do
 
   context 'objectが入力されていない場合' do
     let!(:article) { build(:article, object: '', user: user, category: category) }
-    
+
     before do
       article.save
     end
-    
+
     it '記事は保存できない' do
       expect(article.errors.messages[:object][0]).to eq('を入力してください')
     end
   end
-  
+
   context 'priceが入力されていない場合' do
     let!(:article) { build(:article, price: '', user: user, category: category) }
-    
+
     before do
       article.save
     end
-    
+
     it '記事は保存できない' do
       expect(article.errors.messages[:price][0]).to eq('を入力してください')
     end
@@ -57,7 +57,7 @@ RSpec.describe 'Article', type: :model do
 
   context 'rateが入力されていない場合' do
     let!(:article) { build(:article, rate: '', user: user, category: category) }
-    
+
     before do
       article.save
     end
@@ -66,14 +66,14 @@ RSpec.describe 'Article', type: :model do
       expect(article.errors.messages[:rate][0]).to eq('を入力してください')
     end
   end
-  
+
   context 'contentが入力されていない場合' do
     let!(:article) { build(:article, content: '', user: user, category: category) }
 
     before do
-      article.save  
+      article.save
     end
-    
+
     it '記事は保存できない' do
       expect(article.errors.messages[:content][0]).to eq('を入力してください')
     end
@@ -93,7 +93,6 @@ RSpec.describe 'Article', type: :model do
 
   # context '記事がが削除された場合' do
   #   let!(:article) { build(:article, user: user, category: category ) }
-    
 
   #   it '記事が削除されたら紐ずくコメントも削除される' do
   #     comments = article.comments.count

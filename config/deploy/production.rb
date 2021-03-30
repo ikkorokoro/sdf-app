@@ -9,8 +9,8 @@ set :ssh_options, {
 set :stage, :production
 set :rbenv_prefix, "source /etc/profile.d/env.sh && RAILS_ENV=#{fetch(:stage)} ~/.rbenv/bin/rbenv exec"
 set :default_env, {
-  'DB_USER' => ENV["RDS_PASSWORD"],
-  'RDS_ENDPOINT' => ENV["RDS_ENDPOINT"]
+  'DB_USER' => ENV['RDS_PASSWORD'],
+  'RDS_ENDPOINT' => ENV['RDS_ENDPOINT']
 }
 # server-based syntax
 # ======================

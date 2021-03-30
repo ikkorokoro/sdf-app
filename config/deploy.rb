@@ -13,12 +13,11 @@ set :nginx_sites_enabled_path, '/etc/nginx/conf.d'
 # env production
 set :rails_env, :production
 
-append :linked_files, "config/master.key"
-append :linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets", "node_modules"
+append :linked_files, 'config/master.key'
+append :linked_dirs, 'log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'node_modules'
 
 # 保持するバージョンの個数 だいぶ増えてきてたので制限した
 set :keep_releases, 10
-
 
 # Gemfileを設定
 set :bundle_gemfile, -> { release_path.join('Gemfile') }

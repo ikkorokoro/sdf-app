@@ -11,7 +11,7 @@ class ArticlesController < ApplicationController
     @top_category_articles = Article.with_attached_image.includes(:tags, user: [profile: [avatar_attachment: :blob]]).where(category_id: top_one_category).limit(3)#一番人気のカテゴリの投稿を全て取得
     tag_ranks = ArticleTag.group(:tag_id).order('count(tag_id) desc').limit(5).pluck(:tag_id)
     @top_tags = Tag.find(tag_ranks)
-    @new_articles = Article.with_attached_image.includes(:tags, user: [profile: [avatar_attachment: :blob]]).order(updated_at: :desc).limit(10)#全ての投稿の最新の投稿
+    @new_articles = Article.with_attached_image.includes(:tags, user: [profile: [avatar_attachment: :blob]]).order(updated_at: :desc).limit(16)#全ての投稿の最新の投稿
   end
 
   def show
@@ -64,7 +64,7 @@ class ArticlesController < ApplicationController
   def set_article
     @article = current_user.articles.find(params[:id])
   end
-  
+
   def params_article
     params.require(:article).permit(
       :object,

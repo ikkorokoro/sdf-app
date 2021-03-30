@@ -1,6 +1,6 @@
 class Api::CommentsController < Api::ApplicationController
   before_action :set_article, only: [:index, :create]
-  
+
   def index
     comments = @article.comments
     render json: comments

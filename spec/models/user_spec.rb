@@ -4,7 +4,7 @@ RSpec.describe User, type: :model do
   let!(:user) { create(:user) }
   let!(:category) { create(:category) }
   context '全てのカラムが入力されている場合' do
-      
+
     it 'userを登録できる' do
       expect(user).to be_valid
     end
@@ -66,11 +66,11 @@ RSpec.describe User, type: :model do
   describe '文字数の検証' do
     context 'email文字数が255以上の場合' do
       let!(:user) { build(:user, email: 'a' * 244 + '@example.com') }
-      
+
       before do
         user.save
       end
-      
+
       it '登録できない' do
         expect(user.errors.messages[:email][0]).to eq('は255文字以内で入力してください')
       end
@@ -78,18 +78,18 @@ RSpec.describe User, type: :model do
 
     context 'email文字数が255以内の場合' do
       let!(:user) { build(:user, email: 'a' * 243 + '@example.com') }
-      
+
       it '登録できる' do
         expect(user).to be_valid
       end
 
     context 'password文字数が5文字以内の場合' do
       let!(:user) { build(:user, password: 'a' * 5) }
-      
+
       before do
         user.save
       end
-      
+
       it '登録できない' do
         expect(user.errors.messages[:password][0]).to eq('は6文字以上で入力してください')
       end
@@ -97,7 +97,7 @@ RSpec.describe User, type: :model do
 
     context 'password文字数が6文字以上の場合' do
       let!(:user) { build(:user) }
-      
+
       it '登録できる' do
         expect(user).to be_valid
       end
@@ -130,7 +130,7 @@ end
   describe 'パスワードの検証' do
     context 'パスワードと確認用パスワードが間違っている場合' do
       let!(:user) { build(:user, password_confirmation: 'pass') }
-      
+
       before do
         user.save
       end
@@ -144,7 +144,7 @@ end
     context '記事を削除した場合' do
       let!(:article) { create(:article, user: user, category: category) }
       let!(:like) { create(:like, user: user, article: article) }
-      
+
       it '紐づくメニュー記事も削除される' do
         expect{user.destroy}.to change(user.articles, :count).by(-1)
       end

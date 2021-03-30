@@ -1,6 +1,6 @@
 class Apps::Senjins::BuylistsController < Apps::Senjins::ApplicationController
   before_action :set_rakuten, only: [:create, :destroy]
-  
+
   def create
     @item.buylists.create!(user_id: current_user.id)
     redirect_to rakutens_path
