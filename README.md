@@ -52,6 +52,8 @@
   * Capistrano
 * インフラ 
   * AWS(VPC/EC2/RDS/ALB/S3/ACM/Route53)
+  * docker
+  * docker-comporce
 * バージョン管理  
   * Git/GitHub 
 # データベース設計
