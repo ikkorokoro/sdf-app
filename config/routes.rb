@@ -29,7 +29,7 @@ scope module: :apps do
     resource :buylist, only: [:create, :destroy]
     end
   end
-  scope module: :otherusers do
+  scope module: :other_users do
     resources  :accounts, only: [:show] do
       resource  :favorite, only: [:show]
       resource  :othertimeline, only: [:show]

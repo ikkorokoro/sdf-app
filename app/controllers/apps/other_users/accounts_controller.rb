@@ -1,4 +1,4 @@
-class Apps::Otherusers::AccountsController < Apps::Otherusers::ApplicationController
+class Apps::OtherUsers::AccountsController < Apps::OtherUsers::ApplicationController
 
   def show
     @user = User.find(params[:id])
