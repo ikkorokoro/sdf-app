@@ -30,6 +30,8 @@
 
 /public/packs
 /public/packs-test
+/public/packs_by_dart_sass
+/public/packs_by_node_sass
 /node_modules
 /yarn-error.log
 yarn-debug.log*
