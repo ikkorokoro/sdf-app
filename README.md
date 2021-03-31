@@ -57,5 +57,6 @@
 * バージョン管理  
   * Git/GitHub 
 # データベース設計
-![drow io](https://user-images.githubusercontent.com/62924821/113077394-0836bd00-920c-11eb-8508-014d93620402.png)
+![drow io](https://user-images.githubusercontent.com/62924821/113077697-9743d500-920c-11eb-8b47-1cba48c8c6ed.png)
+
 
