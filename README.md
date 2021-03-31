@@ -57,6 +57,5 @@
 * バージョン管理  
   * Git/GitHub 
 # データベース設計
-<img width="576" alt="スクリーンショット 2021-03-06 18 57 13" src="https://user-images.githubusercontent.com/62924821/110202748-119f6480-7eae-11eb-8d1d-27b190447513.png">
-
+![drow io](https://user-images.githubusercontent.com/62924821/113077186-a1b19f00-920b-11eb-9cbe-bfd9d9aea3d2.png)
 
