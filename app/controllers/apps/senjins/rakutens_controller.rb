@@ -10,10 +10,6 @@ class Apps::Senjins::RakutensController < Apps::Senjins::ApplicationController
       hits: 30)
     results.each do |result|
       item = Rakuten.new(read(result))
-      items << item
-    end
-
-    items.each do |item|
       unless Rakuten.all.exists?(item_name: item.item_name)
         item.save
       end
