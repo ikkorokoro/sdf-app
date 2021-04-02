@@ -16,8 +16,6 @@ class Apps::Senjins::RakutensController < Apps::Senjins::ApplicationController
 
   private
     def create_rakuten_data(params)
-      items = []
-
       @results = RakutenWebService::Ichiba::Item.search(
         shopCode: 'shop-senjin',
         page: params[:page],
