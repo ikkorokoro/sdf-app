@@ -30,8 +30,8 @@ services:
       - 3000:3000
     depends_on:
       - db
-    tty: true
-    stdin_open: true
+    tty: true #binding.pryを使用できるようにしする
+    stdin_open: true #上記と同じ
 volumes:
   mysql-data:
     driver: local

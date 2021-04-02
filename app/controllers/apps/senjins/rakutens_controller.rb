@@ -2,22 +2,11 @@ class Apps::Senjins::RakutensController < Apps::Senjins::ApplicationController
   before_action :set_q, only: [:index, :search]
 
   def index
-    items = []
-
-    results = RakutenWebService::Ichiba::Item.search(
-      shopCode: 'shop-senjin',
-      page: params[:page],
-      hits: 30)
-    results.each do |result|
-      item = Rakuten.new(read(result))
-      unless Rakuten.all.exists?(item_name: item.item_name)
-        item.save
-      end
-    end
+    create_rakuten_data(params)
 
     @items = Rakuten.all.page(params[:page])
     # 全アイテム数
-    @total_count = results.response.count
+    @total_count = @results.response.count
   end
 
   def search
@@ -26,6 +15,22 @@ class Apps::Senjins::RakutensController < Apps::Senjins::ApplicationController
   end
 
   private
+    def create_rakuten_data(params)
+      items = []
+
+      @results = RakutenWebService::Ichiba::Item.search(
+        shopCode: 'shop-senjin',
+        page: params[:page],
+        hits: 30)
+
+      @results.each do |result|
+        item = Rakuten.new(read(result))
+        unless Rakuten.all.exists?(item_name: item.item_name)
+          item.save
+        end
+      end
+    end
+
     def read(result)
       image_url = result['mediumImageUrls'][0]
       item_name = result['itemName']
