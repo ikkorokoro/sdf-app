@@ -15,7 +15,7 @@
       .main-tug-title
         %span 人気のタグ
       .main-tug-wrap
-        - @top_tags.each do |tag|
+        - @five_tags.each do |tag|
           .main-tug-group
             = link_to "##{tag.name}", search_articles_path(q: { tags_id_eq: tag.id }), class: 'main-tug-top'
   .article
@@ -26,20 +26,20 @@
         %span いいねランキング
       .container
         .row
-          = render 'commons/articles', articles: @ranking_articles
+          = render 'commons/articles', articles: @three_articles_with_many_likes
       .cate
         .cate-box
           .cate-title
             %span 人気のカテゴリ
           .cate-top5
-            - @top_categorys.each do |category|
+            - @five_categorys.each do |category|
               .cate-item
                 = link_to "#{category.category_name}", search_articles_path(q: { category_id_eq: category.id }), class: 'categorys'
       .top-cate
         .top-cate-article
           %span
-            -if @top_categorys.present?
-              = link_to "##{@top_categorys.first.category_name}の投稿", search_articles_path(q: { category_id_eq: @top_categorys.first.id })
+            -if @top_category_article.present?
+              = link_to "##{@top_category.category_name}の投稿", search_articles_path(q: { category_id_eq: @top_category.id })
         .container
           .row
             = render 'commons/articles', articles: @top_category_articles
@@ -48,4 +48,4 @@
           %span 最新の投稿
       .container
         .row
-          = render 'commons/articles', articles: @new_articles
+          = render 'commons/articles', articles: @new_articles_with_all_articles

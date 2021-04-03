@@ -4,14 +4,22 @@ class ArticlesController < ApplicationController
   before_action :set_article, only: [:edit, :update]
 
   def index
-    @ranking_articles = Article.with_attached_image.includes(:tags, user: [profile: [avatar_attachment: :blob]]).find(Like.group(:article_id).order('count(article_id) desc').limit(3).pluck(:article_id))#投稿の中でいいねが多い記事を3つ
-    category_ranks = Article.group(:category_id).order('count(category_id) desc').limit(5).pluck(:category_id)#投稿の多いカテゴリ上位のidを５つ取得
-    @top_categorys = Category.find(category_ranks)
-    top_one_category = category_ranks.first#一番初めのカテゴリ(一番人気のカテゴリ)のidを取得
-    @top_category_articles = Article.with_attached_image.includes(:tags, user: [profile: [avatar_attachment: :blob]]).where(category_id: top_one_category).limit(3)#一番人気のカテゴリの投稿を全て取得
-    tag_ranks = ArticleTag.group(:tag_id).order('count(tag_id) desc').limit(5).pluck(:tag_id)
-    @top_tags = Tag.find(tag_ranks)
-    @new_articles = Article.with_attached_image.includes(:tags, user: [profile: [avatar_attachment: :blob]]).order(updated_at: :desc).limit(16)#全ての投稿の最新の投稿
+    #投稿の中でいいねが多い記事を3つ
+    @three_articles_with_many_likes = Article.with_attached_image.includes(:tags, user: [profile: [avatar_attachment: :blob]]).find(Like.group(:article_id).order('count(article_id) desc').limit(3).pluck(:article_id))
+    #投稿の多いカテゴリ上位５つのidを取得
+    five_categorys_id_with_many_articles = Article.group(:category_id).order('count(category_id) desc').limit(5).pluck(:category_id)
+    #カテゴリ上位５つのレコード取得
+    @five_categorys = Category.find(five_categorys_id_with_many_articles)
+    #一番初めのカテゴリ(一番人気のカテゴリ)を取得
+    @top_category = @five_categorys.first
+    #一番人気のカテゴリの投稿を全て取得
+    @top_category_articles = Article.with_attached_image.includes(:tags, user: [profile: [avatar_attachment: :blob]]).where(category_id: @top_category).limit(3)
+    #投稿の多いタグ上位５つのid取得
+    five_tags_id_with_many_articles_id = ArticleTag.group(:tag_id).order('count(tag_id) desc').limit(5).pluck(:tag_id)
+    #タグ上位５つのレコード取得
+    @five_tags = Tag.find(five_tags_id_with_many_articles_id)
+    #全ての投稿の最新の投稿
+    @new_articles_with_all_articles = Article.with_attached_image.includes(:tags, user: [profile: [avatar_attachment: :blob]]).order(updated_at: :desc).limit(16)
   end
 
   def show
