@@ -38,7 +38,7 @@
       .top-cate
         .top-cate-article
           %span
-            -if @top_category_article.present?
+            - if @top_category_articles.present?
               = link_to "##{@top_category.category_name}の投稿", search_articles_path(q: { category_id_eq: @top_category.id })
         .container
           .row
