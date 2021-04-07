@@ -86,6 +86,6 @@ URL https://sdf-app-portforio.com
 * バージョン管理  
   * Git/GitHub 
 # データベース設計
-![drow io](https://user-images.githubusercontent.com/62924821/113077697-9743d500-920c-11eb-8b47-1cba48c8c6ed.png)
+![drow io](https://user-images.githubusercontent.com/62924821/113846373-60a02880-97d1-11eb-875a-c2125302c582.png)
 
 
