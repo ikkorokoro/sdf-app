@@ -33,7 +33,12 @@ class Article < ApplicationRecord
   validates :category_id, presence: true
   validates :rate, presence: true
   validates :content, presence: true, length: { maximum: 100 }
-
+  
+  scope :find_three_articles_with_many_likes, -> { with_attached_image.includes(:tags, user: [profile: [avatar_attachment: :blob]]).find(Like.group(:article_id).order('count(article_id) desc').limit(3).pluck(:article_id)) }
+  scope :group_five_categorys_id_with_many_articles, -> { group(:category_id).order('count(category_id) desc').limit(5).pluck(:category_id) }
+  scope :where_top_category_all_articles, -> (top_category){ with_attached_image.includes(:tags, user: [profile: [avatar_attachment: :blob]]).where(category_id: top_category).limit(3) }
+  scope :updated_at_desc_articles, -> { with_attached_image.includes(:tags, user: [profile: [avatar_attachment: :blob]]).order(updated_at: :desc).limit(16) }
+  
   def create_notification_like!(current_user)
     # すでに「いいね」されているか検索
     temp = Notification.where(['visiter_id = ? and visited_id = ? and article_id = ? and action = ? ', current_user.id, user_id, id, 'like'])

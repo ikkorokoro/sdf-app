@@ -38,14 +38,14 @@
       .top-cate
         .top-cate-article
           %span
-            - if @top_category_articles.present?
+            - if @top_category_all_articles.present?
               = link_to "##{@top_category.category_name}の投稿", search_articles_path(q: { category_id_eq: @top_category.id })
         .container
           .row
-            = render 'commons/articles', articles: @top_category_articles
+            = render 'commons/articles', articles: @top_category_all_articles
       .new-article
         .new-article-title
           %span 最新の投稿
       .container
         .row
-          = render 'commons/articles', articles: @new_articles_with_all_articles
+          = render 'commons/articles', articles: @updated_at_desc_articles

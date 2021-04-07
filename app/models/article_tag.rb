@@ -21,4 +21,5 @@
 class ArticleTag < ApplicationRecord
   belongs_to :article
   belongs_to :tag
+  scope :group_five_tags_id_with_many_article_tags, -> { group(:tag_id).order('count(tag_id) desc').limit(5).pluck(:tag_id) }
 end
