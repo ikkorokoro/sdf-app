@@ -74,6 +74,7 @@ URL https://sdf-app-portforio.com
   * Ruby on Rails 6.0.3
   * MySQL
   * Webサーバー　Nginx
+
   * アプリケーションサーバー puma
 * テスト
   * RSpec
@@ -86,6 +87,7 @@ URL https://sdf-app-portforio.com
 * バージョン管理  
   * Git/GitHub 
 # データベース設計
-![drow io](https://user-images.githubusercontent.com/62924821/113077697-9743d500-920c-11eb-8b47-1cba48c8c6ed.png)
+<img width="831" alt="スクリーンショット 2021-04-07 18 48 05" src="https://user-images.githubusercontent.com/62924821/113846781-cbe9fa80-97d1-11eb-9b08-ee34dc0f95b3.png">
+
 
 
