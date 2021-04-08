@@ -159,17 +159,48 @@ end
       end
     end
   end
-  describe '削除依存性の検証' do
-    context '記事を削除した場合' do
-      let!(:article) { create(:article, user: user, category: category) }
-      let!(:like) { create(:like, user: user, article: article) }
 
-      it '紐づくメニュー記事も削除される' do
-        expect{user.destroy}.to change(user.articles, :count).by(-1)
+  describe 'フォロー、アンフォローの検証' do
+    context 'フォローした場合' do
+      let!(:user) { create(:user) }
+      let!(:other_user) { create(:user) }
+      before do
+        user.follow!(other_user)
+      end
+      it 'フォロー状態になる' do
+        expect(other_user.followers).to include user
+        expect(user.has_followed?(other_user)).to eq true
+      end
+      it 'アンフォロー状態になる' do
+        user.unfollow!(other_user)
+        expect(user.has_followed?(other_user)).to eq false
+      end
+    end
+  end
+
+  describe 'いいね、いいね解除を検証する場合' do
+    context 'いいねしていない状態の場合' do
+      let!(:article) { create(:article) }
+      it '無効な状態である' do
+        expect(user.has_liked?(article)).to eq false
+      end
+    end
+
+    context 'いいねした状態の場合' do
+      let!(:article) { create(:article) }
+
+      before do
+        user.likes.create(article_id: article.id)
       end
 
-      it '紐づくメニューフォローも削除される' do
-        expect{user.destroy}.to change(user.likes, :count).by(-1)
+      it 'いいね状態であること' do
+        expect(user.has_liked?(article)).to eq true
+      end
+
+      it 'unlikeするといいねが無効になる' do
+        like = user.likes.find_by!(article_id: article.id)
+        like.destroy
+        expect(user.has_liked?(article)).to eq false
       end
     end
   end

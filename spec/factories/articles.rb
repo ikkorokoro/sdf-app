@@ -23,7 +23,9 @@ FactoryBot.define do
     object { '物品' }
     price { 3000 }
     store { '店' }
-    content { Faker::Lorem.characters(number: 50) }
+    content { 'ありがとう'}
     rate { 1 }
+    association :user
+    association :category
   end
 end
