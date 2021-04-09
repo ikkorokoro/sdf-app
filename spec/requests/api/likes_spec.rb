@@ -25,7 +25,7 @@ RSpec.describe 'Api::Likes', type: :request do
         expect(body['hasLiked']).to eq false
       end
 
-      it 'いいねの数が帰ってくる' do
+      it '投稿のいいね数が返ってくる' do
         get api_like_path(article_id: article.id)
         expect(response).to have_http_status(200)
         likescount = article.likes.count
@@ -33,6 +33,7 @@ RSpec.describe 'Api::Likes', type: :request do
         expect(body['likesCount']).to eq likescount
       end
     end
+    
     context 'ログインしていない場合' do 
       it 'ログイン画面にリダイレクト' do
         get api_like_path(article_id: article.id)

@@ -35,7 +35,7 @@ RSpec.describe "Articles", type: :request do
     end
   end
 
-  describe '#post' do
+  describe '#create' do
     context 'ログインしていない時' do
 
       it 'ログイン画面に遷移する' do
@@ -87,22 +87,22 @@ RSpec.describe "Articles", type: :request do
 
   describe '#edit' do
     context 'ログインしていない時' do
-
       it 'ログインページにリダイレクトされること' do
-        article = create(:article)
         get edit_article_path(article)
         expect(response).to have_http_status(302)
         expect(response).to redirect_to user_session_path
       end
     end
-
     context 'ログインしている時' do
-      it '正常にアクセスできる' do
-        article = create(:article, user: user)
+      before do
         sign_in user
+      end
+      it '投稿者だと正常にアクセスできる' do
+        article = create(:article, user: user)
         get edit_article_path(article)
         expect(response).to have_http_status(200)
       end
+      
     end
   end
 end
