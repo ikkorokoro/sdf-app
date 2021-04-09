@@ -1,6 +1,6 @@
 class Apps::Myprofiles::ProfilesController < Apps::Myprofiles::ApplicationController
   before_action :set_article, only: [:edit, :update]
-
+  
   def show
     @profile = current_user.profile
     @articles = current_user.articles.with_attached_image.includes(:tags)

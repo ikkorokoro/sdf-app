@@ -56,6 +56,7 @@ class Article < ApplicationRecord
       notification.save if notification.valid?
     end
   end
+  
     def create_notification_comment!(current_user, comment_id)
       # 自分以外にコメントしている人をすべて取得し、全員に通知を送る
       temp_ids = Comment.select(:user_id).where(article_id: id).where.not(user_id: current_user.id).distinct
