@@ -90,18 +90,30 @@ RSpec.describe 'Article', type: :model do
       expect(article.errors.messages[:content][0]).to eq('は100文字以内で入力してください')
     end
   end
-
-  # context '記事がが削除された場合' do
-  #   let!(:article) { build(:article, user: user, category: category ) }
-
-  #   it '記事が削除されたら紐ずくコメントも削除される' do
-  #     comments = article.comments.count
-  #     expect(article.destroy).to change(article.comments, :count).by(-1)
-  #   end
-
-  #   it '記事が削除されたら紐ずくいいねも削除される' do
-  #     comments = article.likes.count
-  #     expect(article.destroy).to change(article.likes, :count).by(-1)
-  #   end
-  # end
+  describe '削除の検証' do
+    context '記事が削除された場合' do
+      let!(:other_user) { create(:user) }
+      let!(:article) { build(:article, user: user, category: category ) }
+      let!(:comment) { create(:comment, user: user, article: article) }
+      let!(:like) { create(:like, user: user, article: article) }
+      let!(:tag) { create(:tag) }
+      let!(:article_tag) {create(:article_tag, article: article, tag: tag)}
+      let!(:notification) { create(:notification, article_id: article.id, visited_id: user.id, visiter_id: other_user.id)}
+      it '正常に削除される' do
+        expect{article.destroy}.to change{Article.count}.by(-1)
+      end
+      it '紐ずくコメントも削除される' do
+        expect{article.destroy}.to change{article.comments.count}.by(-1)
+      end
+      it '紐ずくいいねも削除される' do
+        expect{article.destroy}.to change{article.likes.count}.by(-1)
+      end
+      it '紐ずくarticle_tagも削除される' do
+        expect{article.destroy}.to change{article.article_tags.count}.by(-1)
+      end
+      it '紐ずく通知も削除される' do
+        expect{article.destroy}.to change{article.notifications.count}.by(-1)
+      end
+    end
+  end
 end
