@@ -32,6 +32,12 @@ services:
       - db
     tty: true #binding.pryを使用できるようにしする
     stdin_open: true #上記と同じ
+  # ↓追加  使用するイメージはChromeが最初からインストールされたものである、standalone-chromeを使用
+  chrome: 
+    image: selenium/standalone-chrome:latest
+    ports:
+      - 4444:4444
+  # ↑追加
 volumes:
   mysql-data:
     driver: local
