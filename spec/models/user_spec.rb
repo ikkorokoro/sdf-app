@@ -204,4 +204,39 @@ end
       end
     end
   end
+  describe '削除の検証' do
+    context '記事がが削除された場合' do
+      let!(:other_user) { create(:user) }
+      let!(:article) { create(:article, user: user, category: category ) }
+      let!(:comment) { create(:comment, user: user, article: article) }
+      let!(:like) { create(:like, user: user, article: article) }
+      let!(:notification) { create(:notification, article_id: article.id, visited_id: user.id, visiter_id: other_user.id)}
+      it '正常に削除される' do
+        expect{user.destroy}.to change{User.count}.by(-1)
+      end
+      it '紐ずく投稿も削除される' do
+        expect{user.destroy}.to change{user.articles.count}.by(-1)
+      end
+      it '紐ずくいいねも削除される' do
+        expect{user.destroy}.to change{user.likes.count}.by(-1)
+      end
+      it '紐ずくコメントも削除される' do
+        expect{user.destroy}.to change{user.comments.count}.by(-1)
+      end
+      it '紐ずくフォローも削除される' do
+        user.follow!(other_user)
+        expect{user.destroy}.to change{user.followings.count}.by(-1)
+      end
+      it '紐ずくフォローも削除される' do
+        user.follow!(other_user)
+        expect{user.destroy}.to change{other_user.followers.count}.by(-1)
+      end
+      it '紐ずく自分の通知も削除される' do
+        expect{user.destroy}.to change{user.passive_notifications.count}.by(-1)
+      end
+      it '紐ずくプロフィールも削除される' do
+        expect{user.destroy}.to change{Profile.count}.by(-1)
+      end
+    end
+  end
 end

@@ -19,7 +19,7 @@ class Api::LikesController < Api::ApplicationController
   def destroy
     like = @article.likes.find_by!(user_id: current_user.id)
     like.destroy
-    likes_count = article.likes.count
+    likes_count = @article.likes.count
     render json: { status: 'ok', likesCount: likes_count }
   end
 

@@ -13,6 +13,7 @@
 #  visiter_id :integer
 #
 class Notification < ApplicationRecord
+  #デフォルトの並び順を「作成日時の降順。最新のデータから取得するよう指定
   default_scope -> { order(created_at: :desc) }
   belongs_to :article, optional: true
   belongs_to :comment, optional: true

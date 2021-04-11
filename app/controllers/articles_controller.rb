@@ -1,8 +1,8 @@
 class ArticlesController < ApplicationController
-  before_action :authenticate_user!, only: [:new, :show, :create, :edit, :update, :destroy, :search]
+  before_action :authenticate_user!, only: [:new, :show, :create, :edit, :update, :destroy]
   before_action :set_q, only: [:index, :search]
   before_action :set_article, only: [:edit, :update]
-
+  
   def index
     #投稿の中でいいねが多い記事を3つ
     @three_articles_with_many_likes = Article.find_three_articles_with_many_likes 

@@ -43,13 +43,13 @@
         %br/
         = f.text_area :content, class:'content-form'
       .pb-4
-        = f.submit "投稿する", class: 'post-btn btn-bg'
-  = javascript_pack_tag 'change_image'
-  = javascript_pack_tag 'raty'
-  :javascript
-    $('#star').raty({
-      starOff:  '#{asset_path('star-off.png')}',
-      starOn : '#{asset_path('star-on.png')}',
-      scoreName: 'article[rate]',
-      half: false,
-    })
+        = f.submit "保存する", class: 'post-btn btn-bg'
+= javascript_pack_tag 'change_image'
+= javascript_pack_tag 'raty'
+:javascript
+  $('#star').raty({
+    starOff:  '#{asset_path('star-off.png')}',
+    starOn : '#{asset_path('star-on.png')}',
+    scoreName: 'article[rate]',
+    half: false,
+  })

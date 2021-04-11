@@ -27,5 +27,9 @@ FactoryBot.define do
     rate { 1 }
     association :user
     association :category
+
+    after(:build) do |article|
+      article.image.attach(io: File.open('app/assets/images/danntaio-01.jpg'), filename: 'danntaio-01.jpg', content_type: 'image/jpg')
+    end
   end
 end
