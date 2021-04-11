@@ -22,7 +22,7 @@
             = link_to article_path(notification.article) do
               = image_tag  notification.article.user.avatar_image, class: 'profile-avatar'
               %strong
-                = notification.article.user.name + 'さんの投稿にコメントしました'
+                = notification.article.user.display_name + 'さんの投稿にコメントしました'
         にコメントしました
   .notification-time
     = time_ago_in_words(notification.created_at).upcase + "前"

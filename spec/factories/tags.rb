@@ -9,6 +9,6 @@
 #
 FactoryBot.define do
   factory :tag do
-    name { '戦闘服' }
+    name { '訓練' }
   end
 end
