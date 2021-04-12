@@ -20,7 +20,7 @@
         - else
           %span
             = link_to article_path(notification.article) do
-              = image_tag  notification.article.user.avatar_image, class: 'profile-avatar'
+              = image_tag  notification.article.user.avatar_image, class: 'account-avatar'
               %strong
                 = notification.article.user.display_name + 'さんの投稿にコメントしました'
         にコメントしました
