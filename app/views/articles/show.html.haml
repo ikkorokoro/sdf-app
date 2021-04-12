@@ -17,7 +17,7 @@
             %i.fas.fa-bars.fa-2x
             .hoverdown-content.base-font
               = link_to '編集', edit_article_path(@article)                
-              = link_to '削除', article_path(@article), data: { method: 'delete', confirm: '本当に削除してもよろしいですか' }
+              = link_to '削除', article_path(@article), id: 'delete_button', data: { method: 'delete', confirm: '本当に削除してもよろしいですか' }
       .column
         .column-title 
           購入金額
