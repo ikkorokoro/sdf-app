@@ -5,7 +5,7 @@ RSpec.describe 'Api::Likes', type: :request do
   let!(:article) {create(:article, user: user)}
   let!(:like) {create(:like, user: user, article: article)}
   describe 'GET /api/likes' do
-    context 'ログインしている場合' do 
+    context 'ログインしている場合' do
       before do
         sign_in user
       end
@@ -33,8 +33,8 @@ RSpec.describe 'Api::Likes', type: :request do
         expect(body['likesCount']).to eq likescount
       end
     end
-    
-    context 'ログインしていない場合' do 
+
+    context 'ログインしていない場合' do
       it 'ログイン画面にリダイレクト' do
         get api_like_path(article_id: article.id)
         expect(response).to have_http_status(302)

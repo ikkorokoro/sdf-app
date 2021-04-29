@@ -4,7 +4,7 @@ RSpec.describe 'App::OtherUser::Follow', type: :request do
   let!(:other_user) {create(:user)}
 
   describe 'POST /accounts/follows' do
-    context 'ログインしている場合' do 
+    context 'ログインしている場合' do
       before do
         sign_in user
       end
