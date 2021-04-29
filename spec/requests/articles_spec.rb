@@ -1,13 +1,13 @@
 require 'rails_helper'
 
-RSpec.describe "Articles", type: :request do
+RSpec.describe 'Articles', type: :request do
   let!(:user) { create(:user) }
   let!(:other_user) { create(:user) }
   let!(:article) { create(:article) }
   let!(:articles) { create_list(:article, 3, user: user) }
-  describe "#index" do
+  describe '#index' do
 
-    it "正常にアクセスできる" do
+    it '正常にアクセスできる' do
       get articles_path
       expect(response).to have_http_status(200)
     end
@@ -102,7 +102,7 @@ RSpec.describe "Articles", type: :request do
         get edit_article_path(article)
         expect(response).to have_http_status(200)
       end
-      
+
     end
   end
 end

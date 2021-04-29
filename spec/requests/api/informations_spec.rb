@@ -6,7 +6,7 @@ RSpec.describe 'Api::Informations', type: :request do
   let!(:article) {create(:article, user: user)}
   let!(:followed_user) {create(:relationship, follower: user, following: other_user)}
   describe 'GET /api/accounts/:account_id/informations' do
-    context 'ログインしている場合' do 
+    context 'ログインしている場合' do
       before do
         sign_in user
       end

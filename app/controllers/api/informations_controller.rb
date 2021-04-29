@@ -1,5 +1,5 @@
 class Api::InformationsController < Api::ApplicationController
-  
+
   def index
     user = User.find(params[:account_id])
     has_followed = current_user.has_followed?(user)

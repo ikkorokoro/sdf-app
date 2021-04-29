@@ -9,7 +9,7 @@ RSpec.describe 'Article', type: :system do
     visit root_path
       expect(page).to have_content(article.object)
     end
-    
+
   describe '新しい記事を作成,編集、削除する' do
     context 'ログインしている場合' do
       before do
@@ -32,7 +32,7 @@ RSpec.describe 'Article', type: :system do
         click_button '保存する'
         }.to change{Article.count}.by(1)
         expect(page).to have_text('保存できました')
-      end 
+      end
 
       it '記事を編集,更新できる' do
         visit edit_article_path(article)
@@ -60,7 +60,7 @@ end
       #       click_on :delete_button
       #     end
       #   }.to change{Article.count}.by(-1)
-      # end   
+      # end
       # scenario '秘密の隠しボタンをクリックする', js: true do
       #   visit secret_path
       #   find('.secret-area').hover

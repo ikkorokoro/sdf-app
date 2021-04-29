@@ -4,7 +4,7 @@ RSpec.describe 'App::OtherUser::Follow', type: :request do
   let!(:other_user) {create(:user)}
 
   describe 'POST /accounts/follows' do
-    context 'ログインしている場合' do 
+    context 'ログインしている場合' do
       before do
         sign_in user
       end
@@ -27,7 +27,7 @@ RSpec.describe 'App::OtherUser::Follow', type: :request do
       end
     end
 
-    context 'ログインしていない場合' do 
+    context 'ログインしていない場合' do
       it 'ログインページへリダイレクトされる' do
         post account_follows_path({account_id: other_user})
         expect(response).to redirect_to new_user_session_path

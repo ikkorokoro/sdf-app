@@ -14,7 +14,7 @@ let!(:article) {create(:article, user: other_user)}
         show_link.click
         expect(page).to have_css('#notgood')
         expect(find('#notgood').click).to change{Like.count}.by(1)
-      end 
+      end
     end
   end
 end
