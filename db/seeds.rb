@@ -30,12 +30,12 @@ gruop3 = users[4..5]
 gruop4 = users[6..7]
 gruop5 = users[8..9]
 
-# #category
-# names = ['鉄帽', '中帽', '帽子類', '手袋', '戦闘服','バッグ',' 雨衣','装具','防寒類','靴','小物']
-# names.each { |name| Category.create!(category_name: name)}
-# # #tsgs
-# tags = ['訓練','演習','室内','野外','射撃','夏用','冬用','夜間 ','安価','高価','コスパ','軽量','重量','機能性','収納力','耐久性','防寒性','防水性','防音性','偽装','迷彩','OD色','白色','黒色','大きい','小さい']
-# tags.each {|tag| Tag.create!(name: tag)}
+#category
+names = ['鉄帽', '中帽', '帽子類', '手袋', '戦闘服','バッグ',' 雨衣','装具','防寒類','靴','小物']
+names.each { |name| Category.create!(category_name: name)}
+# #tsgs
+tags = ['訓練','演習','室内','野外','射撃','夏用','冬用','夜間 ','安価','高価','コスパ','軽量','重量','機能性','収納力','耐久性','防寒性','防水性','防音性','偽装','迷彩','OD色','白色','黒色','大きい','小さい']
+tags.each {|tag| Tag.create!(name: tag)}
 
 object = '戦闘服'
 price = 8000
