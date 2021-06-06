@@ -1,55 +1,52 @@
 .main-bg-color#article-show{data: {article_id: @article.id}}
   .show
-    .show-img
-      - if @article.image.attached?
-        = image_tag @article.image, class: 'card-img-top'
-    .show-reviews
-      .column
-        .column-title
-          物品名
-        .column-value
-          = @article.object
-        .show-avatar-box
-          = link_to account_path(@article.user) do
-            = image_tag @article.user.avatar_image, class: 'user-avatar'
-        - if user_signed_in? && current_user.has_written?(@article)
-          %li.hoverdown.show-icon
-            %i.fas.fa-bars.fa-2x
-            .hoverdown-content.base-font
-              = link_to '編集', edit_article_path(@article)                
-              = link_to '削除', article_path(@article), id: 'delete_button', data: { method: 'delete', confirm: '本当に削除してもよろしいですか' }
-      .column
-        .column-title 
-          購入金額
-        .column-value
-          #{@article.price}円
-      .column
-        .column-title 
-          購入場所
-        .column-value
-          = @article.store
-      .column
-        .column-title 
-          カテゴリ
-        .column-value
-          = @article.cat_name
-      .column
-        .column-title 
-          評価
-        .column-value{id: "star-rate#{@article.id}"}
-        :javascript
-          $('#star-rate#{@article.id}').raty({
-            size      : 36,
-            starOff   : '#{asset_path('star-off.png')}',
-            starOn    : '#{asset_path('star-on.png')}',
-            half      : false,
-            readOnly: true,
-            score: #{@article.rate},
-          });
+    .show-flex
+      .show-img
+        - if @article.image.attached?
+          = image_tag @article.image, class: 'article-post-img'
+      %table
+        %tbody
+          %tr
+            %th 出品者
+            %td= link_to @article.user.display_name, article_path(@article), class: 'author-link'
+            - if user_signed_in? && current_user.has_written?(@article)
+              %li.hoverdown.show-icon
+                %i.fas.fa-bars.fa-2x
+                .hoverdown-content.base-font
+                  = link_to '編集', edit_article_path(@article)                
+                  = link_to '削除', article_path(@article), id: 'delete_button', data: { method: 'delete', confirm: '本当に削除してもよろしいですか' }
+          %tr
+            %th 物品名
+            %td= @article.object
+          %tr
+            %th 購入金額
+            %td= @article.price
+          %tr
+            %th 購入場所
+            %td= @article.store
+          %tr
+            %th カテゴリ
+            %td= @article.cat_name
+          %tr
+            %th 評価
+            %td{id: "star-rate#{@article.id}"}
+            :javascript
+              $('#star-rate#{@article.id}').raty({
+                size      : 36,
+                starOff   : '#{asset_path('star-off.png')}',
+                starOn    : '#{asset_path('star-on.png')}',
+                half      : false,
+                readOnly: true,
+                score: #{@article.rate},
+              });
+    .rakuten
+      = link_to '楽天アイテムで探す', rakutens_path, class: 'rakuten-btn'
+    .text-center
       .content
-        感想
-      .content-value
-        = @article.content
+        レビュー
+    .content-value
+      = @article.content
+    .tugs-group
       - @article.tags.each do |tag|
         %span.show-tugs
           #{tag.name}
@@ -66,36 +63,86 @@
         %span.comment-post.btn-bg
           コメントを投稿
       .comment-area
-        .mt-5
-          = text_area_tag :comment_content, '', class: 'comment-text'
-        .mt-2.mb-5
-          %span.add-comment.btn-bg#add-comment-button
-            コメントを追加
-      %span.comment-all
-        コメント一覧
-      .comments
-        
-      .rakuten-api
-        .rakuten
-          = link_to '楽天アイテムで探す', rakutens_path, class: 'rakuten-btn'
-        - if @senjins.present?
-          %span.rakuten-title 楽天市場の関連アイテム(評価4.5以上)
-          .rakuten-items
-            - @senjins.each do |item|
-              .rakuten-item.mb-3
-                .api-img
-                  = link_to item['item_url'] do
-                    = image_tag item['mediumImageUrls'][0]
-                .api-content
-                  = item['itemName']
-                  .api
-                    .api-title
-                      購入金額
-                    .api-value
-                      #{item['itemPrice']}円
-                  .api
-                    .api-title 
-                      平均評価
-                    .api-value
-                      #{item['reviewAverage']}
-  = javascript_pack_tag 'show_article'
+        .text-right
+          .mt-5
+            = text_area_tag :comment_content, '', placeholder: "コメントを入力する", class: 'comment-text mx-auto'
+          .mt-1.mb-5
+            %span.add-comment.btn-bg#add-comment-button
+              コメントを追加
+  .comment-all
+    %span.comment-top
+      コメント一覧
+    .comments
+    
+  .rakuten-api
+    - if @senjins.present?
+      %span.rakuten-title 楽天市場の関連アイテム(評価4.5以上)
+      .rakuten-items
+        - @senjins.each do |item|
+          .rakuten-item.mb-3
+            .api-img
+              = link_to item['item_url'] do
+                = image_tag item['mediumImageUrls'][0]
+              .api
+                .api-title
+                  購入金額
+                .api-value
+                  #{item['itemPrice']}円
+              .api
+                .api-title 
+                  平均評価
+                .api-value
+                  #{item['reviewAverage']}
+= javascript_pack_tag 'show_article'
+
+-# .show-reviews
+    -#   .column
+    -#     .column-title
+    -#       物品名
+    -#     .column-value
+    -#       = @article.object
+       
+      -# .column
+      -#   .column-title 
+      -#     購入金額
+      -#   .column-value
+      -#     #{@article.price}円
+      -# .column
+      -#   .column-title 
+      -#     購入場所
+      -#   .column-value
+      -#     = @article.store
+      -# .column
+      -#   .column-title 
+      -#     カテゴリ
+      -#   .column-value
+      -#     = @article.cat_name
+      -# .column
+      -#   .column-title 
+      -#     評価
+      -#   .column-value{id: "star-rate#{@article.id}"}
+      -#   :javascript
+      -#     $('#star-rate#{@article.id}').raty({
+      -#       size      : 36,
+      -#       starOff   : '#{asset_path('star-off.png')}',
+      -#       starOn    : '#{asset_path('star-on.png')}',
+      -#       half      : false,
+      -#       readOnly: true,
+      -#       score: #{@article.rate},
+      -#     });
+      -# .content
+      -#   感想
+      -# .content-value
+      -#   = @article.content
+      -# - @article.tags.each do |tag|
+      -#   %span.show-tugs
+      -#     #{tag.name}
+      -# #good.d-none
+      -#   %i.fas.fa-thumbs-up.fa-2x.show-like
+      -# #notgood.d-none
+      -#   %i.far.fa-thumbs-up.fa-2x.show-like
+      -# %span.show-count#likes-count 0
+      -# %span.post-time
+      -#   %time(datetime="#{@article.created_at}")
+      -#     = time_ago_in_words(@article.created_at) + "前"
+-#  

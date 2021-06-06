@@ -92,7 +92,6 @@
       padding: 0.25rem 1rem;
       @media screen and (max-width:425px) {
         font-size: 14px;
-       
       }
     }
   }
@@ -214,32 +213,34 @@
 }
 
 .show {
+  position: relative;
+  background: #f8f9fa;
+  padding: 5px 0;
+  width: 50%;
+  margin: auto;
+  @media screen and (max-width: 992px) {
+    width: 60%;
+  }
+  @media screen and (max-width: 576px) {
+    width: 80%;
+  }
+
+  &-flex {
+    display: flex;
+    @media screen and (max-width: 992px) {
+      display: block;
+      text-align: center;
+    }
+  }
   &-img {
-    border-radius: 10px;
-    width: 430px;
     margin: auto; 
     padding-top: 2rem;
-    @media screen and (max-width:425px) {
-      width: 300px;
-    }
-
-  }
-  &-reviews {
-    position: relative;
-    width: 430px;
-    background: white;
-    box-shadow: 5px 5px 4px rgba(0, 0, 0, 0.25);
-    padding: 1rem;
-    margin: auto;
-    @media screen and (max-width:425px) {
-      width: 300px;
-    }
   }
 }
-
 .show-avatar-box {
   position: absolute;
-  right: 10px;
+  right: 25px;
+  top: 50px;
 }
 
 .show-icon {
@@ -263,56 +264,83 @@
 }
 
 .content {
-  font-size: 18px;
+  display: inline-block;
+  text-align: center;
+  border-bottom: solid 5px #3879D9;
+  font-size: 22px;
   font-weight: bold;
-  border-bottom: 1px solid#dee2e6;
+  margin-top: 1.5rem;
   margin-bottom: 0.5rem;
-  &-value {
-    background-color: rgb(238, 238, 238);
-    border:  1px solid#dee2e6;
-    margin-bottom: 1rem;
+}
+.content-value {
+  font-size: 20px;
+  font-weight: bold;
+  margin: 0 35px;
+  margin-bottom: 1.5rem;
+  @media screen and (max-width: 576px) {
+    font-size: 18px;
   }
 }
+
+.tugs-group{
+  margin: 0 35px;
+}
+
 .show-tugs {
   background: rgba(53, 157, 253, 0.8);
   font-weight: bold;
+  font-size: 14px;
   border-radius: $radius200;
   padding: 0.5rem 1rem;
-  margin: 0 0.25rem 0.5rem 0; 
-  @media screen and (max-width:425px) {
-    padding: 0.5rem 0.5rem;
+  margin: 0 1rem 0.5rem 0; 
+  @media screen and (max-width: 768px) {
+    margin: 0 0.25rem 0.5rem 0;
   }
 }
 
 .show-like {
   position: absolute;
-  bottom: 12px;
-  right: 100px;
-  width: 25px;
+  top: 638px;
+  right: 180px;
   cursor: pointer;
   margin: 0 1rem 0 0.5rem;
-  @media screen and (max-width:425px) {
-    right: 65px;
+  @media screen and (max-width: 992px) {
+    right: 150px;
+    top: 1000px;
+  }
+  @media screen and (max-width: 576px) {
+    right: 150px;
+    top: 960px;
   }
 }
 
 .show-count {
   position: absolute;
-  bottom: 12px;
-  right: 77px;
+  top: 642px;
+  right: 155px;
   padding-right: 1.5rem;
   margin-left: 1rem;
-  @media screen and (max-width:425px) {
-    right: 40px;
+  @media screen and (max-width: 992px) {
+    top: 1006px;
+    right: 120px;
+  }
+  @media screen and (max-width: 576px) {
+    right: 125px;
+    top: 965px;
   }
 }
 .post-time {
   position: absolute;
-  bottom: 12px;
-  right: 15px;
+  top: 648px;
+  right: 110px;
   font-size: 14px;
-  @media screen and (max-width:425px) {
-    display: block;
+  @media screen and (max-width: 992px) {
+    right: 90px;
+    top: 1007px;
+  }
+  @media screen and (max-width: 576px) {
+    right: 85px;
+    top: 967px;
   }
 }
 .post {
@@ -368,7 +396,7 @@
 }
 
 .rakuten {
-  margin: 1.5rem 0;
+  margin-top: 1.5rem;
     &:hover {
       opacity: 0.8;
     }
@@ -385,18 +413,18 @@
 
 .rakuten-items {
   display: flex;
-  @media screen and (max-width:425px) {
+  justify-content: space-between;
+  width: 60%;
+  margin: auto;
+  @media screen and (max-width: 576px) {
     display: block;
+    width: 50%;
   }
 }
 
 .rakuten-item {
   border: 1px solid#dee2e6;
-  margin: auto;
   background-color: white;
-  @media screen and (max-width:425px) {
-    display: flex;
-  }
 }
 
 .api-content{
@@ -503,10 +531,51 @@
   display: block;
   background: rgb(245, 247, 174);
   color: rgb(208, 57, 57);
-  font-size: 18px;
+  font-size: 20px;
   border: 1px solid #dee2e6;
   padding:  0.75rem 1rem;
   font-weight: bold;
   margin: auto;
-  margin-top: 1rem;
+  margin-top: 3rem;
+  text-align: center;
+  @media screen and (max-width: 768px) {
+    width: 80%;
+  }
+}
+
+table, td, th{
+  border: 1px solid gray;
+  margin: auto;
+  text-align: left;
+  vertical-align: middle;
+  
+}
+
+table {
+  margin-top: 2.5rem;
+  width: 300px;
+  height: 300px;
+  @media screen and (max-width: 576px) {
+    width: 250px;
+    height: 250px;
+  }
+}
+
+th {
+  background: rgba(161, 190, 167, 0.27);;
+}
+
+.article-post-img {
+  width: 250px;
+  height: 300px;
+  @media screen and (max-width: 576px) {
+    width: 200px;
+    height: 250px;
+  }
+}
+.author-link {
+  color: #0a6ebd;
+  &:hover {
+    color: black;
+  }
 }
