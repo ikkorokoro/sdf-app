@@ -14,9 +14,11 @@
     margin: 1.5rem 0;
   }
   &-area {
-    width: 60%;
+    width: 70%;
     margin: auto;
-    // margin: 0 2rem;
+    @media screen and (max-width:425px) {
+    margin-top: 4rem;
+    }
   }
 }
 .comment-post {
@@ -47,8 +49,8 @@
 .comment-text {
   height: 50px;
   width: 100%;
-  @media screen and (max-width:425px) {
-    width: 70%;
+  @media screen and (max-width:576px) {
+    width: 100%;
   }
 }
 .comment-content {
