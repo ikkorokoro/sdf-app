@@ -2,7 +2,7 @@
 
 module ArticleDecorator
   def cat_name
-  category.category_name
+    category.category_name
   end
 
   def comment_count
