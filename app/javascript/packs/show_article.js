@@ -5,12 +5,12 @@ listenNotGoodEvent,
 listenGoodEvent
 }from 'modules/handle_heart'
 
-const handleControllerForm = () => {
-  $('.comment-form').on('click', () => {
-    $('.comment-form').addClass('hidden')
-    $('.comment-area').removeClass('hidden')
-  })
-}
+// const handleControllerForm = () => {
+//   $('.comment-form').on('click', () => {
+//     $('.comment-form').addClass('hidden')
+//     $('.comment-area').removeClass('hidden')
+//   })
+// }
 
 const handleLikesDisplay = (hasLiked, likesCount) => {
   if (hasLiked) {
@@ -66,12 +66,12 @@ document.addEventListener('DOMContentLoaded', () => {
           const comment = response.data
           appendNewComment(comment)
           $('#comment_content').val('')
-          $('.comment-form').removeClass('hidden')
-          $('.comment-area').addClass('hidden')
+          // $('.comment-form').removeClass('hidden')
+          // $('.comment-area').addClass('hidden')
       })
     }
   })
-  handleControllerForm()
+  // handleControllerForm()
 
   axios.get(`/api/articles/${articleId}/like`)
   .then((response) => {

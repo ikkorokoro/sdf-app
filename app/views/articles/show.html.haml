@@ -59,9 +59,9 @@
         %time(datetime="#{@article.created_at}")
           = time_ago_in_words(@article.created_at) + "前"
     .comment
-      .comment-form.hidden
-        %span.comment-post.btn-bg
-          コメントを投稿
+      -# .comment-form.hidden
+      -#   %span.comment-post.btn-bg
+      -#     コメントを投稿
       .comment-area
         .text-right
           .mt-5
