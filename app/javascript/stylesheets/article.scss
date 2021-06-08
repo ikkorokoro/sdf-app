@@ -22,17 +22,17 @@
 }
 .main {
     width: 100%;
-    height: 340px;
+    height: 250px;
     background-image: url("../../assets/images/軍団.png");
     background-size: cover;
     text-align: center;
     padding: 1.5rem 0;
     @media screen and (max-width:425px) {
       padding: 1rem;
-      height: 350px;;
+      height: 200px;
     }
   &-logo {
-    font-size: 1.75rem;
+    font-size: 22px;
     font-weight: bold;
     padding-bottom: 1.25rem;
     @media screen and (max-width:425px) {
@@ -41,48 +41,19 @@
     }
   }
   &-search {
-    width: 50%;
-    padding: 0.5rem;
-    margin-bottom: 1rem;
-    border: 1px solid #dee2e6;
+    width: 500px;
+    height: 25px;
+    border: 1px solid gray;
+    border-radius: 5px;
+    padding: 0.25rem;
+    @media screen and (max-width:768px) {
+      width: 300px;
+    }
     @media screen and (max-width:425px) {
-      width: 70%;
-      height: 30px;
-      margin-bottom: 0.5rem;
+      width: 200px;
+  
     }
   }
-  &-tug {
-    background: rgba(255, 255, 255, 0.68);
-    height: 100px;
-    width: 70%;
-    margin: auto;
-    margin-top: 0.5rem;
-    @media screen and (max-width:425px) {
-      height: 200px;
-    }
-    &-title {
-      display: inline-block;
-      border-bottom: $border-color;
-      font-size: 20px;
-      font-weight: bold;
-      margin-bottom: 0.5rem;
-      @media screen and (max-width:425px) {
-        font-size: 16px;
-      }
-    }
-    &-wrap {
-      display: flex;
-      justify-content: center;
-      @media screen and (max-width:425px) {
-        flex-flow: column;
-        justify-content: space-between;
-      }
-    }
-    &-group {
-      @media screen and (max-width:425px) {
-        margin-bottom: 0.5rem;
-      }
-    }
     &-top {
       font-size: 18px;
       margin: 0 0.75rem 0.5rem 0;
@@ -95,7 +66,6 @@
       }
     }
   }
-}
 .icon {
   color: white;
   background-color: #3879D9;
@@ -119,7 +89,7 @@
     &-top {
       display: inline-block;
       border-bottom: $border-color;
-      font-size: 24px;
+      font-size: 20px;
       font-weight: bold;
       margin: 1.5rem 0;
     }
@@ -134,7 +104,7 @@
     &-title {
       display: inline-block;
       border-bottom: $border-color;
-      font-size: 20px;
+      font-size: 18px;
       font-weight: bold;
       margin: 1.5rem 0;
       @media screen and (max-width:425px) {
@@ -150,9 +120,10 @@
 }
 .cate {
   width: 100%;
-  height: 250px;
+  height: 150px;
   background-image: url("../../assets/images/wallpaperbetter 3.png");
   background-size: cover;
+  margin-top: 1.5rem;
   &-box {
     background: rgba(255, 255, 255, 0.30);
     height: 100%;
@@ -163,9 +134,9 @@
   &-title {
     display: inline-block;
     border-bottom: $border-color;
-    font-size: 24px;
+    font-size: 20px;
     font-weight: bold;
-    margin: 3rem 0 1rem 0;
+    margin: 1.5rem 0 0.5em 0;
     @media screen and (max-width:425px) {
       font-size: 20px;
       margin: 0.25rem 0 0.5rem 0;
@@ -188,9 +159,9 @@
 }
 .categorys {
   background: rgba(53, 157, 253, 0.8);
-  padding: 0.5rem 1.75rem;
+  padding: 0.25rem 1rem;
   margin: 0.5rem 0.25rem 0 0;
-  font-size: 20px;
+  font-size: 16px;
   border-radius: $radius200;
   font-weight: bold;
   @media screen and (max-width:425px) {
@@ -200,22 +171,21 @@
 .top-cate-article {
   display: inline-block;
   border-bottom: $border-color;
-  font-size: 24px;
+  font-size: 20px;
   font-weight: bold;
   margin: 1.5rem 0;
 }
 .new-article-title {
   display: inline-block;
   border-bottom: $border-color;
-  font-size: 24px;
+  font-size: 20px;
   font-weight: bold;
-  margin: 0.5rem 0 1.5rem 0;
+  margin: 1.5rem 0;
 }
 
 .show {
-  position: relative;
   background: #f8f9fa;
-  padding: 5px 0;
+  // padding: 5px 0;
   width: 50%;
   margin: auto;
   @media screen and (max-width: 992px) {
@@ -237,30 +207,11 @@
     padding-top: 2rem;
   }
 }
-.show-avatar-box {
-  position: absolute;
-  right: 25px;
-  top: 50px;
-}
 
 .show-icon {
   position: absolute;
   top: 55px;
   right: 0;
-}
-
-.column {
-  display: flex;
-  border-bottom: 1px solid#dee2e6;
-  margin-bottom: 0.5rem;
-  &-title {
-    font-size: 18px;
-    font-weight: bold;
-  }
-  &-value {
-    font-size: 18px;
-    margin: auto;
-  }
 }
 
 .content {
@@ -283,6 +234,7 @@
 }
 
 .tugs-group{
+  position: relative;
   margin: 0 35px;
 }
 
@@ -300,47 +252,59 @@
 
 .show-like {
   position: absolute;
-  top: 638px;
-  right: 180px;
+  bottom: 0px;
+  left: 370px;
   cursor: pointer;
   margin: 0 1rem 0 0.5rem;
+  @media screen and (max-width: 1024px) {
+    bottom: 1px;
+    left: 280px;
+  }
   @media screen and (max-width: 992px) {
-    right: 150px;
-    top: 1000px;
+    bottom: 1px;
+    left: 220px;
   }
   @media screen and (max-width: 576px) {
-    right: 150px;
-    top: 960px;
+    top: 35px;
+    left: 95px;
   }
 }
 
 .show-count {
   position: absolute;
-  top: 642px;
-  right: 155px;
+  bottom: 0px;
+  left: 405px;
   padding-right: 1.5rem;
   margin-left: 1rem;
+  @media screen and (max-width: 1024px) {
+    bottom: 1px;
+    left: 315px;
+  }
   @media screen and (max-width: 992px) {
-    top: 1006px;
-    right: 120px;
+    bottom: 1px;
+    left: 250px;
   }
   @media screen and (max-width: 576px) {
-    right: 125px;
-    top: 965px;
+    top: 40px;
+    left: 130px;
   }
 }
 .post-time {
   position: absolute;
-  top: 648px;
-  right: 110px;
+  bottom: 1px;
+  left: 470px;
   font-size: 14px;
+  @media screen and (max-width: 1024px) {
+    bottom: 1px;
+    left: 360px;
+  }
   @media screen and (max-width: 992px) {
-    right: 90px;
-    top: 1007px;
+    bottom: 1px;
+    left: 300px;
   }
   @media screen and (max-width: 576px) {
-    right: 85px;
-    top: 967px;
+    top: 60px;
+    left: 190px;
   }
 }
 .post {
@@ -517,8 +481,8 @@
   }
 }
 .user-avatar {
-  width: 45px;
-  height: 45px;
+  width: 35px;
+  height: 35px;
   object-fit: cover;
   border-radius: 50%;
 }

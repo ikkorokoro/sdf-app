@@ -1,6 +1,5 @@
 class ArticlesController < ApplicationController
   before_action :authenticate_user!, only: [:new, :show, :create, :edit, :update, :destroy]
-  before_action :set_q, only: [:index, :search]
   before_action :set_article, only: [:edit, :update]
 
   def index
@@ -83,9 +82,5 @@ class ArticlesController < ApplicationController
       :rate,
       :image,
       tag_ids: [])
-  end
-
-  def set_q
-    @q = Article.with_attached_image.includes(:tags, user: [profile: [avatar_attachment: :blob]]).ransack(params[:q])
   end
 end

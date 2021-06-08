@@ -1,31 +1,28 @@
 - articles.each do |article|
   .articles
-    .card.articles-card
-      = link_to article_path(article), id: 'show-link' do
-        - if article.image.attached?
-          = image_tag article.image, class: 'card-img-top hover'
-      .articles-price
-        #{article.price}円
-      .articles-star
-        星評価 #{article.rate}
-      .articles-info
-        .objects
-          = article.object 
-        .author
-          .author-left
-            = link_to account_path(article.user) do
-              = image_tag article.author_image, class: 'articles-avatar'
-            %span.author-name
-              = article.author_name
-          .author-right
-            %i.far.fa-comment.fa-2x.pt-1
-            = article.comment_count
-            %i.far.fa-thumbs-up.fa-2x.pt-1.pl-1
-            = article.like_count
-        .articles-tags
+    .card{style: "width: 10rem"}
+      .articles-img
+        = link_to article_path(article), id: 'show-link' do
+          - if article.image.attached?
+            = image_tag article.image, class: 'card-img-top hover'
+      .articles-body.text-left
+        .card-text.mt-1
+          = article.author_name
+        .card-text.mt-1
+          = article.cat_name
+        .card-text.mt-1.font-weight-bold
+          ¥#{article.price}
+        .articles-tags.mt-1
           - article.tags.each do |tag|
-            %span.articles-tag
-              %span #{tag.name}
+            .articles-tag
+              #{tag.name}
+        .articles-info
+          %i.far.fa-comment.pt-1.icon-size
+          %span.info-size= article.comment_count
+          %i.far.fa-thumbs-up.pt-1.pl-1.icon-size
+          %span.info-size= article.like_count
+          %i.far.fa-star.pt-1.pl-1.icon-size
+          %span.info-size= article.rate
         .articles-time
           %time(datetime="#{article.created_at}")
             = time_ago_in_words(article.created_at) + "前"
