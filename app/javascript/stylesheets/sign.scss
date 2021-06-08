@@ -45,11 +45,16 @@
     margin-bottom: 1.5rem;
   }
   &-btn {
-    background: $btn-bg;
     font-weight: bold;
-    border: 1px solid gray; 
-    border-radius: $radius200;
+    border: 1px solid gray;
+    border-radius: 5px;
     padding: 0.5rem 1rem;
+    padding: 0.25rem 0.5rem;
+    &:hover {
+      background: rgba(14, 94, 1, 0.6);
+      transition: background-color 0.5s;
+      color: black;
+    }
     @media screen and (max-width:425px) {
       font-size: 14px;
     }

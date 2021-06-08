@@ -6,57 +6,36 @@
 .hoverdown {
     position: relative;
     display: inline-block;
+    &:hover {
+      color: #2196f3;
+    }
   }
   
   .hoverdown-content {
     font-weight: normal;
     display: none;
-    left: 0;
+    right: 5px;
     position: absolute;
     min-width: 160px;
     box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
     z-index: 1;
-    background-color: #F4FAF7;
+    background-color: white;
   
   &.mini {
       min-width: 100px;
   }
 }
 .hoverdown-content a {
-  padding: 8px 16px;
+  padding: 6px 12px;
   text-decoration: none;
   display: block;
-  color: #459464;
 }
 
 .hoverdown-content a:hover {
-  background-color: #D7D7D7;
+  background: rgba(14, 94, 1, 0.6);
+  color: white;
 }
 
 .hoverdown:hover .hoverdown-content {
-  display: block;
-}
-
-
-
-.cate-hoverdown {
-  position: relative;
-  display: inline-block;
-}
-  
-.cate-hoverdown-content {
-  font-size: 12px;
-  color: black;
-  font-weight: bold;
-  display: none;
-  top: 0;
-  position: absolute;
-  min-width: 70px;
-  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-  z-index: 1;
-  background-color: rgba(32, 76, 164, 0.32);
-}
-
-.cate-hoverdown:hover .cate-hoverdown-content {
   display: block;
 }

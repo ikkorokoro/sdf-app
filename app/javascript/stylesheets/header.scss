@@ -7,17 +7,35 @@
   font-weight: bold;
   color: #00461C;
 }
-.navbar-toggler{
-  background-color: #F4FAF7;
-}
+
 .btn-posi {
   padding: 0.25rem 1.5rem;
   margin-right: 0.5rem;
 }
-.toggler-list {
-  font-size: 18px;
-  font-weight: bold;
-}
+
 .fa-circle {
   color: gold;
+}
+.header-list {
+  font-weight: bold;
+  
+}
+.header-cotegory{
+  display: flex;
+  cursor: pointer;
+}
+
+.header-icon {
+  font-size: 20px;
+  
+}
+.header-icon-color {
+  color: #049a40;
+}
+.bg-mask {
+  height: 100%;
+  background: rgba(255,255,255,0.5);
+  display: flex;
+  flex-direction: column;
+  padding: 0.25rem 1.5rem 0.25rem 1.5rem;
 }

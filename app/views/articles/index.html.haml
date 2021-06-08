@@ -7,17 +7,7 @@
       優秀なアイテムを共有して
       %br
       パフォーマンスを最大限まで上げよう
-    = search_form_for @q, url: search_articles_path do |f|
-      = f.search_field :object_or_price_or_store_cont, placeholder: "物品名, 金額, 購入場所から検索", class: 'main-search'
-      = button_tag type: 'submit', class: 'icon' do
-        %i.fas.fa-search.fa-2x
-    .main-tug
-      .main-tug-title
-        %span 人気のタグ
-      .main-tug-wrap
-        - @five_tags.each do |tag|
-          .main-tug-group
-            = link_to "##{tag.name}", search_articles_path(q: { tags_id_eq: tag.id }), class: 'main-tug-top'
+  -# %iframe{:allow => "accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture", :allowfullscreen => "", :frameborder => "0", :height => "315", :src => "https://www.youtube.com/embed/QKGQPy1Q8jc", :title => "YouTube video player", :width => "560"}
   .article
     .article-left
       = render 'detail_search' 
@@ -49,3 +39,11 @@
       .container
         .row
           = render 'commons/articles', articles: @updated_at_desc_articles
+      .cate
+        .cate-box
+          .cate-title
+            %span 人気のタグ
+          .cate-top5
+            - @five_tags.each do |tag|
+              .cate-item
+                = link_to "##{tag.name}", search_articles_path(q: { tags_id_eq: tag.id }), class: 'categorys'
