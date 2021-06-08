@@ -1,5 +1,5 @@
 class Apps::Senjins::RakutensController < Apps::Senjins::ApplicationController
-  before_action :set_q, only: [:index, :search]
+  before_action :set_rakuten_q, only: [:index, :search]
 
   def index
     create_rakuten_data(params)
@@ -48,7 +48,7 @@ class Apps::Senjins::RakutensController < Apps::Senjins::ApplicationController
       }
     end
 
-    def set_q
-      @q = Rakuten.ransack(params[:q])
+    def set_rakuten_q
+      @r = Rakuten.ransack(params[:q])
     end
 end

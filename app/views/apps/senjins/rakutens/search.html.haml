@@ -5,7 +5,7 @@
     %br
     "戦人"のアイテムを表示しています
   .senjin-search
-    = search_form_for @q, url: search_rakutens_path do |f|
+    = search_form_for @r, url: search_rakutens_path do |f|
       .text-center.my-3
         %h4.my-2.font-weight-bold キーワード検索
         = f.search_field :item_name_or_item_price_cont, class: 'senjin-field'
