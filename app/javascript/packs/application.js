@@ -19,15 +19,6 @@ import '@fortawesome/fontawesome-free/js/all';
 //
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
+//= require swiper/swiper-bundle.js
 require("trix")
 require("@rails/actiontext")
-/*!
- * Raty - A Star Rating Plugin
- *
- * The MIT License
- *
- * author:  Washington Botelho
- * github:  wbotelhos/raty
- * version: 3.0.0
- *
- */
