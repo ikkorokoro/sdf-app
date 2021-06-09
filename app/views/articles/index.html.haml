@@ -2,17 +2,22 @@
   = link_to new_article_path do
     .new-path-img
       %i.fas.fa-camera.fa-4x
-  .main
-    .main-logo
-      優秀なアイテムを共有して
-      %br
-      パフォーマンスを最大限まで上げよう
-  -# %iframe{:allow => "accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture", :allowfullscreen => "", :frameborder => "0", :height => "315", :src => "https://www.youtube.com/embed/QKGQPy1Q8jc", :title => "YouTube video player", :width => "560"}
+  .swiper-container
+    .swiper-wrapper
+      .swiper-slide 
+        %iframe{:allow => "accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture", :allowfullscreen => "", :frameborder => "0", :height => "250px", :src => "https://www.youtube.com/embed/QKGQPy1Q8jc", :title => "YouTube video player", :width => "100%"}
+      .swiper-slide 
+        %a{:href => "https://www.mod.go.jp/gsdf/jieikanbosyu/index.html"}
+          .main-pic
+    .swiper-pagination
+    .swiper-button-prev
+    .swiper-button-next
+    .swiper-scrollbar
+
+  .link_switching
   .article
-    .article-left
-      = render 'detail_search' 
-    .article-right
-      .article-right-top
+    .article-main
+      .article-main-top
         %span いいねランキング
       .container
         .row
@@ -47,3 +52,4 @@
             - @five_tags.each do |tag|
               .cate-item
                 = link_to "##{tag.name}", search_articles_path(q: { tags_id_eq: tag.id }), class: 'categorys'
+= javascript_pack_tag 'swiper.js'
