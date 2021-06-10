@@ -13,6 +13,10 @@ class ArticlesController < ApplicationController
     @top_category = @five_categorys.first
     #一番人気のカテゴリの投稿を全て取得
     @top_category_all_articles = Article.where_top_category_all_articles(@top_category)
+    #二番初めのカテゴリ(二番目のカテゴリ)を取得
+    @second_category = @five_categorys.second
+    #二番人気のカテゴリの投稿を全て取得
+    @second_category_all_articles = Article.where_top_category_all_articles(@second_category)
     #投稿の多いタグ上位５つのid取得
     five_tags_id_with_many_article_tags = ArticleTag.group_five_tags_id_with_many_article_tags
     #タグ上位５つのレコード取得

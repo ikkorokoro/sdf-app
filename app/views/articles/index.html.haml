@@ -2,19 +2,8 @@
   = link_to new_article_path do
     .new-path-img
       %i.fas.fa-camera.fa-4x
-  .swiper-container
-    .swiper-wrapper
-      .swiper-slide 
-        %iframe{:allow => "accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture", :allowfullscreen => "", :frameborder => "0", :height => "250px", :src => "https://www.youtube.com/embed/QKGQPy1Q8jc", :title => "YouTube video player", :width => "100%"}
-      .swiper-slide 
-        %a{:href => "https://www.mod.go.jp/gsdf/jieikanbosyu/index.html"}
-          .main-pic
-    .swiper-pagination
-    .swiper-button-prev
-    .swiper-button-next
-    .swiper-scrollbar
-
-  .link_switching
+  .article-top-img
+    = image_tag '自衛隊募集.jpeg', class: 'article-img'
   .article
     .article-main
       .article-main-top
@@ -38,12 +27,13 @@
         .container
           .row
             = render 'commons/articles', articles: @top_category_all_articles
-      .new-article
-        .new-article-title
-          %span 最新の投稿
-      .container
-        .row
-          = render 'commons/articles', articles: @updated_at_desc_articles
+        .top-cate-article
+          %span
+            - if @second_category_all_articles.present?
+              = link_to "##{@second_category.category_name}の投稿", search_articles_path(q: { category_id_eq: @second_category.id })
+        .container
+          .row
+            = render 'commons/articles', articles: @second_category_all_articles
       .cate
         .cate-box
           .cate-title
@@ -52,4 +42,10 @@
             - @five_tags.each do |tag|
               .cate-item
                 = link_to "##{tag.name}", search_articles_path(q: { tags_id_eq: tag.id }), class: 'categorys'
+      .new-article
+        .new-article-title
+          %span 最新の投稿
+      .container
+        .row
+          = render 'commons/articles', articles: @updated_at_desc_articles
 = javascript_pack_tag 'swiper.js'
