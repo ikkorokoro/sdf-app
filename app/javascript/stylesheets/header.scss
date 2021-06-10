@@ -2,7 +2,7 @@
   background-image: url("../../assets/images/wallpaperbetter 3.png");
   background-size: cover;
 } 
-.header-title {
+.app-title {
   font-size: 24px;
   font-weight: bold;
   color: #00461C;
@@ -32,10 +32,26 @@
 .header-icon-color {
   color: #049a40;
 }
+.header-deteil-search {
+  width: 200px;
+  background-color: #f8f9fa;
+  text-align: center;
+  position: absolute;
+  z-index: 10;
+  display: none;
+  @media screen and (max-width:425px) {
+    background: rgba(161, 190, 167, 0.27);
+    width: 100%;
+    padding: 1rem;
+  }
+}
 .bg-mask {
   height: 100%;
   background: rgba(255,255,255,0.5);
   display: flex;
   flex-direction: column;
-  padding: 0.25rem 1.5rem 0.25rem 1.5rem;
+  padding: 0.5rem 6rem 0.5rem 6rem;
+}
+.accordion-ops {
+  position: relative;
 }

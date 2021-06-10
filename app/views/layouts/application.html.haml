@@ -16,7 +16,7 @@
           - if !current_page?(root_path)
             = link_to :back do
               %i.fas.fa-arrow-left
-          = link_to 'Soldier Reviews', root_path, class: 'header-title'
+          = link_to 'Soldier Reviews', root_path, class: 'app-title'
           .mx-auto
             = search_form_for @q, url: search_articles_path do |f|
               = f.search_field :object_or_price_or_store_cont, placeholder: "アイテムを検索", class: 'main-search'
@@ -29,12 +29,12 @@
               = link_to new_user_session_path, class: 'sign-btn btn-posi pt-2' do
                 %span ログイン
         .d-flex.justify-content-between
-          .a
+          .a.d-flex.pt-2
             - if user_signed_in?
-              %li.hoverdown.mr-4.pt-2
+              %li.hoverdown
                 .header-cotegory
                   %i.fas.fa-list-ul.header-icon.header-icon-color.mr-1
-                  .header-list カテゴリーから検索
+                  .header-list.mr-4 カテゴリーから検索
                 .hoverdown-content
                   - @categorys.each do |category|
                     .cate-item
@@ -42,15 +42,21 @@
               %li.hoverdown
                 .header-cotegory
                   %i.fas.fa-hashtag.header-icon.header-icon-color.mr-1
-                  .header-list タグから検索
+                  .header-list.mr-4 タグから検索
                 .hoverdown-content
                   - @tags.each do |tag|
                     .main-tug-group
                     = link_to tag.name, search_articles_path(q: { tags_id_eq: tag.id })
+              %span.accordion-ops#accordion
+                .header-cotegory
+                  %i.fas.fa-hashtag.header-icon.header-icon-color.mr-1
+                  .header-list 詳細検索
+                .header-deteil-search
+                  = render 'commons/detail_search' 
           .b
             - if user_signed_in?
               - if unchecked_notifications.any?
-                %i.fa.fa-circle
+                %i.fa.fa-circle.mb-2.ml-1
               %li.hoverdown.mr-4
                 .header-cotegory
                   %i.fas.fa-bell.header-icon.header-icon-color.mr-1
@@ -61,8 +67,15 @@
                 .hoverdown-content
                   = link_to 'プロフィール', profile_path
                   = link_to 'ログアウト', destroy_user_session_path, data: { method: 'delete' }
+    
     - if flash.present?
       .flash
         - flash.each do |key, value|
           %div{:class => key}= value
     = yield
+    .footer-img
+      = image_tag 'メイン.jpeg',class: 'footer-content'
+    .footer
+      = link_to 'Soldier Reviews', root_path, class: 'app-title'
+      
+    = javascript_pack_tag 'header_accordion'
