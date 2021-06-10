@@ -35,8 +35,17 @@
   border-radius: 50%;
 }
 .articles-body {
+  position: relative;
+  text-align: left;
   flex: 1 1 auto;
   min-height: 1px;
   padding: 0.25rem 0.25rem 0.25rem 0.75rem;
   background-color: #f8f9fa;
 }
+.author {
+  position: absolute;
+  right: 10px;
+}
+// .author-left {
+
+// }

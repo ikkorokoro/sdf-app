@@ -2,17 +2,11 @@
   = link_to new_article_path do
     .new-path-img
       %i.fas.fa-camera.fa-4x
-  .main
-    .main-logo
-      優秀なアイテムを共有して
-      %br
-      パフォーマンスを最大限まで上げよう
-  -# %iframe{:allow => "accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture", :allowfullscreen => "", :frameborder => "0", :height => "315", :src => "https://www.youtube.com/embed/QKGQPy1Q8jc", :title => "YouTube video player", :width => "560"}
+  .article-top-img
+    = image_tag '自衛隊募集.jpeg', class: 'article-img'
   .article
-    .article-left
-      = render 'detail_search' 
-    .article-right
-      .article-right-top
+    .article-main
+      .article-main-top
         %span いいねランキング
       .container
         .row
@@ -33,12 +27,13 @@
         .container
           .row
             = render 'commons/articles', articles: @top_category_all_articles
-      .new-article
-        .new-article-title
-          %span 最新の投稿
-      .container
-        .row
-          = render 'commons/articles', articles: @updated_at_desc_articles
+        .top-cate-article
+          %span
+            - if @second_category_all_articles.present?
+              = link_to "##{@second_category.category_name}の投稿", search_articles_path(q: { category_id_eq: @second_category.id })
+        .container
+          .row
+            = render 'commons/articles', articles: @second_category_all_articles
       .cate
         .cate-box
           .cate-title
@@ -47,3 +42,10 @@
             - @five_tags.each do |tag|
               .cate-item
                 = link_to "##{tag.name}", search_articles_path(q: { tags_id_eq: tag.id }), class: 'categorys'
+      .new-article
+        .new-article-title
+          %span 最新の投稿
+      .container
+        .row
+          = render 'commons/articles', articles: @updated_at_desc_articles
+= javascript_pack_tag 'swiper.js'

@@ -79,7 +79,7 @@
       %span.rakuten-title 楽天市場の関連アイテム(評価4.5以上)
       .rakuten-items
         - @senjins.each do |item|
-          .rakuten-item.mb-3
+          .rakuten-item
             .api-img
               = link_to item['item_url'] do
                 = image_tag item['mediumImageUrls'][0]

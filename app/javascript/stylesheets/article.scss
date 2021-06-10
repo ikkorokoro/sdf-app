@@ -22,24 +22,12 @@
 }
 .main {
     width: 100%;
-    height: 250px;
-    background-image: url("../../assets/images/軍団.png");
-    background-size: cover;
+    height: 300px;
     text-align: center;
-    padding: 1.5rem 0;
     @media screen and (max-width:425px) {
       padding: 1rem;
       height: 200px;
     }
-  &-logo {
-    font-size: 22px;
-    font-weight: bold;
-    padding-bottom: 1.25rem;
-    @media screen and (max-width:425px) {
-      font-size: 20px;
-      padding-bottom: 0.5rem;
-    }
-  }
   &-search {
     width: 500px;
     height: 25px;
@@ -77,15 +65,11 @@
   }
 }
 .article {
-  display: flex;
-  justify-content: space-between;
   text-align: center;
   @media screen and (max-width:425px) {
     display: block;
   }
-  &-right {
-    width: 80%;
-    text-align: center;
+  &-main {
     &-top {
       display: inline-block;
       border-bottom: $border-color;
@@ -95,26 +79,6 @@
     }
     @media screen and (max-width:425px) {
       width: 100%;
-    }
-  }
-  &-left {
-    width: 20%;
-    background-color: #f8f9fa;
-    text-align: center;
-    &-title {
-      display: inline-block;
-      border-bottom: $border-color;
-      font-size: 18px;
-      font-weight: bold;
-      margin: 1.5rem 0;
-      @media screen and (max-width:425px) {
-        margin: 0 0 0.5rem 0;
-    }
-  }
-    @media screen and (max-width:425px) {
-      background: rgba(161, 190, 167, 0.27);
-      width: 100%;
-      padding: 1rem;
     }
   }
 }
@@ -389,6 +353,7 @@
 .rakuten-item {
   border: 1px solid#dee2e6;
   background-color: white;
+  margin-bottom: 1.25rem;
 }
 
 .api-content{
@@ -414,6 +379,8 @@
 }
 
 /*========== detail ===========*/
+
+
 .detail-content {
   font-size: 14px;
   margin-bottom: 1rem;
@@ -543,3 +510,12 @@ th {
     color: black;
   }
 }
+.article-top-img { 
+  width: 100%;
+  height: 300px; 
+  }
+  .article-img { 
+  width: 100%;
+  height: 300px; 
+  object-fit: cover; 
+  }

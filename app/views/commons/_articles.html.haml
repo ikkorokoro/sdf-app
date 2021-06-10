@@ -5,9 +5,11 @@
         = link_to article_path(article), id: 'show-link' do
           - if article.image.attached?
             = image_tag article.image, class: 'card-img-top hover'
-      .articles-body.text-left
+      .articles-body
         .card-text.mt-1
           = article.author_name
+          = link_to account_path(article.user) do
+            = image_tag article.author_image, class: 'articles-avatar author'
         .card-text.mt-1
           = article.cat_name
         .card-text.mt-1.font-weight-bold
