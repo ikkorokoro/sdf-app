@@ -1,91 +1,204 @@
-.user-info {
+// .user-info {
+//   display: flex;
+//   flex-direction: column;
+//   &-avatar {
+//     margin: auto;
+//     margin-top: 1.5rem;
+//   }
+//   &-name {
+//     text-align: center;
+//     font-size: 18px;
+//     padding-top: 1.5rem;
+//     @media screen and (max-width:425px) {
+//       padding-top: 0.5rem;
+//     }
+//   }
+// }
+// .follow-count {
+//   text-align: center;
+//   margin-top: 1.5rem;
+//   @media screen and (max-width:425px) {
+//     margin: 1rem 0;
+//   }
+// }
+// .follow {
+//   font-weight: bold;
+//   background: $btn-bg;
+//   padding: 0.5rem 1rem;
+//   cursor: pointer;
+//   &:hover {
+//     opacity: 0.8;
+//   }
+// }
+// .following {
+//   font-weight: bold;
+//   background: #f8f9fa;
+//   padding: 0.5rem 1rem;
+//   cursor: pointer;
+//   &:hover {
+//     opacity: 0.8;
+//   }
+// }
+// .info-box {
+//   display: flex;
+//   justify-content: center;
+//   margin: 1.5rem 0;
+//   @media screen and (max-width:425px) {
+//     margin: 0.5rem 0;
+//   }
+// }
+// .followings {
+//   display: flex;
+//   flex-direction: column;
+//   font-size: 18px;
+//   font-weight: bold;
+//   margin-right: 1.5rem;
+// }
+// .followers {
+//   display: flex;
+//   flex-direction: column;
+//   font-size: 18px;
+//   font-weight: bold;
+//   margin-right: 1.5rem;
+// }
+// .affili {
+//   display: flex;
+//   flex-direction: column;
+//   &-title {
+//     font-size: 18px;
+//     text-align: center;
+//   }
+// }
+// .intro {
+//   text-align: center;
+//   margin-bottom: 1.5rem;
+//   &-title {
+//     font-size: 18px;
+//     font-weight: bold;
+//     margin-bottom: 0.5rem;
+//   }
+//   &-area {
+//     font-size: 18px;
+//     width: 70%;
+//     height: 120px;
+//     background-color: white;
+//     border: 1px solid #dee2e6;
+//     margin: auto;
+//     @media screen and (max-width:425px) {
+//       height: 100px;
+//     }
+//   }
+// }
+.mypage  {
   display: flex;
-  flex-direction: column;
-  &-avatar {
-    margin: auto;
-    margin-top: 1.5rem;
+  justify-content: space-around;
+  padding: 2rem 0;
+  &-left {
+    width: 20%;
   }
-  &-name {
-    text-align: center;
-    font-size: 18px;
-    padding-top: 1.5rem;
-    @media screen and (max-width:425px) {
-      padding-top: 0.5rem;
+  &-right {
+    background-color: white;
+    width: 70%;
+    &-top {
+      height: 30%;
     }
   }
-}
-.follow-count {
-  text-align: center;
-  margin-top: 1.5rem;
-  @media screen and (max-width:425px) {
-    margin: 1rem 0;
+  &-list {
+      background-color: white;
+      margin-bottom: 0.75rem;
+      padding: 0.25rem 0.5rem;
+      font-size: 16px;
+      &:hover {
+        background: rgba(14, 94, 1, 0.6);
+        transition: background-color 0.7s;
+      }
+      &-tub {
+        display: block;
+        &:hover {
+          color: white;
+        }
+      }
   }
 }
 .follow {
-  font-weight: bold;
-  background: $btn-bg;
-  padding: 0.5rem 1rem;
-  cursor: pointer;
-  &:hover {
-    opacity: 0.8;
-  }
+  display: flex;
+  flex-direction: column;
 }
-.following {
-  font-weight: bold;
-  background: #f8f9fa;
-  padding: 0.5rem 1rem;
-  cursor: pointer;
-  &:hover {
-    opacity: 0.8;
-  }
-}
-.info-box {
+.user-info {
   display: flex;
   justify-content: center;
-  margin: 1.5rem 0;
-  @media screen and (max-width:425px) {
-    margin: 0.5rem 0;
+  font-size: 14px;
+  font-weight: bold;
+}
+.tab {
+}
+.tab_list {
+  background: rgba(14, 94, 1, 0.6);
+  &:hover {
+    opacity: 0.8;
   }
 }
-.followings {
-  display: flex;
-  flex-direction: column;
-  font-size: 18px;
-  font-weight: bold;
-  margin-right: 1.5rem;
-}
-.followers {
-  display: flex;
-  flex-direction: column;
-  font-size: 18px;
-  font-weight: bold;
-  margin-right: 1.5rem;
-}
-.affili {
-  display: flex;
-  flex-direction: column;
-  &-title {
-    font-size: 18px;
-    text-align: center;
-  }
-}
-.intro {
+.tabs_item {
   text-align: center;
-  margin-bottom: 1.5rem;
-  &-title {
-    font-size: 18px;
-    font-weight: bold;
-    margin-bottom: 0.5rem;
+  padding: 1.25rem;
+  font-size: 16px;
+  &:hover {
+    color: white;
   }
-  &-area {
-    font-size: 18px;
-    width: 70%;
-    height: 120px;
-    background-color: white;
-    border: 1px solid #dee2e6;
-    margin: auto;
-    @media screen and (max-width:425px) {
-      height: 100px;
-    }
+  &.active {
+    border-top: 2.5px solid rgba(0, 82, 233, 0.6);;
+    background: white;
+    color:  black;
   }
+}
+
+.mypage-right-list-title {
+  text-align: center;
+  font-size: 22px;
+  font-weight: bold;
+  border-bottom: 1px solid gainsboro;
+  padding: 1rem 0;
+}
+.list-title {
+  text-align: center;
+  padding: 1.5rem;
+  font-size: 16px;
+}
+.follower-list {
+  padding: 0.5rem;
+  border-bottom: 1px solid gainsboro;
+}
+
+.myname {
+  font-size: 16px;
+}
+.mypage-info {
+  display: flex;
+  justify-content: space-between;
+  font-size: 16px;
+  width: 50%;
+  margin: auto;
+}
+.intro-title-size {
+  font-size: 18px;
+  font-weight: bold;
+}
+.intro-size {
+  font-size: 18px;
+  padding-top: 0.5rem;
+}
+.mypage-mask {
+  height: 100%;
+  background: rgba(255, 255, 255, 0.5)
+}
+.mypage-avatar  {
+  text-align: center;
+  background-image: url("../../assets/images/軍団.png");
+  background-size: cover;
+  height: 25%;
+}
+.myprofile-bg {
+  text-align: center;
+  background-image: url("../../assets/images/軍団.png");
+  background-size: cover;
 }

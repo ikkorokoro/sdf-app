@@ -1,0 +1,12 @@
+.myprofile-bg
+  .mypage-mask.pt-3
+    = image_tag @profile.user.avatar_image, class: 'profile-avatar'
+    .text-center.font-weight-bold
+      = @profile.user.display_name
+    .user-info.py-2
+      .follow
+        %p フォロー
+        %p= @profile.user.followings.count
+      .follow
+        %p フォロワー
+        %p= @profile.user.followers.count

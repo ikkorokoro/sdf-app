@@ -1,0 +1,23 @@
+.main-bg-color
+  .mypage.mx-auto
+    = render 'commons/mypage_left'
+    .mypage-right
+      .mypage-avatar
+        .mypage-mask.pt-3
+          = image_tag current_user.avatar_image, class: 'profile-avatar'
+          .myname
+            = current_user.display_name
+        .text-center
+          .mypage-info.pt-3
+            .follow
+              %p フォロー
+              %p= current_user.followings.count
+            .follow
+              %p フォロワー
+              %p= current_user.followers.count
+            .follow
+              %p  所属部隊
+              %p= current_user.if_affiliation
+          .intro.pt-4
+            %p.intro-title-size 自己紹介
+            %p.intro-size= current_user.if_intro

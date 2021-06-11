@@ -1,1 +1,10 @@
-= render 'commons/profile'
+- title = 'いいねした投稿'
+- count = 'いいね数'
+- none = 'いいねしている投稿はありません'
+.main-bg-color
+  .mypage.mx-auto
+    = render 'commons/mypage_left'
+    .mypage-right
+      = render 'commons/mypage_related_article', articles: @articles, title: title, count: count, none: none
+          
+    

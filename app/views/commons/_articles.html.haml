@@ -1,6 +1,6 @@
 - articles.each do |article|
   .articles
-    .card{style: "width: 10rem"}
+    .mb-3.card{style: "width: 10rem"}
       .articles-img
         = link_to article_path(article), id: 'show-link' do
           - if article.image.attached?

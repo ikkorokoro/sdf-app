@@ -2,8 +2,9 @@
   = link_to new_article_path do
     .new-path-img
       %i.fas.fa-camera.fa-4x
-  .article-top-img
-    = image_tag '自衛隊募集.jpeg', class: 'article-img'
+  = link_to 'https://www.mod.go.jp/gsdf/jieikanbosyu/about/' do
+    .article-top-img
+      = image_tag '自衛隊募集.jpeg', class: 'article-img'
   .article
     .article-main
       .article-main-top
@@ -48,4 +49,4 @@
       .container
         .row
           = render 'commons/articles', articles: @updated_at_desc_articles
--# = javascript_pack_tag 'swiper.js'
+= javascript_pack_tag 'swiper.js'

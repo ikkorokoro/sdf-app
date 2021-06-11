@@ -20,6 +20,10 @@ scope module: :apps do
     resource  :favorite, only: [:show]
     resource  :timeline, only: [:show]
     resource  :buy, only: [:show]
+    resource  :myarticle, only: [:show]
+    resource  :followerlist, only: [:show]
+    resource  :followinglist, only: [:show]
+    resource  :mypage, only: [:show]
   end
   scope module: :senjins do
     resources :rakutens, only: [:index] do

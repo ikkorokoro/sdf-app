@@ -1,40 +1,23 @@
 .notification {
   display: flex;
   justify-content: space-between;
-  width: 60%;
-  background-color: white;
-  border: 1px solid #dee2e6;;
-  border-radius: 10px;
-  margin: auto;
-  margin-bottom: 0.5rem;
+  padding: 0.5rem;
+  border-bottom: 1px solid gainsboro;
   &-avatar {
+    display: flex;
+    justify-content: space-between;
     @media screen and (max-width:425px) {
       margin: auto;
       text-align: center;
     }
   }
   &-content {
-    display: inline-block;
-    margin-bottom: 0.8rem;
+    padding-top: 0.75rem;
     @media screen and (max-width:425px) {
       margin: auto;
       margin: 0.25rem 0;
       text-align: center;
-      display: block;
-      
+      display: block;    
     }
   }
-  &-time {
-    @media screen and (max-width:425px) {
-      font-size: 14px;
-      text-align: right;
-    }
-  }
-  @media screen and (max-width:425px) {
-    flex-direction: column;
-    width: 70%;
-    padding: 0.25rem;
-    margin-bottom: 0.5rem;
-  }
-
 }

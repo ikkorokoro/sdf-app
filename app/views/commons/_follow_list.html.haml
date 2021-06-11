@@ -1,0 +1,18 @@
+.follower-list
+  .notification-avatar
+    .d-flex
+      = link_to account_path(user) do
+        = image_tag user.avatar_image, class: 'account-avatar'
+      .notification-content
+        = link_to account_path(user), class: 'text-success'do
+          = user.display_name
+    .d-flex
+      .d-flex.flex-column.text-center.mr-2
+        %span 所属部隊
+        %span= user.if_affiliation
+      .d-flex.flex-column.text-center.mr-2
+        %span フォロー
+        %span= user.follower_count
+      .d-flex.flex-column.text-center.mr-2
+        %span フォロワー
+        %span= user.follow_count
