@@ -1,0 +1,34 @@
+- visiter = notification.visiter
+- visited = notification.visited
+/ 自分の投稿に対するいいね、コメントは通知に表示しない
+- if notifications.exists?
+  .notification
+    .notification-avatar
+      = link_to account_path(visiter) do
+        = image_tag visiter.avatar_image, class: 'account-avatar'
+      .notification-content
+        = link_to account_path(visiter), class: 'text-success'do
+          = visiter.display_name
+        = 'さんが'
+        - case notification.action
+        - when 'follow' then
+          = "あなたをフォローしました"
+        - when 'like' then
+          = link_to 'あなたの投稿', article_path(notification), class: 'font-weight-bold text-success'
+          = "にいいねしました"
+        - when 'comment' then
+          - if notification.article.user_id == visited.id
+            = link_to "あなたの投稿", notification.article, class: 'font-weight-bold text-success'
+          - else
+            %span
+              = link_to article_path(notification.article) do
+                = image_tag  notification.article.user.avatar_image, class: 'account-avatar'
+                %strong
+                  = notification.article.user.display_name + 'さんの投稿にコメントしました'
+          にコメントしました 
+    .pt-2
+      = time_ago_in_words(notification.created_at).upcase + "前"
+- else
+  %p.text-center
+    通知はありません
+
