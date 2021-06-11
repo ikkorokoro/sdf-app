@@ -10,7 +10,7 @@ module UserDecorator
   end
 
   def if_affiliation
-    profile&.affiliation
+    profile&.affiliation || '記述なし'
   end
 
   def if_intro
