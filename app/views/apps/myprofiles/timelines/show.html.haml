@@ -1,46 +1,8 @@
--# = render 'commons/profile', articles: @articles 
+- title = 'フォローした人の投稿'
+- count = '投稿数'
+- none = 'フォロー中の人の投稿はありません'
 .main-bg-color
   .mypage.mx-auto
-    .mypage-left.text-left
-      .mypage-list
-        = link_to favorite_path, class: 'mypage-list-tub' do
-          マイページ
-      .mypage-list
-        = link_to edit_profile_path, class: 'mypage-list-tub' do
-          プロフィール編集
-      .mypage-list
-        = link_to profile_path, class: 'mypage-list-tub' do
-          お知らせ
-      .mypage-list
-        = link_to myarticle_path, class: 'mypage-list-tub' do
-          自分の投稿
-      .mypage-list
-        = link_to favorite_path, class: 'mypage-list-tub' do
-          お気に入り
-      .mypage-list
-        = link_to timeline_path, class: 'mypage-list-tub' do
-          フォローした人の投稿
-      .mypage-list
-        = link_to buy_path, class: 'mypage-list-tub' do
-          購入リスト
-      .mypage-list
-        = link_to favorite_path, class: 'mypage-list-tub' do
-          フォローリスト
-      .mypage-list
-        = link_to favorite_path, class: 'mypage-list-tub' do
-          フォロワーリスト
-      .mypage-list
-        = link_to favorite_path, class: 'mypage-list-tub' do
-          投稿
+    = render 'commons/mypage_left'
     .mypage-right
-      .mypage-right-list-title
-        フォローした人の投稿
-      .list-title
-        - if @articles.present?
-          .post-count.pb-3
-            %p 投稿数  #{@articles.count}
-          .container
-            .row
-              = render 'commons/articles', articles: @articles
-        - else
-          フォロー中の人は投稿していません
+      = render 'commons/mypage_related_article', articles: @articles, title: title, count: count, none: none

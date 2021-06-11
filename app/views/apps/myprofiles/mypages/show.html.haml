@@ -1,36 +1,6 @@
 .main-bg-color
   .mypage.mx-auto
-    .mypage-left.text-left
-      .mypage-list
-        = link_to mypage_path, class: 'mypage-list-tub' do
-          マイページ
-      .mypage-list
-        = link_to edit_profile_path, class: 'mypage-list-tub' do
-          プロフィール編集
-      .mypage-list
-        = link_to profile_path, class: 'mypage-list-tub' do
-          お知らせ
-      .mypage-list
-        = link_to myarticle_path, class: 'mypage-list-tub' do
-          自分の投稿
-      .mypage-list
-        = link_to favorite_path, class: 'mypage-list-tub' do
-          お気に入り
-      .mypage-list
-        = link_to favorite_path, class: 'mypage-list-tub' do
-          フォローした人の投稿
-      .mypage-list
-        = link_to buy_path, class: 'mypage-list-tub' do
-          購入リスト
-      .mypage-list
-        = link_to followerlist_path, class: 'mypage-list-tub' do
-          フォローリスト
-      .mypage-list
-        = link_to followinglist_path, class: 'mypage-list-tub' do
-          フォロワーリスト
-      .mypage-list
-        = link_to favorite_path, class: 'mypage-list-tub' do
-          投稿
+    = render 'commons/mypage_left'
     .mypage-right
       .mypage-avatar
         .mypage-mask.pt-3

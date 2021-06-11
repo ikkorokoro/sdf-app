@@ -1,76 +1,12 @@
--# = render 'commons/profile'
 .main-bg-color
   .mypage.mx-auto
-    .mypage-left.text-left
-      .mypage-list
-        = link_to favorite_path, class: 'mypage-list-tub' do
-          マイページ
-      .mypage-list
-        = link_to edit_profile_path, class: 'mypage-list-tub' do
-          プロフィール編集
-      .mypage-list
-        = link_to profile_path, class: 'mypage-list-tub' do
-          お知らせ
-      .mypage-list
-        = link_to myarticle_path, class: 'mypage-list-tub' do
-          自分の投稿
-      .mypage-list
-        = link_to favorite_path, class: 'mypage-list-tub' do
-          お気に入り
-      .mypage-list
-        = link_to favorite_path, class: 'mypage-list-tub' do
-          フォローした人の投稿
-      .mypage-list
-        = link_to buy_path, class: 'mypage-list-tub' do
-          購入リスト
-      .mypage-list
-        = link_to followerlist_path, class: 'mypage-list-tub' do
-          フォローリスト
-      .mypage-list
-        = link_to followinglist_path, class: 'mypage-list-tub' do
-          フォロワーリスト
-      .mypage-list
-        = link_to favorite_path, class: 'mypage-list-tub' do
-          投稿
+    = render 'commons/mypage_left'
     .mypage-right
-      .mypage-right-top.pt-2
-        .text-center
-          = image_tag @profile.user.avatar_image, class: 'profile-avatar'
-          .text-center
-            = @profile.user.display_name
-          .user-info.py-2
-            .follow
-              %p フォロー
-              %p= @profile.user.followings.count
-            .follow
-              %p フォロワー
-              %p= @profile.user.followers.count
+      .mypage-right-top
+        = render 'commons/profile_right'
         .tab
           .d-flex
-            .tab_list.w-50
-              = link_to profile_path do
-                .tabs_item{class: "#{add_active_class(profile_path)}"}
-                  お知らせ
-            .tab_list.w-50
-              = link_to myarticle_path do
-                .tabs_item{class: "#{add_active_class(myarticle_path)}"}
-                  自分の投稿
+            = render 'commons/profile_tub', path_left: profile_path, path_right: myarticle_path, tab_left: 'お知らせ', tab_right: '自分の投稿' 
           .notification_item{class: "#{add_active_class(profile_path)}"}
             - @notifications.each do |notification|
               = render 'commons/notification', notifications: @notifications, notification: notification 
-
-            -# .d-flex.flex-column
-            -#   .tab_list
-            -#     = link_to profile_path do
-            -#       .tabs_item{class: "#{add_active_class(profile_path)}"}
-            -#         お知らせ
-            -#   - @notifications.each do |notification|
-            -#     = render 'commons/notification', notifications: @notifications, notification: notification 
-            -# .d-flex.flex-column
-            -#   .tab_list
-            -#     = link_to myarticle_path do
-            -#       .tabs_item{class: "#{add_active_class(myarticle_path)}"}
-            -#         自分の投稿
-                
-
-
