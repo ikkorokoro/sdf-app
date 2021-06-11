@@ -128,9 +128,9 @@
   display: flex;
   justify-content: center;
   font-size: 14px;
+  font-weight: bold;
 }
 .tab {
-  // display: flex;
 }
 .tab_list {
   background: rgba(14, 94, 1, 0.6);
@@ -161,10 +161,44 @@
 }
 .list-title {
   text-align: center;
-  padding-top: 1.25rem;
+  padding: 1.5rem;
   font-size: 16px;
 }
 .follower-list {
   padding: 0.5rem;
   border-bottom: 1px solid gainsboro;
+}
+
+.myname {
+  font-size: 16px;
+}
+.mypage-info {
+  display: flex;
+  justify-content: space-between;
+  font-size: 16px;
+  width: 50%;
+  margin: auto;
+}
+.intro-title-size {
+  font-size: 18px;
+  font-weight: bold;
+}
+.intro-size {
+  font-size: 18px;
+  padding-top: 0.5rem;
+}
+.mypage-mask {
+  height: 100%;
+  background: rgba(255, 255, 255, 0.5)
+}
+.mypage-avatar  {
+  text-align: center;
+  background-image: url("../../assets/images/軍団.png");
+  background-size: cover;
+  height: 25%;
+}
+.myprofile-bg {
+  text-align: center;
+  background-image: url("../../assets/images/軍団.png");
+  background-size: cover;
 }
