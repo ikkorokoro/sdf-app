@@ -23,6 +23,7 @@ scope module: :apps do
     resource  :myarticle, only: [:show]
     resource  :followerlist, only: [:show]
     resource  :followinglist, only: [:show]
+    resource  :mypage, only: [:show]
   end
   scope module: :senjins do
     resources :rakutens, only: [:index] do
