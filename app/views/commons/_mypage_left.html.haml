@@ -1,33 +1,34 @@
 .mypage-left.text-left
   .mypage-list
-    = link_to profile_path, class: 'mypage-list-tub' do
-      マイページ
+    = link_to account, class: 'mypage-list-tub' do
+      #{name}ページ
+  - if user == current_user
+    .mypage-list
+      = link_to edit_profile_path, class: 'mypage-list-tub' do
+        プロフィール編集
+    .mypage-list
+      = link_to new_article_path, class: 'mypage-list-tub' do
+        投稿する
+    .mypage-list
+      = link_to notification_path, class: 'mypage-list-tub' do
+        お知らせ
   .mypage-list
-    = link_to edit_profile_path, class: 'mypage-list-tub' do
-      プロフィール編集
+    = link_to article, class: 'mypage-list-tub' do
+      #{user.display_name}の投稿
   .mypage-list
-    = link_to new_article_path, class: 'mypage-list-tub' do
-      投稿する
-  .mypage-list
-    = link_to notification_path, class: 'mypage-list-tub' do
-      お知らせ
-  .mypage-list
-    = link_to myarticle_path, class: 'mypage-list-tub' do
-      自分の投稿
-  .mypage-list
-    = link_to favorite_path, class: 'mypage-list-tub' do
+    = link_to like, class: 'mypage-list-tub' do
       いいねした投稿
   .mypage-list
-    = link_to timeline_path, class: 'mypage-list-tub' do
+    = link_to timeline, class: 'mypage-list-tub' do
       フォローした人の投稿
   .mypage-list
-    = link_to buy_path, class: 'mypage-list-tub' do
+    = link_to buy, class: 'mypage-list-tub' do
       購入リスト
   .mypage-list
-    = link_to followinglist_path, class: 'mypage-list-tub' do
+    = link_to follow, class: 'mypage-list-tub' do
       フォローリスト
   .mypage-list
-    = link_to followerlist_path, class: 'mypage-list-tub' do
+    = link_to follower, class: 'mypage-list-tub' do
       フォロワーリスト
 
   
