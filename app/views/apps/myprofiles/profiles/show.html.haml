@@ -1,12 +1,23 @@
 .main-bg-color
   .mypage.mx-auto
-    = render 'commons/mypage_left'
+    = render 'commons/user_page_left', user: current_user, name: 'マイ', account: profile_path, article: myarticle_path, like: favorite_path, timeline: timeline_path, buy: buy_path, follow: followinglist_path, follower: followerlist_path
     .mypage-right
-      .mypage-right-top
-        = render 'commons/profile_right'
-        .tab
-          .d-flex
-            = render 'commons/profile_tub', path_left: profile_path, path_right: myarticle_path, tab_left: 'お知らせ', tab_right: '自分の投稿' 
-          .notification_item{class: "#{add_active_class(profile_path)}"}
-            - @notifications.each do |notification|
-              = render 'commons/notification', notifications: @notifications, notification: notification 
+      .mypage-avatar
+        .mypage-mask.pt-3
+          = image_tag current_user.avatar_image, class: 'profile-avatar'
+          .myname
+            = current_user.display_name
+        .text-center
+          .mypage-info.pt-3
+            .follow
+              %p フォロー
+              %p= current_user.followings.count
+            .follow
+              %p フォロワー
+              %p= current_user.followers.count
+            .follow
+              %p  所属部隊
+              %p= current_user.if_affiliation
+          .intro.pt-4
+            %p.intro-title-size 自己紹介
+            %p.intro-size= current_user.if_intro

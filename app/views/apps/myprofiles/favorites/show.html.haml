@@ -1,10 +1,7 @@
-- title = 'いいねした投稿'
-- count = 'いいね数'
-- none = 'いいねしている投稿はありません'
 .main-bg-color
   .mypage.mx-auto
-    = render 'commons/mypage_left'
+    = render 'commons/user_page_left', user: current_user, name: 'マイ', account: profile_path, article: myarticle_path, like: favorite_path, timeline: timeline_path, buy: buy_path, follow: followinglist_path, follower: followerlist_path
     .mypage-right
-      = render 'commons/mypage_related_article', articles: @articles, title: title, count: count, none: none
+      = render 'commons/related', articles: @articles, title: 'いいねした投稿', count: 'いいね数', none: 'いいねしている投稿はありません'
           
     

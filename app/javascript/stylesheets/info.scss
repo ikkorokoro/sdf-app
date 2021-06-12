@@ -1,94 +1,4 @@
-// .user-info {
-//   display: flex;
-//   flex-direction: column;
-//   &-avatar {
-//     margin: auto;
-//     margin-top: 1.5rem;
-//   }
-//   &-name {
-//     text-align: center;
-//     font-size: 18px;
-//     padding-top: 1.5rem;
-//     @media screen and (max-width:425px) {
-//       padding-top: 0.5rem;
-//     }
-//   }
-// }
-// .follow-count {
-//   text-align: center;
-//   margin-top: 1.5rem;
-//   @media screen and (max-width:425px) {
-//     margin: 1rem 0;
-//   }
-// }
-// .follow {
-//   font-weight: bold;
-//   background: $btn-bg;
-//   padding: 0.5rem 1rem;
-//   cursor: pointer;
-//   &:hover {
-//     opacity: 0.8;
-//   }
-// }
-// .following {
-//   font-weight: bold;
-//   background: #f8f9fa;
-//   padding: 0.5rem 1rem;
-//   cursor: pointer;
-//   &:hover {
-//     opacity: 0.8;
-//   }
-// }
-// .info-box {
-//   display: flex;
-//   justify-content: center;
-//   margin: 1.5rem 0;
-//   @media screen and (max-width:425px) {
-//     margin: 0.5rem 0;
-//   }
-// }
-// .followings {
-//   display: flex;
-//   flex-direction: column;
-//   font-size: 18px;
-//   font-weight: bold;
-//   margin-right: 1.5rem;
-// }
-// .followers {
-//   display: flex;
-//   flex-direction: column;
-//   font-size: 18px;
-//   font-weight: bold;
-//   margin-right: 1.5rem;
-// }
-// .affili {
-//   display: flex;
-//   flex-direction: column;
-//   &-title {
-//     font-size: 18px;
-//     text-align: center;
-//   }
-// }
-// .intro {
-//   text-align: center;
-//   margin-bottom: 1.5rem;
-//   &-title {
-//     font-size: 18px;
-//     font-weight: bold;
-//     margin-bottom: 0.5rem;
-//   }
-//   &-area {
-//     font-size: 18px;
-//     width: 70%;
-//     height: 120px;
-//     background-color: white;
-//     border: 1px solid #dee2e6;
-//     margin: auto;
-//     @media screen and (max-width:425px) {
-//       height: 100px;
-//     }
-//   }
-// }
+
 .mypage  {
   display: flex;
   justify-content: space-around;
@@ -201,4 +111,68 @@
   text-align: center;
   background-image: url("../../assets/images/軍団.png");
   background-size: cover;
+}
+.follow-count {
+  text-align: center;
+  margin-top: 1rem;
+  @media screen and (max-width:425px) {
+    margin: 1rem 0;
+  }
+}
+.follow-text {
+  font-weight: bold;
+  background: $btn-bg;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  &:hover {
+    opacity: 0.8;
+  }
+}
+.following-text {
+  font-weight: bold;
+  background: rgb(249, 245, 213);
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  &:hover {
+    opacity: 0.8;
+  }
+}
+.notification {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem;
+  border-bottom: 1px solid gainsboro;
+  &-avatar {
+    display: flex;
+    justify-content: space-between;
+    @media screen and (max-width:425px) {
+      margin: auto;
+      text-align: center;
+    }
+  }
+  &-content {
+    padding-top: 0.75rem;
+    @media screen and (max-width:425px) {
+      margin: auto;
+      margin: 0.25rem 0;
+      text-align: center;
+      display: block;    
+    }
+  }
+}
+.post-count {
+  text-align: center;
+  font-weight: bold;
+}
+.profile-avatar {
+  width: 70px;
+  height: 70px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+.account-avatar {
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
+  border-radius: 50%;
 }

@@ -3,8 +3,6 @@
     .new-path-img
       %i.fas.fa-camera.fa-4x
   .article
-    .article-left
-      = render 'detail_search'
     .article-right
       - if @results.count == 0
         .xg-font 一致する項目は見つかりません
@@ -18,7 +16,7 @@
             = sort_link(@q, :object, '物品名',{}, { class: 'sort-value' })
             = sort_link(@q, :price, '購入金額',{}, { class: 'sort-value' })
             = sort_link(@q, :store, '購入場所',{}, { class: 'sort-value' })
-            = sort_link(@q, :rate, '星評価',{}, { class: 'base-font' })
+            = sort_link(@q, :rate, '星評価',{}, { class: 'sort-value' })
           .container
             .row
               = render 'commons/articles', articles: @results

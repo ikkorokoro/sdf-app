@@ -1,1 +1,7 @@
-= render 'commons/account', user: @user
+.main-bg-color
+  .mypage.mx-auto
+    = render 'commons/user_page_left', user: @user, name: 'ユーザー', account: account_path(@user), article: account_otherarticle_path(@user.id), like: account_favorite_path(@user.id), timeline: account_othertimeline_path(@user.id), buy: account_otherbuy_path(@user.id), follow: account_actives_path(@user.id), follower: account_passives_path(@user.id)
+    .mypage-right
+      = render 'commons/related', articles: @articles, title: "フォローした人の投稿", count: '投稿数', none: '、フォロー中のユーザーの投稿はありません'
+          
+    

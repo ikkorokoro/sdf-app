@@ -12,18 +12,16 @@ resources :articles do
   end
 end
 
-resources :notifications, only: [:index]
-
 scope module: :apps do
   scope module: :myprofiles do
     resource  :profile, only: [:show, :edit, :update]
+    resource  :notification, only: [:show]
     resource  :favorite, only: [:show]
     resource  :timeline, only: [:show]
     resource  :buy, only: [:show]
     resource  :myarticle, only: [:show]
     resource  :followerlist, only: [:show]
     resource  :followinglist, only: [:show]
-    resource  :mypage, only: [:show]
   end
   scope module: :senjins do
     resources :rakutens, only: [:index] do
@@ -38,6 +36,7 @@ scope module: :apps do
       resource  :favorite, only: [:show]
       resource  :othertimeline, only: [:show]
       resource  :otherbuy, only: [:show]
+      resource  :otherarticle, only: [:show]
       resources :follows, only: [:create]
       resources :unfollows, only: [:create]
       resources :actives, only: [:index]

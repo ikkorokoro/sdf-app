@@ -8,14 +8,14 @@
     = stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'load'
     %meta{:content => "width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0", :name => "viewport"}/
-    = favicon_link_tag("/app/images/favicon.png")
+    = favicon_link_tag('favicon.png')
   %body
     .header-img
       .bg-mask
         .d-flex
           - if !current_page?(root_path)
             = link_to :back do
-              %i.fas.fa-arrow-left
+              %i.fas.fa-arrow-left.back-icon
           = link_to 'Soldier Reviews', root_path, class: 'app-title'
           .mx-auto
             = search_form_for @q, url: search_articles_path do |f|
@@ -28,7 +28,9 @@
                 %span 新規登録
               = link_to new_user_session_path, class: 'sign-btn btn-posi pt-2' do
                 %span ログイン
-        .d-flex.justify-content-between
+          .rakuten-header-btn
+            = link_to '楽天で探す',rakutens_path, class: ''
+        .d-flex.justify-content-between.mt-2
           .a.d-flex.pt-2
             - if user_signed_in?
               %li.hoverdown
@@ -47,8 +49,8 @@
                   - @tags.each do |tag|
                     .main-tug-group
                     = link_to tag.name, search_articles_path(q: { tags_id_eq: tag.id })
-              %span.accordion-ops#accordion
-                .header-cotegory
+              %span.accordion-ops
+                .header-cotegory#accordion
                   %i.fas.fa-hashtag.header-icon.header-icon-color.mr-1
                   .header-list 詳細検索
                 .header-deteil-search
@@ -60,7 +62,7 @@
               %li.hoverdown.mr-4
                 .header-cotegory
                   %i.fas.fa-bell.header-icon.header-icon-color.mr-1
-                  = link_to 'お知らせ', notifications_path, class: 'header-list' 
+                  = link_to 'お知らせ', profile_path, class: 'header-list' 
                 .hoverdown-content
               %li.hoverdown
                 = image_tag current_user.avatar_image, class: 'user-avatar hoverbtn'

@@ -1,1 +1,29 @@
-= render 'commons/account', user: @user
+.main-bg-color#show-account{data: {account_id: @user.id}}  
+  .mypage.mx-auto
+    = render 'commons/user_page_left', user: @user, name: 'ユーザー', account: account_path(@user.id), article: account_otherarticle_path(@user.id), like: account_favorite_path(@user.id), timeline: account_othertimeline_path(@user.id), buy: account_otherbuy_path(@user.id), follow: account_actives_path(@user.id), follower: account_passives_path(@user.id)
+    .mypage-right
+      .mypage-avatar
+        .mypage-mask.pt-2
+          = image_tag @user.avatar_image, class: 'profile-avatar'
+          .myname.mt-2
+            = @user.display_name
+          .follow-count
+            %span.follow-text.d-none#follow-btn
+              フォロー
+            %span.following-text.d-none#unfollow-btn
+              フォロー中
+          .text-center
+            .mypage-info.pt-3
+              .follow
+                %p フォロー
+                %p.text-center#following-count 0
+              .follow
+                %p フォロワー
+                %p.text-center#follower-count 0
+              .follow
+                %p  所属部隊
+                %p= @user.if_affiliation
+            .intro.pt-3
+              %p.intro-title-size 自己紹介
+              %p.intro-size= @user.if_intro
+= javascript_pack_tag 'account'
