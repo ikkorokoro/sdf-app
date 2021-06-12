@@ -6,15 +6,15 @@
           = image_tag @article.image, class: 'article-post-img'
       %table
         %tbody
+          - if user_signed_in? && current_user.has_written?(@article)
+            %li.hoverdown.show-icon
+              %i.fas.fa-bars.fa-2x
+              .hoverdown-content.base-font
+                = link_to '編集', edit_article_path(@article)                
+                = link_to '削除', article_path(@article), id: 'delete_button', data: { method: 'delete', confirm: '本当に削除してもよろしいですか' }
           %tr
             %th 出品者
             %td= link_to @article.user.display_name, account_path(@article.user), class: 'author-link'
-            - if user_signed_in? && current_user.has_written?(@article)
-              %li.hoverdown.show-icon
-                %i.fas.fa-bars.fa-2x
-                .hoverdown-content.base-font
-                  = link_to '編集', edit_article_path(@article)                
-                  = link_to '削除', article_path(@article), id: 'delete_button', data: { method: 'delete', confirm: '本当に削除してもよろしいですか' }
           %tr
             %th 物品名
             %td= @article.object
