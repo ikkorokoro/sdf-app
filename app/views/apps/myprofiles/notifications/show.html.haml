@@ -1,0 +1,12 @@
+.main-bg-color
+  .mypage.mx-auto
+    = render 'commons/mypage_left'
+    .mypage-right
+      .mypage-right-top
+        = render 'commons/profile_right'
+        .tab
+          .d-flex
+            = render 'commons/profile_tub', path_left: notification_path, path_right: myarticle_path, tab_left: 'お知らせ', tab_right: '自分の投稿' 
+          .notification_item
+            - @notifications.each do |notification|
+              = render 'commons/notification', notifications: @notifications, notification: notification 
