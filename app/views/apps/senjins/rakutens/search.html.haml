@@ -19,8 +19,10 @@
     - if @items.present?
       .senjin-counts
         全アイテム数: #{@count} 件
-      .container 
+      .container
         .row
-          = render 'commons/rakuten_item', items: @items
+          - @items.each do |item|
+            .col-sm-6.col-md-6.col-lg-4.col-xl-2.mb-5
+              = render 'commons/rakuten_item', item: item, item_url: item.item_url, image_urls: item.image_urls, item_price: item.item_price , review_average: item.review_average
       = paginate @items
   %span= link_to '楽天トップへ戻る', rakutens_path, class: 'rakuten-top'

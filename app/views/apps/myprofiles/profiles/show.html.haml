@@ -1,6 +1,6 @@
 .main-bg-color
   .mypage.mx-auto
-    = render 'commons/mypage_left', user: current_user, name: 'マイ', account: profile_path, article: myarticle_path, like: favorite_path, timeline: timeline_path, buy: buy_path, follow: followinglist_path, follower: followerlist_path
+    = render 'commons/user_page_left', user: current_user, name: 'マイ', account: profile_path, article: myarticle_path, like: favorite_path, timeline: timeline_path, buy: buy_path, follow: followinglist_path, follower: followerlist_path
     .mypage-right
       .mypage-avatar
         .mypage-mask.pt-3

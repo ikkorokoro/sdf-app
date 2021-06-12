@@ -1,29 +1,6 @@
 .main-bg-color
   .mypage.mx-auto
-    = render 'commons/mypage_left', user: @user, name: 'ユーザー', account: account_path(@user), article: account_otherarticle_path(@user.id), like: account_favorite_path(@user.id), timeline: account_othertimeline_path(@user.id), buy: account_otherbuy_path(@user.id), follow: account_actives_path(@user.id), follower: account_passives_path(@user.id)
+    = render 'commons/user_page_left', user: @user, name: 'ユーザー', account: account_path(@user), article: account_otherarticle_path(@user.id), like: account_favorite_path(@user.id), timeline: account_othertimeline_path(@user.id), buy: account_otherbuy_path(@user.id), follow: account_actives_path(@user.id), follower: account_passives_path(@user.id)
     .mypage-right
-      = render 'commons/mypage_related_article', articles: @articles, items: @items, title: "購入リスト", count: 'リスト数', none: '購入リストはありません'
-  
-  -# .post-count
-  -#   %p 登録数  #{@items.count}
-  -# .container
-  -#   .row
-  -#     - @items.each do |item|
-  -#       .senjin-item.mx-auto
-  -#         .api-img
-  -#           = link_to item.item_url do
-  -#             = image_tag item.image_urls
-  -#         .api-content
-  -#           = item.item_name
-  -#           .api
-  -#             .api-title
-  -#               購入金額
-  -#             .api-value
-  -#               #{item.item_price}円
-  -#           .api
-  -#             .api-title 
-  -#               平均評価
-  -#             .api-value
-  -#               #{item.review_average}
-                
+      = render 'commons/related', articles: @articles, items: @items, title: "購入リスト", count: 'リスト数', none: '購入リストはありません'
 = javascript_pack_tag 'account'

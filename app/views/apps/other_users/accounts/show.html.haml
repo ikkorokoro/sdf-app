@@ -1,9 +1,9 @@
 .main-bg-color#show-account{data: {account_id: @user.id}}  
   .mypage.mx-auto
-    = render 'commons/mypage_left', user: @user, name: 'ユーザー', account: account_path(@user.id), article: account_otherarticle_path(@user.id), like: account_favorite_path(@user.id), timeline: account_othertimeline_path(@user.id), buy: account_otherbuy_path(@user.id), follow: account_actives_path(@user.id), follower: account_passives_path(@user.id)
+    = render 'commons/user_page_left', user: @user, name: 'ユーザー', account: account_path(@user.id), article: account_otherarticle_path(@user.id), like: account_favorite_path(@user.id), timeline: account_othertimeline_path(@user.id), buy: account_otherbuy_path(@user.id), follow: account_actives_path(@user.id), follower: account_passives_path(@user.id)
     .mypage-right
       .mypage-avatar
-        .mypage-mask.pt-3
+        .mypage-mask.pt-2
           = image_tag @user.avatar_image, class: 'profile-avatar'
           .myname.mt-2
             = @user.display_name

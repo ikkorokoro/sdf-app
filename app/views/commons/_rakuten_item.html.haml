@@ -1,18 +1,18 @@
 .senjin-item.mx-auto
   .api-img
-    = link_to item.item_url do
-      = image_tag item.image_urls
+    = link_to item_url do
+      = image_tag image_urls
   .api-content
     .api
       .api-title
         購入金額
       .api-value
-        #{item.item_price}円
+        #{item_price}円
     .api
       .api-title 
         平均評価
       .api-value
-        #{item.review_average}
+        #{review_average}
     .buy-list.mt-2
   - if current_user.has_buylist?(item)
     .not-buy#unfollow-btn

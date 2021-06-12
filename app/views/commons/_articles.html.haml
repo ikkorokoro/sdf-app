@@ -9,7 +9,7 @@
         .card-text.mt-1
           = article.author_name
           = link_to account_path(article.user) do
-            = image_tag article.author_image, class: 'articles-avatar author'
+            = image_tag article.author_image, class: 'user-avatar author'
         .card-text.mt-1
           = article.cat_name
         .card-text.mt-1.font-weight-bold
