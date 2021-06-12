@@ -10,8 +10,8 @@ class Apps::Senjins::RakutensController < Apps::Senjins::ApplicationController
   end
 
   def search
-    @items = @q.result.page(params[:page]).per(30)
-    @count = @q.result.count
+    @items = @r.result.page(params[:page]).per(30)
+    @count = @r.result.count
   end
 
   private
@@ -49,6 +49,6 @@ class Apps::Senjins::RakutensController < Apps::Senjins::ApplicationController
     end
 
     def set_rakuten_q
-      @r = Rakuten.ransack(params[:q])
+      @r = Rakuten.ransack(params[:r])
     end
 end
