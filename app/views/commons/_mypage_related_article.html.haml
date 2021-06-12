@@ -1,12 +1,20 @@
 .mypage-right-list-title
   = title
 .list-title
-  - if @articles.present?
+  - if articles.present?
     .post-count.pb-3
-      %p #{count}  #{@articles.count}
+      %p #{count}  #{articles.count}
     .container
       .row
         = render 'commons/articles', articles: articles
+  - elsif items.present?
+    .post-count.pb-3
+      %p #{count}  #{items.count}
+    .container
+      .row
+        - @items.each do |item|
+          .col-sm-6.col-md-6.col-lg-6.col-xl-4.mb-3
+            = render 'commons/rakuten_item', item: item, item_url: item.item_url, image_urls: item.image_urls, item_name: item.item_name, item_price: item.item_price ,item_review_average: item.review_average
   - else
     = none
 

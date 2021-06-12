@@ -1,39 +1,29 @@
-.main-bg-color#show-account{data: {account_id: @user.id}}  
-  = render 'commons/user_info', user: @user
-  .tabs
-    = link_to account_path(@user.id) do
-      .tabs_item{class: "#{add_active_class(account_path(@user.id))}"}
-        全ての投稿
-    = link_to account_favorite_path(@user.id) do
-      .tabs_item{class: "#{add_active_class(account_favorite_path(@user.id))}"}
-        いいねした投稿
-    = link_to account_othertimeline_path(@user.id) do
-      .tabs_item{class: "#{add_active_class(account_othertimeline_path(@user.id))}"}
-        フォローした人の投稿
-    = link_to account_otherbuy_path(@user.id) do
-      .tabs_item{class: "#{add_active_class(account_otherbuy_path(@user.id))}"}
-        購入リスト
+.main-bg-color
+  .mypage.mx-auto
+    = render 'commons/mypage_left', user: @user, name: 'ユーザー', account: account_path(@user), article: account_otherarticle_path(@user.id), like: account_favorite_path(@user.id), timeline: account_othertimeline_path(@user.id), buy: account_otherbuy_path(@user.id), follow: account_actives_path(@user.id), follower: account_passives_path(@user.id)
+    .mypage-right
+      = render 'commons/mypage_related_article', articles: @articles, items: @items, title: "購入リスト", count: 'リスト数', none: '購入リストはありません'
   
-  .post-count
-    %p 登録数  #{@items.count}
-  .container
-    .row
-      - @items.each do |item|
-        .senjin-item.mx-auto
-          .api-img
-            = link_to item.item_url do
-              = image_tag item.image_urls
-          .api-content
-            = item.item_name
-            .api
-              .api-title
-                購入金額
-              .api-value
-                #{item.item_price}円
-            .api
-              .api-title 
-                平均評価
-              .api-value
-                #{item.review_average}
+  -# .post-count
+  -#   %p 登録数  #{@items.count}
+  -# .container
+  -#   .row
+  -#     - @items.each do |item|
+  -#       .senjin-item.mx-auto
+  -#         .api-img
+  -#           = link_to item.item_url do
+  -#             = image_tag item.image_urls
+  -#         .api-content
+  -#           = item.item_name
+  -#           .api
+  -#             .api-title
+  -#               購入金額
+  -#             .api-value
+  -#               #{item.item_price}円
+  -#           .api
+  -#             .api-title 
+  -#               平均評価
+  -#             .api-value
+  -#               #{item.review_average}
                 
 = javascript_pack_tag 'account'
