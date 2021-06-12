@@ -36,6 +36,7 @@ scope module: :apps do
       resource  :favorite, only: [:show]
       resource  :othertimeline, only: [:show]
       resource  :otherbuy, only: [:show]
+      resource  :otherarticle, only: [:show]
       resources :follows, only: [:create]
       resources :unfollows, only: [:create]
       resources :actives, only: [:index]
