@@ -1,2 +1,12 @@
-= render 'commons/users'
+.main-bg-color
+  .mypage.mx-auto
+    = render 'commons/mypage_left', user: @user, name: 'ユーザー',account: account_path(@user), article: account_otherarticle_path(@user.id), like: account_favorite_path(@user.id), timeline: account_othertimeline_path(@user.id), buy: account_otherbuy_path, follow: account_actives_path(@user.id), follower: account_passives_path(@user.id)
+    .mypage-right
+      .mypage-right-list-title
+        関連ユーザー一覧
+      .tab
+        .d-flex
+          = render 'commons/profile_tub', path_left: account_actives_path, path_right: account_passives_path, tab_left: 'フォロー', tab_right: 'フォロワー' 
+        - @users.each do |user|
+          = render 'commons/follow_list', user: @user
 
