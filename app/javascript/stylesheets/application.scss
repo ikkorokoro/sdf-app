@@ -37,6 +37,17 @@ body {
   height: 100%;
   object-fit: cover; 
 }
+.close-btn{
+  display: inline-block;
+  border: 1px solid gray;
+  font-size: 14px;
+  margin: 10px 0;
+  padding: 4px 15px;
+  &:hover {
+    opacity: 0.8;
+    cursor: pointer;
+  }
+}
 // 陸上自衛隊HPより引用
 
 
