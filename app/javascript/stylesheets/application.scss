@@ -22,15 +22,42 @@ body {
   background-image: url("../../assets/images/wallpaperbetter 3.png");
   background-size: cover;
 } 
+.bg-mask {
+  height: 100%;
+  background: rgba(255,255,255,0.5);
+  padding: 0.5rem 4rem 0.5rem 4rem;
+  @media screen and (max-width: 732px) {
+    padding: 0.5rem 0.5rem 0.5rem 0.5rem;
+  }
+}
+.header {
+  @media screen and (max-width: 1000px) {
+    display: flex;
+    flex-direction: column;
+  }
+  &-left {
+    display: flex;
+  }
+  &-right {
+    display: flex;
+    @media screen and (max-width: 1000px) {
+      justify-content: center;
+  }
+}
+}
 .app-title {
   font-size: 24px;
   font-weight: bold;
   color: #00461C;
+  margin-right: 10px;
 }
 
 .btn-posi {
   padding: 0.1rem 1rem;
   margin-right: 0.5rem;
+  @media screen and (max-width: 1000px) {
+  padding: 0.1rem 1rem 0.3rem 1rem
+  }
 }
 
 .fa-circle {
@@ -38,11 +65,18 @@ body {
 }
 .header-list {
   font-weight: bold;
-  
+  margin-right: 1.5rem;
+  @media screen and (max-width: 375px) {
+    font-size: 12px;
+    margin-right: 5px;
+  }
 }
 .header-cotegory{
   display: flex;
   cursor: pointer;
+  @media screen and (max-width: 375px) {
+    flex-direction: column;
+  }
 }
 
 .header-icon {
@@ -64,13 +98,6 @@ body {
     width: 100%;
     padding: 1rem;
   }
-}
-.bg-mask {
-  height: 100%;
-  background: rgba(255,255,255,0.5);
-  display: flex;
-  flex-direction: column;
-  padding: 0.5rem 6rem 0.5rem 6rem;
 }
 .accordion-ops {
   position: relative;

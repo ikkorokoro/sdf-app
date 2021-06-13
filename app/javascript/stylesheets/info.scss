@@ -2,13 +2,26 @@
 .mypage  {
   display: flex;
   justify-content: space-around;
-  padding: 2rem 0;
+  padding: 2rem 1rem;
+  @media screen and (max-width: 375px) {
+    flex-direction: column;
+    margin: auto;
+  }
   &-left {
     width: 20%;
+    text-align: left;
+    @media screen and (max-width: 375px) {
+      width: 90%;
+      margin: auto;
+    }
   }
   &-right {
     background-color: white;
     width: 70%;
+    @media screen and (max-width: 375px) {
+      margin: auto;
+      width: 90%
+    }
     &-top {
       height: 30%;
     }
@@ -28,6 +41,19 @@
           color: white;
         }
       }
+  }
+}
+.mypage-mask {
+  height: 100%;
+  background: rgba(255, 255, 255, 0.5)
+}
+.mypage-avatar  {
+  text-align: center;
+  background-image: url("../../assets/images/軍団.png");
+  background-size: cover;
+  height: 25%;
+  @media screen and (max-width: 375px) {
+    background: white;
   }
 }
 .follow {
@@ -77,6 +103,9 @@
 .follower-list {
   padding: 0.5rem;
   border-bottom: 1px solid gainsboro;
+  @media screen and (max-width: 375px) {
+  font-size: 12px;
+  }
 }
 
 .myname {
@@ -88,6 +117,12 @@
   font-size: 16px;
   width: 50%;
   margin: auto;
+  @media screen and (max-width: 375px) {
+    width: 95%;
+  }
+}
+.intro {
+padding-bottom: 15px;
 }
 .intro-title-size {
   font-size: 18px;
@@ -96,16 +131,6 @@
 .intro-size {
   font-size: 18px;
   padding-top: 0.5rem;
-}
-.mypage-mask {
-  height: 100%;
-  background: rgba(255, 255, 255, 0.5)
-}
-.mypage-avatar  {
-  text-align: center;
-  background-image: url("../../assets/images/軍団.png");
-  background-size: cover;
-  height: 25%;
 }
 .myprofile-bg {
   text-align: center;
