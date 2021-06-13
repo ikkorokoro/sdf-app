@@ -12,31 +12,31 @@
   %body
     .header-img
       .bg-mask
-        .d-flex
-          - if !current_page?(root_path)
-            = link_to :back do
-              %i.fas.fa-arrow-left.back-icon
-          = link_to 'Soldier Reviews', root_path, class: 'app-title'
-          .mx-auto
-            = search_form_for @q, url: search_articles_path do |f|
-              = f.search_field :object_or_price_or_store_cont, placeholder: "アイテムを検索", class: 'main-search'
-              = button_tag type: 'submit', class: 'detail-icon icone-size' do
-                %i.fas.fa-search
-          - unless user_signed_in?
-            .d-flex
-              = link_to new_user_registration_path, class: 'sign-btn btn-posi pt-2' do
-                %span 新規登録
-              = link_to new_user_session_path, class: 'sign-btn btn-posi pt-2' do
-                %span ログイン
-          .rakuten-header-btn
-            = link_to '楽天で探す',rakutens_path, class: ''
+        .header
+          .header-left
+            - if !current_page?(root_path)
+              = link_to :back do
+                %i.fas.fa-arrow-left.back-icon
+            = link_to 'Soldier Reviews', root_path, class: 'app-title'
+            .mx-auto
+              = search_form_for @q, url: search_articles_path do |f|
+                = f.search_field :object_or_price_or_store_cont, placeholder: "アイテムを検索", class: 'main-search'
+                = button_tag type: 'submit', class: 'detail-icon icone-size' do
+                  %i.fas.fa-search
+          .header-right
+            - unless user_signed_in?
+              .d-flex
+                = link_to new_user_registration_path, class: 'sign-btn btn-posi pt-2' do
+                  %span 新規登録
+                = link_to new_user_session_path, class: 'sign-btn btn-posi pt-2' do
+                  %span ログイン
         .d-flex.justify-content-between.mt-2
           .a.d-flex.pt-2
             - if user_signed_in?
               %li.hoverdown
                 .header-cotegory
                   %i.fas.fa-list-ul.header-icon.header-icon-color.mr-1
-                  .header-list.mr-4 カテゴリーから検索
+                  .header-list カテゴリー検索
                 .hoverdown-content
                   - @categorys.each do |category|
                     .cate-item
@@ -44,23 +44,28 @@
               %li.hoverdown
                 .header-cotegory
                   %i.fas.fa-hashtag.header-icon.header-icon-color.mr-1
-                  .header-list.mr-4 タグから検索
+                  .header-list タグ検索
                 .hoverdown-content
                   - @tags.each do |tag|
                     .main-tug-group
                     = link_to tag.name, search_articles_path(q: { tags_id_eq: tag.id })
               %span.accordion-ops
                 .header-cotegory#accordion
-                  %i.fas.fa-hashtag.header-icon.header-icon-color.mr-1
+                  %i.fas.fa-search.header-icon.header-icon-color.mr-1
                   .header-list 詳細検索
                 .header-deteil-search
                   = render 'commons/detail_search' 
-          .b
+              %span
+                .header-cotegory
+                  %a.fas.fa-registered.header-icon.header-icon-color.mr-1
+                  = link_to '楽天で探す',rakutens_path, class: 'header-list'
+              
+          .d-flex
             - if user_signed_in?
               - if unchecked_notifications.any?
                 %i.fa.fa-circle.mb-2.ml-1
-              %li.hoverdown.mr-4
-                .header-cotegory
+              %li.hoverdown
+                .header-cotegory.pt-2
                   %i.fas.fa-bell.header-icon.header-icon-color.mr-1
                   = link_to 'お知らせ', profile_path, class: 'header-list' 
                 .hoverdown-content
