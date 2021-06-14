@@ -2,7 +2,7 @@ class Apps::Myprofiles::ProfilesController < Apps::Myprofiles::ApplicationContro
   before_action :set_article, only: [:edit, :update]
 
   def show
-  end 
+  end
 
   def edit
   end
