@@ -8,5 +8,5 @@ class Apps::Myprofiles::MyarticlesController < Apps::Myprofiles::ApplicationCont
       notification.update_attributes(checked: true)
     end
     @notifications = @notifications.where.not(visiter_id: current_user.id)
-  end 
+  end
 end
