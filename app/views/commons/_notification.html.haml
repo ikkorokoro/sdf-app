@@ -5,7 +5,7 @@
   .notification
     .notification-avatar
       = link_to account_path(visiter) do
-        = image_tag visiter.avatar_image, class: 'account-avatar'
+        = image_tag visiter.avatar_image, class: 'account-avatar mt-2'
       .notification-content
         = link_to account_path(visiter), class: 'text-success'do
           = visiter.display_name
