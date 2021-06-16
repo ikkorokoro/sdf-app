@@ -78,7 +78,7 @@
   background-size: cover;
   margin-top: 1.5rem;
   @media screen and (max-width:500px) {
-    height: 200px;
+    height: 250px;
   }
   &-box {
     background: rgba(255, 255, 255, 0.30);
@@ -87,7 +87,7 @@
     text-align: center;
     margin: auto;
     @media screen and (max-width:500px) {
-      height: 200px;
+      height: 250px;
     }
   }
   &-title {
