@@ -20,13 +20,13 @@
             %td= @article.object
           %tr
             %th 購入金額
-            %td= @article.price
+            %td= link_to @article.price, search_articles_path(q: { tags_id_eq: tag.id }), class: 'author-link'
           %tr
             %th 購入場所
-            %td= @article.store
+            %td= link_to @article.store, search_articles_path(q: { tags_id_eq: tag.id }), class: 'author-link'
           %tr
             %th カテゴリ
-            %td= @article.cat_name
+            %td= link_to @article.cat_name, search_articles_path(q: { tags_id_eq: tag.id }), class: 'author-link'
           %tr
             %th 評価
             %td{id: "star-rate#{@article.id}"}
@@ -49,7 +49,7 @@
     .tugs-group
       - @article.tags.each do |tag|
         %span.show-tugs
-          #{tag.name}
+          = link_to "#{tag.name}", search_articles_path(q: { tags_id_eq: tag.id })
       #good.d-none
         %i.fas.fa-thumbs-up.fa-2x.show-like
       #notgood.d-none
