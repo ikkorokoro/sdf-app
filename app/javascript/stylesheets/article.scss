@@ -397,16 +397,12 @@
     margin-bottom: 0.5rem;
   }
   &-price {
-    @media screen and (max-width:425px) {
-      display: flex;
-    }
   }
 }
 .detail-field {
   width: 80%;
   border: 1px solid #dee2e6;
   @media screen and (max-width:425px) {
-    width: 40%;
     margin-bottom: 0.5rem;
   }
 }
