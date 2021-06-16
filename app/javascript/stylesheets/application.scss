@@ -94,9 +94,7 @@ body {
   z-index: 10;
   display: none;
   @media screen and (max-width:425px) {
-    background: rgba(161, 190, 167, 0.27);
-    width: 100%;
-    padding: 1rem;
+    padding: 5px;
   }
 }
 .accordion-ops {
