@@ -17,7 +17,7 @@
             %td= link_to @article.user.display_name, account_path(@article.user), class: 'author-link'
           %tr
             %th 物品名
-            %td= @article.object
+            %td= link_to @article.object, search_articles_path(q: { tags_id_eq: tag.id }), class: 'author-link'
           %tr
             %th 購入金額
             %td= link_to @article.price, search_articles_path(q: { tags_id_eq: tag.id }), class: 'author-link'

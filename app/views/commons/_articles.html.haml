@@ -14,10 +14,9 @@
           = article.cat_name
         .card-text.mt-1.font-weight-bold
           ¥#{article.price}
-        .articles-tags.mt-1
+        .mt-1
           - article.tags.each do |tag|
-            .articles-tag
-              #{tag.name}
+            = link_to "#{tag.name}", search_articles_path(q: { tags_id_eq: tag.id }), class: 'articles-tag'
         .articles-info
           %i.far.fa-comment.pt-1.icon-size
           %span.info-size= article.comment_count
