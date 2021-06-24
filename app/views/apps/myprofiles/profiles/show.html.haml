@@ -10,13 +10,13 @@
         .text-center
           .mypage-info.pt-3
             .follow
-              %p フォロー
+              %p.follow-list フォロー
               %p= current_user.followings.count
             .follow
-              %p フォロワー
+              %p.follow-list フォロワー
               %p= current_user.followers.count
             .follow
-              %p  所属部隊
+              %p.follow-list  所属部隊
               %p= current_user.if_affiliation
           .intro.pt-4
             %p.intro-title-size 自己紹介
