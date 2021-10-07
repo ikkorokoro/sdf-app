@@ -9,7 +9,7 @@ module SdfApp
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.0
-
+    config.assets.initialize_on_precompile = false
     if Rails.env.development? || Rails.env.test?
       #以下は.envを読み込む設定コード
       Bundler.require(*Rails.groups)
