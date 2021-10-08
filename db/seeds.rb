@@ -113,7 +113,7 @@ threearticles = articles[4..5]#バッグ
 forcearticles = articles[6..9]
 onearticles.each { |onearticle| onearticle.image.attach(io: File.open('app/assets/images/vc-01.jpg'), filename: 'vc-01.jpg')}
 twoarticles.each { |twoarticle| twoarticle.image.attach(io: File.open('app/assets/images/C704-01.jpg'), filename: 'C704-01.jpg')}
-threearticles.each { |threearticle| threearticle.image.attach(io: File.open('app/assets/images/ryukkudai-01.jpg'), filename: 'ryukkudai-01.jpg')}
+threearticles.each { |threearticle| threearticle.image.attach(io: File.open('app/assets/images/ryukkudai-01 2.jpg'), filename: 'ryukkudai-01 2.jpg')}
 forcearticles.each  { |forcearticle| forcearticle.image.attach(io: File.open('app/assets/images/heatpowermax-02.jpg'), filename: 'heatpowermax-02.jpg')}
 
 #like
