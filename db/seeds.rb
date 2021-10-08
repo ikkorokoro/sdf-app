@@ -88,13 +88,13 @@ gruop3.each { |user| user.articles.create!(
   tag_ids: tag_ids
   )}
 
-object = '弾帯'
+object = '防寒着'
 price = 5000
 store = '釧路駐屯地'
-category_id = Category.all[10].id
+category_id = Category.all[8].id
 tag_ids = [Tag.all[2].id, Tag.all[8].id, Tag.all[11].id]
 rate = 5
-content = '私物の鉄帽買うならこれがいいと思います！軽量で領事館被っていても頭も首も痛くなりません。'
+content = '私物の防寒着買うならこれがいいと思います！軽量で良いです。'
 gruop4.each { |user| user.articles.create!(
   object: object,
   price: price,
@@ -111,10 +111,10 @@ onearticles = articles[0..1]#戦闘服
 twoarticles = articles[2..3]#手袋
 threearticles = articles[4..5]#バッグ
 forcearticles = articles[6..9]
-onearticles.each { |onearticle| onearticle.image.attach(io: File.open('app/assets/images/vc-01.jpg'), filename: 'vc-01.jpg')}
+onearticles.each { |onearticle| onearticle.image.attach(io: File.open('app/assets/images/'), filename: 'vc-01.jpg')}
 twoarticles.each { |twoarticle| twoarticle.image.attach(io: File.open('app/assets/images/C704-01.jpg'), filename: 'C704-01.jpg')}
 threearticles.each { |threearticle| threearticle.image.attach(io: File.open('app/assets/images/ryukkudai-01.jpg'), filename: 'ryukkudai-01.jpg')}
-forcearticles.each  { |forcearticle| forcearticle.image.attach(io: File.open('app/assets/images/danntaio-01.jpg'), filename: 'danntaio-01.jpg')}
+forcearticles.each  { |forcearticle| forcearticle.image.attach(io: File.open('app/assets/images/heatpowermax-02.jpg'), filename: 'heatpowermax-02.jpg')}
 
 #like
 users = User.all
