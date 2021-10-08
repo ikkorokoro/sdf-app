@@ -20,4 +20,4 @@
               %p= current_user.if_affiliation
           .intro.pt-4
             %p.intro-title-size 自己紹介
-            %p.intro-size= current_user.if_intro
+            %p.intro-size= sanitize(current_user.if_intro)
